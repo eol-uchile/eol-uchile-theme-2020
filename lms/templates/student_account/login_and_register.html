@@ -4,6 +4,8 @@
     from django.utils.translation import ugettext as _
     from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
     from openedx.core.djangolib.js_utils import dump_js_escaped_json
+    from django.urls import reverse
+    from urllib import urlencode
 %>
 <%namespace name='static' file='/static_content.html'/>
 
@@ -56,6 +58,8 @@
     }
 </style>
     <main id="main" aria-label="Content" tabindex="-1">
+        
+    <div style="visibility: hidden;" id="url_next">${ reverse('uchileedxlogin-login:login')}?${urlencode({'next':login_redirect_url})}</div>
         <div id="content-container" class="login-register-content">
             % if enable_enterprise_sidebar:
                 <%include file="enterprise_sidebar.html" />

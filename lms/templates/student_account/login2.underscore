@@ -26,9 +26,10 @@
 <% } %>
 
 <form id="login" class="login-form" tabindex="-1" method="POST">
-    <a href="/uchileedxlogin/login">
+    <a id="redirect_to" href="/uchileedxlogin/login">
         <div class="login-button2"></div>
     </a>
+    
     <div class="section-title lines">
         <h3>
             <span class="text">o</span>
@@ -37,7 +38,7 @@
     <a href="#Login_Normal" onclick="return loginCorreo();">
         <div class="login-button3"></div>
     </a>
-    <div id="Login_Normal" class="login-providers" style="text-align: left;visibility: hidden;">             
+    <div id="Login_Normal" class="login-providers" style="text-align: left;visibility: hidden;">
         <p class="sr">
             <% if ( context.providers.length > 0 && !context.currentProvider || context.hasSecondaryProviders ) { %>
                 <%- gettext("Sign in here using your email address and password, or use one of the providers listed below.") %>
@@ -51,7 +52,6 @@
 
         <button type="submit" class="action action-primary action-update js-login login-button"><%- gettext("Sign in") %></button>
     </div>
-    
 </form>
 <script>
     function loginCorreo() {
@@ -62,4 +62,10 @@
             x.style.visibility = "hidden";
         }
     }
+    $( document ).ready(function() {
+        var url = document.getElementById("url_next").textContent;
+        var atag = document.getElementById("redirect_to");
+        atag.setAttribute('href', url)
+        document.getElementById("url_next").style.display = "none";
+    });
 </script>
