@@ -1,0 +1,411 @@
+:root {
+    --primary-color: #009bdd;
+    --primary-color-hover: #0278ab;
+    --primary-2-color: #C3DDE8;
+    --secondary-color: #ff6422;
+    --secondary-color-hover: #ec500d;
+    --text-grey: #515151;
+    --container-max-width: 1100px;
+}
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100%;
+  font-family: "Trebuchet MS";
+  background-color: #FFFF;
+}
+
+body {
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: var(--primary-color-hover) !important;
+    border-color: var(--primary-color-hover) !important;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
+    background-color: var(--secondary-color-hover) !important;
+    border-color: var(--secondary-color-hover) !important;
+}
+
+.btn-outline-light {
+    background-color: #FFFF !important;
+    color: var(--primary-color) !important;
+}
+
+/*
+ * Header
+ */
+.eol-header {
+  color: var(--text-grey) !important;
+   
+}
+
+.eol-header-brand {
+    display: flex;
+}
+
+.eol-header-brand img.logo {
+    max-height: 50px;
+}
+
+.eol-header .navbar-toggler {
+    background-image: none !important;
+    background-color: var(--primary-color) !important;
+    box-shadow: none !important;
+    color: white !important;
+}
+
+.nav-eol-header .nav-link {
+    margin: 0 2px;
+    color: var(--text-grey) !important;
+    border-bottom: .25rem solid transparent;
+    text-decoration: none !important;
+}
+
+.nav-eol-header .nav-link.active {
+    border-color: var(--primary-color) !important;
+}
+
+.nav-eol-header a.nav-link:hover {
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+
+/*
+* Footer
+*/
+
+.eol-footer {
+    color: var(--text-grey);
+    font-weight: lighter;
+     
+}
+
+.eol-footer img {
+    max-height:120px;
+}
+
+.eol-footer img {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+}
+  
+.eol-footer img:hover {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+}
+
+
+/*
+* Content
+*/
+
+.eol-bg {
+    background-image: url(images/bg-eol.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.eol-bg-white {
+    background-image: url(images/bg-eol-white.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.eol-content-container {
+     
+}
+
+.eol-content-container .eol-categ-title {
+    color: var(--primary-color);
+    border-bottom: .1rem solid var(--primary-color);
+}
+
+.eol-content-container .eol-courses-list {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 300px;
+    max-height: 300px;
+    border: none;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item.inactive {
+    filter: grayscale(90%);
+}
+
+.eol-content-container .eol-courses-list .eol-course-item .card-body {
+    min-height: 0px;
+    padding: 0px;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item .card-footer {
+    background-color: var(--primary-color);
+    opacity: 0.9;
+    line-height: 1.2;
+    font-size: 0.8em;
+    height: 100px;
+    overflow: hidden;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item .card-footer .course-name {
+    font-size: 1.2em;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item .card-date {
+    background-color: var(--primary-2-color);
+    padding: 0 1.25rem;
+    color: var(--text-grey);
+    font-size: 0.8em;
+    height: 20px;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item:not(:hover) .card-desc,
+.eol-content-container .eol-courses-list .eol-course-item:not(:hover) .card-desc p,
+.eol-content-container .eol-courses-list .eol-course-item:not(:hover) .card-desc .card-button {
+    height:0px;
+    opacity: 0;
+    padding: 0;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item:not(:hover) .card-desc .card-button .btn {
+    display: none;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item .card-desc {
+    background-color: var(--primary-color);
+    opacity: 0.9;
+    padding: .75rem 1.25rem;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item .card-desc p {
+    height: 100px;
+    font-size: 0.8em;
+    overflow: hidden;
+    text-overflow: -o-ellipsis-lastline;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item .card-desc .card-button {
+    max-height:80px;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item:hover .card-desc {
+    height: 180px;
+    transition: height .2s;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item:hover .card-desc p,
+.eol-content-container .eol-courses-list .eol-course-item:hover .card-desc .card-button {
+    transition: opacity 0.7s;
+}
+
+
+/*
+* FAQS
+*/
+
+#eol-faqs h1 {
+    color: var(--primary-color);
+}
+
+#eol-faqs .card-header {
+    cursor: pointer;
+}
+
+/*
+* About
+*/
+
+#eol-about h1 {
+    color: var(--primary-color);
+}
+
+/*
+* Login
+*/
+
+#eol-login .login-img {
+    max-width: 500px;
+}
+
+#eol-login .login-card {
+    background-color: #ffffff63 !important;
+}
+
+#eol-login h3.login-header {
+    border-bottom: .15rem solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+#eol-login .separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.5em;
+}
+#eol-login .separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--primary-color);
+}
+#eol-login .separator::before {
+    margin-right: .25em;
+}
+#eol-login .separator::after {
+    margin-left: .25em;
+}
+
+/*
+* Certificates
+*/
+
+#eol-certificates h3.certificates-header {
+    border-bottom: .15rem solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+#eol-certificates .certificates-card {
+    background-color: #ffffff63 !important;
+}
+
+#eol-certificates label {
+    color: var(--text-grey);
+}
+
+#eol-certificates button {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 0;
+}
+
+/*
+* Contact Form
+*/
+
+#eol-contact h3.contact-header {
+    border-bottom: .15rem solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+#eol-contact .contact-card {
+    background-color: #ffffff63 !important;
+}
+
+#eol-contact p.contact-availability {
+    color: var(--primary-color);
+}
+
+#eol-contact p.contact-info {
+    color: var(--text-grey);
+    letter-spacing: 0.04em;
+}
+
+/*
+* Course About
+*/
+
+.eol-course-about-background {
+    min-height: 150px;
+    background-color: var(--primary-color);
+}
+
+#eol-course-about {
+    margin-top: -150px;
+}
+
+#eol-course-about .eol-content-container {
+}
+
+#eol-course-about .course-about-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 300px;
+    max-height: 300px;
+}
+
+#eol-course-about .course-about-card {
+    border-radius: 7px;
+    color: var(--text-grey);
+}
+
+#eol-course-about .course-about-card table{
+    font-size: 0.9em;
+}
+
+#eol-course-about .course-about-card h1 {
+    color: var(--primary-color);
+}
+#eol-course-about .course-about-card p.course-org {
+    color: var(--primary-color);
+}
+
+#eol-course-about .course-about-card .menu {
+    border: none;
+    border-radius: 0px;
+    border-bottom: .05rem solid var(--text-grey);
+}
+
+#eol-course-about .course-about-card .menu.active {
+    margin-bottom: -.12rem;
+    border-bottom: .30rem solid var(--text-grey);
+    font-weight: bold;
+}
+
+#eol-course-about .course-about-card .menu:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#eol-course-about .course-about-card .menu-content-section {
+    display: none;
+    padding: 10px;
+    text-align: justify;
+}
+
+#eol-course-about .course-about-card .menu-content-section.active {
+    display: block;
+}
+
+#eol-course-about .course-about-card .menu-content-section .author img {
+    max-width: 120px;
+}
+
+#eol-course-about .course-about-card .card-header {
+    cursor: pointer;
+}
