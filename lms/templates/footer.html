@@ -8,156 +8,31 @@
 %>
 <% footer = get_footer(is_secure=is_secure) %>
 <%namespace name='static' file='static_content.html'/>
-
-% if uses_bootstrap:
-  <div class="container-fluid wrapper-footer">
-    <footer>
-      <div class="row">
-        <div class="col-md-9">
-          ##<nav class="navbar site-nav navbar-expand-sm" aria-label="${_('About')}">
-          ##  <ul class="navbar-nav">
-          ##    % for item_num, link in enumerate(footer['navigation_links'], start=1):
-          ##      <li class="nav-item">
-          ##        <a class="nav-link" href="${link['url']}">${link['title']}</a>
-          ##      </li>
-          ##    % endfor
-          ##  </ul>
-          ##</nav>
-          <div class="wrapper-logo">
-	<img src="${static.url('eol-uchile/images/logos/0sti.jpg')}"/>
-        <img src="${static.url('eol-uchile/images/logos/1cea.jpg')}"/>
-         <img src="${static.url('eol-uchile/images/logos/2pregrado.jpg')}"/>
-        <img src="${static.url('eol-uchile/images/logos/3pmi.jpg')}"/>
-          ##<p>
-            ##<a href="/">
-            ##  ## The default logo is a placeholder.
-              ## You can either replace this link entirely or update
-              ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
-              ## If you customize FOOTER_ORGANIZATION_IMAGE, then the image
-              ## can be included in the footer on other sites
-              ## (e.g. a blog or marketing front-end) to provide a consistent
-              ## user experience.  See the branding app for details.
-            ##  <img alt="organization logo" src="${footer['logo_image']}">
-            ##</a>
-          ##</p>
-        </div>
-
-          ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-          <p class="copyright">${footer['copyright']} ${u" | {icp}".format(icp=getattr(settings,'ICP_LICENSE')) if getattr(settings,'ICP_LICENSE',False) else ""}</p>
-
-          ##<nav class="navbar legal-nav navbar-expand-sm" aria-label="${_('Legal')}">
-          ##  <ul class="navbar-nav">
-          ##    % for item_num, link in enumerate(footer['legal_links'], start=1):
-          ##      <li class="nav-item">
-          ##        <a class="nav-link" href="${link['url']}">${link['title']}</a>
-          ##      </li>
-          ##    % endfor
-          ##    <li class="nav-item">
-          ##      <a class="nav-link" href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a>
-          ##    </li>
-          ##  </ul>
-          ##</nav>
-        </div>
-        <div class="col-md-3">
-          ## Please leave this link and use one of the logos provided
-          ## The OpenEdX link may be hidden when this view is served
-          ## through an API to partner sites (such as marketing sites or blogs),
-          ## which are not technically powered by Open edX.
-          % if not hide_openedx_link:
-            <div class="footer-about-openedx">
-              <p>
-		<a href="http://www.uchile.cl/dsti" target="_blank">
-                  <img src="${static.url('eol-uchile/images/sti_openedx_logo.png')}" alt="" width="140" />
-                </a>
-                ##<a href="${footer['openedx_link']['url']}">
-                ##  <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
-                ##</a>
-              </p>
-            </div>
-          % endif
-        </div>
-      </div>
-    </footer>
+<footer class="container eol-footer mt-auto text-center mx-auto">
+  <div class="row w-100 px-5">
+    <div class="col-sm-4 col-md-2 my-auto p-3">
+      <img src="${static.url('eol-uchile/images/logos/logoSTI.png')}" class="img-fluid" alt="STI">
+    </div>
+    <div class="col-sm-4 col-md-2 my-auto p-3">
+      <img src="${static.url('eol-uchile/images/logos/DPP.png')}" class="img-fluid" alt="DPP">
+    </div>
+    <div class="col-sm-4 col-md-2 my-auto p-3">
+      <img src="${static.url('eol-uchile/images/logos/DPreg_color_sinfondo.png')}" class="img-fluid" alt="DP">
+    </div>
+    <div class="col-sm-4 col-md-2 my-auto p-3">
+      <img src="${static.url('eol-uchile/images/logos/pmi.png')}" class="img-fluid" alt="PMI">
+    </div>
+    <div class="col-sm-4 col-md-2 my-auto p-3">
+      <img src="${static.url('eol-uchile/images/logos/cea.png')}" class="img-fluid" alt="CEA">
+    </div>
+    <div class="col-sm-4 col-md-2 my-auto p-3">
+      <img src="${static.url('eol-uchile/images/logos/CEAMed.png')}" class="img-fluid" alt="CEA-Med">
+    </div>
   </div>
-% else:
-  <div class="wrapper wrapper-footer">
-    <footer id="footer-openedx" class="grid-container"
-      ## When rendering the footer through the branding API,
-      ## the direction may not be set on the parent element,
-      ## so we set it here.
-      % if bidi:
-        dir=${bidi}
-      % endif
-    >
-      <div class="colophon" style="width: 100%; text-align: center;">
-        ##<nav class="nav-colophon" aria-label="${_('About')}">
-        ##  <ol>
-        ##      % for item_num, link in enumerate(footer['navigation_links'], start=1):
-        ##      <li class="nav-colophon-0${item_num}">
-        ##        <a id="${link['name']}" href="${link['url']}">${link['title']}</a>
-        ##      </li>
-        ##      % endfor
-        ##  </ol>
-        ##</nav>
+<p><small>¿Necesitas Ayuda? Contáctate con la <a href="/contact_form">Mesa de Ayuda de EOL</a></small></p>
+<p><small class="text-muted">© Eol. Todos los derechos reservados excepto donde se indica. EdX, Open edX y sus respectivos logos son marcas comerciales o marcas registradas de edX Inc.</small></p>
+</footer>
 
-        % if context.get('include_language_selector', footer_language_selector_is_enabled()):
-            <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
-        % endif
-
-        <div class="wrapper-logo">
-	<img src="${static.url('eol-uchile/images/logos/0sti.jpg')}"/>
-        <img src="${static.url('eol-uchile/images/logos/logo_DPP.png')}" height="146px"/>
-        <img src="${static.url('eol-uchile/images/logos/2pregrado.jpg')}"/>
-        <img src="${static.url('eol-uchile/images/logos/3pmi.jpg')}"/>
-        <img src="${static.url('eol-uchile/images/logos/1cea.jpg')}"/>
-
-          ##<p>
-            ##<a href="/">
-            ##  ## The default logo is a placeholder.
-              ## You can either replace this link entirely or update
-              ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
-              ## If you customize FOOTER_ORGANIZATION_IMAGE, then the image
-              ## can be included in the footer on other sites
-              ## (e.g. a blog or marketing front-end) to provide a consistent
-              ## user experience.  See the branding app for details.
-            ##  <img alt="organization logo" src="${footer['logo_image']}">
-            ##</a>
-          ##</p>
-        </div>
-        <p class="help_text" style="text-align: center; margin: -2px 0 8px 0; font-size: 0.8em;">¿Necesitas Ayuda? Contáctate con la <a href="/contact_form">Mesa de Ayuda de EOL</a></p>
-        <p class="copyright" style="text-align: center;">© Eol. Todos los derechos reservados excepto donde se indica. EdX, Open edX y sus respectivos logos son marcas comerciales o marcas registradas de edX Inc.</p>
-
-        ##<nav class="nav-legal" aria-label="${_('Legal')}">
-        ##  <ul>
-        ##    % for item_num, link in enumerate(footer['legal_links'], start=1):
-        ##      <li class="nav-legal-0${item_num}">
-        ##        <a href="${link['url']}">${link['title']}</a>
-        ##      </li>
-        ##    % endfor
-        ##    <li><a href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a></li>
-         ## </ul>
-        ##</nav>
-      </div>
-
-      ## Please leave this link and use one of the logos provided
-      ## The OpenEdX link may be hidden when this view is served
-      ## through an API to partner sites (such as marketing sites or blogs),
-      ## which are not technically powered by OpenEdX.
-      % if not hide_openedx_link:
-      <div class="footer-about-openedx" style="width: 100%">
-        <p>
-	  <a href="http://www.uchile.cl/dsti" target="_blank">
-                  <img src="${static.url('eol-uchile/images/sti_openedx_logo.png')}" alt="" width="140" />
-                </a>
-          ##<a href="${footer['openedx_link']['url']}">
-          ##  <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
-          ##</a>
-        </p>
-      </div>
-      % endif
-    </footer>
-  </div>
-% endif
 % if include_dependencies:
   <%static:js group='base_vendor'/>
   <%static:css group='style-vendor'/>

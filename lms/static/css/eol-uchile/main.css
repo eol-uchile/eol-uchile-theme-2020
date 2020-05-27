@@ -14,7 +14,7 @@
 html,
 body {
   height: 100%;
-  font-family: "Trebuchet MS";
+  font-family: "Trebuchet MS" !important;
   background-color: #FFFF;
 }
 
@@ -126,7 +126,6 @@ body {
 */
 
 .eol-bg {
-    background-image: url(images/bg-eol.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
