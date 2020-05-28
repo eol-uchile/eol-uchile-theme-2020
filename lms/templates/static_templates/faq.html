@@ -1,31 +1,92 @@
 # -*- coding: utf-8 -*-
 <%page expression_filter="h"/>
 <%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
 <%inherit file="../main.html" />
-<main id="main" aria-label="Content" tabindex="-1" class="static_pages">
-<h1>Preguntas Frecuentes</h1>
-<h2 style="color: #47318d; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: 700; margin-bottom: 25px;"> ¿Qué cursos encuentro en EOL? </h2>
-
-<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;"> La plataforma de Educación Online de la Universidad de Chile aloja a cursos de pregrado, posgrado y educación continua de la Universidad de Chile.</p>
-
-<h2 style="color: #47318d; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: 700; margin-bottom: 25px;">¿Quién puede tomar cursos en la plataforma EOL? </h2>
-
-<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;">La plataforma está destinada a alumnos de la Universidad de Chile. Los cursos de pregrado y posgrado están destinados a alumnos regulares de la Universidad, mientras que los diplomados y cursos de educación continua deben ser inscritos directamente con las unidades académicas que los dictan. En la descripción de cada curso se indica a quien está dirigido y un email de contacto para inscripciones.</p>
-
-<h2 style="color: #47318d; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: 700; margin-bottom: 25px;"> Soy alumno de posgrado y me interesa uno de los cursos de la plataforma, ¿Qué debo hacer para inscribirme? </h2>
-
-<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;">En la descripción de cada curso se indica un email de contacto para inscribirse en futuras versiones del curso </p>
-
-<h2 style="color: #47318d; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: 700; margin-bottom: 25px;">¿Cuánto cuestan los cursos?  </h2>
-
-<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;"> Los cursos de pregrado y posgrado son gratuitos para los alumnos de la Universidad. Los diplomados y cursos de educación continua tienen diferentes costos según el programa. </p>
-
-<h2 style="color: #47318d; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: 700; margin-bottom: 25px;">¿Cómo me inscribo en la plataforma? </h2>
-
-<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;"> Los alumnos son inscritos en la plataforma por los equipos docentes. </p>
-
-<h2 style="color: #47318d; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: 700; margin-bottom: 25px;"> Soy profesor de la Universidad de Chile y quiero hacer un curso online, ¿qué tengo que hacer? </h2>
-
-<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;">Contactarnos al correo <a href="mailto:eol@uchile.cl" target="_top">eol@uchile.cl</a></b>.</p>
+<main id="eol-faqs" aria-label="Content" tabindex="-1" class="static_pages eol-bg w-100 mx-auto mt-0 pt-0" style="background-image: url(${static.url('eol-uchile/images/bg-eol.png')});">
+    <div class="container eol-content-container px-2 pt-2 mx-auto">
+        <div class="row">
+            <div class="col-lg-4 d-none d-lg-block pr-5 my-auto">
+                <img src="${static.url('eol-uchile/images/pages/faqs_image.jpg')}" class="img-fluid" alt="image"/>
+            </div>
+            <div class="col-lg-8 px-4">
+                <h1 class="text-left">Preguntas Frecuentes</h1>
+                <div class="accordion text-justify mt-4" id="accordionFAQS">
+                    <div class="card">
+                        <div class="card-header" id="faq1" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                            <p class="mb-0">
+                                ¿Qué cursos encuentro en EOL?
+                            </p>
+                        </div>
+                        <div id="collapse1" class="collapse" aria-labelledby="faq1" data-parent="#accordionFAQS">
+                            <div class="card-body">
+                                La plataforma de Educación Online de la Universidad de Chile aloja a cursos de pregrado, posgrado y educación continua de la Universidad de Chile.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="faq2" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                            <p class="mb-0">
+                                ¿Quién puede tomar cursos en la plataforma EOL?
+                            </p>
+                        </div>
+                        <div id="collapse2" class="collapse" aria-labelledby="faq2" data-parent="#accordionFAQS">
+                            <div class="card-body">
+                                La plataforma está destinada a alumnos de la Universidad de Chile. Los cursos de pregrado y posgrado están destinados a alumnos regulares de la Universidad, mientras que los diplomados y cursos de educación continua deben ser inscritos directamente con las unidades académicas que los dictan. En la descripción de cada curso se indica a quien está dirigido y un email de contacto para inscripciones.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="faq3" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                            <p class="mb-0">
+                                Soy alumno de posgrado y me interesa uno de los cursos de la plataforma, ¿Qué debo hacer para inscribirme?
+                            </p>
+                        </div>
+                        <div id="collapse3" class="collapse" aria-labelledby="faq3" data-parent="#accordionFAQS">
+                            <div class="card-body">
+                                En la descripción de cada curso se indica un email de contacto para inscribirse en futuras versiones del curso.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="faq4" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                            <p class="mb-0">
+                                ¿Cuánto cuestan los cursos?
+                            </p>
+                        </div>
+                        <div id="collapse4" class="collapse" aria-labelledby="faq4" data-parent="#accordionFAQS">
+                            <div class="card-body">
+                                Los cursos de pregrado y posgrado son gratuitos para los alumnos de la Universidad. Los diplomados y cursos de educación continua tienen diferentes costos según el programa.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="faq5" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                            <p class="mb-0">
+                                ¿Cómo me inscribo en los cursos?
+                            </p>
+                        </div>
+                        <div id="collapse5" class="collapse" aria-labelledby="faq5" data-parent="#accordionFAQS">
+                            <div class="card-body">
+                                Los alumnos son inscritos en los cursos por sus respectivos equipos docentes.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="faq6" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse5">
+                            <p class="mb-0">
+                                Soy profesor de la Universidad de Chile y quiero hacer un curso online, ¿qué tengo que hacer?
+                            </p>
+                        </div>
+                        <div id="collapse6" class="collapse" aria-labelledby="faq6" data-parent="#accordionFAQS">
+                            <div class="card-body">
+                                Contactarnos al correo <a href="mailto:eol@uchile.cl" target="_top">eol@uchile.cl</a>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </main>
