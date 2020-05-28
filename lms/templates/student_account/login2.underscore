@@ -1,6 +1,4 @@
 
-<div class="js-form-feedback" aria-live="assertive" tabindex="-1">
-</div>
 <div class="toggle-form">
     <span class="text"><%- gettext("First time here?") %></span>
     <a href="#login" class="form-toggle" data-type="register"><%- gettext("Create an Account.") %></a>
@@ -22,23 +20,20 @@
     </p>
     <p><%- gettext("To continue learning with this account, sign in below.") %></p>
 <% } else { %>
-    <h2><%- gettext("Sign In") %></h2>
+    <span class="login-header pb-2 mb-4"><%- gettext("Sign In") %></span>
 <% } %>
 
 <form id="login" class="login-form" tabindex="-1" method="POST">
     <a id="redirect_to" href="/uchileedxlogin/login">
         <div class="login-button2"></div>
     </a>
-    
-    <div class="section-title lines">
-        <h3>
-            <span class="text">o</span>
-        </h3>
-    </div>
+    <div class="separator mx-5">O</div>
     <a href="#Login_Normal" onclick="return loginCorreo();">
         <div class="login-button3"></div>
     </a>
-    <div id="Login_Normal" class="login-providers" style="text-align: left;visibility: hidden;">
+    <div class="js-form-feedback mt-3" aria-live="assertive" tabindex="-1">
+    </div>
+    <div id="Login_Normal" class="login-providers" style="text-align: left;display: none;">
         <p class="sr">
             <% if ( context.providers.length > 0 && !context.currentProvider || context.hasSecondaryProviders ) { %>
                 <%- gettext("Sign in here using your email address and password, or use one of the providers listed below.") %>
@@ -56,10 +51,10 @@
 <script>
     function loginCorreo() {
         var x = document.getElementById("Login_Normal");
-        if (x.style.visibility === "hidden") {
-            x.style.visibility = "visible";
+        if (x.style.display === "none") {
+            $('#Login_Normal').show();
         } else {
-            x.style.visibility = "hidden";
+            $('#Login_Normal').hide();
         }
     }
     $( document ).ready(function() {

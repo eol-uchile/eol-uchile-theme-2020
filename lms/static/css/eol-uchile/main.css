@@ -73,7 +73,6 @@ body {
 
 .eol-header .navbar-toggler {
     background-image: none !important;
-    background-color: var(--primary-color) !important;
     box-shadow: none !important;
     color: white !important;
 }
@@ -262,12 +261,16 @@ body {
 }
 
 #eol-login .login-card {
-    background-color: #ffffff63 !important;
+    background-color: #ffffffbf !important;
 }
 
-#eol-login h3.login-header {
+#eol-login span.login-header {
     border-bottom: .15rem solid var(--primary-color);
     color: var(--primary-color);
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 1.8em;
+    display: block;
 }
 
 #eol-login .separator {
