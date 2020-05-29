@@ -18,6 +18,15 @@ body {
   background-color: #FFFF;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Trebuchet MS" !important;
+}
+
 body {
 }
 
@@ -155,7 +164,7 @@ body {
 
 .eol-content-container .eol-courses-list .eol-course-item {
     background-size: cover;
-    background-position: center;
+    /* background-position: center; */
     background-repeat: no-repeat;
     min-height: 300px;
     max-height: 300px;
@@ -231,6 +240,16 @@ body {
     transition: opacity 0.7s;
 }
 
+.eol-content-container .eol-courses-list .eol-course-item .card-desc .card-button button.btn {
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    font-family: "Trebuchet MS" !important;
+}
+
+.eol-content-container .eol-courses-list .eol-course-item .card-desc .card-button button.btn:hover {
+    color: black !important;
+}
 
 /*
 * FAQS
@@ -302,7 +321,7 @@ body {
 }
 
 #eol-certificates .certificates-card {
-    background-color: #ffffff63 !important;
+    background-color: #ffffffbf !important;
 }
 
 #eol-certificates label {
@@ -325,7 +344,7 @@ body {
 }
 
 #eol-contact .contact-card {
-    background-color: #ffffff63 !important;
+    background-color: #ffffffbf !important;
 }
 
 #eol-contact p.contact-availability {

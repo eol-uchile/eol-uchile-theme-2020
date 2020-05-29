@@ -7,24 +7,18 @@
 <%  cats,course_class = get_course_class(courses) %>
 %for categ in cats:
   %if 'cmm' not in categ['name'] and (categ['show_opt'] == 2 or (categ['show_opt'] == 1 and len(course_class[categ['id']]['courses']) > 0)):
-     <div class="categ-courses-title">
-       <p>${categ['name']}</p>
-     </div>
-      <section class="courses-container">
-        <section class="highlighted-courses">
-          % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
-            <section class="courses">
-              <ul class="courses-listing">
-                %for course in course_class[categ['id']]['courses']:
-                <li class="courses-listing-item">
-                    <%include file="course.html" args="course=course" />
-                </li>
-                %endfor
-              </ul>
-            </section>
-          % endif
-        </section>
-      </section>
+    <h4 class="eol-categ-title text-left pb-2">
+      ${categ['name'].capitalize()}
+    </h4>
+    <div class="row eol-courses-list my-4">
+      % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+            %for course in course_class[categ['id']]['courses']:
+              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <%include file="course.html" args="course=course" />
+              </div>
+            %endfor
+      % endif
+    </div>
   %endif
   %if (categ['show_opt'] == 2 and len(course_class[categ['id']]['courses']) == 0):
     <p class="without-courses"> No existen cursos</p>
