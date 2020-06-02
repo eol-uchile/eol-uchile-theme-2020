@@ -1,0 +1,112 @@
+<!-- 
+INSTRUCCIONES PARA AGREGAR NUEVAS SECCIONES:
+- Para crear una nueva sección en el about, se debe agregar un botón al menu:
+    <button type="button" data-section="section99999" class="btn text-left menu">Nueva sección</button>
+- Modifica el texto del botón, y el atributo: data-section (este atributo debe ser único, no puede repetirse)
+- Agrega el siguiente código, antes de la sección de Preguntas frecuentes
+    <div class="menu-content-section" id="section99999">
+        <p>Add information about the skills and knowledge students need to take this course.</p>
+    </div>
+- Verifica que el id="section99999" sea el mismo que se ha colocado en data-section del menú
+-->
+
+<!--
+    MENU
+-->
+<div class="menu btn-group w-100 mt-2 mb-4" role="group" aria-label="Basic example">
+    <button type="button" data-section="section1" class="btn text-left menu active">About this course</button>
+    <button type="button" data-section="section2" class="btn text-left menu">Requirements</button>
+    <button type="button" data-section="section3" class="btn text-left menu">Course staff</button>
+    <!-- Acá se agregan nuevos botones al menú -->
+
+</div>
+<!--
+    SECTION 1
+-->
+<div class="menu-content-section active" id="section1">
+    <p>Include your long course description here. The long course description should contain 150-400 words.</p>
+    <p>This is paragraph 2 of the long course description. Add more paragraphs as needed. Make sure to enclose them in paragraph tags.</p>
+</div>
+
+<!--
+    SECTION 2
+-->
+<div class="menu-content-section" id="section2">
+    <p>Add information about the skills and knowledge students need to take this course.</p>
+</div>
+
+<!--
+    SECTION 3
+-->
+<div class="menu-content-section" id="section3">
+    <ul class="list-unstyled author">
+    <li class="media mb-4">
+        <img src="/static/images/placeholder-faculty.png" class="align-self-center mr-3 img-fluid" alt="author">
+        <div class="media-body align-self-center">
+        <h5 class="mt-0 mb-1 author-name">Staff Member #1</h5>
+        <p class="author-info">Biography of instructor/staff member #1</p>
+        </div>
+    </li>
+    <li class="media mb-4">
+        <img src="/static/images/placeholder-faculty.png" class="align-self-center mr-3 img-fluid" alt="author">
+        <div class="media-body align-self-center">
+        <h5 class="mt-0 mb-1 author-name">Staff Member #2</h5>
+        <p class="author-info mb-0">Biography of instructor/staff member #2</p>
+        </div>
+    </li>
+    </ul>
+</div>
+
+<!-- Acá se agregan nuevas secciones -->
+
+
+<!--
+    PREGUNTAS FRECUENTES
+- Para agregar nuevas preguntas frecuentes, debes copiar y pegar el siguiente código (dentro de la sección con class="faq"):
+    <div class="card">
+        <div class="card-header" id="faq999" data-toggle="collapse" data-target="#collapse999" aria-expanded="true" aria-controls="collapse1">
+            <p class="card-question">
+                What web browser should I use?
+            </p>
+        </div>
+        <div id="collapse999" class="collapse" aria-labelledby="faq999" data-parent="#accordionFAQS">
+            <div class="card-body">
+                <p>The Open edX platform works best with current versions of Chrome, Edge, Firefox, Internet Explorer, or Safari.</p>
+                <p>See our <a href="https://edx.readthedocs.org/projects/open-edx-learner-guide/en/latest/front_matter/browsers.html">list of supported browsers</a> for the most up-to-date information.</p>
+            </div>
+        </div>
+    </div>
+- En el párrafo con class="card-question" coloca la preguntas
+- En el div con class="card-body" coloca la respuesta
+- Verifica que el id="faq999" del card-header coincida con el aria-labelledby="faq999" del div de respuesta.
+- Verifica que el data-target="#collapse999" coincida con el id="collapse999" del div de respuesta.
+- Para agregar un nuevo FAQ, copia y modifica los valores que se verificaron anteriormente.
+
+-->
+<section class="course-faqs">
+    <div class="card">
+        <div class="card-header" id="faq1" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+            <p class="card-question">
+                What web browser should I use?
+            </p>
+        </div>
+        <div id="collapse1" class="collapse" aria-labelledby="faq1" data-parent="#accordionFAQS">
+            <div class="card-body">
+                <p>The Open edX platform works best with current versions of Chrome, Edge, Firefox, Internet Explorer, or Safari.</p>
+                <p>See our <a href="https://edx.readthedocs.org/projects/open-edx-learner-guide/en/latest/front_matter/browsers.html">list of supported browsers</a> for the most up-to-date information.</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="faq2" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+            <p class="card-question">
+                Question #2
+            </p>
+        </div>
+        <div id="collapse2" class="collapse" aria-labelledby="faq2" data-parent="#accordionFAQS">
+            <div class="card-body">
+                <p>Your answer would be displayed here.</p>
+            </div>
+        </div>
+    </div>
+</section>

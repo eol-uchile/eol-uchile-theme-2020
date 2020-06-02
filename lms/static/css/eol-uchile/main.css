@@ -50,6 +50,7 @@ body {
 .btn-secondary {
     background-color: var(--secondary-color) !important;
     border-color: var(--secondary-color) !important;
+    box-shadow: none !important;
 }
 
 .btn-secondary:hover,
@@ -373,11 +374,39 @@ body {
 }
 
 #eol-course-about .course-about-image {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 300px;
-    max-height: 300px;
+    border-radius: 7px;
+}
+
+#eol-course-about .media .play-intro {
+    background-image: -webkit-linear-gradient(-90deg, rgba(0, 156, 221, 0.58), rgba(0, 156, 221, 0.28));
+    background-image: linear-gradient(-90deg, rgba(0, 156, 221, 0.58), rgba(0, 156, 221, 0.28));
+    border-radius: 4px;
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,0.4);
+    border: 2px solid rgba(255,255,255,0.8);
+    border-radius: 100px;
+    height: 80px;
+    left: 50%;
+    margin-top: -40px;
+    margin-left: -40px;
+    position: absolute;
+    top: 50%;
+    width: 80px;
+}
+
+#eol-course-about .media .play-intro:after {
+    color: rgba(255,255,255,0.8);
+    content: "\25B6";
+    display: block;
+    font: normal 2em/1em "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    left: 50%;
+    margin-left: -11px;
+    margin-top: -16px;
+    position: absolute;
+    top: 50%;
+}
+
+.video-modal.modal, .video-modal.modal .inner-wrapper {
+    height: auto !important;
 }
 
 #eol-course-about .course-about-card {
@@ -400,6 +429,10 @@ body {
     border: none;
     border-radius: 0px;
     border-bottom: .05rem solid var(--text-grey);
+    background: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    letter-spacing: normal !important;
 }
 
 #eol-course-about .course-about-card .menu.active {
@@ -429,4 +462,8 @@ body {
 
 #eol-course-about .course-about-card .card-header {
     cursor: pointer;
+}
+
+#eol-course-about .course-about-card .card-question {
+    margin-bottom: 0;
 }
