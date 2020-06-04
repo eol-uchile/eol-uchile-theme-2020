@@ -5,7 +5,6 @@
     --secondary-color: #ff6422;
     --secondary-color-hover: #ec500d;
     --text-grey: #515151;
-    --container-max-width: 1100px;
 }
 /*
  * Base structure
@@ -68,9 +67,29 @@ body {
 /*
  * Header
  */
+
+@media (min-width: 768px) {
+    .eol-header-container {
+        width: 750px;
+    }
+}
+@media (min-width: 992px) {
+    .eol-header-container  {
+        width: 970px;
+    }
+}
+@media (min-width: 1200px) {
+    .eol-header-container  {
+        width: 1170px;
+    }
+}
+
+.eol-header-container {
+  margin-right: auto;
+  margin-left: auto;
+}
 .eol-header {
   color: var(--text-grey) !important;
-   
 }
 
 .eol-header-brand {

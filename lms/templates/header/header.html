@@ -29,7 +29,7 @@ from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_en
     </%block>
 % endif
 
-<nav class="container eol-header navbar navbar-expand-xl navbar-light bg-white">
+<nav class="eol-header-container eol-header navbar navbar-expand-xl navbar-light bg-white">
     % if use_cookie_banner:
         ${static.renderReact(
             component="CookiePolicyBanner",
