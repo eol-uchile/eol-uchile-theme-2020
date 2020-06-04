@@ -112,6 +112,10 @@ from six import string_types
     padding: 0px !important;
     margin: 0px !important;
   }
+
+  .eol-course-header {
+    display: none;
+  }
 </style>
 
 <div class="eol-course-about-background">
@@ -147,7 +151,7 @@ from six import string_types
                         %if user.is_authenticated and registered:
                           <p class="font-italic text-center">${_("You are enrolled in this course")}</p>
                           %if show_courseware_link:
-                            <a type="button" class="register btn btn-primary text-white btn-lg btn-block mb-2" href="${course_target}">
+                            <a type="button" class="btn btn-primary text-white btn-lg btn-block mb-2" href="${course_target}">
                               ${_("View Course")}
                             </a>
                           %endif
@@ -161,6 +165,9 @@ from six import string_types
                         ## Shib courses need the enrollment button to be displayed even when can_enroll is False,
                         ## because AnonymousUsers cause can_enroll for shib courses to be False, but we need them to be able to click
                         ## so that they can register and become a real user that can enroll.
+                          <center>
+                            <span class="badge badge-primary mb-2 p-1">La inscripción a este curso es sólo por invitación</span>
+                          </center>
                         % elif not is_shib_course and not can_enroll:
                           <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2" disabled>${_("Enrollment is Closed")}</a>
                         %elif can_add_course_to_cart:
@@ -283,8 +290,8 @@ from six import string_types
 
           <div class="course-info col-lg-7 col-xl-8 order-lg-1 p-3">
               <div class="course-about-card shadow-lg m-2 p-4 bg-white">
-                <h1 class="text-left">${course.display_name_with_default_escaped}</h1>
-                <p class="course-org font-weight-normal mt-0">${course.display_org_with_default | h}</p>
+                <h1 class="text-left mb-0">${course.display_name_with_default_escaped}</h1>
+                <p class="course-org font-weight-normal my-2">${course.display_org_with_default | h}</p>
                 <div class="details" style="width: auto; float:none;">
                   <div class="inner-wrapper">
                     ${get_course_about_section(request, course, "overview")}

@@ -34,9 +34,11 @@ body {
     margin-right: 0px;
 }
 
-.btn-primary {
+.btn-primary,
+.badge-primary {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
+    color: white !important;
 }
 
 .btn-primary:hover,
@@ -485,4 +487,8 @@ body {
 
 #eol-course-about .course-about-card .card-question {
     margin-bottom: 0;
+}
+
+.eol-course-header {
+    background-color: var(--primary-color);
 }

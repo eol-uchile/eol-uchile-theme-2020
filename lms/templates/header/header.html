@@ -49,14 +49,30 @@ from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_en
 </nav>
 
 % if course:
-<!--[if lte IE 9]>
-<div class="ie-banner" aria-hidden="true">${Text(_('{begin_strong}Warning:{end_strong} Your browser is not fully supported. We strongly recommend using {chrome_link} or {ff_link}.')).format(
-    begin_strong=HTML('<strong>'),
-    end_strong=HTML('</strong>'),
-    chrome_link=HTML('<a href="https://www.google.com/chrome" target="_blank">Chrome</a>'),
-    ff_link=HTML('<a href="http://www.mozilla.org/firefox" target="_blank">Firefox</a>'),
-)}</div>
-<![endif]-->
+    <div class="eol-course-header container-fluid py-2 px-4">
+        <p class="my-0 text-white">
+            <span class="provider">${course.display_org_with_default}:</span>
+            <span class="course-number text-uppercase">${course.display_number_with_default}</span>
+        </p>
+        <%
+        display_name = course.display_name_with_default
+        if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
+            ccx = get_current_ccx(course.id)
+            if ccx:
+                display_name = ccx.display_name
+        %>
+        <h3 class="my-0 text-white">
+            <strong class="course-name">${display_name}</strong>
+        </h3>
+    </div>
+    <!--[if lte IE 9]>
+    <div class="ie-banner" aria-hidden="true">${Text(_('{begin_strong}Warning:{end_strong} Your browser is not fully supported. We strongly recommend using {chrome_link} or {ff_link}.')).format(
+        begin_strong=HTML('<strong>'),
+        end_strong=HTML('</strong>'),
+        chrome_link=HTML('<a href="https://www.google.com/chrome" target="_blank">Chrome</a>'),
+        ff_link=HTML('<a href="http://www.mozilla.org/firefox" target="_blank">Firefox</a>'),
+    )}</div>
+    <![endif]-->
 % endif
 
 % if settings.FEATURES.get('ENABLE_COOKIE_CONSENT', False):
