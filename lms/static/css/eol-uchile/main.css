@@ -492,3 +492,13 @@ body {
 .eol-course-header {
     background-color: var(--primary-color);
 }
+
+/*
+* Fix overlays between default theme and eol theme
+*/
+
+.progress {
+    display: block !important;
+    height: auto !important;
+    background: none !important;
+}

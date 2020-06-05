@@ -8,8 +8,8 @@
 %>
 <% footer = get_footer(is_secure=is_secure) %>
 <%namespace name='static' file='static_content.html'/>
-<footer class="container eol-footer mt-auto text-center mx-auto">
-  <div class="row w-100 px-5">
+<footer class="eol-header-container eol-footer border-0 shadow-none mt-auto text-center mx-auto mb-4">
+  <div class="row d-flex border-0 shadow-none w-100 px-5">
     <div class="col-sm-4 col-md-2 my-auto p-3">
       <img src="${static.url('eol-uchile/images/logos/0sti.jpg')}" class="img-fluid mx-auto" alt="STI" style="max-height: 100px;">
     </div>
@@ -29,8 +29,8 @@
       <img src="${static.url('eol-uchile/images/logos/5ceacs.jpg')}" class="img-fluid mx-auto" alt="CEACS" style="max-height: 100px;">
     </div>
   </div>
-<p><small>¿Necesitas Ayuda? Contáctate con la <a href="/contact_form">Mesa de Ayuda de EOL</a></small></p>
-<p><small class="text-muted">© Eol. Todos los derechos reservados excepto donde se indica. EdX, Open edX y sus respectivos logos son marcas comerciales o marcas registradas de edX Inc.</small></p>
+<p class="text-center"><small>¿Necesitas Ayuda? Contáctate con la <a href="/contact_form">Mesa de Ayuda de EOL</a></small></p>
+<p class="text-center"><small class="text-muted">© Eol. Todos los derechos reservados excepto donde se indica. EdX, Open edX y sus respectivos logos son marcas comerciales o marcas registradas de edX Inc.</small></p>
 </footer>
 
 % if include_dependencies:
