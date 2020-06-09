@@ -39,6 +39,7 @@ body {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
     color: white !important;
+    text-shadow: none !important;
 }
 
 .btn-primary:hover,
@@ -363,6 +364,7 @@ body {
 #eol-contact h3.contact-header {
     border-bottom: .15rem solid var(--primary-color);
     color: var(--primary-color);
+    font-size: 1.5em !important;
 }
 
 #eol-contact .contact-card {
