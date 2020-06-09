@@ -20,7 +20,7 @@ from six import text_type
             <%
                 course_about = reverse('about_course', args=[text_type(course.id)])
             %>
-            <button onclick='window.location.href="${course_about}"' type="button" class="btn btn-outline-light">Aprender más</button>
+            <a href="${course_about}"><button type="button" class="btn btn-outline-light">Aprender más</button></a>
         </div>
         
     </div>

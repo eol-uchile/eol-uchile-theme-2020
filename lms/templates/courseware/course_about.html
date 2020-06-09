@@ -230,18 +230,22 @@ from six import string_types
                               <th scope="row" class="text-left">${_("Course Number")}</th>
                               <td class="text-right text-uppercase">${course.display_number_with_default | h}</td>
                             </tr>
+                            %if course_start_date != "None":
                             <tr>
                               <th scope="row" class="text-left">${_("Classes Start")}</th>
                               <td class="text-right">
                                 <span class="important-dates-item-text start-date localized_datetime" data-format="shortDate" data-datetime="${course_start_date}" data-language="${LANGUAGE_CODE}"></span>
                               </td>
                             </tr>
+                            %endif
+                            %if course_end_date != "None":
                             <tr>
                               <th scope="row" class="text-left">${_("Classes End")}</th>
                               <td class="text-right">
                                 <span class="important-dates-item-text end-date localized_datetime" data-format="shortDate" data-datetime="${course_end_date}" data-language="${LANGUAGE_CODE}"></span>
                               </td>
                             </tr>
+                            %endif
                             % if get_course_about_section(request, course, "effort"):
                               <tr>
                                 <th scope="row" class="text-left">${_("Estimated Effort")}</th>
