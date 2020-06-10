@@ -23112,19 +23112,19 @@ div.wrapper-comp-editor.is-inactive ~ div.launch-latex-compiler {
   padding: 0.625rem 0.625rem;
   font-size: 14px; }
 
-/* line 1, /edx/app/edxapp/edx-platform/themes/eol-uchile/cms/static/sass/_overrides.scss */
+/* line 1, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020-2020/cms/static/sass/_overrides.scss */
 .nav-not-signedin-signup {
   display: none !important; }
 
-/* line 4, /edx/app/edxapp/edx-platform/themes/eol-uchile/cms/static/sass/_overrides.scss */
+/* line 4, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020-2020/cms/static/sass/_overrides.scss */
 .view-signup .content header .action, .view-signin .content header .action, .view-util .content header .action {
   display: none !important; }
 
-/* line 7, /edx/app/edxapp/edx-platform/themes/eol-uchile/cms/static/sass/_overrides.scss */
+/* line 7, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020-2020/cms/static/sass/_overrides.scss */
 .view-howitworks.not-signedin .content-cta .list-actions .action.action-primary {
   display: none !important; }
 
-/* line 10, /edx/app/edxapp/edx-platform/themes/eol-uchile/cms/static/sass/_overrides.scss */
+/* line 10, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020-2020/cms/static/sass/_overrides.scss */
 .wrapper-header .branding a img {
   height: 65px !important;
   max-height: 65px !important; }
