@@ -286,12 +286,21 @@ body {
     cursor: pointer;
 }
 
+#eol-faqs p,
+#eol-faqs .card-body {
+    line-height: 1.5em !important;
+}
+
 /*
 * About
 */
 
 #eol-about h1 {
     color: var(--primary-color);
+}
+
+#eol-about p {
+    line-height: 1.5em !important;
 }
 
 /*
