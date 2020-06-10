@@ -45,33 +45,42 @@
 <div class="section-bkg-wrapper">
 <style>
     .login-button2{
-        background:url("${static.url('eol-uchile/images/buttons/login_button_bblue.jpg')}");
+        background:url("${static.url('eol-uchile/images/buttons/login_button_bblue.jpg')}") no-repeat;
         background-repeat: no-repeat;
         background-size: 100% 100%;
         height: 70px;
     }
     .login-button3{
-        background:url("${static.url('eol-uchile/images/buttons/login_button_eol_light_bblue.jpg')}");
+        background:url("${static.url('eol-uchile/images/buttons/login_button_eol_light_bblue.jpg')}") no-repeat;
         background-repeat: no-repeat;
         background-size: 100% 100%;
         height: 70px;
     }
+    #content.main-container {
+        padding: 0px !important;
+        margin: 0px !important;
+    }
 </style>
-    <main id="main" aria-label="Content" tabindex="-1">
+    <main id="eol-login" aria-label="Content" tabindex="-1" class="eol-bg w-100 mx-auto mt-0 pt-0" style="min-height: 85vh; background-image: url(${static.url('eol-uchile/images/bg-eol.png')});">
         
-    <div style="visibility: hidden;" id="url_next">${ reverse('uchileedxlogin-login:login')}?${urlencode({'next':login_redirect_url})}</div>
-        <div id="content-container" class="login-register-content">
-            % if enable_enterprise_sidebar:
-                <%include file="enterprise_sidebar.html" />
-                <%
-                    border_class = 'border-left'
-                %>
-            % else:
-                <%
-                    border_class = ''
-                %>
-            % endif
-            <div id="login-and-registration-container" class="login-register ${border_class}"></div>
+        <div style="visibility: hidden;" id="url_next">${ reverse('uchileedxlogin-login:login')}?${urlencode({'next':login_redirect_url})}</div>
+        
+        <div class="container eol-content-container px-2 mx-auto">
+            <div class="row">
+                <div id="content-container" class="login-card col-11 col-md-8 col-lg-6 mx-auto shadow-lg px-5 py-4 mb-5 bg-white rounded-lg">
+                        % if enable_enterprise_sidebar:
+                            <%include file="enterprise_sidebar.html" />
+                            <%
+                                border_class = 'border-left'
+                            %>
+                        % else:
+                            <%
+                                border_class = ''
+                            %>
+                        % endif
+                        <div id="login-and-registration-container" class="login-register ${border_class}" style="background: none;"></div>
+                </div>
+            </div>
         </div>
     </main>
 </div>

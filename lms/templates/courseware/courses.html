@@ -1,0 +1,45 @@
+<%page expression_filter="h"/>
+<%!
+  import json
+  from django.utils.translation import ugettext as _
+  from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_json
+%>
+<%inherit file="../main.html" />
+<%
+  course_discovery_enabled = settings.FEATURES.get('ENABLE_COURSE_DISCOVERY')
+%>
+
+<%namespace name='static' file='../static_content.html'/>
+
+% if course_discovery_enabled:
+<%block name="header_extras">
+  % for template_name in ["course_card", "filter_bar", "filter", "facet", "facet_option"]:
+  <script type="text/template" id="${template_name}-tpl">
+      <%static:include path="discovery/${template_name}.underscore" />
+  </script>
+  % endfor
+  <%static:require_module module_name="js/discovery/discovery_factory" class_name="DiscoveryFactory">
+    DiscoveryFactory(
+      ${course_discovery_meanings | n, dump_js_escaped_json},
+      getParameterByName('search_query'),
+      "${user_language | n, js_escaped_string}",
+      "${user_timezone | n, js_escaped_string}"
+    );
+  </%static:require_module>
+</%block>
+% endif
+
+<%block name="pagetitle">${_("Courses")}</%block>
+
+<main role="main" class="eol-bg w-100 mx-auto" style="background-image: url(${static.url('eol-uchile/images/bg-eol.png')});">
+    <div class="container-fluid eol-content-container py-4 mt-4 px-2 mx-auto">
+        <div class="row eol-courses-list my-4">
+            %for course in courses:
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <%include file="../course.html" args="course=course" />
+                </div>
+            %endfor
+
+        </div>
+    </div>
+</main>

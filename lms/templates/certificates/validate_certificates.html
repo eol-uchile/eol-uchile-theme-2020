@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
+<%inherit file="../main.html" />
+
+<style>
+    #eol-certificates input.btn {
+        background-image: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        border-radius: 0 !important;
+        letter-spacing: 0 !important;
+        padding: 7px 18px !important;
+    }
+</style>
+
+<main id="eol-certificates" aria-label="Content" tabindex="-1" class="eol-bg w-100 mx-auto mt-0 pt-0" style="min-height: 85vh; background-image: url(${static.url('eol-uchile/images/bg-eol.png')});">
+    <div class="container eol-content-container px-2 mx-auto">
+        <div class="row">
+            <div class="certificates-card col-11 col-md-8 col-lg-6 mx-auto shadow-lg px-5 py-4 mb-5 bg-white rounded-lg">
+                <h3 class="certificates-header pb-2 mb-4">Validación de certificados</h3>
+                <form method="POST">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="${ csrftoken }"/>
+                    <div class="form-group">
+                        <label for="inputID">ID de certificado</label>
+                        % if context.get('_id', UNDEFINED) is not UNDEFINED:
+                            <input type="text" class="form-control mt-1" name='cert-id' value="${_id}"></input>
+                        % else:
+                            <input type="text" class="form-control mt-1" name='cert-id' placeholder="9c7f2edd26f7477a8b9fb05f763f869c"></input>
+                        % endif
+                    </div>
+                    % if context.get('exists', UNDEFINED) is not UNDEFINED:
+                        % if context.get('exists') is False:
+                            <p style="color:firebrick; margin-bottom: 15px;">Certificado no encontrado</p>
+                        % endif
+                    % endif
+                    <input type="submit" class="btn btn-primary mx-auto w-100" value="Enviar">
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
