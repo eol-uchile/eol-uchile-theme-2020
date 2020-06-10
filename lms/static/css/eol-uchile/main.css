@@ -306,13 +306,15 @@ body {
     background-color: #ffffffbf !important;
 }
 
-#eol-login span.login-header {
+#eol-login span.login-header,
+.wrapper-header-courses .eol-header-courses {
     border-bottom: .15rem solid var(--primary-color);
     color: var(--primary-color);
     font-weight: 500;
     line-height: 1.2;
-    font-size: 1.8em;
+    font-size: 1.8em !important;
     display: block;
+    padding-bottom: 0.5em;
 }
 
 #eol-login .separator {
