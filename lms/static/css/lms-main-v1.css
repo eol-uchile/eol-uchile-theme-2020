@@ -21269,69 +21269,69 @@ body.error {
       min-width: 0; } }
 
 @media (max-width: 991px) {
-  /* line 2, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 2, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .global-header .header-logo a .logo {
     height: 50px !important; }
-  /* line 5, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 5, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .course-info .course-sidebar {
     float: none;
     width: 100%; }
-  /* line 9, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 9, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.register {
     width: initial; } }
 
 @media (min-width: 992px) {
-  /* line 15, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 15, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .global-header .nav-links .secondary {
     float: right;
     margin: 40px 80px 0 0; }
-  /* line 19, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 19, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .global-header .nav-links .secondary a.register-btn {
     display: none; }
-  /* line 22, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 22, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .global-header .header-logo a {
     margin: 15px 0 0 25px; }
-  /* line 25, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 25, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .global-header .header-logo a .logo {
     height: 90px !important; }
-  /* line 28, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 28, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .global-header .header-logo .course-header {
     margin: 50px 0px 0 40px; }
-  /* line 31, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 31, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   nav.eol-menu {
     margin: 10px; }
-  /* line 34, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 34, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .eol-menu .nav-item {
     display: inline-block;
     margin-right: 15px; }
-  /* line 38, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 38, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .global-header .nav-links .secondary {
     margin: 60px 40px 0 0; }
-  /* line 41, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 41, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .global-header {
     padding: 0; } }
 
 @media (min-width: 576px) {
-  /* line 46, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 46, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .categ-courses-title {
     font-size: 0.9rem; } }
 
 @media (min-width: 768px) {
-  /* line 51, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 51, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .categ-courses-title {
     font-size: 0.9rem; } }
 
 @media (min-width: 992px) {
-  /* line 57, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 57, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .categ-courses-title {
     font-size: 1.2rem; } }
 
 @media (min-width: 1200px) {
-  /* line 63, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 63, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .categ-courses-title {
     font-size: 1.2rem; } }
 
-/* line 67, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 67, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .categ-courses-title {
   background-color: #0075b4;
   color: white;
@@ -21339,85 +21339,85 @@ body.error {
   margin: 20px 0 20px 0;
   padding: 0; }
 
-/* line 74, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 74, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .categ-courses-title p {
   margin: 0;
   padding: 20px 0 20px 0; }
 
-/* line 79, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 79, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .course-info header.course-profile {
   padding-top: 0;
   height: auto; }
 
-/* line 83, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 83, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .wrapper-footer footer .colophon .nav-colophon li {
   list-style-type: none; }
 
-/* line 86, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 86, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .global-header {
   border: none;
   box-shadow: none; }
 
-/* line 90, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 90, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .courses-container .courses {
   padding: 0; }
 
-/* line 93, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 93, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .without-courses {
   color: #0075b4;
   text-align: center; }
 
 /**ficus*/
-/* line 98, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 98, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 div.login-register div.toggle-form, .financial-assistance-wrapper div.financial-assistance-form div.toggle-form {
   display: none !important; }
 
-/* line 101, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 101, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .header-global h1.logo img {
   height: 90px !important; }
 
-/* line 104, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 104, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .header-global {
   height: 126px !important; }
 
-/* line 107, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 107, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 li.item.nav-courseware-01 {
   padding-top: 40px;
   margin-bottom: 16px; }
 
-/* line 111, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 111, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .header-global ol.user {
   padding-top: 40px; }
 
-/* line 114, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 114, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .header-global a.doc-link {
   padding-top: 40px; }
 
-/* line 117, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 117, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .header-global .nav-global {
   padding-top: 40px; }
 
-/* line 120, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 120, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 main.static_pages {
   margin: 32px; }
 
-/* line 123, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+/* line 123, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
 .home > header {
   background-size: cover;
   background-position: 50%; }
-  /* line 127, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 127, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .home > header .outer-wrapper {
     padding-top: 150px;
     padding-bottom: 150px; }
-  /* line 131, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+  /* line 131, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
   .home > header .title {
     background: transparent;
     box-shadow: none;
     margin-left: 0; }
-    /* line 136, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+    /* line 136, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
     .home > header .title > .heading-group h1 {
       color: #fff;
       text-shadow: none; }
-    /* line 140, /edx/app/edxapp/edx-platform/themes/eol-uchile/lms/static/sass/_overrides.scss */
+    /* line 140, /edx/app/edxapp/edx-platform/themes/eol-uchile-2020/lms/static/sass/_overrides.scss */
     .home > header .title > .heading-group p {
       color: #fff; }

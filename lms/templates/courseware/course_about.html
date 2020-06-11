@@ -119,7 +119,7 @@ from six import string_types
 
 <div class="eol-course-about-background">
 </div>
-<main id="eol-course-about" role="main" class="eol-bg-white w-100 mx-auto" style="background-image: url(${static.url('eol-uchile/images/bg-eol-white.png')});">
+<main id="eol-course-about" role="main" class="eol-bg-white w-100 mx-auto" style="background-image: url(${static.url('eol-uchile-2020/images/bg-eol-white.png')});">
   <div class="container eol-content-container px-2 mx-auto mt-0 pt-3">
       <div class="row">
           <div class="col-lg-5 col-xl-4 order-lg-12 py-3 px-1">
@@ -128,7 +128,7 @@ from six import string_types
                       <div class="course-about-card shadow-lg m-2 bg-white">
                         <script>
                           function show_default_image() {
-                            return "${static.url('eol-uchile/images/default-course.jpg')}";
+                            return "${static.url('eol-uchile-2020/images/default-course.jpg')}";
                           }
                         </script>
                         % if get_course_about_section(request, course, "video"):
@@ -164,7 +164,7 @@ from six import string_types
                             ${_('This course is in your <a href="{cart_link}">cart</a>.').format(cart_link=cart_link)}
                           </span>
                         % elif is_course_full:
-                          <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2" disabled>${_("Course is full")}</a>
+                          <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2 disabled" disabled>${_("Course is full")}</a>
                         % elif invitation_only and not can_enroll:
                         ## Shib courses need the enrollment button to be displayed even when can_enroll is False,
                         ## because AnonymousUsers cause can_enroll for shib courses to be False, but we need them to be able to click
@@ -173,7 +173,7 @@ from six import string_types
                             <span class="badge badge-primary mb-2 p-1">La inscripción a este curso es sólo por invitación</span>
                           </center>
                         % elif not is_shib_course and not can_enroll:
-                          <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2" disabled>${_("Enrollment is Closed")}</a>
+                          <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2 disabled" disabled>${_("Enrollment is Closed")}</a>
                         %elif can_add_course_to_cart:
                           <%
                           if user.is_authenticated:
@@ -187,7 +187,7 @@ from six import string_types
                               reg_href = ecommerce_checkout_link
                               reg_element_id = ""
                           %>
-                          <a href="${reg_href}" id="${reg_element_id}" type="button" class="add-to-cart btn btn-secondary text-white btn-lg btn-block mb-2">
+                          <a href="${reg_href}" id="${reg_element_id}" type="button" class="add-to-cart btn btn-info text-white btn-lg btn-block mb-2">
                             ${_("Add {course_name} to Cart <span>({price} USD)</span>")\
                               .format(course_name=course.display_number_with_default, price=course_price)}
                           </a>
@@ -203,7 +203,7 @@ from six import string_types
                             else:
                               href_class = "register"
                           %>
-                          <a href="${reg_href}" type="button" class="${href_class} btn btn-secondary text-white btn-lg btn-block mb-2">
+                          <a href="${reg_href}" type="button" class="${href_class} btn btn-info text-white btn-lg btn-block mb-2">
                             Inscribirse
                           </a>
                           <div id="register_error"></div>

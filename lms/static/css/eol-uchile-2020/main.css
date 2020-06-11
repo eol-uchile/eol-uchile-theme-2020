@@ -49,16 +49,16 @@ body {
     border-color: var(--primary-color-hover) !important;
 }
 
-.btn-secondary {
+.btn-info {
     background-color: var(--secondary-color) !important;
     border-color: var(--secondary-color) !important;
     box-shadow: none !important;
 }
 
-.btn-secondary:hover,
-.btn-secondary:active,
-.btn-secondary:focus {
-    background-color: var(--secondary-color-hover) !important;
+.btn-info:hover,
+.btn-info:active,
+.btn-info:focus {
+    background: var(--secondary-color-hover) !important;
     border-color: var(--secondary-color-hover) !important;
 }
 
@@ -286,12 +286,21 @@ body {
     cursor: pointer;
 }
 
+#eol-faqs p,
+#eol-faqs .card-body {
+    line-height: 1.5em !important;
+}
+
 /*
 * About
 */
 
 #eol-about h1 {
     color: var(--primary-color);
+}
+
+#eol-about p {
+    line-height: 1.5em !important;
 }
 
 /*
