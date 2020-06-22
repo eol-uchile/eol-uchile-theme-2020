@@ -3,6 +3,9 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%namespace name='static' file='/static_content.html'/>
 <%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("About")}</%block>
+
 <style>
   #content.main-container {
     padding: 0px !important;
