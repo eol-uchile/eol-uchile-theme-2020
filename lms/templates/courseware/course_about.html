@@ -39,9 +39,7 @@ from six import string_types
           location.href = xhr.responseText;
         }
       } else if (xhr.status == 403) {
-        $('#register_error').text(
-            (xhr.responseText ? xhr.responseText : "${_("An error has occurred. Please ensure that you are logged in to enroll.") | n, js_escaped_string}")
-        ).css("display", "block");
+        location.href = "/login?next=/courses/${course.id | u}/about";
       } else {
         $('#register_error').text(
             (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.") | n, js_escaped_string}")
