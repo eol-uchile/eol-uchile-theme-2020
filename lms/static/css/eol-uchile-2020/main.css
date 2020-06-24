@@ -439,7 +439,7 @@ body {
     top: 50%;
 }
 
-.video-modal.modal, .video-modal.modal .inner-wrapper, .modal.unenroll-modal {
+.video-modal.modal, .video-modal.modal .inner-wrapper, .modal.unenroll-modal, #email-settings-modal, .modal {
     height: auto !important;
 }
 
