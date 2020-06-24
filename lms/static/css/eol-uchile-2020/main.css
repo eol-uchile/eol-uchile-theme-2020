@@ -439,7 +439,7 @@ body {
     top: 50%;
 }
 
-.video-modal.modal, .video-modal.modal .inner-wrapper {
+.video-modal.modal, .video-modal.modal .inner-wrapper, .modal.unenroll-modal {
     height: auto !important;
 }
 
