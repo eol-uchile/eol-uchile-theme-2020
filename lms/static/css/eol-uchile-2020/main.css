@@ -439,10 +439,6 @@ body {
     top: 50%;
 }
 
-.video-modal.modal, .video-modal.modal .inner-wrapper, .modal.unenroll-modal, #email-settings-modal, .modal {
-    height: auto !important;
-}
-
 #eol-course-about .course-about-card {
     border-radius: 7px;
     color: var(--text-grey);
