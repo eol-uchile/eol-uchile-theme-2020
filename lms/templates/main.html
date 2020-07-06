@@ -86,7 +86,9 @@ allow_iframing = configuration_helpers.get_value('UCURSOS_ALLOW_IFRAMING', False
   % endif
   <script type="text/javascript" src="${static.url(jsi18n_path)}"></script>
   <script type="text/javascript" src="${static.url(ie11_fix_path)}"></script>
-
+  <!-- UCursos -->
+  <script type="text/javascript" src="https://www.u-cursos.cl/b/externos/resizer.js"></script>
+  <!-- UCursos -->
   <link rel="icon" type="image/x-icon" href="${static.url(static.get_value('favicon_path', settings.FAVICON_PATH))}" />
   <!-- EOL -->
   <link rel="stylesheet" href="${static.url('eol-uchile-2020/css/eol-uchile-2020/bootstrap.css')}">
