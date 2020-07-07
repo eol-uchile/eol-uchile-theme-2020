@@ -19,6 +19,8 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 
 %>
 
+% if not configuration_helpers.get_value('UCURSOS_DISABLE_HEADER', False):
+
 ## Provide a hook for themes to inject branding on top.
 <%block name="navigation_top" />
 
@@ -124,4 +126,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             </label>
         </form>
     % endif
+% endif
+
+## disable_header
 % endif
