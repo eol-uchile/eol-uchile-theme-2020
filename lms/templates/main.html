@@ -27,9 +27,9 @@ from openedx.core.release import RELEASE_LINE
 from pipeline_mako import render_require_js_path_overrides
 
 # update variables for ucursos interface
-disable_header = configuration_helpers.get_value('UCURSOS_DISABLE_HEADER', False)
-disable_footer = configuration_helpers.get_value('UCURSOS_DISABLE_FOOTER', False)
-allow_iframing = configuration_helpers.get_value('UCURSOS_ALLOW_IFRAMING', False)
+disable_header = disable_header and configuration_helpers.get_value('UCURSOS_DISABLE_HEADER', True)
+disable_footer = disable_footer and configuration_helpers.get_value('UCURSOS_DISABLE_FOOTER', True)
+allow_iframing = allow_iframing and configuration_helpers.get_value('UCURSOS_ALLOW_IFRAMING', True)
 %>
 <!DOCTYPE html>
 <!--[if lte IE 9]><html class="ie ie9 lte9" lang="${LANGUAGE_CODE}"><![endif]-->
