@@ -128,5 +128,13 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     % endif
 % endif
 
-## disable_header
+% else:
+  <script type="text/javascript" src="https://www.u-cursos.cl/b/externos/resizer.js"></script>
+    <style>
+        html {
+            border: solid var(--primary-color);
+            border-width: thin;
+            height: auto;
+        }
+    </style>
 % endif
