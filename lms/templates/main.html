@@ -47,7 +47,8 @@ from pipeline_mako import render_require_js_path_overrides
        ${static.get_page_title_breadcrumbs(self.pagetitle())}
       </title>
   </%block>
-  % if not allow_iframing and not configuration_helpers.get_value('UCURSOS_ALLOW_IFRAMING', False):
+  % if not allow_iframing:
+  <!--
       <script type="text/javascript">
         /* immediately break out of an iframe if coming from the marketing website */
         (function(window) {
@@ -56,6 +57,7 @@ from pipeline_mako import render_require_js_path_overrides
           }
         })(this);
       </script>
+  -->
   % endif
 
   <%

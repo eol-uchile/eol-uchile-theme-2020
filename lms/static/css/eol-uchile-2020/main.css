@@ -7,6 +7,16 @@
     --text-grey: #515151;
 }
 /*
+* U-cursos
+*/
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .eol-course-header .course-title-border {
+        border-left: 2px solid white;
+    }
+}
+
+/*
  * Base structure
  */
 

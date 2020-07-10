@@ -19,8 +19,6 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 
 %>
 
-% if not configuration_helpers.get_value('UCURSOS_DISABLE_HEADER', False):
-
 ## Provide a hook for themes to inject branding on top.
 <%block name="navigation_top" />
 
@@ -73,21 +71,35 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 </nav>
 
 % if course:
-    <div class="eol-course-header container-fluid py-2 px-4">
-        <p class="my-0 text-white">
-            <span class="provider">${course.display_org_with_default}:</span>
-            <span class="course-number text-uppercase">${course.display_number_with_default}</span>
-        </p>
-        <%
-        display_name = course.display_name_with_default
-        if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
-            ccx = get_current_ccx(course.id)
-            if ccx:
-                display_name = ccx.display_name
-        %>
-        <h3 class="my-0 text-white">
-            <strong class="course-name">${display_name}</strong>
-        </h3>
+    <%
+    display_name = course.display_name_with_default
+    if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
+        ccx = get_current_ccx(course.id)
+        if ccx:
+            display_name = ccx.display_name
+    %>
+    <div class="eol-course-header container-fluid py-2">
+        <div class="row">
+            <div class="d-none eol-course-header-img col-sm-12 col-md-2 col-lg-2 my-auto mx-auto pb-2 pb-sm-0">
+                <%block name="navigation_logo">
+                <img class="img-fluid d-block my-auto mx-auto" src="${static.url('eol-uchile-2020/images/logo-white.png')}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
+                </%block>
+            </div>
+            <div class="course-title col-mr-auto px-2 px-md-3">
+                <p class="my-0 text-white">
+                    <span class="provider">${course.display_org_with_default}:</span>
+                    <span class="course-number text-uppercase">${course.display_number_with_default}</span>
+                </p>
+                <h3 class="my-0 text-white">
+                    <strong class="course-name">${display_name}</strong>
+                </h3>
+            </div>
+            <div class="d-none eol-course-header-btn col text-right my-auto py-2">
+                <a class="btn btn-outline-light" href="./" target="_blank">
+                    <span data-action-type="start">Pantalla Completa</span>
+                </a>
+            </div>
+        </div>
     </div>
     <!--[if lte IE 9]>
     <div class="ie-banner" aria-hidden="true">${Text(_('{begin_strong}Warning:{end_strong} Your browser is not fully supported. We strongly recommend using {chrome_link} or {ff_link}.')).format(
@@ -128,13 +140,31 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     % endif
 % endif
 
-% else:
-  <script type="text/javascript" src="https://www.u-cursos.cl/b/externos/resizer.js"></script>
-    <style>
-        html {
-            border: solid var(--primary-color);
-            border-width: thin;
-            height: auto;
-        }
-    </style>
-% endif
+<script>
+    /* 
+    * Check if a page is in a iFrame (ucursos)
+    */
+    if ( window.location !== window.parent.location ) {
+        // load ucursos iframe and hide/show elements
+        $.getScript( "https://www.u-cursos.cl/b/externos/resizer.js" )
+        .done(function( script, textStatus ) {
+            console.log( textStatus );
+        })
+        .fail(function( jqxhr, settings, exception ) {
+            $( "div.log" ).text( "Triggered ajaxError handler." );
+        });
+        $('.eol-header-container.eol-header').hide();
+        $('html').css({
+            'border' : 'solid var(--primary-color)',
+            'height' : 'auto'
+        });
+        $('.eol-course-header .img-fluid').css({
+            'width'     : '100%',
+            'max-width' : '200px'
+        });
+        $('.eol-course-header .course-title').addClass('course-title-border');
+        $('.eol-course-header .eol-course-header-img').removeClass('d-none');
+        $('.eol-course-header .eol-course-header-btn').removeClass('d-none');
+    }
+    
+</script>
