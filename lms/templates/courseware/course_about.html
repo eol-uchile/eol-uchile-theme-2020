@@ -234,7 +234,7 @@ from six import string_types
                 <p class="course-org font-weight-normal my-2">${course.display_org_with_default}</p>
                 <div class="details" style="width: auto; float:none;">
                   <div class="inner-wrapper">
-                    ${clean_dangerous_html(get_course_about_section(request, course, "overview"))}
+                    ${HTML(get_course_about_section(request, course, "overview"))}
                   </div>
                   <script>
                     $(function() {
