@@ -185,7 +185,7 @@ from six import string_types
                               </tr>
                             % endif
 
-                            %if course_price and (is_cosmetic_price_enabled):
+                            %if course_price and (is_cosmetic_price_enabled) and not (invitation_only and course_price == _('Free')):
                               <%
                               if course_price != _('Free') and course_price[1:].isdigit():
                                   price_str = '$'+'{0:,d}'.format(int(course_price[1:])).replace(',','.')
