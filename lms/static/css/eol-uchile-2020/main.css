@@ -196,7 +196,7 @@ body {
 }
 
 .eol-content-container .eol-courses-list .eol-course-item {
-    background-size: cover;
+    background-size: 100%;
     /* background-position: center; */
     background-repeat: no-repeat;
     min-height: 300px;
