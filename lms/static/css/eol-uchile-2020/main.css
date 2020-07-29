@@ -215,7 +215,7 @@ body {
 
 .eol-content-container .eol-courses-list .eol-course-item .card-footer {
     background-color: var(--primary-color);
-    opacity: 0.9;
+    /* opacity: 0.9; */
     line-height: 1.2;
     font-size: 0.8em;
     height: 100px;
@@ -248,7 +248,7 @@ body {
 
 .eol-content-container .eol-courses-list .eol-course-item .card-desc {
     background-color: var(--primary-color);
-    opacity: 0.9;
+    /* opacity: 0.9; */
     padding: .75rem 1.25rem;
 }
 
