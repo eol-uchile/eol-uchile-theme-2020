@@ -1,0 +1,170 @@
+<%page expression_filter="h"/>
+<%namespace name='static' file='static_content.html'/>
+<%!
+  from django.utils.translation import ugettext as _
+
+  from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+%>
+
+<%
+    advanced_modules = configuration_helpers.get_value(
+        'ADVANCED_MODULES', {})
+    list = sorted(advanced_modules.items(), key=lambda x: x[1])
+%>
+
+<style>
+/* The form-check */
+.course-simple-settings .form-check {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  padding-top: 4px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.course-simple-settings .form-check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.course-simple-settings .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #b5b5b5;
+}
+
+/* On mouse-over, add a grey background color */
+.course-simple-settings .form-check:hover input ~ .checkmark {
+  background-color: #009BDD;
+}
+
+/* When the checkbox is checked, add a blue background */
+.course-simple-settings .form-check input:checked ~ .checkmark {
+  background-color: #009BDD;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.course-simple-settings .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.course-simple-settings .form-check input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.course-simple-settings .form-check .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+</style>
+
+<ul class="list-input course-simple-settings enum" style="display: none;">
+    <li class="field-group course-advanced-policy-list-item">
+      <div class="field is-not-editable text key" id="advanced-xblocks">
+            <h3 class="title" id="advanced-xblocks-key">Lista de Módulos Avanzados: </h3>
+      </div>
+      <div class="value">
+          % for key, value in list:
+              <label class="form-check">
+                  ${ value }
+                  <input class="checkbox" type="checkbox" value="${ key }" id="module_${ key }">
+                  <span class="checkmark" for="module_${ key }"></span>
+              </label>
+          % endfor
+          <span class="tip tip-stacked">Seleccione los módulos avanzados para utilizar en el curso.</span>
+      </div>
+    </li>
+</ul>
+
+<div class="wrapper-options">
+  <div class="wrapper-eol-advanced-setting">
+    <input id="eol-advanced-settings" class="eol-advanced-settings-toggle" type="checkbox" name="Show Advanced Configurations">
+    <label for="eol-advanced-settings" class="eol-advanced-settings-label">Mostrar Configuraciones Avanzadas</label>
+  </div>
+</div>
+
+<script type="text/javascript">
+    /* 
+    *   Init Simplified Settings
+    *   Called from: 
+    *       js/factories/settings_advanced.js (After editor render)
+    */
+    const init_simplified_settings = () => {
+      // By default hide advanced configurations
+      $('.deprecated-options, .course-advanced-policy-list').hide();
+      $("input[id='eol-advanced-settings']").change( ({ target }) => {
+        if(target.checked) {
+            $('.deprecated-options, .course-advanced-policy-list').show();
+        } else {
+            $('.deprecated-options, .course-advanced-policy-list').hide();
+        }
+      });
+      fill_simplified_modules();
+    };
+
+    /* 
+    *   This function will fill the checkboxes with the modules at the moment.
+    *   If the simplified modules has changes, it will modify the advanced modules configuration
+    *   Called from: 
+    *       js/factories/settings_advanced.js (After editor render)
+    *       js/views/settings/advanced.js (After any changes)
+    */
+    const fill_simplified_modules = () => {
+        // Setting an ID for CodeMirror differentiation purposes
+        $('#advanced_modules').parent().attr('id', 'advanced_modules_li');
+        // Get the advanced modules CodeMirror instance
+        var mirror = document.querySelector('#advanced_modules_li .CodeMirror').CodeMirror;
+        // Get values inside textarea
+        var advanced_modules = JSON.parse(mirror.getValue());
+        
+        // Clear all checkbox inputs
+        $("input[id^='module_']").prop('checked', false);
+        // Set checked modules if exists
+        for (let module of advanced_modules) {
+            $("#module_"+module).prop('checked', true);
+        }
+
+        // Show simplified settings after load
+        $('.course-simple-settings').show();
+
+        /* Handle changes on Simplified Modules Checkbox */
+        $("input[id^='module_']").change( ({ target }) => {
+            if(target.checked) {
+                // Add to textarea
+                advanced_modules.push(target.defaultValue);
+            } else {
+                // Delete from textarea
+                advanced_modules = advanced_modules.filter(v => v !== target.defaultValue); 
+            }
+            // Modify advanced modules configuration
+            let new_value = JSON.stringify( advanced_modules, null, "\t" );
+            mirror.setValue(new_value);
+            mirror._handlers.blur[0](mirror) // Simulate 'blur' event (updates local model)
+        });
+    };
+</script>
