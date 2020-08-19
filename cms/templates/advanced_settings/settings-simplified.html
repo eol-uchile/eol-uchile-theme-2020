@@ -96,7 +96,11 @@
                   <span class="checkmark" for="module_${ key }"></span>
               </label>
           % endfor
-          <span class="tip tip-stacked">Seleccione los módulos avanzados para utilizar en el curso.</span>
+          % if not list:
+            <span class="tip tip-stacked">No se ha configurado la lista de módulos avanzados. Contactar con la administración de la plataforma.</span>
+          % else:  
+            <span class="tip tip-stacked">Seleccione los módulos avanzados para utilizar en el curso.</span>
+          % endif
       </div>
     </li>
 </ul>
