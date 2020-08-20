@@ -122,7 +122,7 @@ define(['js/views/validation',
                             course: course_location_analytics
                         });
 
-                        fill_simplified_modules(); // Settings-Simplified
+                        init_simplified_settings(update=true); // Settings-Simplified
                     },
                     silent: true,
                     error: function(model, response, options) {

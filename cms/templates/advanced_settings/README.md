@@ -4,7 +4,7 @@ This implementation is only to show in a more friendly way some Studio Configura
 
 ## Advanced XBlocks
 
-To show the currently developed XBlocks in a more friendly way is to show them through a checkbox list. This list must be assigned in the site configurations (Studio). 
+To show the currently developed XBlocks in a more friendly way is through a checkbox list. This list must be assigned in the site configurations (Studio). 
 
 The following format should be used:
 
