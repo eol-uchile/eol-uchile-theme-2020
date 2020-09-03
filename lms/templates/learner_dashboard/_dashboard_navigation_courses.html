@@ -30,14 +30,21 @@ from django.utils.translation import ugettext as _
   $(function() {
     /*
       Dashboard courses filter (active and archived)
+      Filtering elements from 
+        templates/dashboard/_dashboard_course_listing.html (courses)
+        templates/dashboard.html (empty message)
     */
     // Hide archived courses by default
-    $("ul.listing-courses li.course-item.course-archived").hide();
+    let hide_course_archived = $("ul.listing-courses li.course-item.course-archived").hide();
+    // Hide course filter button if student doesn't have archived courses
+    if ( hide_course_archived.length == 0 ) {
+      $('.wrapper-header-courses .course-filter').hide();
+    }
     // Handle Click
     $('.wrapper-header-courses .course-filter').click( ({ currentTarget }) => {
       if ( $(currentTarget).hasClass('filter-archive') ) {
-        // Hide active courses, Show archived courses
-        $("ul.listing-courses li.course-item.course-active").hide();
+        // Hide active courses (or empty message if exists), Show archived courses
+        $("ul.listing-courses li.course-item.course-active, .empty-dashboard-message").hide();
         $("ul.listing-courses li.course-item.course-archived").show();
         // Update filter button
         $(currentTarget).removeClass('filter-archive');
@@ -46,8 +53,8 @@ from django.utils.translation import ugettext as _
         $(currentTarget).text('Mostrar cursos activos');
         $('.wrapper-header-courses .header-courses span.text').text('Cursos archivados');
       } else if ( $(currentTarget).hasClass('filter-active') ) {
-        // Show active courses, Hide archived courses
-        $("ul.listing-courses li.course-item.course-active").show();
+        // Show active courses (or empty message if exists), Hide archived courses
+        $("ul.listing-courses li.course-item.course-active, .empty-dashboard-message").show();
         $("ul.listing-courses li.course-item.course-archived").hide();
         // Update filter button
         $(currentTarget).removeClass('filter-active');
