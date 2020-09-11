@@ -6,7 +6,64 @@ from django.utils.translation import ugettext as _
   .dashboard .main-container {
     padding-top: 10px;
   }
+  .wrapper-header-courses .course-filter,
+  .wrapper-header-courses .course-filter:focus {
+    color: var(--primary-color);
+    border-color: var(--primary-color) !important;
+    background-color: #FFFFFF;
+    box-shadow: none;
+  }
+
+  .wrapper-header-courses .course-filter:hover,
+  .wrapper-header-courses .course-filter:active {
+    color: #FFFFFF;
+    background-color: var(--primary-color) !important;
+    box-shadow: none;
+  }
+  
 </style>
 <header class="wrapper-header-courses">
-  <h2 class="header-courses eol-header-courses">${_("My Courses")}</h2>
+  <h2 class="header-courses eol-header-courses"><span class="text">${_("Cursos activos")}</span> <a class="btn btn-outline-primary btn-sm float-right course-filter filter-archive" href="javascript:void(0)" role="button">${_("Mostrar cursos archivados")}</a></h2>
 </header>
+
+<script>
+  $(function() {
+    /*
+      Dashboard courses filter (active and archived)
+      Filtering elements from 
+        templates/dashboard/_dashboard_course_listing.html (courses)
+        templates/dashboard.html (empty message)
+    */
+    // Hide archived courses by default
+    let hide_course_archived = $("ul.listing-courses li.course-item.course-archived").hide();
+    // Hide course filter button if student doesn't have archived courses
+    if ( hide_course_archived.length == 0 ) {
+      $('.wrapper-header-courses .course-filter').hide();
+    }
+    // Handle Click
+    $('.wrapper-header-courses .course-filter').click( ({ currentTarget }) => {
+      if ( $(currentTarget).hasClass('filter-archive') ) {
+        // Hide active courses (or empty message if exists), Show archived courses
+        $("ul.listing-courses li.course-item.course-active, .empty-dashboard-message").hide();
+        $("ul.listing-courses li.course-item.course-archived").show();
+        // Update filter button
+        $(currentTarget).removeClass('filter-archive');
+        $(currentTarget).addClass('filter-active');
+        // Update texts
+        $(currentTarget).text('Mostrar cursos activos');
+        $('.wrapper-header-courses .header-courses span.text').text('Cursos archivados');
+      } else if ( $(currentTarget).hasClass('filter-active') ) {
+        // Show active courses (or empty message if exists), Hide archived courses
+        $("ul.listing-courses li.course-item.course-active, .empty-dashboard-message").show();
+        $("ul.listing-courses li.course-item.course-archived").hide();
+        // Update filter button
+        $(currentTarget).removeClass('filter-active');
+        $(currentTarget).addClass('filter-archive');
+        // Update texts
+        $(currentTarget).text('Mostrar cursos archivados');
+        $('.wrapper-header-courses .header-courses span.text').text('Cursos activos');
+      }
+    });
+    
+  });
+</script>
