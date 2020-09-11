@@ -1,0 +1,136 @@
+
+<style>
+#duplicate-div .block-tree .outline-button {
+    display: block;
+    padding: 10px 0 10px 2px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    background: none;
+    cursor: pointer;
+}
+#duplicate-div .block-tree .outline-button .fa {
+    color: #0075b4;
+}
+
+#duplicate-div .fa-rotate-90 {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+:root .fa-rotate-90, :root .fa-rotate-180, :root .fa-rotate-270, :root .fa-flip-horizontal, :root .fa-flip-vertical {
+    filter: none;
+}
+#duplicate-div .block-tree .outline-button .fa {
+    color: #0075b4;
+}
+#duplicate-div .fa-chevron-right:before {
+    content: "\f054";
+}
+#duplicate-div .block-tree .section ol.outline-item .subsection {
+    list-style-type: none;
+    border-top: 1px solid #e7e7e7;
+    margin: 0 0 0 35px;
+}
+#duplicate-div .block-tree .section .outline-item {
+    padding-left: 0;
+}
+#duplicate-div .block-tree .section ol.outline-item .subsection .vertical {
+    margin-left: 16px;
+    list-style-type: none;
+}
+#duplicate-div .block-tree .section ol.outline-item .subsection .vertical button.outline-button {       
+    padding: 10px 0 10px 23px;
+    border-top: 1px solid #e7e7e7;
+}
+#grade-1-duplicate {
+    position: absolute;
+    width: auto;
+    min-width: 700px;
+    margin: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+#grade-1-duplicate  .modal-content{
+    height: 90%;
+    min-height: 100px;
+    max-height: 650px;
+    overflow-y: auto;
+}
+#duplicate-div .dup-course{
+    border: 1px solid #e7e7e7;
+    margin-bottom: 4px;
+}
+#duplicate-div .dup-course-button {
+    border-bottom: 1px solid #e7e7e7 !important;
+    background-color: aliceblue !important;
+}
+#duplicate-div .dup-modal-action{
+    margin-bottom: 0 !important;
+    border: none !important;
+    background: none !important;
+}
+#duplicate-div .move-xblock-modal .truncate {
+    padding-left: 5px;
+}
+</style>
+<div id="duplicate-div" hidden>
+    <input id="o_block_id" hidden/>
+    <input id="d_block_id" hidden/>
+    <div class="wrapper wrapper-modal-window wrapper-modal-window-move-xblock" id="duplicate-wrapper" aria-labelledby="modal-window-title" role="dialog">
+        <div class="modal-window-overlay" id="duplicate-overlay" ></div>
+        <div class="modal-window modal-type-generic" id="grade-1-duplicate" tabindex="-1" aria-labelledby="modal-window-title">
+            <div class="move-xblock-modal">
+                <div class="modal-header">
+                    <h2 id="modal-window-title" class="title modal-window-title">
+                        Duplicar Xblock
+                    </h2>
+                </div>
+                <div class="modal-content">
+                <div class="breadcrumb-container dup-modal-action">
+                    <nav class="breadcrumbs" aria-label="Course Outline breadcrumb">
+                    <ol class="bc-container bc-0 last">
+                        <li class="bc-container-content">
+                            <span id="duplicar-info" class="parent-displayname">Elija donde desea duplicar</span>
+                        </li>
+                    </ol>
+                </nav>
+                </div>
+                <div id="ui-loading-duplicate-load" class="ui-loading is-hidden">
+                    <p>
+                    <span class="spin">
+                        <span class="icon fa fa-refresh" aria-hidden="true"></span>
+                    </span>
+                    <span class="copy">Cargando</span>
+                    </p>
+                </div>
+                <div id="ui-loading-duplicate-save" class="ui-loading is-hidden">
+                    <p>
+                    <span class="spin">
+                        <span class="icon fa fa-refresh" aria-hidden="true"></span>
+                    </span>
+                    <span class="copy">Duplicando</span>
+                    </p>
+                </div>
+                <div id='duplicate-container' class="xblock-list-container">
+                    
+                </div>
+                </div>
+                <div class="modal-actions">
+                    <h3 class="sr">Acciones</h3>
+                    <ul>
+                        <li class="action-item">
+                        <a id="duplicar-block-button" onclick="duplicate_button(this);" href="#" class="button action-primary action-move is-disabled">Duplicar</a>
+                    </li>
+                        <li class="action-item">
+                        <a href="javascript:void(0);" onclick="$('#duplicate-div').hide();" class="button  action-cancel">Cerrar</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
