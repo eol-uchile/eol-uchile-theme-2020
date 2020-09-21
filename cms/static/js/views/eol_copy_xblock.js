@@ -19,15 +19,15 @@ function duplicar_xblock(block_id){
         },
         crossDomain: true,
         success: function(response){
-        courses_id = response['courses']
-        var html_course = '<ol class="block-tree accordion" aria-labelledby="expand-collapse-outline-all-button">'
-        for (var i = 0; i < response.length; i++) {
-            html_course = html_course + create_accordion_course(response[i]['course_details']['course_id'], response[i]['course_details']['course_name'])
-        }
-        html_course = html_course + '</ol>'
-        $('#duplicate-container').html(html_course)
-        $('#ui-loading-duplicate-load').hide()
-        $('#duplicate-container').show()
+            courses_id = response['courses']
+            var html_course = '<ol class="block-tree accordion" aria-labelledby="expand-collapse-outline-all-button">'
+            for (var i = 0; i < response.length; i++) {
+                html_course = html_course + create_accordion_course(response[i]['course_details']['course_id'], response[i]['course_details']['course_name'])
+            }
+            html_course = html_course + '</ol>'
+            $('#duplicate-container').html(html_course)
+            $('#ui-loading-duplicate-load').hide()
+            $('#duplicate-container').show()
         },
         error: function() {
             alert("Error inesperado ha ocurrido. Actualice la página e intente nuevamente")
@@ -41,14 +41,17 @@ function duplicar_get_data(e){
     parent_block = e.parentElement
     course_id = parent_block.getAttribute('aria-controls')
     if(e.getAttribute('aria-controls') != ""){
-    duplicar_accordion_trigger(e)
+        duplicar_accordion_trigger(e)
     }
     else{
     if(o_block_type == "chapter"){
         set_d_block_id(course_id)
     }
     else{
-        $('#ui-loading-duplicate-load').show()
+        disabled_enabled_button(true)
+        var next_block_loading = course_id+'_ui'
+        var block_ui_loading = document.getElementById(next_block_loading)
+        if (block_ui_loading) block_ui_loading.style.display = "block";
         $.ajax({
             url: "/course/"+course_id+"?format=concise",
             dataType: 'json',
@@ -96,7 +99,9 @@ function duplicar_get_data(e){
                 var next_block = response['id'] + '_duplicate'
                 var block = document.getElementById(next_block)
                 if (block) block.style.display = "block";
-                $('#ui-loading-duplicate-load').hide()
+                var block_ui_loading = document.getElementById(next_block_loading)
+                if (block_ui_loading) block_ui_loading.style.display = "none";
+                disabled_enabled_button(false)
             },
             error: function() {
                 alert("Error inesperado ha ocurrido. Actualice la página e intente nuevamente")
@@ -105,6 +110,14 @@ function duplicar_get_data(e){
     }
     }
 }
+
+function disabled_enabled_button(action){
+    var buttons = $('.dup-course-button')
+    for(var i =0; i<buttons.length;i++){
+        buttons[i].disabled = action
+    }
+}
+
 function create_accordion_unit(data){
     var aux_html ='<li class="vertical outline-item focusable " data-access-denied="[]">'+
                     '<button onclick="duplicar_accordion_trigger(this);" class="subsection-text accordion-trigger outline-button" aria-controls="'+data['id']+'_duplicate">'+
@@ -150,11 +163,13 @@ function create_accordion_section(data, o_block_type){
 }
 
 function create_accordion_course(course_id, name){
+    var load_ui = '<div id="'+course_id+'_ui" class="ui-loading is-hidden"><p> <span class="spin"><span class="icon fa fa-refresh" aria-hidden="true"></span></span><span class="copy">Cargando</span></p></div>'
+    var codigo = course_id.split("+")[0]+ "+"
     var aux_html = ' <li aria-controls="'+course_id+'" class="outline-item section dup-course">'+
                         '<button onclick="duplicar_get_data(this);" class="section-name accordion-trigger outline-button dup-course-button" aria-expanded="false" aria-controls="">'+
                         '<span class="xblock-displayname truncate">'+
-                        name + " - ("+course_id+")"+
-                        '</span></button></li>';
+                        name + " - ("+course_id.replace(codigo,"")+")"+
+                        '</span></button>'+load_ui+'</li>';
 
     return aux_html
 }
@@ -258,4 +273,3 @@ function create_url(d_block_id){
     }
     return (domain+"/course/course-v1:"+d_block_id.split('+type@')[0].replace("block-v1:",""))
 }
-
