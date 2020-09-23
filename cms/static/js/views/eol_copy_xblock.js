@@ -1,10 +1,13 @@
 
-function duplicar_xblock(block_id){
+function duplicar_xblock(block_id, display_name){
     var boton = $('#duplicar-block-button')[0];
     boton.className = "button action-primary action-move is-disabled";
     $('#duplicar-info')[0].innerHTML = "Elija donde desea duplicar"
     $('#o_block_id').val(block_id)
     $('#d_block_id').val('');
+    var div_modal = document.getElementById('duplicate-div')
+    var header_modal = div_modal.getElementsByClassName('modal-window-title')[0]
+    header_modal.innerText = "Duplicar " + display_name
     $('#duplicate-div').show()
     $('#duplicate-container').hide()
     $('#ui-loading-duplicate-save').hide()
@@ -136,7 +139,7 @@ function create_dict_courses(courses, roles){
     }
     else{
         for(var i=0;i<roles['roles'].length;i++){
-            if (roles["roles"][i]["role"] == "staff"){
+            if (roles["roles"][i]["role"] == "instructor"){
                 for(var j=0;j<courses.length;j++){
                     if (courses[j]['course_details']['course_id'] == roles["roles"][i]["course_id"]){
                         course_rol[roles["roles"][i]["course_id"]] = courses[j]['course_details']['course_name']

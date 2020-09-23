@@ -98,6 +98,9 @@ if (is_proctored_exam) {
 } else {
     exam_value = gettext('Timed Exam');
 }
+var display_name_duplicar = xblockInfo.get('display_name').replace(/'/g,"\u0027")
+display_name_duplicar = display_name_duplicar.replace(/"/g,"\u0022")
+
 %>
 
 <% if (parentInfo) { %>
@@ -156,7 +159,7 @@ if (is_proctored_exam) {
                 <% } %>
                 <% if (xblockInfo.isDuplicable()) { %>
                     <li class="action-item action-copy-to-other-course">
-                        <a href="#" onclick="duplicar_xblock('<%- xblockInfo.get('id') %>');" data-tooltip="Duplicar a otro Curso" class="copy-to-other-course-button action-button">
+                        <a href="#" onclick="duplicar_xblock('<%- xblockInfo.get('id') %>', '<%- display_name_duplicar %>');" data-tooltip="Duplicar a otro Curso" class="copy-to-other-course-button action-button">
                             <span class="icon fa fa-share-square-o" aria-hidden="true"></span>
                             <span class="sr action-button-text">Duplicar a otro Curso</span>
                       </a>
