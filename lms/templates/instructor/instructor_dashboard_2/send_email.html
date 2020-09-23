@@ -5,7 +5,6 @@ from openedx.core.djangolib.markup import HTML
 %>
 
 <div class="vert-left send-email" id="section-send-email">
-    <div class="request-response msg msg-confirm copy" id="request-response"></div>
     <ul class="list-fields">
         <li class="field">
             <div class="send_to_list">${_("Send to:")}</div>
@@ -104,6 +103,9 @@ from openedx.core.djangolib.markup import HTML
     </div>
     <br />
     <input type="button" name="send" value="${_("Send Email")}" data-endpoint="${ section_data['send_email'] }" >
+    
+    <div class="request-response msg msg-confirm copy" id="request-response"></div>
+
     <div class="request-response-error"></div>
 
     %if settings.FEATURES.get('ENABLE_INSTRUCTOR_BACKGROUND_TASKS'):
