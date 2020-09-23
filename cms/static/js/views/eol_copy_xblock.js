@@ -18,16 +18,33 @@ function duplicar_xblock(block_id){
             withCredentials: true
         },
         crossDomain: true,
-        success: function(response){
-            courses_id = response['courses']
-            var html_course = '<ol class="block-tree accordion" aria-labelledby="expand-collapse-outline-all-button">'
-            for (var i = 0; i < response.length; i++) {
-                html_course = html_course + create_accordion_course(response[i]['course_details']['course_id'], response[i]['course_details']['course_name'])
-            }
-            html_course = html_course + '</ol>'
-            $('#duplicate-container').html(html_course)
-            $('#ui-loading-duplicate-load').hide()
-            $('#duplicate-container').show()
+        success: function(response_enroll){
+            $.ajax({
+                url: domain + "/api/enrollment/v1/roles/",
+                dataType: 'json',
+                type: "GET",
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
+                success: function(response_rol){
+                    var html_course = '<ol class="block-tree accordion" aria-labelledby="expand-collapse-outline-all-button">'
+                    courses = create_dict_courses(response_enroll, response_rol)
+                    for (var i = 0; i < courses.length; i++) {
+                        html_course = html_course + create_accordion_course(courses[i][0], courses[i][1])
+                    }
+                    html_course = html_course + '</ol>'
+                    if (courses.length > 0)
+                        $('#duplicate-container').html(html_course)
+                    else
+                        $('#duplicar-info')[0].innerHTML = "No está inscrito en ningún curso aún y/o no posee rol de 'Equipo'."
+                    $('#ui-loading-duplicate-load').hide()
+                    $('#duplicate-container').show()
+                },
+                error: function() {
+                    alert("Error inesperado ha ocurrido. Actualice la página e intente nuevamente")
+                }
+            });
         },
         error: function() {
             alert("Error inesperado ha ocurrido. Actualice la página e intente nuevamente")
@@ -110,7 +127,54 @@ function duplicar_get_data(e){
     }
     }
 }
-
+function create_dict_courses(courses, roles){
+    course_rol = {}
+    if (roles['is_staff'] == true){
+        for(var j=0;j<courses.length;j++){
+            course_rol[courses[j]['course_details']['course_id']] = courses[j]['course_details']['course_name']
+        }
+    }
+    else{
+        for(var i=0;i<roles['roles'].length;i++){
+            if (roles["roles"][i]["role"] == "staff"){
+                for(var j=0;j<courses.length;j++){
+                    if (courses[j]['course_details']['course_id'] == roles["roles"][i]["course_id"]){
+                        course_rol[roles["roles"][i]["course_id"]] = courses[j]['course_details']['course_name']
+                    }
+                }
+            }
+        }
+    }
+    
+    return sortProperties(course_rol, false)
+}
+/**
+ * Sort object properties (only own properties will be sorted).
+ * @param {object} obj object to sort properties
+ * @param {bool} isNumericSort true - sort object properties as numeric value, false - sort as string value.
+ * @returns {Array} array of items in [[key,value],[key,value],...] format.
+ */
+function sortProperties(obj, isNumericSort)
+{
+	isNumericSort=isNumericSort || false; // by default text sort
+	var sortable=[];
+	for(var key in obj)
+		if(obj.hasOwnProperty(key))
+			sortable.push([key, obj[key]]);
+	if(isNumericSort)
+		sortable.sort(function(a, b)
+		{
+			return a[1]-b[1];
+		});
+	else
+		sortable.sort(function(a, b)
+		{
+			var x=a[1].toLowerCase(),
+				y=b[1].toLowerCase();
+			return x<y ? -1 : x>y ? 1 : 0;
+		});
+	return sortable; // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
+}
 function disabled_enabled_button(action){
     var buttons = $('.dup-course-button')
     for(var i =0; i<buttons.length;i++){
