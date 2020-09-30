@@ -80,9 +80,9 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     %>
     <div class="eol-course-header container-fluid py-2">
         <div class="row">
-            <div class="d-none eol-course-header-img col-sm-12 col-md-2 col-lg-2 my-auto mx-auto pb-2 pb-sm-0">
+            <div class="d-none eol-course-header-img col-sm-12 col-md-3 col-lg-3 my-auto mx-auto pb-2 pb-sm-0">
                 <%block name="navigation_logo">
-                <img class="img-fluid d-block my-auto mx-auto" src="${static.url('eol-uchile-2020/images/logo-white.png')}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
+                <img class="img-fluid d-block my-auto mx-auto mx-md-0" src="${static.url('eol-uchile-2020/images/logo-white.png')}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
                 </%block>
             </div>
             <div class="course-title col-mr-auto px-2 px-md-3">
@@ -160,7 +160,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
         });
         $('.eol-course-header .img-fluid').css({
             'width'     : '100%',
-            'max-width' : '200px'
+            'max-width' : '250px'
         });
         //$('.eol-course-header .course-title').addClass('course-title-border');
         $('.eol-course-header .course-title').hide();
