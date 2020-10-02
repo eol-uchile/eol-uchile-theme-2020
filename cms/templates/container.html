@@ -37,7 +37,12 @@ from openedx.core.djangolib.markup import HTML, Text
     <link rel="stylesheet" type="text/css" href="${static.url('common/css/vendor/common.min.css')}" />
     <link rel="stylesheet" type="text/css" href="${static.url('common/css/vendor/editImageModal.min.css')}" />
 % endif
-<script type="text/javascript" src="${static.url('eol-uchile-2020/js/views/eol_copy_xblock.js')}"></script>
+<script type="text/javascript" src="${static.url('eol_duplicate_xblock/js/eol_copy_xblock.js')}"></script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function(){ 
+    $("#eol_duplicate_xblock_div").load("${static.url('eol_duplicate_xblock/html/copy-to-other-course.html')}");
+  }, false);
+</script>
 </%block>
 
 <%block name="page_bundle">
@@ -78,7 +83,7 @@ from openedx.core.djangolib.markup import HTML, Text
 </%block>
 
 <%block name="content">
-<%static:include path="js/copy-to-other-course.html" />
+<div id="eol_duplicate_xblock_div"></div>
 <script type="text/javascript">
     window.STUDIO_FRONTEND_IN_CONTEXT_IMAGE_SELECTION = true;
 </script>
