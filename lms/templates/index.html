@@ -3,56 +3,35 @@
 <%namespace name='static' file='static_content.html'/>
 <%!
 from django.utils.translation import ugettext as _
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from openedx.core.djangolib.markup import HTML, Text
 %>
 <style>
   #content.main-container {
     padding: 0px !important;
-    margin: 0px !important;
   }
 </style>
 <div class="eol-main-container d-flex w-100 h-100 flex-column">
   <!-- BANNER -->
   <div class="eol-banner">
     <div id="eol-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-        <ol class="carousel-indicators">
+        <!-- <ol class="carousel-indicators">
           <li data-target="#eol-carousel" data-slide-to="0" class="active"></li>
-          <li data-target="#eol-carousel" data-slide-to="1"></li>
-          <li data-target="#eol-carousel" data-slide-to="2"></li>
-          <li data-target="#eol-carousel" data-slide-to="3"></li>
-          <li data-target="#eol-carousel" data-slide-to="4"></li>
-          <li data-target="#eol-carousel" data-slide-to="5"></li>
-        </ol>
+        </ol> -->
         <div class="carousel-inner w-100">
           <div class="carousel-item active" data-interval="3000">
             <img src="${static.url('eol-uchile-2020/images/banner/banner00.jpg')}" class="d-block w-100" alt="...">
           </div>
-          <div class="carousel-item" data-interval="3000">
-            <img src="${static.url('eol-uchile-2020/images/banner/banner01.jpg')}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-interval="3000">
-            <img src="${static.url('eol-uchile-2020/images/banner/banner02.jpg')}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-interval="3000">
-            <img src="${static.url('eol-uchile-2020/images/banner/banner03.jpg')}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-interval="4000">
-            <img src="${static.url('eol-uchile-2020/images/banner/banner04.jpg')}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-interval="3000">
-            <img src="${static.url('eol-uchile-2020/images/banner/banner05.jpg')}" class="d-block w-100" alt="...">
-          </div>
         </div>
-        <a class="carousel-control-prev" href="#eol-carousel" role="button" data-slide="prev">
+        <!-- <a class="carousel-control-prev" href="#eol-carousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#eol-carousel" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
-        </a>
+        </a> -->
       </div>
   </div>
   <!-- MAIN CONTENT -->

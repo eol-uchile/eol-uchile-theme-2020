@@ -7,6 +7,7 @@
 <%!
 from django.urls import reverse
 from django.utils.translation import ugettext as _
+import waffle
 
 from lms.djangoapps.ccx.overrides import get_current_ccx
 from openedx.core.djangolib.markup import HTML, Text
@@ -14,6 +15,7 @@ from openedx.core.djangolib.markup import HTML, Text
 # App that handles subdomain specific branding
 from branding import api as branding_api
 from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled, released_languages
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
 %>
 
@@ -29,11 +31,31 @@ from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_en
     </%block>
 % endif
 
-<nav class="eol-header-container eol-header navbar navbar-expand-xl navbar-light bg-white">
+<%
+  unsupported_browser_alert_versions = configuration_helpers.get_value('UNSUPPORTED_BROWSER_ALERT_VERSIONS', settings.FEATURES.get('UNSUPPORTED_BROWSER_ALERT_VERSIONS'))
+%>
+% if waffle.switch_is_active('enable_unsupported_browser_alert'):
+  <script>
+    var $buoop = {
+        notify:${unsupported_browser_alert_versions | n, decode.utf8},
+        api:5,
+        reminder:0
+    };
+    function $buo_f() {
+        var e = document.createElement("script");
+        e.src = "//browser-update.org/update.min.js";
+        document.body.appendChild(e);
+    };
+    try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+    catch(e){window.attachEvent("onload", $buo_f)}
+  </script>
+% endif
+
+<nav class="eol-header-container eol-header navbar navbar-expand-xl navbar-light bg-white pt-0">
     % if use_cookie_banner:
         ${static.renderReact(
             component="CookiePolicyBanner",
-            id="cookie-policy-banner",
+            id="frontend-component-cookie-policy-banner",
             props={}
         )}
     % endif
@@ -49,28 +71,42 @@ from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_en
 </nav>
 
 % if course:
-    <div class="eol-course-header container-fluid py-2 px-4">
-        <p class="my-0 text-white">
-            <span class="provider">${course.display_org_with_default}:</span>
-            <span class="course-number text-uppercase">${course.display_number_with_default}</span>
-        </p>
-        <%
-        display_name = course.display_name_with_default
-        if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
-            ccx = get_current_ccx(course.id)
-            if ccx:
-                display_name = ccx.display_name
-        %>
-        <h3 class="my-0 text-white">
-            <strong class="course-name">${display_name}</strong>
-        </h3>
+    <%
+    display_name = course.display_name_with_default
+    if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
+        ccx = get_current_ccx(course.id)
+        if ccx:
+            display_name = ccx.display_name
+    %>
+    <div class="eol-course-header container-fluid py-2">
+        <div class="row">
+            <div class="d-none eol-course-header-img col-sm-12 col-md-3 col-lg-3 my-auto mx-auto pb-2 pb-sm-0">
+                <%block name="navigation_logo">
+                <img class="img-fluid d-block my-auto mx-auto mx-md-0" src="${static.url('eol-uchile-2020/images/logo-white.png')}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
+                </%block>
+            </div>
+            <div class="course-title col-mr-auto px-2 px-md-3">
+                <p class="my-0 text-white">
+                    <span class="provider">${course.display_org_with_default}:</span>
+                    <span class="course-number text-uppercase">${course.display_number_with_default}</span>
+                </p>
+                <h3 class="my-0 text-white">
+                    <strong class="course-name">${display_name}</strong>
+                </h3>
+            </div>
+            <div class="d-none eol-course-header-btn col text-right my-auto py-2">
+                <a class="btn btn-outline-light" href="./" target="_blank">
+                    <span data-action-type="start">Pantalla Completa</span>
+                </a>
+            </div>
+        </div>
     </div>
     <!--[if lte IE 9]>
     <div class="ie-banner" aria-hidden="true">${Text(_('{begin_strong}Warning:{end_strong} Your browser is not fully supported. We strongly recommend using {chrome_link} or {ff_link}.')).format(
         begin_strong=HTML('<strong>'),
         end_strong=HTML('</strong>'),
-        chrome_link=HTML('<a href="https://www.google.com/chrome" target="_blank">Chrome</a>'),
-        ff_link=HTML('<a href="http://www.mozilla.org/firefox" target="_blank">Firefox</a>'),
+        chrome_link=HTML('<a href="https://www.google.com/chrome" rel="noopener" target="_blank">Chrome</a>'),
+        ff_link=HTML('<a href="http://www.mozilla.org/firefox" rel="noopener" target="_blank">Firefox</a>'),
     )}</div>
     <![endif]-->
 % endif
@@ -78,3 +114,58 @@ from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_en
 % if settings.FEATURES.get('ENABLE_COOKIE_CONSENT', False):
   <%include file="../widgets/cookie-consent.html" />
 % endif
+
+% if header_language_selector_is_enabled():
+    <% languages = released_languages() %>
+    % if len(languages) > 1:
+        <form action="/i18n/setlang/" method="post" class="settings-language-form" id="language-settings-form">
+            <input type="hidden" id="csrf_token" name="csrfmiddlewaretoken" value="${csrf_token}">
+            % if user.is_authenticated:
+                <input title="preference api" type="hidden" class="url-endpoint" value="${reverse('preferences_api', kwargs={'username': user.username})}" data-user-is-authenticated="true">
+            % else:
+                <input title="session update url" type="hidden" class="url-endpoint" value="${reverse('session_language')}" data-user-is-authenticated="false">
+            % endif
+            <label><span class="sr">${_("Choose Language")}</span>
+            <select class="input select language-selector" id="settings-language-value" name="language">
+                % for language in languages:
+                    % if language[0] == LANGUAGE_CODE:
+                        <option value="${language[0]}" selected="selected">${language[1]}</option>
+                    % else:
+                        <option value="${language[0]}" >${language[1]}</option>
+                    % endif
+                % endfor
+            </select>
+            </label>
+        </form>
+    % endif
+% endif
+
+<script>
+    /* 
+    * Check if a page is in a iFrame (ucursos)
+    */
+    if ( window.location !== window.parent.location ) {
+        // load ucursos iframe and hide/show elements
+        $.getScript( "https://www.u-cursos.cl/b/externos/resizer.js" )
+        .done(function( script, textStatus ) {
+            console.log( textStatus );
+        })
+        .fail(function( jqxhr, settings, exception ) {
+            $( "div.log" ).text( "Triggered ajaxError handler." );
+        });
+        $('.eol-header-container.eol-header').hide();
+        $('html').css({
+            'border' : 'solid var(--primary-color)',
+            'height' : 'auto'
+        });
+        $('.eol-course-header .img-fluid').css({
+            'width'     : '100%',
+            'max-width' : '250px'
+        });
+        //$('.eol-course-header .course-title').addClass('course-title-border');
+        $('.eol-course-header .course-title').hide();
+        $('.eol-course-header .eol-course-header-img').removeClass('d-none');
+        $('.eol-course-header .eol-course-header-btn').removeClass('d-none');
+    }
+    
+</script>

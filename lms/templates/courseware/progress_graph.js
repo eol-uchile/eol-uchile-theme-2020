@@ -3,7 +3,7 @@
     import bleach
     import json
     import math
-    import re
+    import six
     
     from openedx.core.djangolib.js_utils import (
         dump_js_escaped_json, js_escaped_string
@@ -11,12 +11,14 @@
 %>
 
 <%
+  # EOL: Calculate grade cutoff
   grade_cutoff = min(grade_cutoffs.values())
   def grade_scale(percent):
     if percent < grade_cutoff:
       return round(10. * (3. / grade_cutoff * percent + 1.)) / 10.
     return round((3. / (1. - grade_cutoff) * percent + (7. - (3. / (1. - grade_cutoff)))) * 10.) / 10.
 %>
+
 
 $(function () {
   function showTooltip(x, y, contents) {
@@ -49,7 +51,6 @@ $(function () {
     if (percent < ${grade_cutoff})
       return Math.round((3 / ${grade_cutoff} * percent + 1)*10)/10;
     return Math.round(10 * (3 / (1 - ${grade_cutoff}) * percent + (7 - (3 / (1 - ${grade_cutoff})))) / 10);
-
   }
   /* -------------------------------- Grade detail bars -------------------------------- */
     
@@ -95,7 +96,7 @@ $(function () {
           detail_tooltips[ section['category'] ].append( section['detail'] )
       else:
           detail_tooltips[ section['category'] ] = [ section['detail'], ]
-
+          
       if 'mark' in section:
           ## xss-lint: disable=javascript-jquery-append
           droppedScores.append( [tickIndex, 0.05] )
@@ -110,12 +111,12 @@ $(function () {
   ## ----------------------------- Grade overview bar ------------------------- ##
   tickIndex += sectionSpacer
   
-  series = categories.values()
+  series = list(categories.values())
   overviewBarX = tickIndex
   extraColorIndex = len(categories) #Keeping track of the next color to use for categories not in categories[]
   
   if show_grade_breakdown:
-    for section in grade_summary['grade_breakdown'].itervalues():
+    for section in six.itervalues(grade_summary['grade_breakdown']):
         if section['percent'] > 0:
             if section['category'] in categories:
                 color = categories[ section['category'] ]['color']
@@ -139,7 +140,8 @@ $(function () {
   
   
   ## ----------------------------- Grade cutoffs ------------------------- ##
-
+  
+  ## EOL
   grade_cutoff_ticks = [ [1, "7.0"], [0, "1.0"] ]
   if show_grade_cutoffs:
     grade_cutoff_ticks = [ [1, "7.0"], [0, "1.0"] ]
@@ -151,14 +153,14 @@ $(function () {
   else:
     grade_cutoff_ticks = [ ]
   %>
-
+  
   var series = ${ series | n, dump_js_escaped_json };
   var ticks = ${ ticks | n, dump_js_escaped_json };
   var bottomTicks = ${ bottomTicks | n, dump_js_escaped_json };
   var detail_tooltips = ${ detail_tooltips | n, dump_js_escaped_json };
   var droppedScores = ${ droppedScores | n, dump_js_escaped_json };
   var grade_cutoff_ticks = ${ grade_cutoff_ticks | n, dump_js_escaped_json }
-
+  
   var yAxisTooltips={};
 
     /*
@@ -288,6 +290,7 @@ $(function () {
   };
   
   var $grade_detail_graph = $("#${graph_div_id | n, js_escaped_string}");
+  $grade_detail_graph.width($grade_detail_graph.parent().width());
   if ($grade_detail_graph.length > 0) {
     var plot = $.plot($grade_detail_graph, series, options);
     

@@ -32,10 +32,10 @@
 <%block name="pagetitle">${_("Courses")}</%block>
 
 <main role="main" class="eol-bg w-100 mx-auto" style="background-image: url(${static.url('eol-uchile-2020/images/bg-eol.png')});">
-    <div class="container-fluid eol-content-container py-4 mt-4 px-2 mx-auto">
+    <div class="container-fluid eol-content-container py-4 mt-4 mx-auto" style="min-width: auto;">
         <div class="row eol-courses-list my-4">
             %for course in courses:
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
                     <%include file="../course.html" args="course=course" />
                 </div>
             %endfor

@@ -13,7 +13,7 @@
     <div class="row eol-courses-list my-4">
       % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
             %for course in course_class[categ['id']]['courses']:
-              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+              <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
                 <%include file="course.html" args="course=course" />
               </div>
             %endfor

@@ -19,7 +19,7 @@ from six import text_type
   restrict_enroll_for_course = course and settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain
   allow_public_account_creation = static.get_value('ALLOW_PUBLIC_ACCOUNT_CREATION', settings.FEATURES.get('ALLOW_PUBLIC_ACCOUNT_CREATION'))
 %>
-<div class="collapse navbar-collapse" id="nav-eol-header">
+<div class="collapse navbar-collapse pt-3" id="nav-eol-header">
   <ul class="nav-eol-header navbar-nav mr-auto mt-2 mt-lg-0">
     <li class="nav-item">
         <a class="nav-link my-auto" href="/about">¿Qué es?</a>
@@ -48,7 +48,7 @@ from six import text_type
       </div>
         -->
         % endif
-        <div class="nav-link nav-button my-auto pl-0">
+        <div class="nav-link nav-button my-auto pl-0 pt-0">
           <a class="btn btn-primary" href="/login" role="button">Iniciar sesión</a>
         </div>
       % endif

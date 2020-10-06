@@ -3,10 +3,12 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%namespace name='static' file='/static_content.html'/>
 <%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("About")}</%block>
+
 <style>
   #content.main-container {
     padding: 0px !important;
-    margin: 0px !important;
   }
 </style>
 <main id="eol-about" aria-label="Content" tabindex="-1" class="static_pages eol-bg w-100 mx-auto mt-0 pt-0" style="background-image: url(${static.url('eol-uchile-2020/images/bg-eol.png')});">
@@ -14,12 +16,9 @@
         <div class="row">
             <div class="col-lg-8 px-4 text-justify">
                 <h1 class="mb-4 text-left">¿Qué es EOL?</h1>
-                <p>Es la plataforma de educación online de la Universidad de Chile.</p>
-                <p>Su objetivo es contribuir a mejorar el proceso de enseñanza-aprendizaje de los alumnos de la Universidad para todos los niveles de la educación: pregrado, postgrado y educación continua; tanto como complemento de la docencia presencial (b-learning) como 100 por ciento en línea (e-learning).</p>    
-                <p>Entre las funcionalidades de la plataforma están el publicar videoclases, material escrito y podcast, soportar interacción entre alumnos, y gestionar evaluaciones de todo tipo, desde pruebas de selección múltiple, hasta preguntas de respuesta abierta con evaluación entre pares; tanto para cursos pequeños como de alta convocatoria.</p>
-                <p>EOL ofrece el servicio de plataforma online a las diferentes unidades académicas, así como también asesoría en la creación de los cursos (diseño instruccional), producción de material (de apoyo/educativo/etc.) y apoyo durante la ejecución de los cursos.</p>
-                <p>El proyecto EOL es una iniciativa liderada por la DSTI y la Vicerrectoría de Asuntos Académicos, y desarrollada en conjunto con el Centro de Enseñanza y Aprendizaje (CEA), de la Facultad de Economía y Negocios.</p>
-                
+                <p>EOL es la plataforma de Educación Online de la Universidad de Chile, administrada por la Oficina de Educación Online de la Vicerrectoría de Tecnologías de la Información. Dicha Oficina es la encargada del desarrollo de capacidades técnicas, humanas y de nuevas tecnologías para educación, a fin de dar respuesta a las necesidades y particularidades de los organismos universitarios y unidades académicas vinculadas con la docencia.</p>
+                <p>La Oficina de Educación Online busca contribuir a mejorar el proceso de enseñanza-aprendizaje de los estudiantes de la Universidad para todos los niveles de la educación: pregrado, postgrado y educación continua; para lo cual provee una plataforma para la gestión del aprendizaje (Learning Management System o LMS), así como también apoyo en diseño instruccional para educación online y en la producción de cursos en este formato.</p>
+                <p>La plataforma LMS que ofrece EOL se basa en el proyecto de código abierto <a href="https://open.edx.org/" target="_blank">Open edX</a>, desarrollado inicialmente por la Universidad de Harvard y el MIT para la realización de cursos abiertos masivos en línea (Massive Open Online Course, MOOC). Esta característica lo hace estable y escalable para soportar decenas de miles de usuarios. Esta plataforma ha sido implementada y configurada específicamente para el manejo de los cursos de la Universidad, que son privados y con un grupo acotado de estudiantes. Para esto se han desarrollado componentes que permiten gestionar de mejor forma el aprendizaje en estas condiciones.</p>
             </div>
             <div class="col-lg-4 d-none d-lg-block pl-5 my-auto">
                 <img src="${static.url('eol-uchile-2020/images/pages/about_image.jpg')}" class="img-fluid" alt="image"/>

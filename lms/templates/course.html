@@ -7,7 +7,7 @@ from six import text_type
 %>
 <%page args="course" expression_filter="h"/>
 
-<div class="eol-course-item card h-100" style="background-image: url(${course.course_image_url}), url(${static.url('eol-uchile-2020/images/default-course.jpg')});">
+<div class="eol-course-item card h-100 mx-auto" style="background-image: url(${course.course_image_url}), url(${static.url('eol-uchile-2020/images/default-course.jpg')}); max-width: 400px;">
     <div class="card-body"></div>
     <div class="card-footer text-white">
         <span class="course-name"><strong>${course.display_name_with_default}</strong></span>

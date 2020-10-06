@@ -1,14 +1,17 @@
+<%page expression_filter="h"/>
 <%namespace name='static' file='../static_content.html'/>
 <%!
 from django.utils.translation import ugettext as _
 from django.utils.translation import pgettext
 from django.urls import reverse
-from courseware.courses import get_course_about_section
+from lms.djangoapps.courseware.courses import get_course_about_section
 from django.conf import settings
 from six import text_type
 from edxmako.shortcuts import marketing_link
-from openedx.core.djangolib.markup import HTML
+from openedx.core.djangolib.js_utils import js_escaped_string
+from openedx.core.djangolib.markup import clean_dangerous_html, HTML, Text
 from openedx.core.lib.courses import course_image_url
+
 from six import string_types
 %>
 
@@ -16,10 +19,9 @@ from six import string_types
 <%block name="headextra">
   ## OG (Open Graph) title and description added below to give social media info to display
   ## (https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content#tags)
-  <meta property="og:title" content="${course.display_name_with_default_escaped}" />
+  <meta property="og:title" content="${course.display_name_with_default}" />
   <meta property="og:description" content="${get_course_about_section(request, course, 'short_description')}" />
 </%block>
-
 <%block name="js_extra">
   <script type="text/javascript">
   (function() {
@@ -28,62 +30,10 @@ from six import string_types
       event.preventDefault();
     });
 
-    % if can_add_course_to_cart:
-      add_course_complete_handler = function(jqXHR, textStatus) {
-        if (jqXHR.status == 200) {
-          location.href = "${cart_link}";
-        }
-        if (jqXHR.status == 400) {
-          $("#register_error")
-            .html(jqXHR.responseText ? jqXHR.responseText : "${_("An error occurred. Please try again later.")}")
-            .css("display", "block");
-        }
-        else if (jqXHR.status == 403) {
-            location.href = "${reg_then_add_to_cart_link}";
-        }
-      };
-
-      $("#add_to_cart_post").click(function(event){
-        $.ajax({
-          url: "${reverse('add_course_to_cart', args=[text_type(course.id)])}",
-          type: "POST",
-          /* Rant: HAD TO USE COMPLETE B/C PROMISE.DONE FOR SOME REASON DOES NOT WORK ON THIS PAGE. */
-          complete: add_course_complete_handler
-        })
-        event.preventDefault();
-      });
-    % endif
-
-    ## making the conditional around this entire JS block for sanity
-    %if settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
-      <%
-        perms_error = _('The currently logged-in user account does not have permission to enroll in this course. '
-                        'You may need to {start_logout_tag}log out{end_tag} then try the enroll button again. '
-                        'Please visit the {start_help_tag}help page{end_tag} for a possible solution.').format(
-                          start_help_tag="<a href='{url}'>".format(url=marketing_link('FAQ')), end_tag='</a>',
-                          start_logout_tag="<a href='{url}'>".format(url=reverse('logout'))
-                          )
-      %>
     $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
-      if(xhr.status == 200) {
-        location.href = "${reverse('dashboard')}";
-      } else if (xhr.status == 403) {
-        location.href = "/login?next=/courses/${course.id | u}/about";
-      } else if (xhr.status == 400) { //This means the user did not have permission
-        $('#register_error').html("${perms_error}").css("display", "block");
-      } else {
-        $('#register_error').html(
-            (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.")}")
-        ).css("display", "block");
-      }
-    });
-
-    %else:
-
-    $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
-      if(xhr.status == 200) {
+      if (xhr.status == 200) {
         if (xhr.responseText == "") {
-          location.href = "${reverse('dashboard')}";
+          location.href = "${reverse('dashboard') | n, js_escaped_string}";
         }
         else {
           location.href = xhr.responseText;
@@ -91,13 +41,11 @@ from six import string_types
       } else if (xhr.status == 403) {
         location.href = "/login?next=/courses/${course.id | u}/about";
       } else {
-        $('#register_error').html(
-            (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.")}")
+        $('#register_error').text(
+            (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.") | n, js_escaped_string}")
         ).css("display", "block");
       }
     });
-
-    %endif
 
   })(this)
   </script>
@@ -105,7 +53,7 @@ from six import string_types
   <script src="${static.url('js/course_info.js')}"></script>
 </%block>
 
-<%block name="pagetitle">${course.display_name_with_default_escaped}</%block>
+<%block name="pagetitle">${course.display_name_with_default}</%block>
 <style>
   #content.main-container {
     padding: 0px !important;
@@ -159,10 +107,6 @@ from six import string_types
                               ${_("View Course")}
                             </a>
                           %endif
-                        %elif in_cart:
-                          <span class="add-to-cart">
-                            ${_('This course is in your <a href="{cart_link}">cart</a>.').format(cart_link=cart_link)}
-                          </span>
                         % elif is_course_full:
                           <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2 disabled" disabled>${_("Course is full")}</a>
                         % elif invitation_only and not can_enroll:
@@ -174,31 +118,19 @@ from six import string_types
                           </center>
                         % elif not is_shib_course and not can_enroll:
                           <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2 disabled" disabled>${_("Enrollment is Closed")}</a>
-                        %elif can_add_course_to_cart:
-                          <%
-                          if user.is_authenticated:
-                            reg_href = "#"
-                            reg_element_id = "add_to_cart_post"
-                          else:
-                            reg_href = reg_then_add_to_cart_link
-                            reg_element_id = "reg_then_add_to_cart"
-                          %>
-                          <% if ecommerce_checkout:
-                              reg_href = ecommerce_checkout_link
-                              reg_element_id = ""
-                          %>
-                          <a href="${reg_href}" id="${reg_element_id}" type="button" class="add-to-cart btn btn-info text-white btn-lg btn-block mb-2">
-                            ${_("Add {course_name} to Cart <span>({price} USD)</span>")\
-                              .format(course_name=course.display_number_with_default, price=course_price)}
-                          </a>
-                          <div id="register_error"></div>
+                        %elif allow_anonymous:
+                          %if show_courseware_link:
+                            <a type="button" class="btn btn-primary text-white btn-lg btn-block mb-2" href="${course_target}">
+                              ${_("View Course")}
+                            </a>
+                          %endif
                         %else:
                           <% 
                             if ecommerce_checkout:
                               reg_href = ecommerce_checkout_link
                             else:
                               reg_href="#"
-                            if professional_mode:
+                            if single_paid_mode:
                               href_class = "add-to-cart"
                             else:
                               href_class = "register"
@@ -253,7 +185,7 @@ from six import string_types
                               </tr>
                             % endif
 
-                            %if course_price and (can_add_course_to_cart or is_cosmetic_price_enabled) and not (invitation_only and course_price == _('Free')):
+                            %if course_price and (is_cosmetic_price_enabled) and not (invitation_only and course_price == _('Free')):
                               <%
                               if course_price != _('Free') and course_price[1:].isdigit():
                                   price_str = '$'+'{0:,d}'.format(int(course_price[1:])).replace(',','.')
@@ -267,7 +199,7 @@ from six import string_types
                             %endif
 
                             % if pre_requisite_courses:
-                              <% prc_target = reverse('about_course', args=[unicode(pre_requisite_courses[0]['key'])]) %>
+                              <% prc_target = reverse('about_course', args=[text_type(pre_requisite_courses[0]['key'])]) %>
                               <tr>
                                 <th scope="row" class="text-left">${_("Prerequisites")}</th>
                                 ## Multiple pre-requisite courses are not supported on frontend that's why we are pulling first element
@@ -298,11 +230,11 @@ from six import string_types
 
           <div class="course-info col-lg-7 col-xl-8 order-lg-1 p-3">
               <div class="course-about-card shadow-lg m-2 p-4 bg-white">
-                <h1 class="text-left mb-0">${course.display_name_with_default_escaped}</h1>
-                <p class="course-org font-weight-normal my-2">${course.display_org_with_default | h}</p>
+                <h1 class="text-left mb-0">${course.display_name_with_default}</h1>
+                <p class="course-org font-weight-normal my-2">${course.display_org_with_default}</p>
                 <div class="details" style="width: auto; float:none;">
                   <div class="inner-wrapper">
-                    ${get_course_about_section(request, course, "overview")}
+                    ${HTML(get_course_about_section(request, course, "overview"))}
                   </div>
                   <script>
                     $(function() {
@@ -314,38 +246,6 @@ from six import string_types
                     });
                   </script>
                 </div>
-                <!--
-                <div class="menu btn-group w-100 mt-2 mb-4" role="group" aria-label="Basic example">
-                  <button type="button" data-section="section1" class="btn text-left menu active">About this course</button>
-                  <button type="button" data-section="section2" class="btn text-left menu">Requirements</button>
-                  <button type="button" data-section="section3" class="btn text-left menu">Course staff</button>
-                </div>
-                <div class="menu-content-section active" id="section1">
-                  <p>Include your long course description here. The long course description should contain 150-400 words.</p>
-                  <p>This is paragraph 2 of the long course description. Add more paragraphs as needed. Make sure to enclose them in paragraph tags.</p>
-                </div>
-                <div class="menu-content-section" id="section2">
-                  <p>Add information about the skills and knowledge students need to take this course.</p>
-                </div>
-                <div class="menu-content-section" id="section3">
-                  <ul class="list-unstyled author">
-                    <li class="media mb-4">
-                      <img src="/static/images/placeholder-faculty.png" class="align-self-center mr-3 img-fluid" alt="author">
-                      <div class="media-body align-self-center">
-                        <h5 class="mt-0 mb-1 author-name">Staff Member #1</h5>
-                        <p class="author-info">Biography of instructor/staff member #1</p>
-                      </div>
-                    </li>
-                    <li class="media mb-4">
-                      <img src="/static/images/placeholder-faculty.png" class="align-self-center mr-3 img-fluid" alt="author">
-                      <div class="media-body align-self-center">
-                        <h5 class="mt-0 mb-1 author-name">Staff Member #2</h5>
-                        <p class="author-info mb-0">Biography of instructor/staff member #2</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                -->
                 <script>
                   $(function() {
                     $(".course-about-card .menu .btn").on("click", function() {
@@ -364,35 +264,8 @@ from six import string_types
       <div class="row my-2 faqs-row">
           <div class="col-lg-8 p-3">
               <div class="course-about-card m-2">
-                <h3 class="px-4">Preguntas Frecuentes</h3>
+                <h3 class="px-4">Preguntas frecuentes</h3>
                 <div class="accordion text-justify mt-3" id="accordionFAQS">
-                <!--
-                  <div class="card">
-                      <div class="card-header" id="faq1" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                          <p class="card-question">
-                              What web browser should I use?
-                          </p>
-                      </div>
-                      <div id="collapse1" class="collapse" aria-labelledby="faq1" data-parent="#accordionFAQS">
-                          <div class="card-body">
-                              <p>The Open edX platform works best with current versions of Chrome, Edge, Firefox, Internet Explorer, or Safari.</p>
-                              <p>See our <a href="https://edx.readthedocs.org/projects/open-edx-learner-guide/en/latest/front_matter/browsers.html">list of supported browsers</a> for the most up-to-date information.</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-header" id="faq2" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
-                        <p class="card-question">
-                            Question #2
-                        </p>
-                    </div>
-                    <div id="collapse2" class="collapse" aria-labelledby="faq2" data-parent="#accordionFAQS">
-                        <div class="card-body">
-                            <p>Your answer would be displayed here.</p>
-                        </div>
-                    </div>
-                  </div>
-                -->
                 </div>
               </div>
           </div>
@@ -408,7 +281,7 @@ from six import string_types
     <form id="class_enroll_form" method="post" data-remote="true" action="${reverse('change_enrollment')}">
       <fieldset class="enroll_fieldset">
         <legend class="sr">${pgettext("self","Enroll")}</legend>
-        <input name="course_id" type="hidden" value="${course.id | h}">
+        <input name="course_id" type="hidden" value="${course.id}">
         <input name="enrollment_action" type="hidden" value="enroll">
       </fieldset>
       <div class="submit">
