@@ -24,8 +24,8 @@ block_is_unit = is_unit(xblock)
 <script type="text/template" id="xblock-validation-messages-tpl">
     <%static:include path="js/xblock-validation-messages.underscore" />
 </script>
-</%block>
 
+</%block>
 <script type="text/javascript">
     XBlockValidationFactory(
         ${messages | n, dump_js_escaped_json},
@@ -35,7 +35,6 @@ block_is_unit = is_unit(xblock)
         $('div.xblock-validation-messages[data-locator="${xblock.location | n, js_escaped_string}"]')
     );
 </script>
-
 % if not is_root:
     % if is_reorderable:
     <li class="studio-xblock-wrapper is-draggable" data-locator="${xblock.location}" data-course-key="${xblock.location.course_key}">
@@ -90,6 +89,12 @@ block_is_unit = is_unit(xblock)
                                 </li>
                             % endif
                             % if can_add:
+                                <li class="action-item action-duplicate">
+                                    <a href="#" onclick="duplicar_xblock('${xblock.location}', '${label | n, js_escaped_string}');" data-tooltip="Duplicar a otro Curso" class="copy-to-other-course-button action-button">
+                                        <span class="icon fa fa-share-square-o" aria-hidden="true"></span>
+                                        <span class="sr action-button-text">Duplicar a otro Curso</span>
+                                  </a>
+                                </li>
                                 <li class="action-item action-duplicate">
                                     <button data-tooltip="${_("Duplicate")}" class="btn-default duplicate-button action-button">
                                     <span class="icon fa fa-copy" aria-hidden="true"></span>
