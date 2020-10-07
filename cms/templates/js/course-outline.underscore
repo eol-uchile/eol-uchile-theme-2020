@@ -98,8 +98,8 @@ if (is_proctored_exam) {
 } else {
     exam_value = gettext('Timed Exam');
 }
-var display_name_duplicar = xblockInfo.get('display_name').replace(/'/g,"\u0027")
-display_name_duplicar = display_name_duplicar.replace(/"/g,"\u0022")
+var display_name_duplicar = xblockInfo.get('display_name').replace(/'/g,"")
+display_name_duplicar = display_name_duplicar.replace(/"/g,"")
 
 %>
 
