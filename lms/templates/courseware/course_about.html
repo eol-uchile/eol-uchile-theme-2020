@@ -124,6 +124,8 @@ from six import string_types
                               ${_("View Course")}
                             </a>
                           %endif
+                        % elif not invitation_only and not course.enrollment_start:
+                        ## Empty
                         %else:
                           <% 
                             if ecommerce_checkout:
