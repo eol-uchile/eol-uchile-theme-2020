@@ -124,7 +124,7 @@ from six import string_types
                               ${_("View Course")}
                             </a>
                           %endif
-                        % elif not invitation_only and not course.enrollment_start:
+                        % elif not invitation_only and not course.enrollment_start and not course.enrollment_end:
                         ## Empty
                         %else:
                           <% 
