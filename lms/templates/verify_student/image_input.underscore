@@ -1,0 +1,5 @@
+<img class="preview" alt="<%- gettext("Preview of uploaded image") %>"/>
+<label>
+    <span class="sr"><%- gettext("Suba una imagen o capture una nueva fotografía con su cámara web o de smartphone.") %></span>
+    <input class="image-upload" type="file" accept="image/*;capture=camera">
+</label>

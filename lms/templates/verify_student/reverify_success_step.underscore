@@ -1,0 +1,11 @@
+<div id="wrapper-reverify-success" tab-index="0" class="wrapper-view reverify-success-step">
+    <h1 class="title"><%- gettext( "Verificación de Identidad en Progreso" ) %></h3>
+
+    <div class="instruction">
+        <p><%- gettext( "Hemos recibido su información y estamos verificando su identidad. Verá un mensaje en su página de inicio cuando el proceso sea completado (usualmente en 5-7 días). Mientras tanto, puede acceder al contenido disponible del curso." ) %></p>
+    </div>
+
+    <div class="wrapper-actions">
+        <a class="action action-primary" href="/dashboard"><%- gettext( "Volver a Inicio" ) %></a>
+    </div>
+</div>

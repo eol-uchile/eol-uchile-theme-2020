@@ -1,0 +1,29 @@
+<%page expression_filter="h"/>
+<%!
+    from django.utils.translation import ugettext as _
+    from django.urls import reverse
+%>
+
+<%inherit file="../main.html" />
+<%block name="pagetitle">${_("Verificación de Identidad")}</%block>
+
+<%block name="content">
+<div class="reverify-blocked">
+    <h1 class="title">${_("Verificación de Identidad")}</h1>
+
+    <div class="instructions">
+        <p>
+            % if status in ["pending", "approved"]:
+                ${_("Ya ha enviado sus datos para verificar su identidad. Verá un mensaje en su página de inicio cuando el proceso sea completado (usualmente en 5-7 días).")}
+            % else:
+                ${_("Usted no puede verificar su identidad en este momento.")}
+            % endif
+        </p>
+    </div>
+
+    <div class="wrapper-actions">
+        <a class="action action-primary" href="${ reverse('dashboard') }">${_("Volver a la página de Inicio")}</a>
+    </div>
+</div>
+
+</%block>
