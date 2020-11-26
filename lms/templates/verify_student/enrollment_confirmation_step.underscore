@@ -1,0 +1,51 @@
+<div class="wrapper-content-main enrollment-confirmation-step">
+  <article class="content-main">
+    <h3 class="title"><%- _.sprintf( gettext( "Felicitaciones! Ahora se encuentra verificado en %(platformName)s!" ), { platformName: platformName } ) %></h3>
+    <div class="instruction">
+      <p><%- gettext( "Ahora estas inscrito como un estudiante verificado para:" ) %></p>
+    </div>
+
+    <ul class="list-info">
+      <li class="info-item course-info">
+        <div class="wrapper-report">
+          <table class="report report-course">
+            <caption class="sr"><%- gettext( "Una lista de cursos en los cuales te inscribiste como estudiante verificado" ) %></caption>
+            <thead>
+              <tr>
+                <th scope="col" ><%- gettext( "Curso" ) %></th>
+                <th scope="col" ></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><%- courseName %></td>
+                <td></td>
+              </tr>
+            </tbody>
+
+            <tfoot>
+              <tr class="course-actions">
+                <td>
+                  <% if ( coursewareUrl ) { %>
+                    <a class="action action-course" href="<%- coursewareUrl %>"><%- gettext( "¡Explora tu curso!" ) %></a>
+                  <% } %>
+                </td>
+                <td>
+                  <a class="action action-primary" href="/dashboard"><%- gettext("Volver a panel principal") %></a>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+      </li>
+    </ul>
+
+    <div class="enrollment-status-footer">
+      <h4 class="title"><%- gettext( "Verified Status" ) %></h4>
+      <p class="verify-pending-msg">
+        <%- _.sprintf( gettext( "Gracias por enviar sus fotos. Las revisaremos lo más pronto posible. Ahora puede inscribirse en cualquier curso de %(platformName)s que ofrece certificados verificados. La verificación es válida por un año. Luego de un año, debes completar el proceso de verificación otra vez." ), { platformName: platformName } ) %></p>
+    </div>
+  </article>
+</div>

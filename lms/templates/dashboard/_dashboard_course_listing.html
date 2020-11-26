@@ -393,15 +393,15 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
             % if verification_status['status'] == VERIFY_STATUS_NEED_TO_VERIFY:
               <div class="verification-reminder">
                 % if verification_status['days_until_deadline'] is not None:
-                  <h4 class="message-title">${_('Verification not yet complete.')}</h4>
+                  <h4 class="message-title">${_('La Verificación aún no está completa.')}</h4>
                   <p class="message-copy">${ungettext(
-                    'You only have {days} day left to verify for this course.',
-                    'You only have {days} days left to verify for this course.',
+                    'Sólo queda un día para verificarse para este curso.',
+                    'Quedan {days} días para verificarse para este curso.',
                     verification_status['days_until_deadline']
                   ).format(days=verification_status['days_until_deadline'])}</p>
                 % else:
                   <h4 class="message-title">${_('Almost there!')}</h4>
-                  <p class="message-copy">${_('You still need to verify for this course.')}</p>
+                  <p class="message-copy">${_('Solo falta que envíe su información de verificación para este curso.')}</p>
                 % endif
               </div>
               <div class="verification-cta">
@@ -409,20 +409,20 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
               </div>
             % elif verification_status['status'] == VERIFY_STATUS_SUBMITTED:
               <h4 class="message-title">${_('You have submitted your verification information.')}</h4>
-              <p class="message-copy">${_('You will see a message on your dashboard when the verification process is complete (usually within 5-7 days).')}</p>
+              <p class="message-copy">${_('Verá un mensaje en su página de inicio cuando el proceso sea completado (usualmente en 5-7 días).')}</p>
             % elif verification_status['status'] == VERIFY_STATUS_RESUBMITTED:
               <h4 class="message-title">${_('Your current verification will expire soon!')}</h4>
-              <p class="message-copy">${_('You have submitted your reverification information. You will see a message on your dashboard when the verification process is complete (usually within 5-7 days).')}</p>
+              <p class="message-copy">${_('Ha enviado su información de re-verificación. Verá un mensaje en su página de inicio cuando el proceso sea completado (usualmente en 5-7 días).')}</p>
             % elif verification_status['status'] == VERIFY_STATUS_APPROVED:
               <h4 class="message-title">${_('You have successfully verified your ID with edX')}</h4>
               % if verification_status.get('verification_good_until') is not None:
-                <p class="message-copy">${_('Your current verification is effective until {date}.').format(date=verification_status['verification_good_until'])}
+                <p class="message-copy">${_('Sus datos de verificación serán válidos hasta el {date}.').format(date=verification_status['verification_good_until'])}
               % endif
             % elif verification_status['status'] == VERIFY_STATUS_NEED_TO_REVERIFY:
               <h4 class="message-title">${_('Your current verification will expire soon.')}</h4>
               ## Translators: start_link and end_link will be replaced with HTML tags;
               ## please do not translate these.
-              <p class="message-copy">${Text(_('Your current verification will expire in {days} days. {start_link}Re-verify your identity now{end_link} using a webcam and a government-issued photo ID.')).format(
+              <p class="message-copy">${Text(_('Su verificación expira en {days} días. {start_link}Re-verifique su identidad ahora{end_link} usando una cámara web y un documento de identidad.')).format(
                   start_link=HTML('<a href="{href}">').format(href=reverse('verify_student_reverify')),
                   end_link=HTML('</a>'),
                   days=settings.VERIFY_STUDENT.get("EXPIRING_SOON_WINDOW")

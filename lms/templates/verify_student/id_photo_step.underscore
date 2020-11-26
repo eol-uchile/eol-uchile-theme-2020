@@ -1,0 +1,74 @@
+<div id="wrapper-idphoto" class="wrapper-view block-photo id-photo-step">
+  <div class="idphoto view">
+    <h3 class="title"><%- gettext( "Tome una foto de su ID" ) %></h3>
+    <div class="instruction">
+      <p><%- gettext("Use su cámara web para fotografiar su ID.") %></p>
+    </div>
+
+    <div class="wrapper-task">
+      <div id="idcam" class="task cam"></div>
+
+      <div class="wrapper-help">
+         <div class="help help-task photo-tips idtips">
+          <p class="photo-tip"><%- gettext( "Necesita una ID con su nombre y foto. Una licencia de conducir, un pasaporte, o una cédula de identidad son opciones válidas." ) %></p>
+
+          <h4 class="title"><%- gettext( "Consejos para tomar una buena fotografía" ) %></h4>
+
+          <div class="copy">
+            <ul class="list-help">
+              <li class="help-item"><%- gettext( "Asegúrese que su foto y nombre son visibles" ) %></li>
+              <li class="help-item"><%- gettext( "Revise que la ID esta bien iluminada" ) %></li>
+              <li class="help-item">
+                <%=  HtmlUtils.interpolateHtml( gettext( "Una vez en posición, presione el botón tomar fotografía {icon} para capturar su ID" ), { icon: HtmlUtils.HTML('<span class="example">(<span class="icon fa fa-camera" aria-hidden="true"></span>)</span>') } ) %>
+              </li>
+              <li class="help-item"><%- gettext( "Utilice el botón Retomar foto si no esta satisfecho con el resultado" ) %></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="help help-faq facefaq">
+          <h4 class="sr title"><%- gettext( "Preguntas frecuentes" ) %></h4>
+
+          <div class="copy">
+            <dl class="list-faq">
+              <dt class="faq-question">
+                <%- _.sprintf( gettext( "¿Por qué %(platformName)s necesita mi foto?" ), { platformName: platformName } ) %>
+              </dt>
+              <dd class="faq-answer"><%- gettext( "Utilizamos sus fotos para confirmar su identidad y asegurar la validez de su certificado." ) %></dd>
+              <dt class="faq-question">
+                <%- _.sprintf( gettext( "¿Qué hace %(platformName)s con esta foto?" ), { platformName: platformName } ) %>
+              </dt>
+              <dd class="faq-answer">
+                <%- _.sprintf( gettext( "Encriptamos de forma segura su fotografía y la enviamos a nuestro servicio de autorización para ser revisada. Su foto e información no son guardadas o visibles en ningún lugar en %(platformName)s luego que el proceso de verificación ha sido completado." ), { platformName: platformName } ) %>
+              </dd>
+              <dt class="faq-question">
+                <%- gettext( "¿Y si no puedo ver la imagen, o el resultado de la imagen para comprobar su calidad?" ) %>
+              </dt>
+              <dd class="faq-answer">
+                <%- gettext( "Es posible que pueda completar el proceso de fotografía sin asistencia, pero puede tomar más de un intento de envío para posicionar correctamente la cámara. La posición óptima varía entre computadoras, pero generalmente la mejor posición para una foto de rostro es aproximadamente 30-45 centímetros, con su cabeza centrada relativa a la pantalla. " ) %>
+                <%- gettext( "Si las fotos que envia son rechazadas, intenten moviendo la computadora o la orientación de la cámara para cambiar el ángulo de iluminación. La razón más común de rechazo es la inhabilidad de leer el texto en la ID." ) %>
+              </dd>
+              <dt class="faq-question">
+                <%- gettext( "¿Y si tengo dificultad para mantener mi cabeza en la posición correcta frente a la cámara?" ) %>
+              </dt>
+              <dd class="faq-answer">
+                <%- _.sprintf( gettext( "Si requiere asistencia para tomar su foto o para enviarla, contacte a soporte de %(platformName)s para instrucciones adicionales." ), { platformName: platformName } ) %>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if ( nextStepTitle ) { %>
+    <nav class="nav-wizard" id="face_next_button_nav">
+      <button id="next_step_button" class="next action-primary right" disabled title="Next">
+        <%- _.sprintf(
+          gettext( "Siguiente: %(nextStepTitle)s" ),
+          { nextStepTitle: nextStepTitle }
+        ) %>
+      </button>
+    </nav>
+    <% } %>
+  </div>
+</div>
