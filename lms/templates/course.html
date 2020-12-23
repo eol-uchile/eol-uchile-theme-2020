@@ -4,10 +4,19 @@
 from django.utils.translation import ugettext as _
 from django.urls import reverse
 from six import text_type
+import locale
+from django.utils import timezone
+now = timezone.now()
 %>
 <%page args="course" expression_filter="h"/>
 
-<div class="eol-course-item card h-100 mx-auto" style="background-image: url(${course.course_image_url}), url(${static.url('eol-uchile-2020/images/default-course.jpg')}); max-width: 400px;">
+<%
+  card_class = ''
+  if course.end is not None and now is not None and course.end < now:
+    card_class = 'inactive'
+%>
+
+<div class="eol-course-item card h-100 mx-auto ${card_class}" style="background-image: url(${course.course_image_url}), url(${static.url('eol-uchile-2020/images/default-course.jpg')}); max-width: 400px;">
     <div class="card-body"></div>
     <div class="card-footer text-white">
         <span class="course-name"><strong>${course.display_name_with_default}</strong></span>
@@ -31,7 +40,9 @@ from six import text_type
         else:
             course_date_string = ''
         %>
-        % if course.advertised_start is not None:
+        % if course.end is not None and now is not None and course.end < now:
+            <div class="course-date" aria-hidden="true">${_("Curso finalizado")}</div>
+        % elif course.advertised_start is not None:
             <div class="course-date" aria-hidden="true">${_("Starts")}: ${course.advertised_start}</div>
         % else:
             <div class="course-date localized_datetime" aria-hidden="true" data-format="shortDate" data-datetime="${course_date_string}" data-language="${LANGUAGE_CODE}" data-string="${_("Starts: {date}")}"></div>
