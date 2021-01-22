@@ -27,11 +27,23 @@ from openedx.core.djangolib.markup import HTML, Text
         padding: 10px 15px;
         font-weight: 600;
     }
+    .xblockcompletion-warning-msg{
+        display: none;
+        margin: 0;
+        padding-bottom: 20px;
+        color: #cb4f07;
+        border-top: 2px solid #d47100;
+        background: #fae6e8;
+        border-radius: 1px;
+        padding: 10px 15px;
+        font-weight: 600;
+    }
 </style>
 <script type="text/javascript">
     function generate_report_xblockcompletion(input){
         var success_div = document.getElementById('xblockcompletion-success-msg');
         var error_div = document.getElementById('xblockcompletion-error-msg');
+        var warning_div = document.getElementById('xblockcompletion-warning-msg');
         var url = input.dataset.endpoint;
         var errorMessage = 'Error en generar reporte de problemas. Por favor actualice la página e intente de nuevo.';
         return $.ajax({
@@ -45,6 +57,7 @@ from openedx.core.djangolib.markup import HTML, Text
                 error_div.textContent = errorMessage;
                 error_div.style.display = 'block';
                 success_div.style.display = 'none';
+                warning_div.style.display = 'none';
                 return true
             },
             success: function(data) {
@@ -52,11 +65,21 @@ from openedx.core.djangolib.markup import HTML, Text
                     error_div.textContent = errorMessage;
                     error_div.style.display = 'block';
                     success_div.style.display = 'none';
+                    warning_div.style.display = 'none';
                 }
                 else{
-                    success_div.textContent = data.status;
-                    success_div.style.display = 'block';
-                    error_div.style.display = 'none';
+                    if (data.error_task) {
+                        warning_div.textContent = 'El reporte ya se esta generando, por favor espere.';
+                        warning_div.style.display = 'block';
+                        error_div.style.display = 'none';
+                        success_div.style.display = 'none';
+                    }
+                    else{
+                        success_div.textContent = data.status;
+                        success_div.style.display = 'block';
+                        warning_div.style.display = 'none';
+                        error_div.style.display = 'none';
+                    }
                 }
                 return true
             }
@@ -105,11 +128,12 @@ from openedx.core.djangolib.markup import HTML, Text
       <p><input type="button" name="survey-results-report" value="${_("Generate Survey Results Report")}" data-endpoint="${ section_data['course_survey_results_url'] }"/></p>
     %endif
     
-    %if section_data['has_xblockcompletion']:
+    %if 'has_xblockcompletion' in section_data and section_data['has_xblockcompletion']:
         <p>Generar un archivo CSV de todas las respuestas de los estudiantes de todos los problemas del curso.</p>
         <p><input onclick="generate_report_xblockcompletion(this)" type="button" name="xblockcompletion-report-resumen" value="Generar reporte resumen de problemas" data-endpoint="${ section_data['xblockcompletion_url_resumen'] }"/></p>
         <p><input onclick="generate_report_xblockcompletion(this)" type="button" name="xblockcompletion-report-all" value="Generar reporte de problemas" data-endpoint="${ section_data['xblockcompletion_url_all'] }"/></p>
         <div class="xblockcompletion-success-msg" id="xblockcompletion-success-msg"></div>
+        <div class="xblockcompletion-warning-msg" id="xblockcompletion-warning-msg"></div>
         <div class="xblockcompletion-error-msg" id="xblockcompletion-error-msg"></div>
     %endif
 
