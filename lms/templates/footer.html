@@ -51,6 +51,10 @@
   </p>
 </footer>
 
+% if context.get('include_language_selector', footer_language_selector_is_enabled()):
+    <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
+% endif
+
 % if include_dependencies:
   <%static:js group='base_vendor'/>
   <%static:css group='style-vendor'/>
