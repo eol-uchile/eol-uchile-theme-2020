@@ -86,6 +86,8 @@ from openedx.core.djangolib.markup import HTML, Text
         });
     }
 </script>
+<script type="text/javascript" src="${static.url('gradeucursos/js/gradeucursos.js')}"></script>
+<link rel="stylesheet" type="text/css" href="${static.url('gradeucursos/css/gradeucursos.css')}"/>
 <div class="data-download-container action-type-container">
   <div class="request-response-error msg msg-error copy" id="data-request-response-error"></div>
 
@@ -193,6 +195,27 @@ from openedx.core.djangolib.markup import HTML, Text
       <div class="xblockcompletion-warning-msg" id="xblockcompletion-warning-msg"></div>
       <div class="xblockcompletion-error-msg" id="xblockcompletion-error-msg"></div>
       <p>Para una mejor visualización y manejo de los datos en el Excel, puede ver un mini tutorial haciendo <a target="_blank" href="https://youtu.be/v4ecUuetKDo">click aqui</a>.</p>
+      <hr>
+  </div>
+  %endif
+  %if 'has_gradeucursos' in section_data and section_data['has_gradeucursos']:
+  <div class='gradeucursos-export'>
+      <hr>
+      <h4 class="hd hd-4">Exportar Notas</h4>
+      <p>Seleccione la escala de nota, presione el boton Exportar Notas y se generará un archivo Excel.</p>
+      <p>
+        <label for="gradeucursos_grade_type" style="clear: both; font-style: normal; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif">Escala de Nota:</label>
+        <select class="gradeucursos_select" name='gradeucursos_grade_type' id='gradeucursos_grade_type'>
+            <option value="seven_scale">1.0 - 7.0</option>
+            <option value="hundred_scale">0 - 100</option>
+            <option value="percent_scale">0.00 - 1.00</option>
+        </select>
+      </p>
+      <input hidden disabled type="text" name='curso' id="gradeucursos_curso" value="${section_data['gradeucursos_course']}"></input>
+      <p><input id='gradeucursos_data_button' onclick="generate_data_gradeucursos(this)" type="button" name="gradeucursos-data" value="Exportar Notas" data-endpoint="${ section_data['gradeucursos_url_data'] }"/>
+      <div class="gradeucursos-success-msg" id="gradeucursos-success-msg"></div>
+      <div class="gradeucursos-warning-msg" id="gradeucursos-warning-msg"></div>
+      <div class="gradeucursos-error-msg" id="gradeucursos-error-msg"></div>
       <hr>
   </div>
   %endif
