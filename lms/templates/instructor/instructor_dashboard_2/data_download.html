@@ -209,6 +209,7 @@ from openedx.core.djangolib.markup import HTML, Text
       %else:
         <p>El porcentaje de aprobación del curso es del: ${section_data['gradeucursos_grade_cutoff']*100} %.</p>
         <p>Seleccione la escala de notas, presione el boton Exportar Notas y se generará un archivo Excel.</p>
+        <p>NOTA: Al seleccionar la escala "0 - 100" o "0.00 - 1.00" el puntaje obtenido de cada estudiante será transformado a un puntaje con porcentaje de aprobación del 50%</p>
         <p hidden>NOTA: Al seleccionar el formato "Completo" con escala de 1.0 - 7.0, cada evaluación estará en una escala de 0 - 100 y solamente el promedio final estará con la escala seleccionada.</p>
         <div class="row" hidden> 
           <div class="col-md-1" style="padding-left: 0px;margin-top: 15px;">
