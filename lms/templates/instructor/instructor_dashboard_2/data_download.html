@@ -86,6 +86,8 @@ from openedx.core.djangolib.markup import HTML, Text
         });
     }
 </script>
+<script type="text/javascript" src="${static.url('gradeucursos/js/gradeucursos.js')}"></script>
+<link rel="stylesheet" type="text/css" href="${static.url('gradeucursos/css/gradeucursos.css')}"/>
 <div class="data-download-container action-type-container">
   <div class="request-response-error msg msg-error copy" id="data-request-response-error"></div>
 
@@ -193,6 +195,69 @@ from openedx.core.djangolib.markup import HTML, Text
       <div class="xblockcompletion-warning-msg" id="xblockcompletion-warning-msg"></div>
       <div class="xblockcompletion-error-msg" id="xblockcompletion-error-msg"></div>
       <p>Para una mejor visualización y manejo de los datos en el Excel, puede ver un mini tutorial haciendo <a target="_blank" href="https://youtu.be/v4ecUuetKDo">click aqui</a>.</p>
+      <hr>
+  </div>
+  %endif
+  %if 'has_gradeucursos' in section_data and section_data['has_gradeucursos']:
+  <div class='gradeucursos-export'>
+      <hr>
+      <h4 class="hd hd-4">Exportar Notas</h4>
+      %if section_data['gradeucursos_grade_cutoff'] is None:
+      <div class="gradeucursos-error-msg" style="display: block;">
+        <p>El porcentaje de aprobación no se configurado correctamente, contáctese con la mesa de ayuda(eol-ayuda@uchile.cl) para mas información.</p>
+      </div>
+      %else:
+        <p>El porcentaje de aprobación del curso es del: ${section_data['gradeucursos_grade_cutoff']*100} %.</p>
+        <p>Seleccione la escala de notas, presione el boton Exportar Notas y se generará un archivo Excel.</p>
+        <p>NOTA: Al seleccionar la escala "0 - 100" o "0.00 - 1.00" el puntaje obtenido de cada estudiante será transformado a un puntaje con porcentaje de aprobación del 50%</p>
+        <p hidden>NOTA: Al seleccionar el formato "Completo" con escala de 1.0 - 7.0, cada evaluación estará en una escala de 0 - 100 y solamente el promedio final estará con la escala seleccionada.</p>
+        <div class="row" hidden> 
+          <div class="col-md-1" style="padding-left: 0px;margin-top: 15px;">
+            <label for="gradeucursos_assig_type" style="clear: both; font-style: normal; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif">Tipo de tarea:</label>
+          </div>
+          <div class="col-md-3" style="padding-left: 0px;margin-top: 15px;">
+            <select class="gradeucursos_select" name='gradeucursos_assig_type' id='gradeucursos_assig_type'>
+              <option value="gradeucursos_total">Nota final del curso</option>
+              %for assig in section_data['gradeucursos_assig_types']:
+                <option value="${assig}">${assig}</option>
+              %endfor
+          </select>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="col-md-1" style="padding-left: 0px;margin-top: 15px;">
+            <label for="gradeucursos_grade_type" style="clear: both; font-style: normal; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif">Escala de Nota:</label>
+          </div>
+          <div class="col-md-3" style="padding-left: 0px;margin-top: 15px;">
+            <select class="gradeucursos_select" name='gradeucursos_grade_type' id='gradeucursos_grade_type'>
+              <option value="seven_scale">1.0 - 7.0</option>
+              <option value="hundred_scale">0 - 100</option>
+              <option value="percent_scale">0.00 - 1.00</option>
+            </select>
+          </div>
+        </div>
+        <div class="row" hidden>
+          <div class="col-md-1" style="padding-left: 0px;margin-top: 15px;">
+            <label for="gradeucursos_is_resumen" style="clear: both; font-style: normal; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif">Formato:</label>
+          </div>
+          <div class="col-md-3" style="padding-left: 0px;margin-top: 15px;">
+            <select class="gradeucursos_select" name='gradeucursos_is_resumen' id='gradeucursos_is_resumen'>
+              <option value="is_resumen">Completo</option>
+              <option value="gradeucursos_total">Solo Promedio Final</option>
+            </select>
+          </div>
+        </div>
+        <input hidden disabled type="text" name='curso' id="gradeucursos_curso" value="${section_data['gradeucursos_course']}"></input>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-3" style="padding-left: 0px;margin-top: 15px;">
+            <input id='gradeucursos_data_button' onclick="generate_data_gradeucursos(this)" type="button" name="gradeucursos-data" value="Exportar Notas" data-endpoint="${ section_data['gradeucursos_url_data'] }"/>
+          </div>
+        </div>
+      %endif
+      <div class="gradeucursos-success-msg" id="gradeucursos-success-msg"></div>
+      <div class="gradeucursos-warning-msg" id="gradeucursos-warning-msg"></div>
+      <div class="gradeucursos-error-msg" id="gradeucursos-error-msg"></div>
       <hr>
   </div>
   %endif
