@@ -521,3 +521,13 @@ body {
     height: auto !important;
     background: none !important;
 }
+
+/*
+* Welcome message /course/
+*/
+
+.welcome-message, .update-message {
+    border-left: none !important;
+    background: #3d9bdd30 !important;
+    box-shadow: -10px 0 0 0 #2d75b4;
+}

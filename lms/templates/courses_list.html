@@ -2,7 +2,7 @@
 <%namespace name='static' file='static_content.html'/>
 <%! from django.utils.translation import ugettext as _ %>
 
-<%! from course_info.helpers import get_course_class %>
+<%! from lms.djangoapps.course_info.helpers import get_course_class %>
 % if settings.FEATURES.get('SHOW_COURSES_BY_CLASS'):
 <%  cats,course_class = get_course_class(courses) %>
 %for categ in cats:
