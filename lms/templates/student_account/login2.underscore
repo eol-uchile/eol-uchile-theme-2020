@@ -25,11 +25,11 @@
 
 <form id="login" class="login-form" tabindex="-1" method="POST">
     <a id="redirect_to" href="/uchileedxlogin/login">
-        <div class="login-button2"></div>
+        <img class="img-login-1 img-fluid"/>
     </a>
     <div class="separator mx-5 my-3">O</div>
     <a href="#Login_Normal" onclick="return loginCorreo();">
-        <div class="login-button3"></div>
+        <img class="img-login-2 img-fluid"/>
     </a>
     <div class="js-form-feedback mt-3" aria-live="assertive" tabindex="-1">
     </div>

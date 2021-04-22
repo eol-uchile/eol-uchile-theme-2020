@@ -111,6 +111,7 @@ body {
 
 .eol-header-brand img.logo {
     max-height: 50px;
+    max-width: 50vw;
 }
 
 .eol-header .navbar-toggler {
