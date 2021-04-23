@@ -93,6 +93,9 @@
         }
     }
     $( document ).ready(function() {
+        $(".img-login-1").attr("src", IMG_LOGIN_1);
+        $(".img-login-2").attr("src", IMG_LOGIN_2);
+        
         var url = document.getElementById("url_next").textContent;
         var atag = document.getElementById("redirect_to");
         atag.setAttribute('href', url)
