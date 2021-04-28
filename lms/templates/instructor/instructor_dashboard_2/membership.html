@@ -37,7 +37,7 @@ from django.urls import reverse
 </fieldset>
 %endif
 % if section_data['access']['admin']:
-<!--fieldset class="batch-enrollment membership-section">
+<fieldset class="batch-enrollment membership-section">
   <legend id="heading-batch-enrollment" class="hd hd-3">${_("Batch Enrollment")}</legend>
   <label>
       ${_("Enter email addresses and/or usernames separated by new lines or commas.")}
@@ -165,7 +165,7 @@ from django.urls import reverse
   </div>
   <div class="request-response"></div>
   <div class="request-response-error"></div>
-</fieldset-->
+</fieldset>
 
 <hr class="divider" />
 %endif
