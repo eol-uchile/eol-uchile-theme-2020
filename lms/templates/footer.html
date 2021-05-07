@@ -41,6 +41,8 @@
   <p class="text-center">
     <small class="text-muted">
       ${footer['copyright']}
+      </br>
+      <a href="https://www.uchile.cl/portal/informacion-general/174996/politica-de-privacidad-de-la-informacion-y-datos-personales" target="_blank">Política de privacidad</a>
       % if icp_license_info.get('icp_license'):
         ${u" | {text}".format(text=icp_license_info.get('text'))}
         <a href="${icp_license_info.get('icp_license_link', '#')}">
