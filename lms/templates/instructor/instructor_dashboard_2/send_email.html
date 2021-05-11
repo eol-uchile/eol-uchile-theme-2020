@@ -76,11 +76,11 @@ from openedx.core.djangolib.markup import HTML
                 ${_("Responder a (opcional): ")}
                 <br/>
                 %if reply_to:
-                <input type="text" id="id_reply_to" name="reply_to" maxlength="128" size="75" value="${reply_to}" placeholder="correo@correo.cl">
+                <input type="text" id="id_reply_to" name="reply_to" maxlength="520" size="75" value="${reply_to}" placeholder="correo@correo.cl">
                 %else:
-                <input type="text" id="id_reply_to" name="reply_to" maxlength="128" size="75" placeholder="correo@correo.cl">
+                <input type="text" id="id_reply_to" name="reply_to" maxlength="520" size="75" placeholder="correo@correo.cl">
                 %endif
-                <span class="tip">${_("(Ingrese el correo al que los estudiantes podrán responder)")}</span>
+                <span class="tip">${_("(Ingrese el/los correos al que los estudiantes podrán responder. Si ingresa más de un correo separelos con una coma, ejemplo: correo1@correo.cl, correo2@correo.cl)")}</span>
             </label>
         </li>
         <li>
