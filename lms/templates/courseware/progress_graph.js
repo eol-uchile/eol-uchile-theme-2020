@@ -15,7 +15,7 @@
   grade_cutoff = min(grade_cutoffs.values())
   def grade_scale(percent):
     if percent < grade_cutoff:
-      return round(10. * (3. / grade_cutoff * percent + 1.)) / 10.
+      return min(round(10. * (3. / grade_cutoff * percent + 1.)) / 10., 3.9)
     return round((3. / (1. - grade_cutoff) * percent + (7. - (3. / (1. - grade_cutoff)))) * 10.) / 10.
 %>
 
@@ -49,7 +49,7 @@ $(function () {
   }
   function grade_scale(percent) {
     if (percent < ${grade_cutoff})
-      return Math.round((3 / ${grade_cutoff} * percent + 1)*10)/10;
+      return Math.min(Math.round((3 / ${grade_cutoff} * percent + 1)*10)/10, 3.9);
     return Math.round(10 * (3 / (1 - ${grade_cutoff}) * percent + (7 - (3 / (1 - ${grade_cutoff})))) / 10);
   }
   /* -------------------------------- Grade detail bars -------------------------------- */
