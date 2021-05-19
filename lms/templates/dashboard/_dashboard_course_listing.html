@@ -406,17 +406,10 @@ from lms.djangoapps.experiments.utils import UPSELL_TRACKING_FLAG
                 <b class="message-copy-bold">
                   ${_("Pursue a {cert_name_long} to highlight the knowledge and skills you gain in this course.").format(cert_name_long=cert_name_long)}
                 </b><br>
-                  ${Text(_("It's official. It's easily shareable. "
-                      "It's a proven motivator to complete the course. {line_break}"
-                      "{link_start}Learn more about the verified {cert_name_long}{link_end}.")).format(
-                        line_break=HTML('<br>'),
-                        link_start=HTML('<a href="{}" class="verified-info" data-course-key="{}">').format(
-                          marketing_link('WHAT_IS_VERIFIED_CERT'),
-                          enrollment.course_id
-                        ),
-                        link_end=HTML('</a>'),
-                        cert_name_long=cert_name_long
-                      )}
+                  ${Text(_(
+                    "Es oficial. Es fácil de compartir. "
+                    "Es comprobado como motivador para la finalización del curso. "))
+                    }
               </p>
               <div class="action-upgrade-container">
                 % if use_ecommerce_payment_flow and course_mode_info['verified_sku']:
