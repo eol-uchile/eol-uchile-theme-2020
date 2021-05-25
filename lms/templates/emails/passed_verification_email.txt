@@ -1,0 +1,10 @@
+<%! from django.utils.translation import ugettext as _ %>
+
+
+${_("Hola {full_name},").format(full_name=full_name)}
+
+${_("¡Felicitaciones! Tu verificación de identidad fue exitosa.")}
+${_("Tu verificación es válida durante un año. Esta expirará el {expiry_date}.").format(expiry_date=expiry_date)}
+
+${_("Thank you,")}
+${_("The {platform_name} team").format(platform_name=platform_name)}
