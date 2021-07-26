@@ -16,10 +16,6 @@ data = context.get('data', None)
             <div class="contact-card col-11 col-md-10 col-lg-8 mx-auto shadow-lg px-5 py-4 mb-5 bg-white rounded-lg">
                 <h3 class="contact-header pb-2 mb-0 text-left">Formulario de contacto</h3>
                 <p class="contact-availability mt-0 text-right"><small>Horario de atención: Lunes a Viernes de 9:00 a 18:00 Hrs</small></p>
-                <div class="alert mt-3 text-dark" style="background-color: #ffc107;">
-                    <h1 class="mb-2">Receso Universitario</h1>
-                    <p>Entre los días 19 y 23 de Julio la mesa de ayuda de la plataforma no estará atendiendo. Las consultas de esa semana se responderán a partir del día Lunes 26 de Julio.</p>
-                </div>
                 <p class="contact-info text-center mb-3">Llena el formulario y nuestra mesa de ayuda se pondrá en contacto a la brevedad.</p>
                 <form method="POST">
                     % if context.get('send_email_error', None):
