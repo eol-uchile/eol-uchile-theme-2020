@@ -37,12 +37,12 @@
       <img src="${static.url('eol-uchile-2020/images/logos/0vti.jpg')}" class="img-fluid mx-auto" alt="VTI" style="max-height: 70px;">
     </div>
   </div>
-  <p class="text-center"><small>¿Necesitas Ayuda? Contáctate con la <a href="/contact_form">Mesa de Ayuda de EOL</a></small></p>
+  <p class="text-center"><small>${_("¿Necesitas Ayuda? Contáctate con la ")}<a href="/contact_form">${_("Mesa de Ayuda de EOL")}</a></small></p>
   <p class="text-center">
     <small class="text-muted">
       ${footer['copyright']}
       </br>
-      <a href="https://www.uchile.cl/portal/informacion-general/174996/politica-de-privacidad-de-la-informacion-y-datos-personales" target="_blank">Política de privacidad</a>
+      <a href="https://www.uchile.cl/portal/informacion-general/174996/politica-de-privacidad-de-la-informacion-y-datos-personales" target="_blank">${_("Política de privacidad")}</a>
       % if icp_license_info.get('icp_license'):
         ${u" | {text}".format(text=icp_license_info.get('text'))}
         <a href="${icp_license_info.get('icp_license_link', '#')}">
