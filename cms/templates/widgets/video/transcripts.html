@@ -1,0 +1,105 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='../../static_content.html'/>
+<%page args="tabName"/>
+
+<%
+import json
+%>
+
+## include js templates:
+
+% for template_name in ["metadata-videolist-entry", "file-upload"]:
+    <script type="text/template" id="${template_name}">
+        <%static:include path="js/video/transcripts/${template_name}.underscore" />
+    </script>
+% endfor
+
+% for template_name in ["transcripts-found", "transcripts-uploaded", "transcripts-use-existing", "transcripts-not-found", "transcripts-replace", "transcripts-import", "transcripts-choose"]:
+    <script type="text/template" id="${template_name}">
+        <%static:include path="js/video/transcripts/messages/${template_name}.underscore" />
+    </script>
+% endfor
+% for template_name in ["metadata-translations-entry", "metadata-translations-item"]:
+    <script id="${template_name}" type="text/template">
+        <%static:include path="js/video/${template_name}.underscore" />
+    </script>
+% endfor
+
+<div class="wrapper-comp-settings basic_metadata_edit" data-metadata='${json.dumps(transcripts_basic_tab_metadata) | h}' data-eol='${json.dumps(eol_videolist) | h}'></div>
+
+<script type="text/javascript">
+    require(
+        [
+            "domReady!",
+            "jquery",
+            "js/views/video/transcripts/editor"
+        ],
+
+        function(doc, $, Editor) {
+            var transcripts = new Editor({
+                    el: $('#editor-tab-${html_id}').find('.basic_metadata_edit')
+                }),
+                storage = TabsEditingDescriptor.getStorage();
+
+            TabsEditingDescriptor.Model.addModelUpdate(
+                '${html_id}',
+                '${tabName}',
+                function () {
+                    // Advanced, Save
+                    metadataEditor = storage.MetadataEditor;
+
+                    if (metadataEditor) {
+                        transcripts.syncAdvancedTab(metadataEditor.collection, metadataEditor);
+                    }
+                }
+            );
+
+            TabsEditingDescriptor.Model.addOnSwitch(
+                '${html_id}',
+                '${tabName}',
+                function () {
+                    // Basic
+                    metadataEditor = storage.MetadataEditor;
+
+                    if (metadataEditor) {
+                        transcripts.syncBasicTab(metadataEditor.collection, metadataEditor);
+                    }
+                }
+            );
+            //EOL
+            var metadata = $('#editor-tab-${html_id}').find('.basic_metadata_edit');
+            metadata.find('ul')[0].children[0].children[0].children[1].style.display = 'none';
+            metadata.find('ul')[0].children[0].children[0].children[2].style.display = 'none';
+            var datos = (typeof metadata.data('eol') === 'string') ? JSON.parse(metadata.data('eol')) : metadata.data('eol');
+            var eol_select = document.createElement("SELECT");
+            eol_select.setAttribute("id", "eol-video-${html_id}");
+            var eol_option_default = document.createElement("option");
+            eol_option_default.selected = true;
+            var eol_text_default = document.createTextNode('${_("Seleccione un video")}');
+            eol_option_default.appendChild(eol_text_default);
+            eol_select.appendChild(eol_option_default);
+            var edx_video_id = datos.edx_video_id;
+            datos.data.forEach(video => {
+                var eol_option = document.createElement("option");
+                eol_option.setAttribute("value", video.edx_video_id);
+                if(video.edx_video_id == edx_video_id){
+                    eol_option_default.selected = false;
+                    eol_option.selected = true;
+                }
+                var eol_text = document.createTextNode(video.display_name);
+                eol_option.appendChild(eol_text);
+                eol_select.appendChild(eol_option);
+            });
+
+            metadata.find('ul')[0].children[0].children[0].appendChild(eol_select);        
+            $('#eol-video-${html_id}').bind('change', function(e) {
+                e.target.parentElement.children[1].value = e.target.value
+                transcripts.handleFieldChanged();
+                var id_input = '#'+ e.target.parentElement.children[1].id;
+                var elem_input = $(id_input);
+                elem_input.trigger('change')
+            });
+            //EOl END
+        }
+    );
+</script>
