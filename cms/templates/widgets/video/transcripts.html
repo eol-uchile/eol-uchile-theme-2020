@@ -68,17 +68,27 @@ import json
             );
             //EOL
             var metadata = $('#editor-tab-${html_id}').find('.basic_metadata_edit');
+            metadata.find('ul')[0].children[0].children[0].children[0].innerText = '${_("Seleccione un video")}';
+            metadata.find('ul')[0].children[0].children[1].innerText = '${_("Seleccione un video previamente cargado al curso o inserte un enlace externo de YouTube en el campo correspondiente.")}';
             metadata.find('ul')[0].children[0].children[0].children[1].style.display = 'none';
             metadata.find('ul')[0].children[0].children[0].children[2].style.display = 'none';
             var datos = (typeof metadata.data('eol') === 'string') ? JSON.parse(metadata.data('eol')) : metadata.data('eol');
             var eol_select = document.createElement("SELECT");
             eol_select.setAttribute("id", "eol-video-${html_id}");
             var eol_option_default = document.createElement("option");
+            eol_option_default.setAttribute("value", '');
             eol_option_default.selected = true;
-            var eol_text_default = document.createTextNode('${_("Seleccione un video")}');
+            var eol_text_default = document.createTextNode('${_("Enlace externo de YouTube")}');
             eol_option_default.appendChild(eol_text_default);
             eol_select.appendChild(eol_option_default);
             var edx_video_id = datos.edx_video_id;
+            metadata.find('.metadata-videolist-enum')[0].children[0].innerText = '${_("Enlace externo de YouTube (URL de video por defecto)")}';
+            if (datos.edx_video_id != ""){
+                metadata.find('.metadata-videolist-enum')[0].style.display = 'none';
+            }
+            else{
+                metadata.find('.metadata-videolist-enum')[0].style.display = 'block';
+            }
             datos.data.forEach(video => {
                 var eol_option = document.createElement("option");
                 eol_option.setAttribute("value", video.edx_video_id);
@@ -91,13 +101,29 @@ import json
                 eol_select.appendChild(eol_option);
             });
 
-            metadata.find('ul')[0].children[0].children[0].appendChild(eol_select);        
+            metadata.find('ul')[0].children[0].children[0].appendChild(eol_select);
             $('#eol-video-${html_id}').bind('change', function(e) {
-                e.target.parentElement.children[1].value = e.target.value
-                transcripts.handleFieldChanged();
+                metadata.find('.videolist-url')[0].value = '';
+                if (e.target.value != ""){
+                    metadata.find('.metadata-videolist-enum')[0].style.display = 'none';
+                }
+                else{
+                    metadata.find('.metadata-videolist-enum')[0].style.display = 'block';
+                }
+                e.target.parentElement.children[1].value = e.target.value;
+                
+                var id_yt = '#'+ metadata.find('.videolist-url')[0].id;
+                var elem_yt = $(id_yt);
+                elem_yt.trigger('change');
+                
                 var id_input = '#'+ e.target.parentElement.children[1].id;
                 var elem_input = $(id_input);
-                elem_input.trigger('change')
+                elem_input.trigger('change');
+
+                transcripts.settingsView.views.video_url.model.attributes.value = [metadata.find('.videolist-url')[0].value];
+                transcripts.settingsView.views.video_url.model.attributes.explicitly_set = true;
+                transcripts.settingsView.views.video_url.model.changed.value = [metadata.find('.videolist-url')[0].value];
+                transcripts.handleFieldChanged();
             });
             //EOl END
         }
