@@ -25,8 +25,11 @@ import json
     </script>
 % endfor
 
-<div class="wrapper-comp-settings basic_metadata_edit" data-metadata='${json.dumps(transcripts_basic_tab_metadata) | h}' data-eol='${json.dumps(eol_videolist) | h}'></div>
-
+%if eol_videolist:
+    <div class="wrapper-comp-settings basic_metadata_edit" data-metadata='${json.dumps(transcripts_basic_tab_metadata) | h}' data-eol='${json.dumps(eol_videolist) | h}'></div>
+%else:
+    <div class="wrapper-comp-settings basic_metadata_edit" data-metadata='${json.dumps(transcripts_basic_tab_metadata) | h}' data-eol="${json.dumps({'edx_video_id':'', 'data':[]}) | h}"></div>
+%endif
 <script type="text/javascript">
     require(
         [
