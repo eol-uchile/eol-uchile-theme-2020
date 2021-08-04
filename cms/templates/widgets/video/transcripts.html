@@ -86,24 +86,25 @@ import json
             eol_select.appendChild(eol_option_default);
             var edx_video_id = datos.edx_video_id;
             metadata.find('.metadata-videolist-enum')[0].children[0].innerText = '${_("Enlace externo de YouTube (URL de video por defecto)")}';
-            if (datos.edx_video_id != ""){
-                metadata.find('.metadata-videolist-enum')[0].style.display = 'none';
-            }
-            else{
-                metadata.find('.metadata-videolist-enum')[0].style.display = 'block';
-            }
+            var pre_exists_id = true;
             datos.data.forEach(video => {
                 var eol_option = document.createElement("option");
                 eol_option.setAttribute("value", video.edx_video_id);
                 if(video.edx_video_id == edx_video_id){
                     eol_option_default.selected = false;
                     eol_option.selected = true;
+                    pre_exists_id = false;
                 }
                 var eol_text = document.createTextNode(video.display_name);
                 eol_option.appendChild(eol_text);
                 eol_select.appendChild(eol_option);
             });
-
+            if (pre_exists_id){
+                metadata.find('.metadata-videolist-enum')[0].style.display = 'block';
+            }
+            else{
+                metadata.find('.metadata-videolist-enum')[0].style.display = 'none';
+            }
             metadata.find('ul')[0].children[0].children[0].appendChild(eol_select);
             $('#eol-video-${html_id}').bind('change', function(e) {
                 metadata.find('.videolist-url')[0].value = '';
