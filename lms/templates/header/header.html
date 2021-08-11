@@ -41,7 +41,26 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     catch(e){window.attachEvent("onload", $buo_f)}
   </script>
 % endif
-
+<style>
+    .alert-eol {
+        min-height: 25px;
+        line-height: 25px;
+        text-align: center;
+        background-color: hsl(19deg 92% 59%);
+        color: white;
+        border-bottom: 1px solid black;
+    }
+    .alert-eol-text{
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+</style>
+<div class="alert-eol">
+    <span class="alert-eol-text">
+        Durante el día Jueves 12 de Agosto a las 10:50 se realizará una mantención de la plataforma, cuyo tiempo estimado es de 30 minutos. <b>Durante ese periodo la plataforma no estará disponible.</b>
+    </span>
+</div>
 <nav class="eol-header-container eol-header navbar navbar-expand-xl navbar-light bg-white pt-0">
     % if use_cookie_banner:
         ${static.renderReact(
