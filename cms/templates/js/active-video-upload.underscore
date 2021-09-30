@@ -1,0 +1,13 @@
+<h4 class="video-detail-name"><%- fileName %></h4>
+<progress class="video-detail-progress" value="<%- progress %>"></progress>
+<div class="video-upload-status">
+    <span class="icon alert-icon fa fa-warning upload-failure" aria-hidden="true"></span>
+    <span class="video-detail-status"><%- gettext(status) %></span>
+    <span class="video-detail-status" style="color:red;display:inline-block;"><%- gettext("Una vez subido, espere 10 minutos para vídeos de tamaño entre 100 mb y 500 mb y actualice la página.") %><br><%- gettext("Para vídeos de gran tamaño, el procesamiento en Vimeo, tomará mayor tiempo, por ejemplo, vídeos de 1 Gb espere 60 minutos y actualice la página.") %></span>
+    <% if (failureMessage) { %>
+        <a href="#" class="more-details-action">
+            <%- gettext("Read More") %>
+            <span class="sr"><%- gettext("details about the failure") %></span>
+        </a>
+    <% } %>
+</div>
