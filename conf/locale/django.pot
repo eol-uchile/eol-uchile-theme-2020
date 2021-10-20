@@ -1,0 +1,2695 @@
+# Translations template for PROJECT.
+# Copyright (C) 2021 eduNEXT
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: support@edunext.co\n"
+"POT-Creation-Date: 2021-10-20 19:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: cms/templates/container.html:120
+#: cms/templates/js/course-outline.underscore:125
+#: cms/templates/js/course-outline.underscore:130
+msgid "Display Name"
+msgstr ""
+
+#: cms/templates/container.html:127 cms/templates/container.html:128
+#: cms/templates/course_outline.html:177 cms/templates/course_outline.html:178
+msgid "Page Actions"
+msgstr ""
+
+#: cms/templates/container.html:132
+msgid "Open the courseware in the LMS"
+msgstr ""
+
+#: cms/templates/container.html:133
+msgid "View Live Version"
+msgstr ""
+
+#: cms/templates/container.html:137
+msgid "Preview the courseware in the LMS"
+msgstr ""
+
+#: cms/templates/container.html:138
+msgid "Preview"
+msgstr ""
+
+#: cms/templates/container.html:145 cms/templates/studio_xblock_wrapper.html:80
+msgid "Edit"
+msgstr ""
+
+#: cms/templates/container.html:164 cms/templates/course_outline.html:259
+msgid "Loading"
+msgstr ""
+
+#: cms/templates/container.html:170
+msgid "Adding components"
+msgstr ""
+
+#: cms/templates/container.html:171
+msgid ""
+"Select a component type under {strong_start}Add New "
+"Component{strong_end}. Then select a template."
+msgstr ""
+
+#: cms/templates/container.html:175
+msgid ""
+"The new component is added at the bottom of the page or group. You can "
+"then edit and move the component."
+msgstr ""
+
+#: cms/templates/container.html:176
+msgid "Editing components"
+msgstr ""
+
+#: cms/templates/container.html:177
+msgid ""
+"Click the {strong_start}Edit{strong_end} icon in a component to edit its "
+"content."
+msgstr ""
+
+#: cms/templates/container.html:181
+msgid "Reorganizing components"
+msgstr ""
+
+#: cms/templates/container.html:182
+msgid "Drag components to new locations within this component."
+msgstr ""
+
+#: cms/templates/container.html:183
+msgid "For content experiments, you can drag components to other groups."
+msgstr ""
+
+#: cms/templates/container.html:184
+msgid "Working with content experiments"
+msgstr ""
+
+#: cms/templates/container.html:185
+msgid ""
+"Confirm that you have properly configured content in each of your "
+"experiment groups."
+msgstr ""
+
+#: cms/templates/container.html:188
+msgid "Learn more about component containers"
+msgstr ""
+
+#: cms/templates/container.html:194
+msgid "Unit Location"
+msgstr ""
+
+#: cms/templates/container.html:196
+msgid "Location ID"
+msgstr ""
+
+#: cms/templates/container.html:199
+msgid ""
+"To create a link to this unit from an HTML component in this course, "
+"enter \"/jump_to_id/<location ID>\" as the URL value."
+msgstr ""
+
+#: cms/templates/course_outline.html:15 cms/templates/course_outline.html:174
+#: cms/templates/course_outline.html:254
+msgid "Course Outline"
+msgstr ""
+
+#: cms/templates/course_outline.html:57
+msgid "This course was created as a re-run. Some manual configuration is needed."
+msgstr ""
+
+#: cms/templates/course_outline.html:59
+msgid ""
+"No course content is currently visible, and no learners are enrolled. Be "
+"sure to review and reset all dates, including the Course Start Date; set "
+"up the course team; review course updates and other assets for dated "
+"material; and seed the discussions and wiki."
+msgstr ""
+
+#: cms/templates/course_outline.html:66
+msgid "Dismiss"
+msgstr ""
+
+#: cms/templates/course_outline.html:77
+msgid "Warning"
+msgstr ""
+
+#: cms/templates/course_outline.html:80
+msgid "This course uses features that are no longer supported."
+msgstr ""
+
+#: cms/templates/course_outline.html:84
+msgid "You must delete or replace the following components."
+msgstr ""
+
+#: cms/templates/course_outline.html:85
+msgid "Unsupported Components"
+msgstr ""
+
+#: cms/templates/course_outline.html:92
+msgid "Deprecated Component"
+msgstr ""
+
+#: cms/templates/course_outline.html:104
+msgid ""
+"To avoid errors, {platform_name} strongly recommends that you remove "
+"unsupported features from the course advanced settings. To do this, go to"
+" the {link_start}Advanced Settings page{link_end}, locate the \"Advanced "
+"Module List\" setting, and then delete the following modules from the "
+"list."
+msgstr ""
+
+#: cms/templates/course_outline.html:110
+msgid "Unsupported Advance Modules"
+msgstr ""
+
+#: cms/templates/course_outline.html:130
+#: cms/templates/settings_advanced.html:43
+msgid "This course has proctored exam settings that are incomplete or invalid."
+msgstr ""
+
+#: cms/templates/course_outline.html:134
+msgid ""
+"To update these settings go to the {link_start}Proctored Exam Settings "
+"page{link_end}."
+msgstr ""
+
+#: cms/templates/course_outline.html:142
+msgid ""
+"To update these settings go to the {link_start}Advanced Settings "
+"page{link_end}."
+msgstr ""
+
+#: cms/templates/course_outline.html:149
+#: cms/templates/settings_advanced.html:59
+msgid "Proctoring Settings Errors"
+msgstr ""
+
+#: cms/templates/course_outline.html:173
+msgid "Content"
+msgstr ""
+
+#: cms/templates/course_outline.html:181
+msgid "Section"
+msgstr ""
+
+#: cms/templates/course_outline.html:181
+msgid "Click to add a new section"
+msgstr ""
+
+#: cms/templates/course_outline.html:182
+msgid "New Section"
+msgstr ""
+
+#: cms/templates/course_outline.html:187
+msgid "Reindex current course"
+msgstr ""
+
+#: cms/templates/course_outline.html:188
+msgid "Reindex"
+msgstr ""
+
+#: cms/templates/course_outline.html:194
+msgid "Collapse All Sections"
+msgstr ""
+
+#: cms/templates/course_outline.html:195
+msgid "Expand All Sections"
+msgstr ""
+
+#: cms/templates/course_outline.html:200
+msgid "Click to open the courseware in the LMS in a new tab"
+msgstr ""
+
+#: cms/templates/course_outline.html:200
+msgid "View Live"
+msgstr ""
+
+#: cms/templates/course_outline.html:264
+msgid "Creating your course organization"
+msgstr ""
+
+#: cms/templates/course_outline.html:265
+msgid "You add sections, subsections, and units directly in the outline."
+msgstr ""
+
+#: cms/templates/course_outline.html:266
+msgid ""
+"Create a section, then add subsections and units. Open a unit to add "
+"course components."
+msgstr ""
+
+#: cms/templates/course_outline.html:269
+msgid "Reorganizing your course"
+msgstr ""
+
+#: cms/templates/course_outline.html:270
+msgid "Drag sections, subsections, and units to new locations in the outline."
+msgstr ""
+
+#: cms/templates/course_outline.html:272
+msgid "Learn more about the course outline"
+msgstr ""
+
+#: cms/templates/course_outline.html:276
+msgid "Setting release dates and grading policies"
+msgstr ""
+
+#: cms/templates/course_outline.html:277
+msgid ""
+"Select the Configure icon for a section or subsection to set its release "
+"date. When you configure a subsection, you can also set the grading "
+"policy and due date."
+msgstr ""
+
+#: cms/templates/course_outline.html:279
+msgid "Learn more about grading policy settings"
+msgstr ""
+
+#: cms/templates/course_outline.html:283
+msgid "Changing the content learners see"
+msgstr ""
+
+#: cms/templates/course_outline.html:284
+msgid ""
+"To publish draft content, select the Publish icon for a section, "
+"subsection, or unit."
+msgstr ""
+
+#: cms/templates/course_outline.html:285
+msgid ""
+"To make a section, subsection, or unit unavailable to learners, select "
+"the Configure icon for that level, then select the appropriate "
+"{em_start}Hide{em_end} option. Grades for hidden sections, subsections, "
+"and units are not included in grade calculations."
+msgstr ""
+
+#: cms/templates/course_outline.html:286
+msgid ""
+"To hide the content of a subsection from learners after the subsection "
+"due date has passed, select the Configure icon for a subsection, then "
+"select {em_start}Hide content after due date{em_end}. Grades for the "
+"subsection remain included in grade calculations."
+msgstr ""
+
+#: cms/templates/course_outline.html:288
+msgid "Learn more about content visibility settings"
+msgstr ""
+
+#: cms/templates/settings_advanced.html:15
+#: cms/templates/settings_advanced.html:81
+msgid "Advanced Settings"
+msgstr ""
+
+#: cms/templates/settings_advanced.html:47
+msgid ""
+"You will be unable to make changes until the errors are resolved. To "
+"update these settings go to the {link_start}Proctored Exam Settings "
+"page{link_end}."
+msgstr ""
+
+#: cms/templates/settings_advanced.html:55
+msgid ""
+"You will be unable to make changes until the following settings are "
+"updated on the page below."
+msgstr ""
+
+#: cms/templates/settings_advanced.html:80
+msgid "Settings"
+msgstr ""
+
+#: cms/templates/settings_advanced.html:92
+msgid "Your policy changes have been saved."
+msgstr ""
+
+#: cms/templates/settings_advanced.html:96
+msgid "There was an error saving your information. Please see below."
+msgstr ""
+
+#: cms/templates/settings_advanced.html:101
+msgid "Manual Policy Definition"
+msgstr ""
+
+#: cms/templates/settings_advanced.html:105
+msgid ""
+"{strong_start}Warning{strong_end}: Do not modify these policies unless "
+"you are familiar with their purpose."
+msgstr ""
+
+#: cms/templates/settings_advanced.html:115
+msgid "Show Deprecated Settings"
+msgstr ""
+
+#: cms/templates/settings_advanced.html:128
+msgid "What do advanced settings do?"
+msgstr ""
+
+#: cms/templates/settings_advanced.html:129
+msgid ""
+"Advanced settings control specific course functionality. On this page, "
+"you can edit manual policies, which are JSON-based key and value pairs "
+"that control specific course settings."
+msgstr ""
+
+#: cms/templates/settings_advanced.html:131
+msgid ""
+"Any policies you modify here override all other information you've "
+"defined elsewhere in {studio_name}. Do not edit policies unless you are "
+"familiar with both their purpose and syntax."
+msgstr ""
+
+#: cms/templates/settings_advanced.html:133
+msgid ""
+"{em_start}Note:{em_end} When you enter strings as policy values, ensure "
+"that you use double quotation marks (\") around the string. Do not use "
+"single quotation marks (')."
+msgstr ""
+
+#: cms/templates/settings_advanced.html:147
+#: cms/templates/settings_advanced.html:148
+msgid "Other Course Settings"
+msgstr ""
+
+#: cms/templates/settings_advanced.html:150
+msgid "Details & Schedule"
+msgstr ""
+
+#: cms/templates/settings_advanced.html:151
+msgid "Grading"
+msgstr ""
+
+#: cms/templates/settings_advanced.html:152
+msgid "Course Team"
+msgstr ""
+
+#: cms/templates/settings_advanced.html:153
+msgid "Group Configurations"
+msgstr ""
+
+#: cms/templates/settings_advanced.html:155
+msgid "Proctored Exam Settings"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html:60
+#: cms/templates/studio_xblock_wrapper.html:62
+msgid "Expand or Collapse"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html:85
+msgid "Access Settings"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html:87
+msgid "Set Access"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:162
+#: cms/templates/js/course-outline.underscore:164
+#: cms/templates/studio_xblock_wrapper.html:93
+#: cms/templates/studio_xblock_wrapper.html:95
+msgid "Duplicar a otro Curso"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:168
+#: cms/templates/js/course-outline.underscore:170
+#: cms/templates/studio_xblock_wrapper.html:99
+#: cms/templates/studio_xblock_wrapper.html:101
+msgid "Duplicate"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html:107
+#: cms/templates/studio_xblock_wrapper.html:112
+msgid "Move"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:176
+#: cms/templates/js/course-outline.underscore:178
+#: cms/templates/studio_xblock_wrapper.html:120
+#: cms/templates/studio_xblock_wrapper.html:122
+msgid "Delete"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:184
+#: cms/templates/js/course-outline.underscore:186
+#: cms/templates/studio_xblock_wrapper.html:128
+msgid "Drag to reorder"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html:134
+msgid "Details"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html:146
+msgid "This block contains multiple components."
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html:151
+msgid "View"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html:176
+msgid "Location:"
+msgstr ""
+
+#: cms/templates/advanced_settings/settings-simplified.html:21
+msgid "Lista de Módulos Avanzados"
+msgstr ""
+
+#: cms/templates/advanced_settings/settings-simplified.html:32
+msgid ""
+"No se ha configurado la lista de módulos avanzados. Contactar con la "
+"administración de la plataforma."
+msgstr ""
+
+#: cms/templates/advanced_settings/settings-simplified.html:34
+msgid "Seleccione los módulos avanzados para utilizar en el curso."
+msgstr ""
+
+#: cms/templates/advanced_settings/settings-simplified.html:41
+msgid "Configuraciones"
+msgstr ""
+
+#: cms/templates/advanced_settings/settings-simplified.html:45
+msgid "Habilitar exámenes supervisados y cronometrados"
+msgstr ""
+
+#: cms/templates/advanced_settings/settings-simplified.html:49
+msgid ""
+"Al habilitar, puede ocultar una subsección hasta que los estudiantes "
+"obtengan un puntaje mínimo en una subsección que sea prerequisito."
+msgstr ""
+
+#: cms/templates/advanced_settings/settings-simplified.html:50
+msgid "Habilitar prerequisitos de subsección"
+msgstr ""
+
+#: cms/templates/advanced_settings/settings-simplified.html:55
+msgid "Seleccione las configuraciones que desea habilitar en el curso."
+msgstr ""
+
+#: cms/templates/advanced_settings/settings-simplified.html:63
+msgid "Mostrar Configuraciones Avanzadas"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:40
+#, python-format
+msgid "Prerequisite: %(prereq_display_name)s"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:48
+msgid "Contains staff only content"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:54
+msgid "Unpublished changes to live content"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:56
+msgid "Unpublished units will not be released"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:58
+msgid "Unpublished changes to content that will release in the future"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:66
+msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:75
+msgid ""
+"Access to some content in this unit is restricted to specific groups of "
+"learners"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:80
+msgid "Ungraded"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:91
+msgid "Onboarding Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:93
+msgid "Practice proctored Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:95
+msgid "Proctored Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:99
+msgid "Timed Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:116
+#, python-format
+msgid "Collapse/Expand this %(xblock_type)s"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:139
+#: cms/templates/js/course-outline.underscore:140
+msgid "Proctoring Settings"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:146
+#: cms/templates/js/course-outline.underscore:148
+msgid "Publish"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:154
+#: cms/templates/js/course-outline.underscore:156
+msgid "Configure"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:204
+msgid "Release Status:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:209
+msgid "Released:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:212
+msgid "Scheduled:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:215
+msgid "Unscheduled"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:230
+msgid "Section Highlights"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:237
+#: cms/templates/js/course-outline.underscore:251
+msgid "Graded as:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:244
+#: cms/templates/js/course-outline.underscore:255
+msgid "Due:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:266
+msgid "Subsection is hidden after course end date"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:268
+msgid "Subsection is hidden after due date"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:290
+msgid "You haven't added any content to this course yet."
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:294
+#: cms/templates/js/course-outline.underscore:315
+#, python-format
+msgid "Click to add a new %(xblock_type)s"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:2
+msgid "Set as a Special Exam"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:4
+msgid "Exam Types"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:9
+msgid ""
+"This subsection was released to learners as a special exam, but was "
+"reverted back to a basic exam. You may not configure it as a special exam"
+" now. Contact edX Support for assistance."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:17
+msgid ""
+"This special exam has been released to learners. You may not convert it "
+"to another type of special exam. You may revert this subsection back to "
+"being a basic exam by selecting 'None', but you will NOT be able to "
+"configure it as a special exam in the future."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:23
+msgid "None"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:30
+msgid "Timed"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:32
+msgid ""
+"Use a timed exam to limit the time learners can spend on problems in this"
+" subsection. Learners must submit answers before the time expires. You "
+"can allow additional time for individual learners through the Instructor "
+"Dashboard."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:40
+msgid "Proctored"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:42
+msgid ""
+"Proctored exams are timed and they record video of each learner taking "
+"the exam. The videos are then reviewed to ensure that learners follow all"
+" examination rules."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:51
+msgid "Onboarding"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:53
+msgid ""
+"Use Onboarding to introduce learners to proctoring, verify their "
+"identity, and create an onboarding profile. Learners must complete the "
+"onboarding profile step prior to taking a proctored exam. Profile reviews"
+" take 2+ business days."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:60
+msgid "Practice Proctored"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:62
+msgid ""
+"Use a practice proctored exam to introduce learners to the proctoring "
+"tools and processes. Results of a practice exam do not affect a learner's"
+" grade."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:70
+msgid "Time Allotted (HH:MM):"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:74
+msgid ""
+"Select a time allotment for the exam. If it is over 24 hours, type in the"
+" amount of time. You can grant individual learners extra time to complete"
+" the exam through the Instructor Dashboard."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:80
+msgid "Review Rules"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:89
+msgid ""
+"Specify any rules or rule exceptions that the proctoring review team "
+"should enforce when reviewing the videos. For example, you could specify "
+"that calculators are allowed. These specified rules are visible to "
+"learners before the learners start the exam, along with the "
+"{linkStart}general proctored exam rules{linkEnd}."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:93
+msgid "General Proctored Exam Rules"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:98
+msgid ""
+"Specify any rules or rule exceptions that the proctoring review team "
+"should enforce when reviewing the videos. For example, you could specify "
+"that calculators are allowed. These specified rules are visible to "
+"learners before the learners start the exam."
+msgstr ""
+
+#: lms/templates/course.html:32
+msgid "Aprender más"
+msgstr ""
+
+#: lms/templates/course.html:44
+msgid "Curso finalizado"
+msgstr ""
+
+#: lms/templates/course.html:46
+msgid "Starts"
+msgstr ""
+
+#: lms/templates/course.html:48
+msgid "Starts: {date}"
+msgstr ""
+
+#: lms/templates/courses_list.html:24
+msgid "No existen cursos"
+msgstr ""
+
+#: lms/templates/courses_list.html:45
+msgid "View all Courses"
+msgstr ""
+
+#: lms/templates/dashboard.html:30
+msgid "Dashboard"
+msgstr ""
+
+#: lms/templates/dashboard.html:222
+msgid "results successfully populated,"
+msgstr ""
+
+#: lms/templates/dashboard.html:224
+msgid "Click to load all enrolled courses"
+msgstr ""
+
+#: lms/templates/dashboard.html:233
+msgid "No está inscrito en ningún curso activo aún."
+msgstr ""
+
+#: lms/templates/dashboard.html:239
+msgid "Explore courses"
+msgstr ""
+
+#: lms/templates/dashboard.html:243
+msgid "Activate your account!"
+msgstr ""
+
+#: lms/templates/dashboard.html:251
+msgid "Course-loading errors"
+msgstr ""
+
+#: lms/templates/dashboard.html:277
+msgid "Search Your Courses"
+msgstr ""
+
+#: lms/templates/dashboard.html:280
+msgid "Search"
+msgstr ""
+
+#: lms/templates/dashboard.html:283
+msgid "Clear search"
+msgstr ""
+
+#: lms/templates/dashboard.html:294
+msgid "Skip to list of announcements"
+msgstr ""
+
+#: lms/templates/dashboard.html:304
+msgid "Account Status Info"
+msgstr ""
+
+#: lms/templates/dashboard.html:325 lms/templates/dashboard.html:357
+msgid "Close"
+msgstr ""
+
+#: lms/templates/dashboard.html:331
+msgid "Email Settings for {course_number}"
+msgstr ""
+
+#: lms/templates/dashboard.html:334 lms/templates/dashboard.html:367
+msgid "window open"
+msgstr ""
+
+#: lms/templates/dashboard.html:337
+msgid "No se reembolsará su inscripción"
+msgstr ""
+
+#: lms/templates/dashboard.html:343
+msgid "Receive course emails"
+msgstr ""
+
+#: lms/templates/dashboard.html:345
+msgid "Save Settings"
+msgstr ""
+
+#: lms/templates/dashboard.html:377
+#: lms/templates/dashboard/_dashboard_course_listing.html:283
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:33
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:86
+msgid "Unenroll"
+msgstr ""
+
+#: lms/templates/footer.html:40
+msgid "¿Necesitas Ayuda? Contáctate con la "
+msgstr ""
+
+#: lms/templates/footer.html:40 lms/templates/static_templates/faq.html:90
+msgid "Mesa de Ayuda de EOL"
+msgstr ""
+
+#: lms/templates/footer.html:45
+msgid "Política de privacidad"
+msgstr ""
+
+#: lms/templates/main.html:184
+msgid "Skip to main content"
+msgstr ""
+
+#: lms/templates/certificates/validate_certificates.html:22
+#: lms/templates/header/navbar-not-authenticated.html:31
+msgid "Validación de certificados"
+msgstr ""
+
+#: lms/templates/certificates/validate_certificates.html:26
+msgid "ID de certificado"
+msgstr ""
+
+#: lms/templates/certificates/validate_certificates.html:35
+msgid "Certificado no encontrado"
+msgstr ""
+
+#: lms/templates/certificates/validate_certificates.html:38
+msgid "Enviar"
+msgstr ""
+
+#: lms/templates/course_experience/course-outline-fragment.html:79
+msgid "Expand All"
+msgstr ""
+
+#: lms/templates/course_experience/course-outline-fragment.html:98
+#: lms/templates/course_experience/course-outline-fragment.html:151
+#: lms/templates/course_experience/course-outline-fragment.html:245
+msgid "Completed"
+msgstr ""
+
+#: lms/templates/course_experience/course-outline-fragment.html:132
+msgid "Prerequisite: "
+msgstr ""
+
+#: lms/templates/course_experience/course-outline-fragment.html:167
+#: lms/templates/courseware/progress.html:196
+msgid "due {date}"
+msgstr ""
+
+#: lms/templates/course_experience/course-outline-fragment.html:169
+msgid "{subsection_format} due {{date}}"
+msgstr ""
+
+#: lms/templates/course_experience/course-outline-fragment.html:207
+msgid "This content is graded"
+msgstr ""
+
+#: lms/templates/course_modes/_upgrade_button.html:14
+msgid "Pursue the Verified Track"
+msgstr ""
+
+#: lms/templates/course_modes/_upgrade_button.html:17
+msgid "Pursue a Verified Certificate"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:45
+msgid "An error occurred. Please try again later."
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:100
+msgid "View About Page in studio"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:104
+msgid "You are enrolled in this course"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:107
+#: lms/templates/courseware/course_about.html:124
+msgid "View Course"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:111
+msgid "Course is full"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:117
+msgid "La inscripción a este curso es sólo por invitación"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:120
+msgid "Enrollment is Closed"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:141
+msgid "Inscribirse"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:164
+msgid "Course Number"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:169
+msgid "Classes Start"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:177
+msgid "Classes End"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:185
+msgid "Estimated Effort"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:190
+#: lms/templates/courseware/course_about.html:192
+msgid "Free"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:198
+msgid "Price"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:206
+msgid "Prerequisites"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:210
+#: lms/templates/dashboard/_dashboard_course_listing.html:436
+msgid ""
+"You must successfully complete {link_start}{prc_display}{link_end} before"
+" you begin this course."
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:221
+msgid "Requirements"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:269
+#: lms/templates/header/navbar-not-authenticated.html:28
+msgid "Preguntas frecuentes"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:285
+msgctxt "self"
+msgid "Enroll"
+msgstr ""
+
+#: lms/templates/courseware/course_about.html:290
+msgctxt "self"
+msgid "enroll"
+msgstr ""
+
+#: lms/templates/courseware/courses.html:32
+msgid "Courses"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:33
+msgid "{course_number} Progress"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:61
+msgid "View Grading in studio"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:65
+msgid "Course Progress for '{username}' ({email})"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:84
+msgid "View Certificate"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:84
+#: lms/templates/courseware/progress.html:86
+msgid "Opens in a new browser window"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:86
+msgid "Download Your Certificate"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:88
+msgid "Request Certificate"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:103
+msgid "Requirements for Course Credit"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:106
+msgid "{student_name}, you are no longer eligible for credit in this course."
+msgstr ""
+
+#: lms/templates/courseware/progress.html:109
+msgid ""
+"{student_name}, you have met the requirements for credit in this course. "
+"{a_start}Go to your dashboard{a_end} to purchase course credit."
+msgstr ""
+
+#: lms/templates/courseware/progress.html:116
+msgid "{student_name}, you have not yet met the requirements for credit."
+msgstr ""
+
+#: lms/templates/courseware/progress.html:121
+msgid "Information about course credit requirements"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:128
+msgid "display_name"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:136
+msgid "Verification Submitted"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:139
+msgid "Verification Failed"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:142
+msgid "Verification Declined"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:145
+msgid "Completed by {date}"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:148
+msgid "Upcoming"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:156
+msgid "Less"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:164
+msgid "Details for each chapter"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:183
+msgid "{earned} of {total} possible points"
+msgstr ""
+
+#: lms/templates/courseware/progress.html:203
+msgid "Suspicious activity detected during proctored exam review. Exam score 0."
+msgstr ""
+
+#: lms/templates/courseware/progress.html:205
+msgid "Section grade has been overridden."
+msgstr ""
+
+#: lms/templates/courseware/progress.html:212
+msgid "Problem Scores: "
+msgstr ""
+
+#: lms/templates/courseware/progress.html:212
+msgid "Practice Scores: "
+msgstr ""
+
+#: lms/templates/courseware/progress.html:221
+msgid "Problem scores are hidden until the due date."
+msgstr ""
+
+#: lms/templates/courseware/progress.html:223
+msgid "Practice scores are hidden until the due date."
+msgstr ""
+
+#: lms/templates/courseware/progress.html:227
+msgid "Problem scores are hidden."
+msgstr ""
+
+#: lms/templates/courseware/progress.html:229
+msgid "Practice scores are hidden."
+msgstr ""
+
+#: lms/templates/courseware/progress.html:235
+msgid "No problem scores in this section"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:40
+msgid "Your certificate will be available on or before {date}"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:50
+msgid "Your final grade:"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:56
+msgid "Grades will be finalized on {cert_available_date}"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:60
+msgid "Grade required for a {cert_name_short}:"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:62
+msgid "Grade required to pass this course:"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:67
+msgid ""
+"Your verified {cert_name_long} is being held pending confirmation that "
+"the issuance of your {cert_name_short} is in compliance with strict U.S. "
+"embargoes on Iran, Cuba, Syria and Sudan. If you think our system has "
+"mistakenly identified you as being connected with one of those countries,"
+" please let us know by contacting {email}. If you would like a refund on "
+"your {cert_name_long}, please contact our billing address {billing_email}"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:71
+msgid ""
+"Your {cert_name_long} is being held pending confirmation that the "
+"issuance of your {cert_name_short} is in compliance with strict U.S. "
+"embargoes on Iran, Cuba, Syria and Sudan. If you think our system has "
+"mistakenly identified you as being connected with one of those countries,"
+" please let us know by contacting {email}."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:75
+msgid ""
+"Your certificate was not issued because you do not have a current "
+"verified identity with {platform_name}. "
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:76
+msgid "Verify your identity now."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:88
+msgid "Your {cert_name_short} is Generating"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:94
+msgid "This link will open the certificate web view"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:95
+msgid "View {cert_name_short}"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:101
+#: lms/templates/dashboard/_dashboard_certificate_information.html:108
+msgid "This link will open/download a PDF document"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:102
+msgid "Download {cert_name_short} (PDF)"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:109
+msgid "Download Your {cert_name_short} (PDF)"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:115
+msgid ""
+"This link will open/download a PDF document of your verified "
+"{cert_name_long}."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:116
+msgid "Download Your ID Verified {cert_name_short} (PDF)"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:124
+msgid "Complete our course feedback survey"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:135
+msgid "Add Certificate to LinkedIn Profile"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:141
+msgid "Share on LinkedIn"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html:150
+msgid ""
+"Since we did not have a valid set of verification photos from you when "
+"your {cert_name_long} was generated, we could not grant you a verified "
+"{cert_name_short}. An honor code {cert_name_short} has been granted "
+"instead."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:73
+msgid "Course details"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:78
+msgid "{course_number} {course_name} Home Page"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:82
+#: lms/templates/dashboard/_dashboard_course_listing.html:87
+msgid "{course_number} {course_name} Cover Image"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:92
+msgid "Enrolled as: "
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:118
+msgid "Coming Soon"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:124
+msgid "Ended - {date}"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:127
+msgid "Started - {date}"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:133
+#: lms/templates/dashboard/_dashboard_course_listing.html:137
+msgid "Starts - {date}"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:148
+msgid "for {course_display_name}"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:156
+msgid "You must select a session by {expiration_date} to access the course."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:158
+msgid "You must select a session to access the course."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:171
+msgid "Change or Leave Session"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:179
+msgid "You can no longer change sessions."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:181
+msgid "You can change sessions until {entitlement_expiration_date}."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:191
+msgid "View Archived Course"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:211
+msgid "I'm taking {course_name} online with {facebook_brand}. Check it out!"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:214
+msgid "Share {course_name} on Facebook"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:217
+#: lms/templates/dashboard/_dashboard_course_listing.html:223
+msgid "Share on Facebook"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:233
+msgid "I'm taking {course_name} online with {twitter_brand}. Check it out!"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:236
+msgid "Share {course_name} on Twitter"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:239
+#: lms/templates/dashboard/_dashboard_course_listing.html:245
+msgid "Share on Twitter"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:263
+msgid "Course options for"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:270
+msgid "Available Actions"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:289
+msgid ""
+"You are enrolled by your institution and you should reach out to your "
+"institution to drop this course."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:295
+msgid "Email Settings"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:334
+msgid "Related Programs"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:363
+msgid "Verification not yet complete."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:364
+msgid "You only have {days} day left to verify for this course."
+msgid_plural "You only have {days} days left to verify for this course."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:370
+msgid "Almost there!"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:371
+msgid "You still need to verify for this course."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:375
+msgid "Verify Now"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:378
+msgid "You have submitted your verification information."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:379
+msgid ""
+"You will see a message on your dashboard when the verification process is"
+" complete (usually within 5-7 days)."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:381
+msgid "Your current verification will expire soon!"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:382
+msgid ""
+"You have submitted your reverification information. You will see a "
+"message on your dashboard when the verification process is complete "
+"(usually within 5-7 days)."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:384
+msgid "You have successfully verified your ID with edX"
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:386
+msgid "Your current verification is effective until {date}."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:389
+msgid "Your current verification will expire soon."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:392
+msgid ""
+"Your current verification will expire in {days} days. {start_link}Re-"
+"verify your identity now{end_link} using a webcam and a government-issued"
+" photo ID."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:407
+msgid ""
+"Pursue a {cert_name_long} to highlight the knowledge and skills you gain "
+"in this course."
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:409
+msgid ""
+"Es oficial. Es fácil de compartir. Es comprobado como motivador para la "
+"finalización del curso. "
+msgstr ""
+
+#: lms/templates/dashboard/_dashboard_course_listing.html:422
+msgid "Upgrade to Verified"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:7
+#: lms/templates/header/navbar-authenticated.html:51
+msgid "Formulario de Contacto"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:17
+#: lms/templates/header/navbar-not-authenticated.html:34
+msgid "Formulario de contacto"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:18
+msgid "Horario de atención: Lunes a Viernes de 9:00 a 18:00 Hrs"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:19
+msgid ""
+"Llena el formulario y nuestra mesa de ayuda se pondrá en contacto a la "
+"brevedad."
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:24
+msgid "¡Intente nuevamente!"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:24
+msgid "Hubo un problema al intentar generar su ticket."
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:24
+msgid "Si el problema persiste, envíe un correo a"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:30
+msgid "¡Error!"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:30
+msgid "Ingresa un {error} válido"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:36
+msgid "¡Consulta enviada!"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:36
+msgid "Espera a que nuestra mesa de ayuda se ponga en contacto contigo."
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:42
+msgid "Rut o Pasaporte"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:43
+msgid "Ingrese un rut válido (12345678-9), o pasaporte (P123456789)"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:46
+msgid "Nombre"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:47
+msgid "Ingresa tu nombre"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:50
+msgid "E-mail"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:51
+msgid "Ingresa tu correo electrónico"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:54
+msgid "Tipo de consulta"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:62
+msgid "Selecciona una opción"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:63
+msgid "General"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:64
+msgid "Dudas de un curso en específico"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:65
+msgid "Problemas con inicio de sesión"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:66
+msgid "Otro"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:70
+msgid "Nombre del curso"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:71
+msgid "Ingresa el nombre del curso con dudas"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:74
+msgid "Describa su problema"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:75
+msgid "Ingresa tus dudas y consultas en este campo de texto"
+msgstr ""
+
+#: lms/templates/eol_contact_form/contact.html:83
+msgid "Enviar Consulta"
+msgstr ""
+
+#: lms/templates/header/header.html:76
+#: lms/templates/header/navbar-logo-header.html:19
+msgid "{platform_name} Home Page"
+msgstr ""
+
+#: lms/templates/header/header.html:90
+msgid "Pantalla Completa"
+msgstr ""
+
+#: lms/templates/header/header.html:96
+msgid ""
+"{begin_strong}Warning:{end_strong} Your browser is not fully supported. "
+"We strongly recommend using {chrome_link} or {ff_link}."
+msgstr ""
+
+#: lms/templates/header/header.html:119
+#: lms/templates/widgets/footer-language-selector.html:24
+msgid "Choose Language"
+msgstr ""
+
+#: lms/templates/header/navbar-authenticated.html:33
+msgid "Mis Cursos"
+msgstr ""
+
+#: lms/templates/header/navbar-authenticated.html:36
+msgid "Explorar Cursos"
+msgstr ""
+
+#: lms/templates/header/navbar-authenticated.html:42
+msgid "Ayuda"
+msgstr ""
+
+#: lms/templates/header/navbar-authenticated.html:45
+#: lms/templates/static_templates/about.html:18
+msgid "¿Qué es EOL?"
+msgstr ""
+
+#: lms/templates/header/navbar-authenticated.html:47
+#: lms/templates/static_templates/faq.html:20
+msgid "Preguntas Frecuentes"
+msgstr ""
+
+#: lms/templates/header/navbar-authenticated.html:49
+msgid "Validación de Certificados"
+msgstr ""
+
+#: lms/templates/header/navbar-not-authenticated.html:25
+msgid "¿Qué es?"
+msgstr ""
+
+#: lms/templates/header/navbar-not-authenticated.html:40
+msgid "Iniciar sesión"
+msgstr ""
+
+#: lms/templates/header/user_dropdown.html:39
+msgid "Dashboard for:"
+msgstr ""
+
+#: lms/templates/header/user_dropdown.html:43
+msgid "Profile"
+msgstr ""
+
+#: lms/templates/header/user_dropdown.html:44
+msgid "Account"
+msgstr ""
+
+#: lms/templates/header/user_dropdown.html:46
+msgid "Order History"
+msgstr ""
+
+#: lms/templates/header/user_dropdown.html:49
+msgid "Sign Out"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:17
+msgid ""
+"Click to display the grading configuration for the course. The grading "
+"configuration is the breakdown of graded subsections of the course (such "
+"as exams and problem sets), and can be changed on the 'Grading' page "
+"(under 'Settings') in Studio."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:18
+msgid "Grading Configuration"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:23
+msgid "Click to download a CSV of anonymized student IDs:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:24
+msgid "Get Student Anonymized IDs CSV"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:30
+msgid "Reports"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:32
+msgid ""
+"For large courses, generating some reports can take several hours. When "
+"report generation is complete, a link that includes the date and time of "
+"generation appears in the table below. These reports are generated in the"
+" background, meaning it is OK to navigate away from this page while your "
+"report is generating."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:34
+msgid ""
+"Please be patient and do not click these buttons multiple times. Clicking"
+" these buttons multiple times will significantly slow the generation "
+"process."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:36
+msgid ""
+"Click to generate a CSV file of all students enrolled in this course, "
+"along with profile information such as email address and username:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:38
+msgid "Download profile information as a CSV"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:40
+msgid ""
+"Click to generate a CSV file that lists learners who can enroll in the "
+"course but have not yet done so."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:42
+msgid "Download a CSV of learners who can enroll"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:45
+msgid "Click to generate a CSV file of all proctored exam results in this course."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:46
+msgid "Generate Proctored Exam Results Report"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:50
+msgid "Click to generate a CSV file of survey results for this course."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:51
+msgid "Generate Survey Results Report"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:54
+msgid ""
+"Select a problem to generate a CSV file that lists all student answers to"
+" the problem. You also select a section or chapter to include results of "
+"all problems in that section or chapter."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:58
+msgid "NOTE"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:59
+msgid ""
+"The generated report is limited to {max_entries} responses. If you expect"
+" more than {max_entries} responses, try generating the report on a "
+"chapter-by-chapter, or problem-by-problem basis, or contact your site "
+"administrator to increase the limit."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:83
+msgid "Click to list certificates that are issued for this course:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:85
+msgid "View Certificates Issued"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:86
+msgid "Download CSV of Certificates Issued"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:93
+msgid ""
+"For smaller courses, click to list profile information for enrolled "
+"students directly on this page:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:94
+msgid "List enrolled students' profile information"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:99
+msgid "Click to generate a CSV grade report for all currently enrolled students."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:101
+msgid "Generate Grade Report"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:102
+msgid "Generate Problem Grade Report"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:103
+msgid "Generate ORA Data Report"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:109
+msgid "Reporte de preguntas"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:110
+msgid "Existen dos maneras para generar reportes de preguntas en formato CSV:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:111
+msgid "Modo resumen/compacto"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:111
+msgid ""
+"Genera un reporte de todos los bloques tipo pregunta mostrando los "
+"intentos, puntaje ganado y puntaje posible del bloque de cada estudiante."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:112
+msgid "Modo Completo"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:112
+msgid ""
+"Genera un reporte de todas las preguntas de los bloques tipo pregunta "
+"mostrando la pregunta, respuesta del estudiante, respuesta correcta, "
+"intentos, puntaje ganado y puntaje posible del bloque."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:113
+msgid "Reporte Modo Resumen"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:114
+msgid "Reporte Modo Completo"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:118
+msgid ""
+"Para una mejor visualización y manejo de los datos en el Excel, puede ver"
+" un mini tutorial haciendo"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:118
+msgid "click aqui"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:124
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:174
+msgid "Exportar Notas"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:127
+msgid ""
+"El porcentaje de aprobación no se configurado correctamente, contáctese "
+"con la mesa de ayuda(eol-ayuda@uchile.cl) para mas información."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:130
+msgid "El porcentaje de aprobación del curso es del:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:131
+msgid ""
+"Seleccione la escala de notas, presione el boton Exportar Notas y se "
+"generará un archivo Excel."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:132
+msgid ""
+"NOTA: Al seleccionar la escala '0 - 100' o '0.00 - 1.00' el puntaje "
+"obtenido de cada estudiante será transformado a un puntaje con porcentaje"
+" de aprobación del 50%"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:133
+msgid ""
+"NOTA: Al seleccionar el formato 'Completo' con escala de 1.0 - 7.0, cada "
+"evaluación estará en una escala de 0 - 100 y solamente el promedio final "
+"estará con la escala seleccionada."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:136
+msgid "Tipo de tarea:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:140
+msgid "Nota final del curso"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:149
+msgid "Escala de Nota:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:161
+msgid "Formato:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:165
+msgid "Completo"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:166
+msgid "Solo Promedio Final"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:177
+msgid "Para saber como subir estas notas a la plataforma U-Cursos"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:177
+msgid "presione aqui."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:189
+msgid "Reports Available for Download"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:191
+msgid ""
+"The reports listed below are available for download, identified by UTC "
+"date and time of generation."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:196
+msgid ""
+"The answer distribution report listed below is generated periodically by "
+"an automated background process. The report is cumulative, so answers "
+"submitted after the process starts are included in a subsequent report. "
+"The report is generated several times per day."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:202
+msgid ""
+"{strong_start}Note{strong_end}: {ul_start}{li_start}To keep student data "
+"secure, you cannot save or email these links for direct access. Copies of"
+" links expire within 5 minutes.{li_end}{li_start}Report files are deleted"
+" 90 days after generation. If you will need access to old reports, "
+"download and store the files, in accordance with your institution's data "
+"security policies.{li_end}{ul_end}"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:219
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:114
+msgid "Pending Tasks"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:221
+msgid "The status for any active tasks appears in a table below."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:13
+msgid "Inscripciones por Cuenta UChile"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:17
+msgid ""
+"Ingrese el RUT o Pasaporte de lo usuarios que desea inscribir. Si es más "
+"de uno, utilice saltos de lineas para diferenciar cada usuario."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:18
+msgid ""
+"Considere que los Pasaportes deben contener una 'P' al inicio (ejemplo: "
+"'PA123456')"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:19
+msgid "Máximo 50 rut."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:24
+msgid "Role of the users being enrolled."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:26
+msgid "Estudiante"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:27
+msgid "Equipo Docente"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:32
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:85
+msgctxt "someone"
+msgid "Enroll"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:41
+msgid "Batch Enrollment"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:43
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:121
+msgid "Enter email addresses and/or usernames separated by new lines or commas."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:44
+msgid ""
+"You will not get notification for emails that bounce, so please double-"
+"check spelling."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:45
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:123
+msgid "Email Addresses/Usernames"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:50
+msgid ""
+"Enter the reason why the students are to be manually enrolled or "
+"unenrolled."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:51
+msgid ""
+"This cannot be left blank and will be recorded and presented in "
+"Enrollment Reports."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:52
+msgid "Therefore, please give enough detail to account for this action."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:53
+msgid "Reason"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:59
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:128
+msgid "Auto Enroll"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:63
+msgid ""
+"If this option is {em_start}checked{em_end}, users who have not yet "
+"registered for {platform_name} will be automatically enrolled."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:64
+msgid ""
+"If this option is left {em_start}unchecked{em_end}, users who have not "
+"yet registered for {platform_name} will not be enrolled, but will be "
+"allowed to enroll once they make an account."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:66
+msgid "Checking this box has no effect if 'Unenroll' is selected."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:75
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:142
+msgid "Notify users by email"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:79
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:146
+msgid ""
+"If this option is {em_start}checked{em_end}, users will receive an email "
+"notification."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:96
+msgid "Register/Enroll Students"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:97
+msgid ""
+"To register and enroll a list of users in this course, choose a CSV file "
+"that contains the following columns in this exact order: email, username,"
+" name, and country. Please include one student per row and do not include"
+" any headers, footers, or blank lines."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:100
+msgid "Upload a CSV for bulk enrollment"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:107
+msgid "Upload CSV"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:119
+msgid "Batch Beta Tester Addition"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:122
+msgid ""
+"Note: Users must have an activated {platform_name} account before they "
+"can be enrolled as beta testers."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:132
+msgid ""
+"If this option is {em_start}checked{em_end}, users who have not enrolled "
+"in your course will be automatically enrolled."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:134
+msgid "Checking this box has no effect if 'Remove beta testers' is selected."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:152
+msgid "Add beta testers"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:153
+msgid "Remove beta testers"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:164
+msgid "Course Team Management"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:170
+msgid "Select a course team role:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:172
+msgid "Getting available lists..."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:180
+msgid ""
+"Staff cannot modify these lists. To manage course team membership, a "
+"course Admin must give you the Admin role to add Staff or Beta Testers, "
+"or the Discussion Admin role to add discussion moderators and TAs."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:189
+msgid "Staff"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:191
+msgid ""
+"Course team members with the Staff role help you manage your course. "
+"Staff can enroll and unenroll learners, as well as modify their grades "
+"and access all course data. Staff also have access to your course in "
+"Studio and Insights. You can only give course team roles to enrolled "
+"users."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:197
+msgid "Add Staff"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:203
+msgid "Admin"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:205
+msgid ""
+"Course team members with the Admin role help you manage your course. They"
+" can do all of the tasks that Staff can do, and can also add and remove "
+"the Staff and Admin roles, discussion moderation roles, and the beta "
+"tester role to manage course team membership. You can only give course "
+"team roles to enrolled users."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:212
+msgid "Add Admin"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:218
+msgid "Beta Testers"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:220
+msgid ""
+"Beta Testers can see course content before other learners. They can make "
+"sure that the content works, but have no additional privileges. You can "
+"only give course team roles to enrolled users."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:225
+msgid "Add Beta Tester"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:230
+msgid "Discussion Admins"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:232
+msgid ""
+"Discussion Admins can edit or delete any post, clear misuse flags, close "
+"and re-open threads, endorse responses, and see posts from all groups. "
+"Their posts are marked as 'staff'. They can also add and remove the "
+"discussion moderation roles to manage course team membership. Only "
+"enrolled users can be added as Discussion Admins."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:239
+msgid "Add Discussion Admin"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:244
+msgid "Course Data Researcher"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:246
+msgid "Course Data Researchers can access the data download tab."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:249
+msgid "Add Course Data Researcher"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:257
+msgid "Discussion Moderators"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:259
+msgid ""
+"Discussion Moderators can edit or delete any post, clear misuse flags, "
+"close and re-open threads, endorse responses, and see posts from all "
+"groups. Their posts are marked as 'staff'. They cannot manage course team"
+" membership by adding or removing discussion moderation roles. Only "
+"enrolled users can be added as Discussion Moderators."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:266
+msgid "Add Moderator"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:271
+msgid "Group Community TA"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:273
+msgid ""
+"Group Community TAs are members of the community who help course teams "
+"moderate discussions. Group Community TAs see only posts by learners in "
+"their assigned group. They can edit or delete posts, clear flags, close "
+"and re-open threads, and endorse responses, but only for posts by "
+"learners in their group. Their posts are marked as 'Community TA'. Only "
+"enrolled learners can be added as Group Community TAs."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:280
+msgid "Add Group Community TA"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:285
+msgid "Community TA"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:287
+msgid ""
+"Community TAs are members of the community who help course teams moderate"
+" discussions. They can see posts by learners in their assigned cohort or "
+"enrollment track, and can edit or delete posts, clear flags, close or re-"
+"open threads, and endorse responses. Their posts are marked as 'Community"
+" TA'. Only enrolled learners can be added as Community TAs."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:293
+msgid "Add Community TA"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:300
+msgid "CCX Coaches"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:302
+msgid ""
+"CCX Coaches are able to create their own Custom Courses based on this "
+"course, which they can use to provide personalized instruction to their "
+"own students based in this course material."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:307
+msgid "Add CCX Coach"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:10
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:14
+msgid "Send to:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:18
+msgid "Myself"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:22
+msgid "Staff and Administrators"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:26
+msgid "All Learners"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:35
+msgid "Cohort: "
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:39
+msgid "(Learners not explicitly assigned to a cohort)"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:54
+msgid "Learners in the {track_name} Track"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:64
+msgid "Subject: "
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:71
+msgid "(Maximum 128 characters)"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:76
+msgid "Responder a (opcional): "
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:83
+msgid ""
+"(Ingrese el/los correos al que los estudiantes podrán responder. Si "
+"ingresa más de un correo separelos con una coma, ejemplo: "
+"correo1@correo.cl, correo2@correo.cl)"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:88
+msgid "Message:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:97
+msgid ""
+"We recommend sending learners no more than one email message per week. "
+"Before you send your email, review the text carefully and send it to "
+"yourself first, so that you can preview the formatting and make sure "
+"embedded images and links work correctly."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:100
+msgid "CAUTION!"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:101
+msgid ""
+"When you select Send Email, your email message is added to the queue for "
+"sending, and cannot be cancelled."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:105
+msgid "Send Email"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:116
+msgid ""
+"Email actions run in the background. The status for any active tasks - "
+"including email tasks - appears in a table below."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:128
+msgid "Email Task History"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:130
+msgid "To see the content of previously sent emails, click this button:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:132
+msgid "Show Sent Email History"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:136
+msgid "To read a sent email message, click its subject."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:143
+msgid ""
+"To see the status for all email tasks submitted for this course, click "
+"this button:"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/send_email.html:145
+msgid "Show Email Task History"
+msgstr ""
+
+#: lms/templates/learner_dashboard/_dashboard_navigation_courses.html:26
+#: lms/templates/learner_dashboard/_dashboard_navigation_courses.html:64
+msgid "Cursos activos"
+msgstr ""
+
+#: lms/templates/learner_dashboard/_dashboard_navigation_courses.html:26
+#: lms/templates/learner_dashboard/_dashboard_navigation_courses.html:63
+msgid "Mostrar cursos archivados"
+msgstr ""
+
+#: lms/templates/learner_dashboard/_dashboard_navigation_courses.html:53
+msgid "Mostrar cursos activos"
+msgstr ""
+
+#: lms/templates/learner_dashboard/_dashboard_navigation_courses.html:54
+msgid "Cursos archivados"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:7
+msgid "About"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:19
+msgid ""
+"EOL es la plataforma de Educación Online de la Universidad de Chile, "
+"administrada por la Oficina de Educación Online de la Vicerrectoría de "
+"Tecnologías de la Información. Dicha Oficina es la encargada del "
+"desarrollo de capacidades técnicas, humanas y de nuevas tecnologías para "
+"educación, a fin de dar respuesta a las necesidades y particularidades de"
+" los organismos universitarios y unidades académicas vinculadas con la "
+"docencia."
+msgstr ""
+
+#: lms/templates/static_templates/about.html:20
+msgid ""
+"La Oficina de Educación Online busca contribuir a mejorar el proceso de "
+"enseñanza-aprendizaje de los estudiantes de la Universidad para todos los"
+" niveles de la educación: pregrado, postgrado y educación continua; para "
+"lo cual provee una plataforma para la gestión del aprendizaje (Learning "
+"Management System o LMS), así como también apoyo en diseño instruccional "
+"para educación online y en la producción de cursos en este formato."
+msgstr ""
+
+#: lms/templates/static_templates/about.html:21
+msgid "La plataforma LMS que ofrece EOL se basa en el proyecto de código abierto"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:21
+msgid ""
+"desarrollado inicialmente por la Universidad de Harvard y el MIT para la "
+"realización de cursos abiertos masivos en línea (Massive Open Online "
+"Course, MOOC). Esta característica lo hace estable y escalable para "
+"soportar decenas de miles de usuarios. Esta plataforma ha sido "
+"implementada y configurada específicamente para el manejo de los cursos "
+"de la Universidad, que son privados y con un grupo acotado de "
+"estudiantes. Para esto se han desarrollado componentes que permiten "
+"gestionar de mejor forma el aprendizaje en estas condiciones."
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid "Actualmente contamos con integración con la cuenta"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid "Pasaporte UChile"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid ""
+"que da acceso a todos los servicios de la Universidad, y con la "
+"plataforma de apoyo a la docencia"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid "desarrollada por"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid "Centro UCampus"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid "Adicionalmente EOL está integrada a otras plataformas y servicios, como"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid "Clave Única"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid "Google Docs"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid "YouTube"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid "Zoom"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid "Sence"
+msgstr ""
+
+#: lms/templates/static_templates/about.html:22
+msgid "entre otras."
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:7
+msgid "FAQ"
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:25
+msgid "¿Qué cursos encuentro en EOL?"
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:30
+msgid ""
+"La plataforma de Educación Online aloja cursos de pregrado, postgrado y "
+"educación continua de la Universidad de Chile, y cursos para externos "
+"dictados por la Universidad."
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:37
+msgid "¿Quién puede tomar cursos en la plataforma EOL?"
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:42
+msgid ""
+"La plataforma está destinada principalmente a estudiantes de la "
+"Universidad de Chile. Los cursos de pregrado y postgrado se imparten a "
+"estudiantes regulares de la Universidad, mientras que los diplomados y "
+"cursos de educación continua deben ser inscritos directamente con las "
+"unidades académicas que los dictan. En la descripción de cada curso se "
+"indica a quién está dirigido y un email de contacto para inscripciones."
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:49
+msgid ""
+"Soy estudiante de postgrado y me interesa uno de los cursos de la "
+"plataforma, ¿Qué debo hacer para inscribirme?"
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:54
+msgid ""
+"En la descripción de cada curso se indica un email de contacto para "
+"inscribirse en futuras versiones del curso."
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:61
+msgid "¿Cuánto cuestan los cursos?"
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:66
+msgid ""
+"Los cursos de pregrado y postgrado son gratuitos para los estudiantes de "
+"la Universidad."
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:66
+msgid ""
+"Los diplomados y cursos de educación continua tienen diferentes costos "
+"según el programa."
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:73
+msgid "¿Cómo me inscribo en la plataforma EOL?"
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:78
+msgid ""
+"Los estudiantes son inscritos en la plataforma por los equipos docentes "
+"de cada curso."
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:85
+msgid ""
+"Soy profesor de la Universidad de Chile y quiero hacer un curso online, "
+"¿Qué tengo que hacer?"
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:90
+msgid "Contactarnos al correo"
+msgstr ""
+
+#: lms/templates/static_templates/faq.html:90
+msgid "o por medio de la"
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:16
+msgid "Politica de Privacidad"
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:17
+msgid "Galletas o Cookies"
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:18
+msgid ""
+"Este sitio hace uso de cookies, el cual son pequeños archivos de datos "
+"que se generan en su navegador, este envía información sin proporcionar "
+"referencias que permitan deducir datos personales de este."
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:19
+msgid "Política De Protección De Datos Personales"
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:20
+msgid ""
+"Para utilizar algunos de los servicios o acceder a determinados "
+"contenidos, deberá proporcionar previamente ciertos datos de carácter "
+"personal, que solo serán utilizados para el propósito que fueron "
+"recopilados."
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:21
+msgid ""
+"El tipo de la posible Información que se le sea solicitada incluye, de "
+"manera enunciativa mas no limitativa, su nombre, dirección de correo "
+"electrónico (e-mail), fecha de nacimiento, sexo, ocupación, país y ciudad"
+" de origen e intereses personales, entre otros, no toda la Información "
+"solicitada al momento de participar en el sitio es obligatoria de "
+"proporcionarse, salvo aquella que consideremos requerida y que así se le "
+"haga saber."
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:22
+msgid "Política De Privacidad De Fuentes Externas"
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:23
+msgid ""
+"Si eres el anfitrión de una transmisión en vivo, este sitio puede "
+"utilizar YouTube API para obtener información de tu cuenta y activar las "
+"características, no guardando ningún dato personal recibidos de estas más"
+" que las llaves de acceso para controlar las transmisiones."
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:24
+msgid ""
+"Este sitio utiliza Google Analytics para agregar información anonimizada "
+"de los usuarios."
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:25
+msgid "Las políticas de privacidad externas pueden encontrarse en:"
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:26
+msgid ""
+"Como principio general, este sitio no comparte ni revela información "
+"obtenida, excepto cuando haya sido autorizada por usted, o en los "
+"siguientes casos"
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:27
+msgid ""
+"a) Cuando le sea requerido por una autoridad competente y previo el "
+"cumplimiento del trámite legal correspondiente y b) Cuando a juicio de "
+"este sitio sea necesario para hacer cumplir las condiciones de uso y "
+"demás términos de esta página, o para salvaguardar la integridad de los "
+"demás usuarios o del sitio."
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:28
+msgid ""
+"Deberá estar consciente de que si usted voluntariamente revela "
+"información personal en línea en un área publica, esa información puede "
+"ser recogida y usada por otros. Nosotros no controlamos las acciones de "
+"nuestros visitantes y usuarios."
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:29
+msgid "Conducta Responsable"
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:30
+msgid ""
+"Toda la información que facilite deberá ser veraz. A estos efectos, usted"
+" garantiza la autenticidad de todos aquellos datos que comunique como "
+"consecuencia de la cumplimentación de los formularios necesarios para la "
+"suscripción de los Servicios, acceso a contenidos o áreas restringidas "
+"del sitio. En todo caso usted será el único responsable de las "
+"manifestaciones falsas o inexactas que realice y de los perjuicios que "
+"cause a este sitio o a terceros por la información que facilite."
+msgstr ""
+
+#: lms/templates/static_templates/privacy.html:31
+msgid ""
+"Usted se compromete a actuar en forma responsable en este sitio y a "
+"tratar a otros visitantes con respeto."
+msgstr ""
+
+#: lms/templates/student_account/form_field.underscore:136
+msgid "Need help signing in?"
+msgstr ""
+
+#: lms/templates/student_account/form_field.underscore:138
+msgid "Forgot my password"
+msgstr ""
+
+#: lms/templates/student_account/form_field.underscore:140
+msgid "Other sign-in issues"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:3
+msgid "First time here?"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:4
+msgid "Create an Account."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:10
+msgid "Sign in to continue learning as {email}"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:12
+msgid "Sign in to continue learning"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:15
+msgid "You already have an edX account with your {enterprise_name} email address."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:17
+msgid ""
+"Going forward, your account information will be updated and maintained by"
+" {enterprise_name}."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:19
+msgid ""
+"You can view your information or unlink from {enterprise_name} anytime in"
+" your Account Settings."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:21
+msgid "To continue learning with this account, sign in below."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:23
+msgid "Sign In"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:39
+msgid ""
+"Sign in here using your email address and password, or use one of the "
+"providers listed below."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:41
+msgid "Sign in here using your email address and password."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:43
+msgid "If you do not yet have an account, use the button below to register."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:48
+msgid "Use my university info"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:53
+#: lms/templates/student_account/login2.underscore:65
+msgid "or sign in with"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:60
+msgid "Sign in"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:78
+#, python-format
+msgid "Sign in with %(providerName)s"
+msgstr ""
+
+#: lms/templates/student_account/login_and_register.html:14
+msgid "Sign in or Register"
+msgstr ""
+
