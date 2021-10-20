@@ -34,3 +34,8 @@ Depending on the languages you have enabled you can add the custom translations 
     docker run -it --rm -w /code -v $(pwd):/code python:3.8 bash
     pip install -r requirements.txt
     make compile_translations
+
+**lms & cms .yml**
+
+    COMPREHENSIVE_THEME_LOCALE_PATHS:
+    - /openedx/themes/eol-uchile-2020/conf/locale
