@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: support@edunext.co\n"
-"POT-Creation-Date: 2021-10-20 19:03+0000\n"
+"POT-Creation-Date: 2021-10-21 13:51+0000\n"
 "PO-Revision-Date: 2021-10-20 19:03+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es_419\n"
@@ -26,6 +26,7 @@ msgstr ""
 
 #: cms/templates/container.html:127 cms/templates/container.html:128
 #: cms/templates/course_outline.html:177 cms/templates/course_outline.html:178
+#: cms/templates/videos_index.html:74 cms/templates/videos_index.html:75
 msgid "Page Actions"
 msgstr ""
 
@@ -195,7 +196,7 @@ msgstr ""
 msgid "Proctoring Settings Errors"
 msgstr ""
 
-#: cms/templates/course_outline.html:173
+#: cms/templates/course_outline.html:173 cms/templates/videos_index.html:70
 msgid "Content"
 msgstr ""
 
@@ -459,6 +460,25 @@ msgstr ""
 
 #: cms/templates/studio_xblock_wrapper.html:176
 msgid "Location:"
+msgstr ""
+
+#: cms/templates/videos_index.html:13 cms/templates/videos_index.html:71
+msgid "Video Uploads"
+msgstr ""
+
+#: cms/templates/videos_index.html:51 cms/templates/videos_index.html:55
+msgid ""
+"Los tiempos de procesamiento una vez subido el video puede demorar varios"
+" minutos/horas en completarse, dependiendo del tamaño del archivo. Una "
+"vez subido el video, espere unos minutos y recargue la página."
+msgstr ""
+
+#: cms/templates/videos_index.html:57
+msgid "EN PROGRESO"
+msgstr ""
+
+#: cms/templates/videos_index.html:77
+msgid "Course Video Settings"
 msgstr ""
 
 #: cms/templates/advanced_settings/settings-simplified.html:21
@@ -727,6 +747,24 @@ msgid ""
 "should enforce when reviewing the videos. For example, you could specify "
 "that calculators are allowed. These specified rules are visible to "
 "learners before the learners start the exam."
+msgstr ""
+
+#: cms/templates/widgets/video/transcripts.html:74
+msgid "Seleccione un video"
+msgstr ""
+
+#: cms/templates/widgets/video/transcripts.html:75
+msgid ""
+"Seleccione un video previamente cargado al curso o inserte un enlace "
+"externo de YouTube en el campo correspondiente."
+msgstr ""
+
+#: cms/templates/widgets/video/transcripts.html:84
+msgid "Enlace externo de YouTube"
+msgstr ""
+
+#: cms/templates/widgets/video/transcripts.html:88
+msgid "Enlace externo de YouTube (URL de video por defecto)"
 msgstr ""
 
 #: lms/templates/course.html:32
@@ -1597,7 +1635,7 @@ msgstr ""
 msgid "Sign Out"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:17
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:19
 msgid ""
 "Click to display the grading configuration for the course. The grading "
 "configuration is the breakdown of graded subsections of the course (such "
@@ -1605,23 +1643,23 @@ msgid ""
 "(under 'Settings') in Studio."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:18
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:20
 msgid "Grading Configuration"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:23
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:25
 msgid "Click to download a CSV of anonymized student IDs:"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:24
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:26
 msgid "Get Student Anonymized IDs CSV"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:30
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:32
 msgid "Reports"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:32
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:34
 msgid ""
 "For large courses, generating some reports can take several hours. When "
 "report generation is complete, a link that includes the date and time of "
@@ -1630,61 +1668,61 @@ msgid ""
 "report is generating."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:34
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:36
 msgid ""
 "Please be patient and do not click these buttons multiple times. Clicking"
 " these buttons multiple times will significantly slow the generation "
 "process."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:36
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:38
 msgid ""
 "Click to generate a CSV file of all students enrolled in this course, "
 "along with profile information such as email address and username:"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:38
-msgid "Download profile information as a CSV"
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:40
+msgid "Descargar la información de perfil como archivo CSV"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:40
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:42
 msgid ""
 "Click to generate a CSV file that lists learners who can enroll in the "
 "course but have not yet done so."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:42
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:44
 msgid "Download a CSV of learners who can enroll"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:45
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:47
 msgid "Click to generate a CSV file of all proctored exam results in this course."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:46
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:48
 msgid "Generate Proctored Exam Results Report"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:50
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:52
 msgid "Click to generate a CSV file of survey results for this course."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:51
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:53
 msgid "Generate Survey Results Report"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:54
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:56
 msgid ""
 "Select a problem to generate a CSV file that lists all student answers to"
 " the problem. You also select a section or chapter to include results of "
 "all problems in that section or chapter."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:58
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:60
 msgid "NOTE"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:59
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:61
 msgid ""
 "The generated report is limited to {max_entries} responses. If you expect"
 " more than {max_entries} responses, try generating the report on a "
@@ -1692,169 +1730,173 @@ msgid ""
 "administrator to increase the limit."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:83
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:85
 msgid "Click to list certificates that are issued for this course:"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:85
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:87
 msgid "View Certificates Issued"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:86
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:88
 msgid "Download CSV of Certificates Issued"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:93
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:90
+msgid "(Nuevo) Descargar Reporte de Certificados"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:103
 msgid ""
 "For smaller courses, click to list profile information for enrolled "
 "students directly on this page:"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:94
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:104
 msgid "List enrolled students' profile information"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:99
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:109
 msgid "Click to generate a CSV grade report for all currently enrolled students."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:101
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:111
 msgid "Generate Grade Report"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:102
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:112
 msgid "Generate Problem Grade Report"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:103
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:113
 msgid "Generate ORA Data Report"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:109
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:119
 msgid "Reporte de preguntas"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:110
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:120
 msgid "Existen dos maneras para generar reportes de preguntas en formato CSV:"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:111
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:121
 msgid "Modo resumen/compacto"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:111
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:121
 msgid ""
 "Genera un reporte de todos los bloques tipo pregunta mostrando los "
 "intentos, puntaje ganado y puntaje posible del bloque de cada estudiante."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:112
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:122
 msgid "Modo Completo"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:112
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:122
 msgid ""
 "Genera un reporte de todas las preguntas de los bloques tipo pregunta "
 "mostrando la pregunta, respuesta del estudiante, respuesta correcta, "
 "intentos, puntaje ganado y puntaje posible del bloque."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:113
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:123
 msgid "Reporte Modo Resumen"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:114
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:124
 msgid "Reporte Modo Completo"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:118
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:128
 msgid ""
 "Para una mejor visualización y manejo de los datos en el Excel, puede ver"
 " un mini tutorial haciendo"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:118
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:128
 msgid "click aqui"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:124
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:174
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:134
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:184
 msgid "Exportar Notas"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:127
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:137
 msgid ""
 "El porcentaje de aprobación no se configurado correctamente, contáctese "
 "con la mesa de ayuda(eol-ayuda@uchile.cl) para mas información."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:130
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:140
 msgid "El porcentaje de aprobación del curso es del:"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:131
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:141
 msgid ""
 "Seleccione la escala de notas, presione el boton Exportar Notas y se "
 "generará un archivo Excel."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:132
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:142
 msgid ""
 "NOTA: Al seleccionar la escala '0 - 100' o '0.00 - 1.00' el puntaje "
 "obtenido de cada estudiante será transformado a un puntaje con porcentaje"
 " de aprobación del 50%"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:133
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:143
 msgid ""
 "NOTA: Al seleccionar el formato 'Completo' con escala de 1.0 - 7.0, cada "
 "evaluación estará en una escala de 0 - 100 y solamente el promedio final "
 "estará con la escala seleccionada."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:136
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:146
 msgid "Tipo de tarea:"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:140
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:150
 msgid "Nota final del curso"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:149
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:159
 msgid "Escala de Nota:"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:161
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:171
 msgid "Formato:"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:165
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:175
 msgid "Completo"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:166
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:176
 msgid "Solo Promedio Final"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:177
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:187
 msgid "Para saber como subir estas notas a la plataforma U-Cursos"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:177
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:187
 msgid "presione aqui."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:189
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:199
 msgid "Reports Available for Download"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:191
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:201
 msgid ""
 "The reports listed below are available for download, identified by UTC "
 "date and time of generation."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:196
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:206
 msgid ""
 "The answer distribution report listed below is generated periodically by "
 "an automated background process. The report is cumulative, so answers "
@@ -1862,7 +1904,7 @@ msgid ""
 "The report is generated several times per day."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:202
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:212
 msgid ""
 "{strong_start}Note{strong_end}: {ul_start}{li_start}To keep student data "
 "secure, you cannot save or email these links for direct access. Copies of"
@@ -1872,12 +1914,12 @@ msgid ""
 "security policies.{li_end}{ul_end}"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:219
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:229
 #: lms/templates/instructor/instructor_dashboard_2/send_email.html:114
 msgid "Pending Tasks"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html:221
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html:231
 msgid "The status for any active tasks appears in a table below."
 msgstr ""
 
@@ -2337,7 +2379,7 @@ msgstr ""
 msgid ""
 "EOL es la plataforma de Educación Online de la Universidad de Chile, "
 "administrada por la Oficina de Educación Online de la Vicerrectoría de "
-"Tecnologías de la Información. Dicha Oficina es la encargada del "
+"Tecnologías de la Información. Esta Oficina es la encargada del "
 "desarrollo de capacidades técnicas, humanas y de nuevas tecnologías para "
 "educación, a fin de dar respuesta a las necesidades y particularidades de"
 " los organismos universitarios y unidades académicas vinculadas con la "
@@ -2693,4 +2735,22 @@ msgstr ""
 #: lms/templates/student_account/login_and_register.html:14
 msgid "Sign in or Register"
 msgstr ""
+
+#~ msgid "Download profile information as a CSV"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "EOL es la plataforma de Educación "
+#~ "Online de la Universidad de Chile, "
+#~ "administrada por la Oficina de Educación"
+#~ " Online de la Vicerrectoría de "
+#~ "Tecnologías de la Información. Dicha "
+#~ "Oficina es la encargada del desarrollo"
+#~ " de capacidades técnicas, humanas y "
+#~ "de nuevas tecnologías para educación, a"
+#~ " fin de dar respuesta a las "
+#~ "necesidades y particularidades de los "
+#~ "organismos universitarios y unidades "
+#~ "académicas vinculadas con la docencia."
+#~ msgstr ""
 

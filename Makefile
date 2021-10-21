@@ -11,7 +11,7 @@ help: ## Display this help message
 
 lang_targets = en es_419 es
 create_translations_catalogs: ## Create the initial configuration of .mo files for translation
-	pybabel extract -F conf/locale/babel.cfg -o  conf/locale/django.pot --msgid-bugs-address=support@edunext.co --copyright-holder=eduNEXT *
+	pybabel extract -F conf/locale/babel.cfg -o  conf/locale/django.pot --msgid-bugs-address=eol-ayuda@uchile.cl --copyright-holder=EOL *
 	for lang in $(lang_targets) ; do \
         pybabel init -i conf/locale/django.pot -D django -d conf/locale/ -l $$lang ; \
         pybabel init -i conf/locale/django.pot -D djangojs -d conf/locale/ -l $$lang ; \
