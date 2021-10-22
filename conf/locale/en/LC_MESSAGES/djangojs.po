@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: eol-ayuda@uchile.cl\n"
-"POT-Creation-Date: 2021-10-21 13:51+0000\n"
+"POT-Creation-Date: 2021-10-22 14:23+0000\n"
 "PO-Revision-Date: 2021-10-20 19:03+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -17,6 +17,32 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
+
+#: cms/static/js/factories/settings_advanced.js:42
+msgid "Hide Deprecated Settings"
+msgstr ""
+
+#: cms/static/js/factories/settings_advanced.js:46
+#: cms/templates/settings_advanced.html:115
+msgid "Show Deprecated Settings"
+msgstr ""
+
+#: cms/static/js/views/settings/advanced.js:69
+msgid ""
+"Your changes will not take effect until you save your progress. Take care"
+" with key and value formatting, as validation is not implemented."
+msgstr ""
+
+#: cms/static/js/views/settings/advanced.js:142
+#: cms/templates/settings_advanced.html:92
+msgid "Your policy changes have been saved."
+msgstr ""
+
+#: cms/static/js/views/settings/advanced.js:143
+msgid ""
+"No validation is performed on policy keys or value pairs. If you are "
+"having difficulties, check your formatting."
+msgstr ""
 
 #: cms/templates/container.html:120
 #: cms/templates/js/course-outline.underscore:125
@@ -329,10 +355,6 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: cms/templates/settings_advanced.html:92
-msgid "Your policy changes have been saved."
-msgstr ""
-
 #: cms/templates/settings_advanced.html:96
 msgid "There was an error saving your information. Please see below."
 msgstr ""
@@ -345,10 +367,6 @@ msgstr ""
 msgid ""
 "{strong_start}Warning{strong_end}: Do not modify these policies unless "
 "you are familiar with their purpose."
-msgstr ""
-
-#: cms/templates/settings_advanced.html:115
-msgid "Show Deprecated Settings"
 msgstr ""
 
 #: cms/templates/settings_advanced.html:128
@@ -767,6 +785,39 @@ msgstr ""
 msgid "Enlace externo de YouTube (URL de video por defecto)"
 msgstr ""
 
+#: lms/static/js/eol-legacy.js:106 lms/static/js/eol-legacy.js:123
+#: lms/static/js/eol-legacy.js:131
+msgid "You will not be refunded the amount you paid."
+msgstr ""
+
+#: lms/static/js/eol-legacy.js:109
+msgid ""
+"Are you sure you want to unenroll from the purchased course {courseName} "
+"({courseNumber})?"
+msgstr ""
+
+#: lms/static/js/eol-legacy.js:114
+msgid "Are you sure you want to unenroll from {courseName} ({courseNumber})?"
+msgstr ""
+
+#: lms/static/js/eol-legacy.js:119
+msgid ""
+"Are you sure you want to unenroll from the verified {certNameLong}  track"
+" of {courseName}  ({courseNumber})?"
+msgstr ""
+
+#: lms/static/js/eol-legacy.js:127
+msgid ""
+"Are you sure you want to unenroll from the verified {certNameLong} track "
+"of {courseName} ({courseNumber})?"
+msgstr ""
+
+#: lms/static/js/eol-legacy.js:227 lms/static/js/eol-legacy.js:241
+msgid ""
+"Unable to determine whether we should give you a refund because of System"
+" Error. Please try again later."
+msgstr ""
+
 #: lms/templates/course.html:32
 msgid "Aprender más"
 msgstr ""
@@ -1153,6 +1204,10 @@ msgstr ""
 msgid "No problem scores in this section"
 msgstr ""
 
+#: lms/templates/courseware/progress_graph.js:308
+msgid "Overall Score"
+msgstr ""
+
 #: lms/templates/dashboard/_dashboard_certificate_information.html:40
 msgid "Your certificate will be available on or before {date}"
 msgstr ""
@@ -1443,6 +1498,78 @@ msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html:422
 msgid "Upgrade to Verified"
+msgstr ""
+
+#: lms/templates/emails/failed_verification_email.txt:4
+msgid ""
+"¡Lo lamentamos! Las fotos que enviaste para verificar tu identidad no "
+"fueron aceptadas, detalle(s) a continuación:"
+msgstr ""
+
+#: lms/templates/emails/failed_verification_email.txt:9
+msgid "Tu fotografía:"
+msgstr ""
+
+#: lms/templates/emails/failed_verification_email.txt:17
+msgid "La fotografía de tu ID:"
+msgstr ""
+
+#: lms/templates/emails/failed_verification_email.txt:25
+msgid "Otras razones:"
+msgstr ""
+
+#: lms/templates/emails/failed_verification_email.txt:34
+msgid "Resubmit Verification: {reverify_url}"
+msgstr ""
+
+#: lms/templates/emails/failed_verification_email.txt:37
+#: lms/templates/emails/passed_verification_email.txt:9
+#: lms/templates/emails/photo_submission_confirmation.txt:12
+msgid "Thank you,"
+msgstr ""
+
+#: lms/templates/emails/failed_verification_email.txt:38
+#: lms/templates/emails/passed_verification_email.txt:10
+#: lms/templates/emails/photo_submission_confirmation.txt:13
+msgid "The {platform_name} team"
+msgstr ""
+
+#: lms/templates/emails/passed_verification_email.txt:4
+msgid "Hola {full_name},"
+msgstr ""
+
+#: lms/templates/emails/passed_verification_email.txt:6
+msgid "¡Felicitaciones! Tu verificación de identidad fue exitosa."
+msgstr ""
+
+#: lms/templates/emails/passed_verification_email.txt:7
+msgid "Tu verificación es válida durante un año. Esta expirará el {expiry_date}."
+msgstr ""
+
+#: lms/templates/emails/photo_submission_confirmation.txt:4
+msgid "Hi {full_name},"
+msgstr ""
+
+#: lms/templates/emails/photo_submission_confirmation.txt:7
+msgid "Thanks for submitting your photos!"
+msgstr ""
+
+#: lms/templates/emails/photo_submission_confirmation.txt:8
+msgid ""
+"Hemos recibido su información y el proceso de verificación del ID ha "
+"empezado."
+msgstr ""
+
+#: lms/templates/emails/photo_submission_confirmation.txt:9
+msgid ""
+"Revise si tiene un correo electrónico de nosotros en los próximos días "
+"para confirmar si su verificación fue exitosa."
+msgstr ""
+
+#: lms/templates/emails/photo_submission_confirmation.txt:10
+msgid ""
+"También puede revisar el estado del proceso de verificación en su página "
+"de inicio ."
 msgstr ""
 
 #: lms/templates/eol_contact_form/contact.html:7
@@ -2752,5 +2879,17 @@ msgstr ""
 #~ "necesidades y particularidades de los "
 #~ "organismos universitarios y unidades "
 #~ "académicas vinculadas con la docencia."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Hemos recibido su información y el "
+#~ "proceso de verificación del ID ha "
+#~ "empezado.Revise si tiene un correo "
+#~ "electrónico de nosotros en los próximos"
+#~ " días para confirmar si su "
+#~ "verificación fue exitosa.También puede revisar"
+#~ " el estado del proceso de "
+#~ "verificación en su página de inicio "
+#~ "."
 #~ msgstr ""
 

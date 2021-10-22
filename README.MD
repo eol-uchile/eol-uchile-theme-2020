@@ -45,3 +45,9 @@ Depending on the languages you have enabled you can add the custom translations 
 
     COMPREHENSIVE_THEME_LOCALE_PATHS:
     - /openedx/themes/eol-uchile-2020/conf/locale
+
+### Note
+
+- Translations only work with django.po
+- Make translation with django html and mako html does not work
+- Translation for this theme only translate mako, javascript and underscore
