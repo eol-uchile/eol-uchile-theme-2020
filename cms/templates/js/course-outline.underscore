@@ -159,9 +159,9 @@ display_name_duplicar = display_name_duplicar.replace(/"/g,"")
                 <% } %>
                 <% if (xblockInfo.isDuplicable()) { %>
                     <li class="action-item action-copy-to-other-course">
-                        <a href="#" onclick="duplicar_xblock('<%- xblockInfo.get('id') %>', '<%- display_name_duplicar %>');" data-tooltip="Duplicar a otro Curso" class="copy-to-other-course-button action-button">
+                        <a href="#" onclick="duplicar_xblock('<%- xblockInfo.get('id') %>', '<%- display_name_duplicar %>');" data-tooltip="<%- gettext('Duplicar a otro Curso') %>" class="copy-to-other-course-button action-button">
                             <span class="icon fa fa-share-square-o" aria-hidden="true"></span>
-                            <span class="sr action-button-text">Duplicar a otro Curso</span>
+                            <span class="sr action-button-text"><%- gettext('Duplicar a otro Curso') %></span>
                       </a>
                     </li>
                     <li class="action-item action-duplicate">
@@ -222,7 +222,7 @@ display_name_duplicar = display_name_duplicar.replace(/"/g,"")
                 </p>
               </div>
             <% } %>
-            <% if (xblockInfo.get('highlights_enabled') && xblockInfo.isChapter()) { %>
+            <% if (false && xblockInfo.get('highlights_enabled') && xblockInfo.isChapter()) { %>
                 <div class="block-highlights">
                     <% var number_of_highlights = (xblockInfo.get('highlights') || []).length; %>
                         <button class="block-highlights-value highlights-button action-button">

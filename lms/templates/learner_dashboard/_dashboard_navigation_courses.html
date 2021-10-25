@@ -50,8 +50,8 @@ from django.utils.translation import ugettext as _
         $(currentTarget).removeClass('filter-archive');
         $(currentTarget).addClass('filter-active');
         // Update texts
-        $(currentTarget).text('Mostrar cursos activos');
-        $('.wrapper-header-courses .header-courses span.text').text('Cursos archivados');
+        $(currentTarget).text("${_('Mostrar cursos activos')}");
+        $('.wrapper-header-courses .header-courses span.text').text("${_('Cursos archivados')}");
       } else if ( $(currentTarget).hasClass('filter-active') ) {
         // Show active courses (or empty message if exists), Hide archived courses
         $("ul.listing-courses li.course-item.course-active, .empty-dashboard-message").show();
@@ -60,8 +60,8 @@ from django.utils.translation import ugettext as _
         $(currentTarget).removeClass('filter-active');
         $(currentTarget).addClass('filter-archive');
         // Update texts
-        $(currentTarget).text('Mostrar cursos archivados');
-        $('.wrapper-header-courses .header-courses span.text').text('Cursos activos');
+        $(currentTarget).text("${_('Mostrar cursos archivados')}");
+        $('.wrapper-header-courses .header-courses span.text').text("${_('Cursos activos')}");
       }
     });
     

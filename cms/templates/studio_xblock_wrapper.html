@@ -90,9 +90,9 @@ block_is_unit = is_unit(xblock)
                             % endif
                             % if can_add:
                                 <li class="action-item action-duplicate">
-                                    <a href="#" onclick="duplicar_xblock('${xblock.location}', '${label | n, js_escaped_string}');" data-tooltip="Duplicar a otro Curso" class="copy-to-other-course-button action-button">
+                                    <a href="#" onclick="duplicar_xblock('${xblock.location}', '${label | n, js_escaped_string}');" data-tooltip="${_("Duplicar a otro Curso")}" class="copy-to-other-course-button action-button">
                                         <span class="icon fa fa-share-square-o" aria-hidden="true"></span>
-                                        <span class="sr action-button-text">Duplicar a otro Curso</span>
+                                        <span class="sr action-button-text">${_("Duplicar a otro Curso")}</span>
                                   </a>
                                 </li>
                                 <li class="action-item action-duplicate">

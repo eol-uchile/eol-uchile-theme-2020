@@ -114,7 +114,7 @@ from six import string_types
                         ## because AnonymousUsers cause can_enroll for shib courses to be False, but we need them to be able to click
                         ## so that they can register and become a real user that can enroll.
                           <center>
-                            <span class="badge badge-primary mb-2 p-1">La inscripción a este curso es sólo por invitación</span>
+                            <span class="badge badge-primary mb-2 p-1">${_("La inscripción a este curso es sólo por invitación")}</span>
                           </center>
                         % elif not is_shib_course and not can_enroll:
                           <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2 disabled" disabled>${_("Enrollment is Closed")}</a>
@@ -138,7 +138,7 @@ from six import string_types
                               href_class = "register"
                           %>
                           <a href="${reg_href}" type="button" class="${href_class} btn btn-info text-white btn-lg btn-block mb-2">
-                            Inscribirse
+                            ${_("Inscribirse")}
                           </a>
                           <div id="register_error"></div>
                         %endif
@@ -266,7 +266,7 @@ from six import string_types
       <div class="row my-2 faqs-row">
           <div class="col-lg-8 p-3">
               <div class="course-about-card m-2">
-                <h3 class="px-4">Preguntas frecuentes</h3>
+                <h3 class="px-4">${_("Preguntas frecuentes")}</h3>
                 <div class="accordion text-justify mt-3" id="accordionFAQS">
                 </div>
               </div>
