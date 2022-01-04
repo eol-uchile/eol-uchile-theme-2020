@@ -21,7 +21,7 @@
     </div>
   %endif
   %if (categ['show_opt'] == 2 and len(course_class[categ['id']]['courses']) == 0):
-    <p class="without-courses"> No existen cursos</p>
+    <p class="without-courses"> ${_("No existen cursos")}</p>
   %endif
 %endfor
 %else:

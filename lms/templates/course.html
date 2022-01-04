@@ -29,7 +29,7 @@ now = timezone.now()
             <%
                 course_about = reverse('about_course', args=[text_type(course.id)])
             %>
-            <a href="${course_about}"><button type="button" class="btn btn-outline-light">Aprender más</button></a>
+            <a href="${course_about}"><button type="button" class="btn btn-outline-light">${_("Aprender más")}</button></a>
         </div>
         
     </div>

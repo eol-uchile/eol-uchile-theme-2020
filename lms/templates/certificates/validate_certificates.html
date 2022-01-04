@@ -19,11 +19,11 @@
     <div class="container eol-content-container px-2 mx-auto">
         <div class="row">
             <div class="certificates-card col-11 col-md-8 col-lg-6 mx-auto shadow-lg px-5 py-4 mb-5 bg-white rounded-lg">
-                <h3 class="certificates-header pb-2 mb-4">Validación de certificados</h3>
+                <h3 class="certificates-header pb-2 mb-4">${_("Validación de certificados")}</h3>
                 <form method="POST">
                     <input type="hidden" name="csrfmiddlewaretoken" value="${ csrftoken }"/>
                     <div class="form-group">
-                        <label for="inputID">ID de certificado</label>
+                        <label for="inputID">${_("ID de certificado")}</label>
                         % if context.get('_id', UNDEFINED) is not UNDEFINED:
                             <input type="text" class="form-control mt-1" name='cert-id' value="${_id}"></input>
                         % else:
@@ -32,10 +32,10 @@
                     </div>
                     % if context.get('exists', UNDEFINED) is not UNDEFINED:
                         % if context.get('exists') is False:
-                            <p style="color:firebrick; margin-bottom: 15px;">Certificado no encontrado</p>
+                            <p style="color:firebrick; margin-bottom: 15px;">${_("Certificado no encontrado")}</p>
                         % endif
                     % endif
-                    <input type="submit" class="btn btn-primary mx-auto w-100" value="Enviar">
+                    <input type="submit" class="btn btn-primary mx-auto w-100" value="${_("Enviar")}">
                 </form>
             </div>
         </div>

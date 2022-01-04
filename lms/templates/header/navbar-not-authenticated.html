@@ -22,22 +22,22 @@ from six import text_type
 <div class="collapse navbar-collapse pt-3" id="nav-eol-header">
   <ul class="nav-eol-header navbar-nav mr-auto mt-2 mt-lg-0">
     <li class="nav-item">
-        <a class="nav-link my-auto" href="/about">¿Qué es?</a>
+        <a class="nav-link my-auto" href="/about">${_("¿Qué es?")}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link my-auto" href="/faq">Preguntas frecuentes</a>
+        <a class="nav-link my-auto" href="/faq">${_("Preguntas frecuentes")}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link my-auto" href="/certificates/validate">Validación de certificados</a>
+        <a class="nav-link my-auto" href="/certificates/validate">${_("Validación de certificados")}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link my-auto" href="/contact_form">Formulario de contacto</a>
+        <a class="nav-link my-auto" href="/contact_form">${_("Formulario de contacto")}</a>
     </li>
   </ul>
   <form class="form-inline my-2 my-lg-0">
     % if allows_login:
       <div class="nav-link nav-button my-auto pl-0 pt-0">
-        <a class="btn btn-primary" href="/login" role="button">Iniciar sesión</a>
+        <a class="btn btn-primary" href="/login" role="button">${_("Iniciar sesión")}</a>
       </div>
     %endif
     </div>

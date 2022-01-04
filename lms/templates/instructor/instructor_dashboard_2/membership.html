@@ -10,21 +10,21 @@ from django.urls import reverse
 <script type="text/javascript" src="${static.url('edxlogin/js/edxlogin.js')}"></script>
 % if request.user.has_perm('uchileedxlogin.uchile_instructor_staff') and (section_data['access']['instructor'] or section_data['access']['staff'] or section_data['access']['admin']):
 <fieldset class="batch-enrollment-run membership-run-section">
-  <legend id="heading-batch-enrollment" class="hd hd-3">Inscripciones por Cuenta UChile</legend>
+  <legend id="heading-batch-enrollment" class="hd hd-3">${_("Inscripciones por Cuenta UChile")}</legend>
   <input type="hidden" id="csrf" name="csrfmiddlewaretoken" value="${csrf_token}"/>
   <input id="course_id" type="text" value="${sections[0]['course_id']}" hidden disabled>
   <label>
-    Ingrese el RUT o Pasaporte de lo usuarios que desea inscribir. Si es más de uno, utilice saltos de lineas para diferenciar cada usuario.</br>
-    Considere que los Pasaportes deben contener una 'P' al inicio (ejemplo: "PA123456")</br>
-    <b>Máximo 50 rut.</b></br>
+    ${_("Ingrese el RUT o Pasaporte de lo usuarios que desea inscribir. Si es más de uno, utilice saltos de lineas para diferenciar cada usuario.")}</br>
+    ${_("Considere que los Pasaportes deben contener una 'P' al inicio (ejemplo: 'PA123456')")}</br>
+    <b>${_("Máximo 50 rut.")}</b></br>
     <textarea rows="6" name="student-run" id="student-run" placeholder="12345678-k&#10;12345678-k" spellcheck="false" onkeyup="limitTextarea(this,50)"></textarea>
   </label>
   <div class="role">
       <label>
           ${_("Role of the users being enrolled.")}
           <select id="role-run" name="role-run">
-              <option value="honor" selected>Estudiante</option>
-              <option value="audit">Equipo Docente</option>
+              <option value="honor" selected>${_("Estudiante")}</option>
+              <option value="audit">${_("Equipo Docente")}</option>
           </select>
       </label>
   </div>
@@ -44,7 +44,6 @@ from django.urls import reverse
       ${_("You will not get notification for emails that bounce, so please double-check spelling.")}
       <textarea rows="6" name="student-ids" placeholder="${_("Email Addresses/Usernames")}" spellcheck="false"></textarea>
   </label>
-
   <div class="role">
       <label>
           ${_("Role of the users being enrolled.")}
@@ -55,7 +54,6 @@ from django.urls import reverse
           </select>
       </label>
   </div>
-
   % if section_data['is_reason_field_enabled']:
       <label>
           ${_("Enter the reason why the students are to be manually enrolled or unenrolled.")}

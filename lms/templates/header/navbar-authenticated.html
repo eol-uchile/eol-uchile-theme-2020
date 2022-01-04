@@ -30,25 +30,25 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 <div class="collapse navbar-collapse pt-3" id="nav-eol-header">
     <ul class="nav-eol-header navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item my-auto">
-            <a class="nav-link my-auto" href="${reverse('dashboard')}">Mis Cursos</a>
+            <a class="nav-link my-auto" href="${reverse('dashboard')}">${_("Mis Cursos")}</a>
         </li>
         <li class="nav-item my-auto">
-            <a class="nav-link my-auto" href="${marketing_link('COURSES')}">Explorar Cursos</a>
+            <a class="nav-link my-auto" href="${marketing_link('COURSES')}">${_("Explorar Cursos")}</a>
         </li>
     </ul>
     <ul class="nav-eol-header navbar-nav">
         <li class="nav-item dropdown my-auto">
             <a class="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Ayuda
+              ${_("Ayuda")}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/about">¿Qué es EOL?</a>
+              <a class="dropdown-item" href="/about">${_("¿Qué es EOL?")}</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/faq">Preguntas Frecuentes</a>
+              <a class="dropdown-item" href="/faq">${_("Preguntas Frecuentes")}</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/certificates/validate">Validación de Certificados</a>
+              <a class="dropdown-item" href="/certificates/validate">${_("Validación de Certificados")}</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/contact_form">Formulario de Contacto</a>
+              <a class="dropdown-item" href="/contact_form">${_("Formulario de Contacto")}</a>
             </div>
           </li>
         <li class="nav-item dropdown my-auto mx-0 ml-xl-3 py-1">

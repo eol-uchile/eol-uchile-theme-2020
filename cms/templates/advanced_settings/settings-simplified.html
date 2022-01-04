@@ -18,7 +18,7 @@
 <ul class="list-input course-simple-settings enum" style="display: none;">
     <li class="field-group course-advanced-policy-list-item" id="advanced-xblocks">
       <div class="field is-not-editable text key">
-            <h3 class="title">Lista de Módulos Avanzados: </h3>
+            <h3 class="title">${_("Lista de Módulos Avanzados")}: </h3>
       </div>
       <div class="value">
           % for key, value in list:
@@ -29,30 +29,30 @@
               </label>
           % endfor
           % if not list:
-            <span class="tip tip-stacked">No se ha configurado la lista de módulos avanzados. Contactar con la administración de la plataforma.</span>
+            <span class="tip tip-stacked">${_("No se ha configurado la lista de módulos avanzados. Contactar con la administración de la plataforma.")}</span>
           % else:  
-            <span class="tip tip-stacked">Seleccione los módulos avanzados para utilizar en el curso.</span>
+            <span class="tip tip-stacked">${_("Seleccione los módulos avanzados para utilizar en el curso.")}</span>
           % endif
       </div>
     </li>
 
     <li class="field-group course-advanced-policy-list-item" id="simplified-configs">
       <div class="field is-not-editable text key">
-            <h3 class="title">Configuraciones:</h3>
+            <h3 class="title">${_("Configuraciones")}:</h3>
       </div>
       <div class="value">
         <label class="form-check">
-            Habilitar exámenes supervisados y cronometrados
+            ${_("Habilitar exámenes supervisados y cronometrados")}
             <input class="checkbox" type="checkbox" id="simplified_exam_configs">
             <span class="checkmark" for="simplified_exam_configs"></span>
         </label>
-        <label class="form-check" data-tooltip="Al habilitar, puede ocultar una subsección hasta que los estudiantes obtengan un puntaje mínimo en una subsección que sea prerequisito.">
-            Habilitar prerequisitos de subsección
+        <label class="form-check" data-tooltip='${_("Al habilitar, puede ocultar una subsección hasta que los estudiantes obtengan un puntaje mínimo en una subsección que sea prerequisito.")}'>
+            ${_("Habilitar prerequisitos de subsección")}
             <i class="fa fa-info-circle"></i>
             <input class="checkbox" type="checkbox" id="simplified_subsection_gating">
             <span class="checkmark" for="simplified_subsection_gating"></span>
         </label>
-        <span class="tip tip-stacked">Seleccione las configuraciones que desea habilitar en el curso.</span>
+        <span class="tip tip-stacked">${_("Seleccione las configuraciones que desea habilitar en el curso.")}</span>
       </div>
     </li>
 </ul>
@@ -60,6 +60,6 @@
 <div class="wrapper-options">
   <div class="wrapper-eol-advanced-setting">
     <input id="eol-advanced-settings" class="eol-advanced-settings-toggle" type="checkbox" name="Show Advanced Configurations">
-    <label for="eol-advanced-settings" class="eol-advanced-settings-label">Mostrar Configuraciones Avanzadas</label>
+    <label for="eol-advanced-settings" class="eol-advanced-settings-label">${_("Mostrar Configuraciones Avanzadas")}</label>
   </div>
 </div>
