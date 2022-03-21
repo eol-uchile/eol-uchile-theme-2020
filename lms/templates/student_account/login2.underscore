@@ -27,8 +27,8 @@
     <a id="redirect_to" href="/uchileedxlogin/login">
         <img class="img-login-1 img-fluid"/>
     </a>
-    <div class="separator mx-5 my-3">O</div>
-    <a href="#Login_Normal" onclick="return loginCorreo();">
+    <div id="login_separator" class="separator mx-5 my-3">O</div>
+    <a id="href_login_normal" href="#Login_Normal" onclick="return loginCorreo();">
         <img class="img-login-2 img-fluid"/>
     </a>
     <div class="js-form-feedback mt-3" aria-live="assertive" tabindex="-1">
@@ -95,7 +95,12 @@
     $( document ).ready(function() {
         $(".img-login-1").attr("src", IMG_LOGIN_1);
         $(".img-login-2").attr("src", IMG_LOGIN_2);
-        
+        if(window.location.href.includes("cuenta_eol")){
+            $('#Login_Normal').show();
+            $('#login_separator').hide();
+            $('#redirect_to').hide();
+            $('#href_login_normal').hide();
+        }
         var url = document.getElementById("url_next").textContent;
         var atag = document.getElementById("redirect_to");
         atag.setAttribute('href', url)
