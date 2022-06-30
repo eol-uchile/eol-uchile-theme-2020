@@ -30,6 +30,38 @@ import json
 %else:
     <div class="wrapper-comp-settings basic_metadata_edit" data-metadata='${json.dumps(transcripts_basic_tab_metadata) | h}' data-eol="${json.dumps({'edx_video_id':'', 'data':[]}) | h}"></div>
 %endif
+<style>
+    .update-vimeo{
+        box-sizing: border-box;
+        transition: color 0.25s ease-in-out 0s,border-color 0.25s ease-in-out 0s,background 0.25s ease-in-out 0s,box-shadow 0.25s ease-in-out 0s;
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 4px;
+        padding: 10px 20px;
+        border-width: 1px;
+        border-style: solid;
+        box-shadow: none;
+        line-height: 1.5em;
+        text-align: center;
+        font-weight: 600;
+        font-size: 14px;
+        font-size: 1.4rem;
+        line-height: 20.72px;
+        line-height: 2.072rem;
+        background: #0075b4;
+        border-color: #0075b4;
+        color: #fff;
+    }
+    .update-vimeo:hover, .update-vimeo:active{
+        box-shadow: 0 2px 1px rgb(0 0 0 / 20%);
+        background: #065683;
+        border-color: #065683;
+    }
+    #ui-loading-update{
+        padding: 0;
+        text-align: left;
+    }
+</style>
 <script type="text/javascript">
     require(
         [
@@ -99,20 +131,36 @@ import json
                 eol_option.appendChild(eol_text);
                 eol_select.appendChild(eol_option);
             });
+            var update_picture = document.createElement("li");
+            update_picture.className = 'field comp-setting-entry metadata_entry';
+            update_picture.innerHTML = '<div class="wrapper-comp-setting">'+
+                '<label class="label setting-label" for="metadata-string-entry_148">Nombre para mostrar del componente</label>'+
+                '<button id="eol-update-${html_id}" class="action setting-upload update-vimeo" type="button" data-tooltip="'+edx_video_id+'" value="Actualizar miniatura desde Vimeo">Actualizar miniatura desde Vimeo</button></div>'+
+                '<span class="tip setting-help"><div id="ui-loading-update" class="ui-loading is-hidden" style="box-shadow: none;background: none;">'+
+                       '<p><span class="spin"><span class="icon fa fa-refresh" aria-hidden="true"></span></span>'+
+                       '<span class="copy">Actualizando</span></p></div></span><span id="eol-update-response" class="tip setting-help"></span>';
+            metadata.find('ul')[0].appendChild(update_picture);
+            var list_div = metadata.find('ul')[0].children;
             if (pre_exists_id){
                 metadata.find('.metadata-videolist-enum')[0].style.display = 'block';
+                list_div[list_div.length - 1].style.display = 'none';
             }
             else{
                 metadata.find('.metadata-videolist-enum')[0].style.display = 'none';
+                list_div[list_div.length - 1].style.display = 'block';
             }
             metadata.find('ul')[0].children[0].children[0].appendChild(eol_select);
             $('#eol-video-${html_id}').bind('change', function(e) {
                 metadata.find('.videolist-url')[0].value = '';
                 if (e.target.value != ""){
                     metadata.find('.metadata-videolist-enum')[0].style.display = 'none';
+                    list_div[list_div.length - 1].style.display = 'block';
+                    list_div[list_div.length - 1].children[0].children[1].dataset.tooltip = e.target.value;
                 }
                 else{
                     metadata.find('.metadata-videolist-enum')[0].style.display = 'block';
+                    list_div[list_div.length - 1].style.display = 'none';
+                    list_div[list_div.length - 1].children[0].children[1].dataset.tooltip = '';
                 }
                 e.target.parentElement.children[1].value = e.target.value;
                 
@@ -128,6 +176,27 @@ import json
                 transcripts.settingsView.views.video_url.model.attributes.explicitly_set = true;
                 transcripts.settingsView.views.video_url.model.changed.value = [metadata.find('.videolist-url')[0].value];
                 transcripts.handleFieldChanged();
+            });
+            $('#eol-update-${html_id}').bind('click', function(e) {
+                metadata.find('#ui-loading-update').show();
+                e.currentTarget.disabled = true;
+                $.post('/eolvimeo/update_picture', {'videoid': this.dataset.tooltip, 'course_id':'${course_id}'}).done(function(response) {
+                    if (response.result == 'success' ){
+                        text_response = metadata.find('#eol-update-response');
+                        text_response.html('Miniatura actualizada.');
+                    }
+                    else {
+                        text_response = metadata.find('#eol-update-response');
+                        text_response.html('Miniatura actualizada.');
+                    }
+                    metadata.find('#ui-loading-update').hide();
+                    e.currentTarget.disabled = false;
+                }).fail(function() {
+                    text_response = metadata.find('#eol-update-response');
+                    text_response.html('Se ha producido un error en actualizar la miniatura.');
+                    metadata.find('#ui-loading-update').hide();
+                    e.currentTarget.disabled = false;
+                });
             });
             //EOl END
         }
