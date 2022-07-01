@@ -103,10 +103,16 @@ import json
             );
             //EOL
             var metadata = $('#editor-tab-${html_id}').find('.basic_metadata_edit');
-            metadata.find('ul')[0].children[0].children[0].children[0].innerText = '${_("Seleccione un video")}';
-            metadata.find('ul')[0].children[0].children[1].innerText = '${_("Seleccione un video previamente cargado al curso o inserte un enlace externo de YouTube en el campo correspondiente.")}';
-            metadata.find('ul')[0].children[0].children[0].children[1].style.display = 'none';
-            metadata.find('ul')[0].children[0].children[0].children[2].style.display = 'none';
+            var li_select_video = document.createElement("li");
+            li_select_video.className = 'field comp-setting-entry metadata_entry';
+            var div_select_video = document.createElement("div");
+            div_select_video.className = 'wrapper-comp-setting';
+            var label_select_video = document.createElement("label");
+            label_select_video.className = 'label setting-label';
+            label_select_video.innerText = '${_("Seleccione un video")}';
+            var span_select_video = document.createElement("span");
+            span_select_video.className = 'tip setting-help';
+            span_select_video.innerText = '${_("Seleccione un video previamente cargado al curso o inserte un enlace externo de YouTube en el campo correspondiente.")}';
             var datos = (typeof metadata.data('eol') === 'string') ? JSON.parse(metadata.data('eol')) : metadata.data('eol');
             var eol_select = document.createElement("SELECT");
             eol_select.setAttribute("id", "eol-video-${html_id}");
@@ -134,12 +140,17 @@ import json
             var update_picture = document.createElement("li");
             update_picture.className = 'field comp-setting-entry metadata_entry';
             update_picture.innerHTML = '<div class="wrapper-comp-setting">'+
-                '<label class="label setting-label" for="metadata-string-entry_148">Nombre para mostrar del componente</label>'+
-                '<button id="eol-update-${html_id}" class="action setting-upload update-vimeo" type="button" data-tooltip="'+edx_video_id+'" value="Actualizar miniatura desde Vimeo">Actualizar miniatura desde Vimeo</button></div>'+
+                '<label class="label setting-label">${_("Actualizar miniatura desde Vimeo")}</label>'+
+                '<button id="eol-update-${html_id}" class="action setting-upload update-vimeo" type="button" data-tooltip="${_("Actualizar")}" data-videoid="'+edx_video_id+'" value="${_("Actualizar")}">${_("Actualizar")}</button></div>'+
                 '<span class="tip setting-help"><div id="ui-loading-update" class="ui-loading is-hidden" style="box-shadow: none;background: none;">'+
                        '<p><span class="spin"><span class="icon fa fa-refresh" aria-hidden="true"></span></span>'+
-                       '<span class="copy">Actualizando</span></p></div></span><span id="eol-update-response" class="tip setting-help"></span>';
+                       '<span class="copy">${_("Actualizando")}</span></p></div></span><span id="eol-update-response" class="tip setting-help"></span>';
             metadata.find('ul')[0].appendChild(update_picture);
+            div_select_video.appendChild(label_select_video)
+            div_select_video.appendChild(eol_select)
+            li_select_video.appendChild(div_select_video)
+            li_select_video.appendChild(span_select_video)
+            metadata.find('ul')[0].prepend(li_select_video);
             var list_div = metadata.find('ul')[0].children;
             if (pre_exists_id){
                 metadata.find('.metadata-videolist-enum')[0].style.display = 'block';
@@ -149,26 +160,32 @@ import json
                 metadata.find('.metadata-videolist-enum')[0].style.display = 'none';
                 list_div[list_div.length - 1].style.display = 'block';
             }
-            metadata.find('ul')[0].children[0].children[0].appendChild(eol_select);
+            var li_video_id;
+            for (var item of list_div) {
+                if (item.children[0].children[0].innerText == 'ID del video' || item.children[0].children[0].innerText == 'Video ID'){
+                    li_video_id = item;
+                }
+            }
+            li_video_id.style.display = 'none';
             $('#eol-video-${html_id}').bind('change', function(e) {
                 metadata.find('.videolist-url')[0].value = '';
                 if (e.target.value != ""){
                     metadata.find('.metadata-videolist-enum')[0].style.display = 'none';
                     list_div[list_div.length - 1].style.display = 'block';
-                    list_div[list_div.length - 1].children[0].children[1].dataset.tooltip = e.target.value;
+                    list_div[list_div.length - 1].children[0].children[1].dataset.videoid = e.target.value;
                 }
                 else{
                     metadata.find('.metadata-videolist-enum')[0].style.display = 'block';
                     list_div[list_div.length - 1].style.display = 'none';
-                    list_div[list_div.length - 1].children[0].children[1].dataset.tooltip = '';
+                    list_div[list_div.length - 1].children[0].children[1].dataset.videoid = '';
                 }
-                e.target.parentElement.children[1].value = e.target.value;
+                li_video_id.children[0].children[1].value = e.target.value;
                 
                 var id_yt = '#'+ metadata.find('.videolist-url')[0].id;
                 var elem_yt = $(id_yt);
                 elem_yt.trigger('change');
                 
-                var id_input = '#'+ e.target.parentElement.children[1].id;
+                var id_input = '#'+ li_video_id.children[0].children[1].id;
                 var elem_input = $(id_input);
                 elem_input.trigger('change');
 
@@ -180,20 +197,20 @@ import json
             $('#eol-update-${html_id}').bind('click', function(e) {
                 metadata.find('#ui-loading-update').show();
                 e.currentTarget.disabled = true;
-                $.post('/eolvimeo/update_picture', {'videoid': this.dataset.tooltip, 'course_id':'${course_id}'}).done(function(response) {
+                $.post('/eolvimeo/update_picture', {'videoid': this.dataset.videoid, 'course_id':'${course_id}'}).done(function(response) {
                     if (response.result == 'success' ){
                         text_response = metadata.find('#eol-update-response');
                         text_response.html('Miniatura actualizada.');
                     }
                     else {
                         text_response = metadata.find('#eol-update-response');
-                        text_response.html('Miniatura actualizada.');
+                        text_response.html('${_("Miniatura actualizada.")}');
                     }
                     metadata.find('#ui-loading-update').hide();
                     e.currentTarget.disabled = false;
                 }).fail(function() {
                     text_response = metadata.find('#eol-update-response');
-                    text_response.html('Se ha producido un error en actualizar la miniatura.');
+                    text_response.html('${_("Se ha producido un error en actualizar la miniatura.")}');
                     metadata.find('#ui-loading-update').hide();
                     e.currentTarget.disabled = false;
                 });
