@@ -200,11 +200,11 @@ import json
                 $.post('/eolvimeo/update_picture', {'videoid': this.dataset.videoid, 'course_id':'${course_id}'}).done(function(response) {
                     if (response.result == 'success' ){
                         text_response = metadata.find('#eol-update-response');
-                        text_response.html('Miniatura actualizada.');
+                        text_response.html('${_("Miniatura actualizada.")}');
                     }
                     else {
                         text_response = metadata.find('#eol-update-response');
-                        text_response.html('${_("Miniatura actualizada.")}');
+                        text_response.html('${_("Se ha producido un error en actualizar la miniatura.")}');
                     }
                     metadata.find('#ui-loading-update').hide();
                     e.currentTarget.disabled = false;
