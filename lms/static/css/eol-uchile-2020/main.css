@@ -534,5 +534,5 @@ body {
 }
 
 .xmodule_display.xmodule_VideoBlock .video .video-wrapper .btn-play{
-    opacity: 0.7;
+    opacity: 0.7 !important;
 }
