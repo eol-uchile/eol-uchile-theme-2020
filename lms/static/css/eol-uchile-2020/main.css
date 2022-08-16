@@ -532,3 +532,7 @@ body {
     background: #3d9bdd30 !important;
     box-shadow: -10px 0 0 0 #2d75b4;
 }
+
+.xmodule_display.xmodule_VideoBlock .video .video-wrapper .btn-play{
+    opacity: 0.7 !important;
+}

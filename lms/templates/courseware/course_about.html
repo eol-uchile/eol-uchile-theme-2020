@@ -11,7 +11,6 @@ from common.djangoapps.edxmako.shortcuts import marketing_link
 from openedx.core.djangolib.js_utils import js_escaped_string
 from openedx.core.djangolib.markup import clean_dangerous_html, HTML, Text
 from openedx.core.lib.courses import course_image_url
-
 from six import string_types
 %>
 
@@ -146,7 +145,9 @@ from six import string_types
                           course_start_date = 'None'
                           if not course.start_date_is_still_default:
                             course_start_date = course.advertised_start or course.start
+                            aux_start_date = False
                             if not isinstance(course_start_date, string_types):
+                              aux_start_date = True
                               course_start_date = course_start_date.strftime('%Y-%m-%dT%H:%M:%S%z')
                             endif
                           endif
@@ -168,7 +169,11 @@ from six import string_types
                             <tr>
                               <th scope="row" class="text-left">${_("Classes Start")}</th>
                               <td class="text-right">
-                                <span class="important-dates-item-text start-date localized_datetime" data-format="shortDate" data-datetime="${course_start_date}" data-language="${LANGUAGE_CODE}"></span>
+                                %if aux_start_date:
+                                  <span class="important-dates-item-text start-date localized_datetime" data-format="shortDate" data-datetime="${course_start_date}" data-language="${LANGUAGE_CODE}"></span>
+                                %else:
+                                  <span class="important-dates-item-text start-date localized_datetime" data-language="${LANGUAGE_CODE}">${course_start_date}</span>
+                                %endif
                               </td>
                             </tr>
                             %endif

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: support@edunext.co\n"
-"POT-Creation-Date: 2021-10-22 14:23+0000\n"
+"POT-Creation-Date: 2022-07-04 21:49+0000\n"
 "PO-Revision-Date: 2021-10-20 19:03+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -44,103 +44,103 @@ msgid ""
 "having difficulties, check your formatting."
 msgstr ""
 
-#: cms/templates/container.html:120
+#: cms/templates/container.html:136
 #: cms/templates/js/course-outline.underscore:125
 #: cms/templates/js/course-outline.underscore:130
 msgid "Display Name"
 msgstr ""
 
-#: cms/templates/container.html:127 cms/templates/container.html:128
+#: cms/templates/container.html:143 cms/templates/container.html:144
 #: cms/templates/course_outline.html:177 cms/templates/course_outline.html:178
 #: cms/templates/videos_index.html:74 cms/templates/videos_index.html:75
 msgid "Page Actions"
 msgstr ""
 
-#: cms/templates/container.html:132
+#: cms/templates/container.html:148
 msgid "Open the courseware in the LMS"
 msgstr ""
 
-#: cms/templates/container.html:133
+#: cms/templates/container.html:149
 msgid "View Live Version"
 msgstr ""
 
-#: cms/templates/container.html:137
+#: cms/templates/container.html:153
 msgid "Preview the courseware in the LMS"
 msgstr ""
 
-#: cms/templates/container.html:138
+#: cms/templates/container.html:154
 msgid "Preview"
 msgstr ""
 
-#: cms/templates/container.html:145 cms/templates/studio_xblock_wrapper.html:80
+#: cms/templates/container.html:161 cms/templates/studio_xblock_wrapper.html:80
 msgid "Edit"
 msgstr ""
 
-#: cms/templates/container.html:164 cms/templates/course_outline.html:259
+#: cms/templates/container.html:180 cms/templates/course_outline.html:259
 msgid "Loading"
 msgstr ""
 
-#: cms/templates/container.html:170
+#: cms/templates/container.html:186
 msgid "Adding components"
 msgstr ""
 
-#: cms/templates/container.html:171
+#: cms/templates/container.html:187
 msgid ""
 "Select a component type under {strong_start}Add New "
 "Component{strong_end}. Then select a template."
 msgstr ""
 
-#: cms/templates/container.html:175
+#: cms/templates/container.html:191
 msgid ""
 "The new component is added at the bottom of the page or group. You can "
 "then edit and move the component."
 msgstr ""
 
-#: cms/templates/container.html:176
+#: cms/templates/container.html:192
 msgid "Editing components"
 msgstr ""
 
-#: cms/templates/container.html:177
+#: cms/templates/container.html:193
 msgid ""
 "Click the {strong_start}Edit{strong_end} icon in a component to edit its "
 "content."
 msgstr ""
 
-#: cms/templates/container.html:181
+#: cms/templates/container.html:197
 msgid "Reorganizing components"
 msgstr ""
 
-#: cms/templates/container.html:182
+#: cms/templates/container.html:198
 msgid "Drag components to new locations within this component."
 msgstr ""
 
-#: cms/templates/container.html:183
+#: cms/templates/container.html:199
 msgid "For content experiments, you can drag components to other groups."
 msgstr ""
 
-#: cms/templates/container.html:184
+#: cms/templates/container.html:200
 msgid "Working with content experiments"
 msgstr ""
 
-#: cms/templates/container.html:185
+#: cms/templates/container.html:201
 msgid ""
 "Confirm that you have properly configured content in each of your "
 "experiment groups."
 msgstr ""
 
-#: cms/templates/container.html:188
+#: cms/templates/container.html:204
 msgid "Learn more about component containers"
 msgstr ""
 
-#: cms/templates/container.html:194
+#: cms/templates/container.html:210
 msgid "Unit Location"
 msgstr ""
 
-#: cms/templates/container.html:196
+#: cms/templates/container.html:212
 msgid "Location ID"
 msgstr ""
 
-#: cms/templates/container.html:199
+#: cms/templates/container.html:215
 msgid ""
 "To create a link to this unit from an HTML component in this course, "
 "enter \"/jump_to_id/<location ID>\" as the URL value."
@@ -767,22 +767,43 @@ msgid ""
 "learners before the learners start the exam."
 msgstr ""
 
-#: cms/templates/widgets/video/transcripts.html:74
+#: cms/templates/widgets/video/transcripts.html:112
 msgid "Seleccione un video"
 msgstr ""
 
-#: cms/templates/widgets/video/transcripts.html:75
+#: cms/templates/widgets/video/transcripts.html:115
 msgid ""
 "Seleccione un video previamente cargado al curso o inserte un enlace "
 "externo de YouTube en el campo correspondiente."
 msgstr ""
 
-#: cms/templates/widgets/video/transcripts.html:84
+#: cms/templates/widgets/video/transcripts.html:122
 msgid "Enlace externo de YouTube"
 msgstr ""
 
-#: cms/templates/widgets/video/transcripts.html:88
+#: cms/templates/widgets/video/transcripts.html:126
 msgid "Enlace externo de YouTube (URL de video por defecto)"
+msgstr ""
+
+#: cms/templates/widgets/video/transcripts.html:143
+msgid "Actualizar miniatura desde Vimeo"
+msgstr ""
+
+#: cms/templates/widgets/video/transcripts.html:144
+msgid "Actualizar"
+msgstr ""
+
+#: cms/templates/widgets/video/transcripts.html:147
+msgid "Actualizando"
+msgstr ""
+
+#: cms/templates/widgets/video/transcripts.html:203
+msgid "Miniatura actualizada."
+msgstr ""
+
+#: cms/templates/widgets/video/transcripts.html:207
+#: cms/templates/widgets/video/transcripts.html:213
+msgid "Se ha producido un error en actualizar la miniatura."
 msgstr ""
 
 #: lms/static/js/eol-legacy.js:106 lms/static/js/eol-legacy.js:123
@@ -917,7 +938,7 @@ msgstr ""
 #: lms/templates/dashboard.html:377
 #: lms/templates/dashboard/_dashboard_course_listing.html:283
 #: lms/templates/instructor/instructor_dashboard_2/membership.html:33
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:86
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:95
 msgid "Unenroll"
 msgstr ""
 
@@ -989,90 +1010,90 @@ msgstr ""
 msgid "Pursue a Verified Certificate"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:45
+#: lms/templates/courseware/course_about.html:44
 msgid "An error occurred. Please try again later."
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:100
+#: lms/templates/courseware/course_about.html:99
 msgid "View About Page in studio"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:104
+#: lms/templates/courseware/course_about.html:103
 msgid "You are enrolled in this course"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:107
-#: lms/templates/courseware/course_about.html:124
+#: lms/templates/courseware/course_about.html:106
+#: lms/templates/courseware/course_about.html:123
 msgid "View Course"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:111
+#: lms/templates/courseware/course_about.html:110
 msgid "Course is full"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:117
+#: lms/templates/courseware/course_about.html:116
 msgid "La inscripción a este curso es sólo por invitación"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:120
+#: lms/templates/courseware/course_about.html:119
 msgid "Enrollment is Closed"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:141
+#: lms/templates/courseware/course_about.html:140
 msgid "Inscribirse"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:164
+#: lms/templates/courseware/course_about.html:165
 msgid "Course Number"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:169
+#: lms/templates/courseware/course_about.html:170
 msgid "Classes Start"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:177
+#: lms/templates/courseware/course_about.html:182
 msgid "Classes End"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:185
+#: lms/templates/courseware/course_about.html:190
 msgid "Estimated Effort"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:190
-#: lms/templates/courseware/course_about.html:192
+#: lms/templates/courseware/course_about.html:195
+#: lms/templates/courseware/course_about.html:197
 msgid "Free"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:198
+#: lms/templates/courseware/course_about.html:203
 msgid "Price"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:206
+#: lms/templates/courseware/course_about.html:211
 msgid "Prerequisites"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:210
+#: lms/templates/courseware/course_about.html:215
 #: lms/templates/dashboard/_dashboard_course_listing.html:436
 msgid ""
 "You must successfully complete {link_start}{prc_display}{link_end} before"
 " you begin this course."
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:221
+#: lms/templates/courseware/course_about.html:226
 msgid "Requirements"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:269
+#: lms/templates/courseware/course_about.html:274
 #: lms/templates/header/navbar-not-authenticated.html:28
 msgid "Preguntas frecuentes"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:285
+#: lms/templates/courseware/course_about.html:290
 msgctxt "self"
 msgid "Enroll"
 msgstr ""
 
-#: lms/templates/courseware/course_about.html:290
+#: lms/templates/courseware/course_about.html:295
 msgctxt "self"
 msgid "enroll"
 msgstr ""
@@ -2071,6 +2092,7 @@ msgid "Máximo 50 rut."
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/membership.html:24
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:49
 msgid "Role of the users being enrolled."
 msgstr ""
 
@@ -2083,7 +2105,7 @@ msgid "Equipo Docente"
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/membership.html:32
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:85
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:94
 msgctxt "someone"
 msgid "Enroll"
 msgstr ""
@@ -2093,7 +2115,7 @@ msgid "Batch Enrollment"
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/membership.html:43
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:121
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:130
 msgid "Enter email addresses and/or usernames separated by new lines or commas."
 msgstr ""
 
@@ -2104,69 +2126,69 @@ msgid ""
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/membership.html:45
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:123
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:132
 msgid "Email Addresses/Usernames"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:50
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:59
 msgid ""
 "Enter the reason why the students are to be manually enrolled or "
 "unenrolled."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:51
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:60
 msgid ""
 "This cannot be left blank and will be recorded and presented in "
 "Enrollment Reports."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:52
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:61
 msgid "Therefore, please give enough detail to account for this action."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:53
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:62
 msgid "Reason"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:59
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:128
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:68
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:137
 msgid "Auto Enroll"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:63
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:72
 msgid ""
 "If this option is {em_start}checked{em_end}, users who have not yet "
 "registered for {platform_name} will be automatically enrolled."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:64
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:73
 msgid ""
 "If this option is left {em_start}unchecked{em_end}, users who have not "
 "yet registered for {platform_name} will not be enrolled, but will be "
 "allowed to enroll once they make an account."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:66
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:75
 msgid "Checking this box has no effect if 'Unenroll' is selected."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:75
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:142
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:84
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:151
 msgid "Notify users by email"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:79
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:146
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:88
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:155
 msgid ""
 "If this option is {em_start}checked{em_end}, users will receive an email "
 "notification."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:96
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:105
 msgid "Register/Enroll Students"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:97
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:106
 msgid ""
 "To register and enroll a list of users in this course, choose a CSV file "
 "that contains the following columns in this exact order: email, username,"
@@ -2174,66 +2196,66 @@ msgid ""
 " any headers, footers, or blank lines."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:100
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:109
 msgid "Upload a CSV for bulk enrollment"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:107
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:116
 msgid "Upload CSV"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:119
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:128
 msgid "Batch Beta Tester Addition"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:122
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:131
 msgid ""
 "Note: Users must have an activated {platform_name} account before they "
 "can be enrolled as beta testers."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:132
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:141
 msgid ""
 "If this option is {em_start}checked{em_end}, users who have not enrolled "
 "in your course will be automatically enrolled."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:134
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:143
 msgid "Checking this box has no effect if 'Remove beta testers' is selected."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:152
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:161
 msgid "Add beta testers"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:153
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:162
 msgid "Remove beta testers"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:164
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:173
 msgid "Course Team Management"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:170
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:179
 msgid "Select a course team role:"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:172
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:181
 msgid "Getting available lists..."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:180
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:189
 msgid ""
 "Staff cannot modify these lists. To manage course team membership, a "
 "course Admin must give you the Admin role to add Staff or Beta Testers, "
 "or the Discussion Admin role to add discussion moderators and TAs."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:189
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:198
 msgid "Staff"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:191
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:200
 msgid ""
 "Course team members with the Staff role help you manage your course. "
 "Staff can enroll and unenroll learners, as well as modify their grades "
@@ -2242,15 +2264,15 @@ msgid ""
 "users."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:197
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:206
 msgid "Add Staff"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:203
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:212
 msgid "Admin"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:205
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:214
 msgid ""
 "Course team members with the Admin role help you manage your course. They"
 " can do all of the tasks that Staff can do, and can also add and remove "
@@ -2259,30 +2281,30 @@ msgid ""
 "team roles to enrolled users."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:212
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:221
 msgid "Add Admin"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:218
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:227
 msgid "Beta Testers"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:220
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:229
 msgid ""
 "Beta Testers can see course content before other learners. They can make "
 "sure that the content works, but have no additional privileges. You can "
 "only give course team roles to enrolled users."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:225
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:234
 msgid "Add Beta Tester"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:230
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:239
 msgid "Discussion Admins"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:232
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:241
 msgid ""
 "Discussion Admins can edit or delete any post, clear misuse flags, close "
 "and re-open threads, endorse responses, and see posts from all groups. "
@@ -2291,27 +2313,27 @@ msgid ""
 "enrolled users can be added as Discussion Admins."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:239
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:248
 msgid "Add Discussion Admin"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:244
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:253
 msgid "Course Data Researcher"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:246
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:255
 msgid "Course Data Researchers can access the data download tab."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:249
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:258
 msgid "Add Course Data Researcher"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:257
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:266
 msgid "Discussion Moderators"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:259
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:268
 msgid ""
 "Discussion Moderators can edit or delete any post, clear misuse flags, "
 "close and re-open threads, endorse responses, and see posts from all "
@@ -2320,15 +2342,15 @@ msgid ""
 "enrolled users can be added as Discussion Moderators."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:266
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:275
 msgid "Add Moderator"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:271
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:280
 msgid "Group Community TA"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:273
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:282
 msgid ""
 "Group Community TAs are members of the community who help course teams "
 "moderate discussions. Group Community TAs see only posts by learners in "
@@ -2338,15 +2360,15 @@ msgid ""
 "enrolled learners can be added as Group Community TAs."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:280
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:289
 msgid "Add Group Community TA"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:285
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:294
 msgid "Community TA"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:287
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:296
 msgid ""
 "Community TAs are members of the community who help course teams moderate"
 " discussions. They can see posts by learners in their assigned cohort or "
@@ -2355,22 +2377,22 @@ msgid ""
 " TA'. Only enrolled learners can be added as Community TAs."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:293
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:302
 msgid "Add Community TA"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:300
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:309
 msgid "CCX Coaches"
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:302
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:311
 msgid ""
 "CCX Coaches are able to create their own Custom Courses based on this "
 "course, which they can use to provide personalized instruction to their "
 "own students based in this course material."
 msgstr ""
 
-#: lms/templates/instructor/instructor_dashboard_2/membership.html:307
+#: lms/templates/instructor/instructor_dashboard_2/membership.html:316
 msgid "Add CCX Coach"
 msgstr ""
 
