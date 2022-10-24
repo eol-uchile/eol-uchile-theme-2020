@@ -308,19 +308,19 @@
             <% if(pinned || subscribed) { %>
                 <ul class="forum-nav-thread-labels">
                     <% if (pinned) { %>
-                    <li class="post-label post-label-pinned" style="margin-left: 2px;">
+                    <li class="eol-post-label post-label-pinned" style="margin-left: 2px;">
                         <span class="icon fa fa-thumb-tack" aria-hidden="true" style="font-size:16px;"></span>
                     </li>
                     <% } %>
                     <% if (subscribed) { %>
-                    <li class="post-label post-label-following">
+                    <li class="eol-post-label post-label-following">
                         <span class="icon fa fa-star" aria-hidden="true"></span>
                     </li>
                     <% } %>
                 </ul>
             <% } else{ %>
                 <ul class="forum-nav-thread-labels">
-                    <li class="post-label" style="width: 12px">
+                    <li class="eol-post-label" style="width: 12px">
                     </li>
                 </ul>
             <% } %>
