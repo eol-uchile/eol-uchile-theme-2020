@@ -325,7 +325,7 @@
                 </ul>
             <% } %>
         </div>
-        <div class="col-md-6" style="text-align: left;max-width: calc(50% - 26px);">
+        <div class="col-md-6 eol-thread-title" >
             <ul class="eol-thread-list">
                 <li class="eol-thread-item">
                     <span class="forum-nav-thread-title"><%- title %></span>
