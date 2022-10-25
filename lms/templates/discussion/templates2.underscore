@@ -337,7 +337,11 @@
                 </li>
                 <li class="eol-thread-item">
                     <span class="forum-nav-thread-username">
-                        <%- username %>
+                        <% if (typeof(username) === "undefined") { %>
+                            <%- gettext("anonymous") %>
+                        <% } else { %>
+                            <%- username %>
+                        <% } %>
                     </span>
                 </li>
             </ul>
