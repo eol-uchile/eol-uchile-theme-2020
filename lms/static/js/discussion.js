@@ -2453,6 +2453,9 @@ if (typeof MathJax === "undefined") {
                 $(".new-post-btn").hide();
                 var threadId;
                 threadId = $(e.target).closest(".forum-nav-thread").attr("data-id");
+                if (!$(e.target).closest(".forum-nav-thread")[0].classList.contains('eol-read')) {
+                    $(e.target).closest(".forum-nav-thread")[0].classList.add("eol-read");
+                }
                 if (this.supportsActiveThread) {
                     this.setActiveThread(threadId);
                 }
