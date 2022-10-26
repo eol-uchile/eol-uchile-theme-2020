@@ -753,27 +753,27 @@ body {
     width: 90px !important;
     min-width: 90px !important;
   }
-  .never-read .forum-nav-thread-title, .never-read .forum-nav-thread-username {
+  .eol-read .forum-nav-thread-title, .eol-read .forum-nav-thread-username {
     color: #a3c8e2 !important;
   }
-  .forum-nav-thread-list .never-read .thread-preview-body, .never-read .eol-thread-created-at{
+  .forum-nav-thread-list .eol-read .thread-preview-body, .eol-read .eol-thread-created-at{
     color: #a8a8a8 !important;
   }
-  .never-read .eol-box-text-forum{
+  .eol-read .eol-box-text-forum{
     color: #a8a8a8 !important;
     border: 1px solid #a3c8e2 !important;
   }
-  .never-read .eol-date-item.updated-at, .never-read .forum-nav-thread-comments-count{
+  .eol-read .eol-date-item.updated-at, .eol-read .forum-nav-thread-comments-count{
     background-color: #a3c8e2 !important;
   }
-  .never-read .forum-nav-thread-comments-count::after{
+  .eol-read .forum-nav-thread-comments-count::after{
     border-color: transparent #a3c8e2 !important;
   }
   .post-label-following .fa-star{
     font-size: 16px !important;
     color: #00ce46 !important;
   }
-  .never-read .post-label-following .fa-star{
+  .eol-read .post-label-following .fa-star{
     font-size: 16px !important;
     color: #7dc997 !important;
   }

@@ -300,7 +300,7 @@
 </div>
 </script>
 <script aria-hidden="true" type="text/template" id="thread-list-item-template">
-<li data-id="<%- id %>" class="forum-nav-thread <% if (!hideReadState && neverRead) { %> never-read<% } %>">
+<li data-id="<%- id %>" class="forum-nav-thread <% if (hideReadState || !neverRead) { %> eol-read<% } %>">
   <a href="<%- threadUrl %>" class="forum-nav-thread-link">
     <div class="row eol-thread">
         <div style="padding-left: 5px;padding-right: 5px;">
@@ -366,10 +366,10 @@
             %>
             <ul class="eol-date-list">
                 <li class="eol-date-item" title='<%- gettext("Creación") %>'>
-                    <span class="eol-thread-created-at" ><%- gettext("Creación") %>: <%- creadtedDate.getDate()  %>-<%- creadtedDate.getMonth()  %>-<%- creadtedDate.getFullYear()  %></span>
+                    <span class="eol-thread-created-at" ><%- gettext("Creación") %>: <%- creadtedDate.getDate()  %>-<%- creadtedDate.getMonth() + 1 %>-<%- creadtedDate.getFullYear()  %></span>
                 </li>
                 <li class="eol-date-item updated-at" title='<%- gettext("Ultima modificación") %>' style="padding-left: 5px;padding-right: 5px;width: 100%;">
-                    <span class="eol-thread-updated-at" ><%- gettext("Ultima modificación") %>: <%- updatedDate.getDate()  %>-<%- updatedDate.getMonth()  %>-<%- updatedDate.getFullYear()  %></span>
+                    <span class="eol-thread-updated-at" ><%- gettext("Ultima modificación") %>: <%- updatedDate.getDate()  %>-<%- updatedDate.getMonth() + 1 %>-<%- updatedDate.getFullYear()  %></span>
                 </li>
             </ul>
         </div>
