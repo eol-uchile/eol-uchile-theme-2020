@@ -719,7 +719,9 @@ body {
   .eol-date-item.updated-at{
     background-color: #7eb0d5 !important;
     border-radius: 12px !important;
-    width: 70%;
+    padding-left: 3px;
+    padding-right: 3px;
+    width: 100%;
   }
   .forum-nav-thread-comments-count{
     padding: 1px 16px !important;

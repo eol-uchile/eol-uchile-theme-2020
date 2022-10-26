@@ -368,7 +368,7 @@
                 <li class="eol-date-item" title='<%- gettext("Creación") %>'>
                     <span class="eol-thread-created-at" ><%- gettext("Creación") %>: <%- creadtedDate.getDate()  %>-<%- creadtedDate.getMonth() + 1 %>-<%- creadtedDate.getFullYear()  %></span>
                 </li>
-                <li class="eol-date-item updated-at" title='<%- gettext("Ultima modificación") %>' style="padding-left: 5px;padding-right: 5px;width: 100%;">
+                <li class="eol-date-item updated-at" title='<%- gettext("Ultima modificación") %>'>
                     <span class="eol-thread-updated-at" ><%- gettext("Ultima modificación") %>: <%- updatedDate.getDate()  %>-<%- updatedDate.getMonth() + 1 %>-<%- updatedDate.getFullYear()  %></span>
                 </li>
             </ul>
