@@ -1,0 +1,379 @@
+<%page expression_filter="h"/>
+
+<%include file="_underscore_templates2.html" />
+<%include file="_thread_list_template.html" />
+
+<%!
+from django.utils.translation import ugettext as _
+from json import dumps as json_dumps
+from openedx.core.djangolib.js_utils import js_escaped_string
+%>
+<style>
+    .eol-notification-btn {
+        float: right;
+        position: relative;
+        top: 3px;
+        font-size: 14px;
+        text-align: center;
+        border-radius: 11px !important;
+    }
+    .eol-save-btn {
+        float: right;
+        position: relative;
+        top: 3px;
+        font-size: 14px;
+        text-align: center;
+        border-radius: 11px !important;
+    }   
+    /* The Modal (background) */
+    .discussion-module .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 9999; /* Sit on top */
+        left: 0;
+        top: 0;
+        padding: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    
+    /* Modal Content */
+    .discussion-module .modal-content-persistent {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 40px 40px 20px 40px;
+        box-shadow: -8px 4px 8px 0px rgb(0 0 0 / 20%);
+        width: 30%;
+        height: 100%;
+        float: right;
+    }
+    
+    /* The Close Button */
+    
+    .discussion-module .close-alert{
+        margin: -16px -16px !important;
+    }
+    .discussion-module .close {
+        color: #0075b4;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        margin: -40px -30px;
+    }
+    
+    .discussion-module .close:hover,
+    .discussion-module .close:focus {
+        color:#0075b45e;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .discussion-module .animate-top{position:relative;animation:animatetop 0.4s}@keyframes animatetop{from{right:-300px;opacity:0} to{right:0;opacity:1}}
+
+    .discussion-module .animated{
+        -webkit-animation-duration:1s;
+        animation-duration:1s;
+        -webkit-animation-fill-mode:both;
+        animation-fill-mode:both
+    }
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 26px;
+    }
+
+    .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(30px);
+        -ms-transform: translateX(30px);
+        transform: translateX(30px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 26px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+    .eol-notification-list{
+        list-style: none !important;
+    }
+    .eol-notification-save{
+        margin-top: 45px;
+    }
+    .discussion-module .alert {
+        position: relative;
+        font-style: italic;
+        padding: .75rem 1.25rem;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        margin-bottom: 1em;
+        min-width: auto;
+        display: none;
+    }
+    .discussion-module .alert-info  {
+        background-color: #cce5ff;
+        border-color: #b8daff;
+        color: #004085 !important;
+    }
+    .discussion-module .alert-error {
+        color: #852904 !important;
+        background-color: #ffcdcd;
+        border-color: #ffbaba;
+    }
+</style>
+<div class="discussion-module" data-discussion-id="${discussion_id}"
+    data-user-create-comment="${json_dumps(can_create_comment)}"
+    data-user-create-subcomment="${json_dumps(can_create_subcomment)}"
+    data-read-only="${'false' if can_create_thread else 'true'}"
+    data-limit-character="${limit_character}">
+    % if not user.is_authenticated:
+        <div class="page-banner">
+            <div class="alert alert-warning" role="alert">
+                <span class="icon icon-alert fa fa fa-warning" aria-hidden="true"></span>
+                <div class="message-content">${login_msg}</div>
+            </div>
+        </div>
+        <br>
+    % endif
+    <div class="discussion-module-header">
+        <h3 class="hd hd-3 discussion-module-title">${_(display_name)}</h3>
+        <div class="inline-discussion-topic"><span class="inline-discussion-topic-title">${_("Topic:")}</span> ${discussion_category}
+              % if discussion_target:
+                    / ${discussion_target}
+              %endif
+           </div>
+    </div>
+    <button class="eol-notification-btn btn" id="eol-notification-btn-${discussion_id}"
+        data-config='${notification_data | h}'
+    >
+        <span class="button-text">${_("Notifications")}</span>
+        <span class="icon fa fa-bell" aria-hidden="true"></span>
+    </button>
+    <div id="modal_eol_notification_${discussion_id}" class="modal eol-notification-modal">
+        <div class="modal-content-persistent animate-top">
+            <span id="close_modal_eol_notification_${discussion_id}" class="close">&times;</span>
+            <h1>${_("Notifications")}</h1>
+            <hr>
+            <div class="eol-body-notification" id="eol-body-notification-${discussion_id}">
+                <div class="eol-notification-period">
+                    <h3>Cada cuanto recibir mensaje:</h3>
+                    <ul class="eol-notification-list">
+                        <li>
+                            <span>Semanal</span>
+                            <label class="switch" style="float: right;">
+                                <input type="checkbox" class="eol-checkbox-period-${discussion_id}" value="weekly">
+                                <span class="slider round"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <span>Mensual</span>
+                            <label class="switch" style="float: right;">
+                                <input type="checkbox" class="eol-checkbox-period-${discussion_id}" value="monthly">
+                                <span class="slider round"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <span>Siempre</span>
+                            <label class="switch" style="float: right;">
+                                <input type="checkbox" class="eol-checkbox-period-${discussion_id}" value="always">
+                                <span class="slider round"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <span>Nunca</span>
+                            <label class="switch" style="float: right;">
+                                <input type="checkbox" class="eol-checkbox-period-${discussion_id}" value="never" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="eol-notification-when" id="eol-notification-when-${discussion_id | n, js_escaped_string}">
+                    <h3>Que informacion recibir:</h3>
+                    <ul class="eol-notification-list">
+                        <li>
+                            <span>Se cree una publicación</span>
+                            <label class="switch" style="float: right;">
+                                <input type="checkbox" class="eol-checkbox-when" value="1">
+                                <span class="slider round"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <span>Se cree un comentario</span>
+                            <label class="switch" style="float: right;">
+                                <input type="checkbox" class="eol-checkbox-when" value="2">
+                                <span class="slider round"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <span>Alguien comente en una intervención propia</span>
+                            <label class="switch" style="float: right;">
+                                <input type="checkbox" class="eol-checkbox-when" value="3">
+                                <span class="slider round"></span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="alert alert-info" id="eol-alert-info-${discussion_id | n, js_escaped_string}">
+                    Guardado Correctamente
+                </div>
+                <div class="alert alert-error" id="eol-alert-error-${discussion_id | n, js_escaped_string}">
+                    Un error inesperado ha ocurrido, actualice la página he intente nuevamente. Si el error persiste contacte te con mesa de ayuda.
+                </div>
+                <div class="eol-notification-save">
+                    <button class="eol-save-btn btn" id="eol-save-btn-${discussion_id | n, js_escaped_string}"
+                        data-discussion-id="${discussion_id}"
+                        data-user-id="${user.id}"
+                        data-course-id="${course_id}"
+                    >
+                        <span class="button-text">${_("Save")}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function ($) {
+        console.log('123456879')
+        var modal = document.getElementById("modal_eol_notification_" + "${discussion_id | n, js_escaped_string}");
+        var btn = document.getElementById("eol-notification-btn-" + "${discussion_id | n, js_escaped_string}");
+        var span = document.getElementById("close_modal_eol_notification_" + "${discussion_id | n, js_escaped_string}");
+        var alert_info = document.getElementById("eol-alert-info-" + "${discussion_id | n, js_escaped_string}");
+        var alert_error = document.getElementById("eol-alert-error-" + "${discussion_id | n, js_escaped_string}");
+        /* 
+        Open Modal 
+        1:thread_created
+        2:comment_created
+        3:own_comment_created
+        */
+        btn.onclick = function() {
+            var data = JSON.parse(btn.dataset.config);
+            if(!isEmpty(data)){
+                $('input[class="eol-checkbox-period-${discussion_id | n, js_escaped_string}"]').prop("checked", false);
+                $('#eol-body-notification-${discussion_id}').find('input[value="'+data['how_often']+'"]').prop("checked", true);
+                $('#eol-notification-when-${discussion_id}').find('input[value="1"]').prop("checked", data['thread_created']);
+                $('#eol-notification-when-${discussion_id}').find('input[value="2"]').prop("checked", data['comment_created']);
+                $('#eol-notification-when-${discussion_id}').find('input[value="3"]').prop("checked", data['own_comment_created']);
+            }
+            modal.style.display = "block";
+            alert_info.style.display = "none";
+            alert_error.style.display = "none";
+        }
+        /* Close modal */
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        function isEmpty(obj) {
+            return Object.keys(obj).length === 0;
+        }
+        window.onclick = function(event) {
+            let aux_modal = $('.eol-notification-modal').filter(function(){
+                return $(this).css('display') === 'block';
+            });;
+            if (aux_modal.length > 0) {
+                if (event.target == aux_modal[0]) {
+                    aux_modal[0].style.display = "none";
+                }
+            }
+        }
+        $('input[class="eol-checkbox-period-${discussion_id | n, js_escaped_string}"]').bind('click',function() {
+            if($(this).prop('checked') === false) {
+            $(this).prop('checked', true);
+            }
+            $('input[class="eol-checkbox-period-${discussion_id | n, js_escaped_string}"]').not(this).prop("checked", false);
+        });
+        $('#eol-save-btn-${discussion_id | n, js_escaped_string}').bind('click',function() {
+            alert_info.style.display = "none";
+            alert_error.style.display = "none";
+            var period = $('.eol-checkbox-period-a97509d2fc1c8a277d81048cd0858bb832b938ea:checked').val();
+            var when = [];
+            var aux_when = $('#eol-notification-when-${discussion_id | n, js_escaped_string}').find('.eol-checkbox-when:checked');
+            aux_when.each(function( index ) {
+                when.push($( this ).val())
+            });
+            var form_data = new FormData();
+            form_data.append('period', period);
+            form_data.append('when', when);
+            form_data.append('discussion_id', $(this)[0].dataset.discussionId);
+            form_data.append('course_id', $(this)[0].dataset.courseId);
+            form_data.append('user_id', $(this)[0].dataset.userId);
+            $.ajax({
+                url: "${url_eol_notification_save | n}",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: "POST",
+                success: function(response){
+                    btn.dataset.config = JSON.stringify({"how_often": period, "comment_created": when.includes('2'), "thread_created": when.includes('1'), "own_comment_created": when.includes('3')});
+                    alert_info.style.display = "block";
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert_error.style.display = "block";
+                }
+            });
+        });
+    });
+var $$course_id = "${course_id | n, js_escaped_string}";
+
+function EolDiscussionInlineBlock(runtime, element) {
+    'use strict';
+    console.log('asdasdasdsad')
+    var el = $(element).find('.discussion-module');
+    new EolDiscussionInlineView({ el: el, readOnly: el.data('read-only'), limitCharacter: el.data('limit-character')});
+
+    $(element).find('.eol-text-limit').live('keyup', function(e) {
+        var val = $(this).val();
+        var $wmd = $(this).closest('.wmd-panel');
+        var span_limit = $wmd.parent().next().find('#eol-limit-character')[0];
+        span_limit.textContent = parseInt(el.data('limit-character')) - val.length;
+    });
+}
+
+</script>

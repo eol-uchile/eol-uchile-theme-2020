@@ -12,7 +12,7 @@
                 <% if (!readOnly) { %>
                 <div class="add-response">
                     <button class="btn-link-eol add-response-btn">
-                        <span class="button-text" style="float:left;"><%- gettext("Response") %></span>
+                        <span class="button-text" style="float:left;"><%- gettext("Responder") %></span>
                         <i class="fa fa-plus" aria-hidden="true"  style="float:right;"></i>
                     </button>
                 </div>
@@ -60,7 +60,7 @@
             </div>
         <% } %>
         <div class="post-header-content">
-            <h<%- startHeader %> class="post-title"><%- title %></h<%- startHeader%>>
+            <h<%- startHeader %> class="post-title" style="font-size: 16px;"><%- title %></h<%- startHeader%>>
             <p data-hj-suppress class="posted-details">
             <%
             var timeAgoHtml = interpolate(
@@ -368,8 +368,8 @@
                 <li class="eol-date-item" title='<%- gettext("Creación") %>'>
                     <span class="eol-thread-created-at" ><%- gettext("Creación") %>: <%- creadtedDate.getDate()  %>-<%- creadtedDate.getMonth() + 1 %>-<%- creadtedDate.getFullYear()  %></span>
                 </li>
-                <li class="eol-date-item updated-at" title='<%- gettext("Ultima modificación") %>'>
-                    <span class="eol-thread-updated-at" ><%- gettext("Ultima modificación") %>: <%- updatedDate.getDate()  %>-<%- updatedDate.getMonth() + 1 %>-<%- updatedDate.getFullYear()  %></span>
+                <li class="eol-date-item updated-at" title='<%- gettext("Ultima actividad") %>'>
+                    <span class="eol-thread-updated-at" ><%- gettext("Ultima actividad") %>: <%- updatedDate.getDate()  %>-<%- updatedDate.getMonth() + 1 %>-<%- updatedDate.getFullYear()  %></span>
                 </li>
             </ul>
         </div>
