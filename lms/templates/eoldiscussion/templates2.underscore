@@ -60,8 +60,8 @@
             </div>
         <% } %>
         <div class="post-header-content">
-            <h<%- startHeader %> class="post-title" style="font-size: 16px;"><%- title %></h<%- startHeader%>>
-            <p data-hj-suppress class="posted-details">
+            <h<%- startHeader %> class="post-title" ><%- title %></h<%- startHeader%>>
+            <p data-hj-suppress class="posted-details" style="font-size: 16px;">
             <%
             var timeAgoHtml = interpolate(
                 '<span class="timeago" title="%(created_at)s">%(created_at)s</span>',
