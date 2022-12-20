@@ -176,7 +176,7 @@ from openedx.core.djangolib.js_utils import js_escaped_string
         $('#eol-save-btn-${discussion_id | n, js_escaped_string}').bind('click',function() {
             alert_info.style.display = "none";
             alert_error.style.display = "none";
-            var period = $('.eol-checkbox-period-a97509d2fc1c8a277d81048cd0858bb832b938ea:checked').val();
+            var period = $('.eol-checkbox-period-${discussion_id | n, js_escaped_string}:checked').val();
             var when = [];
             var aux_when = $('#eol-notification-when-${discussion_id | n, js_escaped_string}').find('.eol-checkbox-when:checked');
             aux_when.each(function( index ) {
