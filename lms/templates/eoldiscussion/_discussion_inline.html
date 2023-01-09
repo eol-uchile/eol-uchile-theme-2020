@@ -33,7 +33,7 @@ from openedx.core.djangolib.js_utils import js_escaped_string
               %endif
            </div>
     </div>
-    <button class="eol-notification-btn btn" id="eol-notification-btn-${discussion_id}"
+    <!--button class="eol-notification-btn btn" id="eol-notification-btn-${discussion_id}"
         data-config='${notification_data | h}'
     >
         <span class="button-text">${_("Notifications")}</span>
@@ -121,22 +121,21 @@ from openedx.core.djangolib.js_utils import js_escaped_string
                 </div>
             </div>
         </div>
-    </div>
+    </div-->
 </div>
 <script type="text/javascript">
-    $(function ($) {
-        console.log('123456879')
+    /*$(function ($) {
         var modal = document.getElementById("modal_eol_notification_" + "${discussion_id | n, js_escaped_string}");
         var btn = document.getElementById("eol-notification-btn-" + "${discussion_id | n, js_escaped_string}");
         var span = document.getElementById("close_modal_eol_notification_" + "${discussion_id | n, js_escaped_string}");
         var alert_info = document.getElementById("eol-alert-info-" + "${discussion_id | n, js_escaped_string}");
         var alert_error = document.getElementById("eol-alert-error-" + "${discussion_id | n, js_escaped_string}");
-        /* 
-        Open Modal 
-        1:thread_created
-        2:comment_created
-        3:own_comment_created
-        */
+         
+        //Open Modal 
+        //1:thread_created
+        //2:comment_created
+        //3:own_comment_created
+        
         btn.onclick = function() {
             var data = JSON.parse(btn.dataset.config);
             if(!isEmpty(data)){
@@ -150,7 +149,7 @@ from openedx.core.djangolib.js_utils import js_escaped_string
             alert_info.style.display = "none";
             alert_error.style.display = "none";
         }
-        /* Close modal */
+        //Close modal 
         span.onclick = function() {
             modal.style.display = "none";
         }
@@ -160,7 +159,7 @@ from openedx.core.djangolib.js_utils import js_escaped_string
         window.onclick = function(event) {
             let aux_modal = $('.eol-notification-modal').filter(function(){
                 return $(this).css('display') === 'block';
-            });;
+            });
             if (aux_modal.length > 0) {
                 if (event.target == aux_modal[0]) {
                     aux_modal[0].style.display = "none";
@@ -205,12 +204,11 @@ from openedx.core.djangolib.js_utils import js_escaped_string
                 }
             });
         });
-    });
+    });*/
 var $$course_id = "${course_id | n, js_escaped_string}";
 
 function EolDiscussionInlineBlock(runtime, element) {
     'use strict';
-    console.log('asdasdasdsad')
     var el = $(element).find('.discussion-module');
     new EolDiscussionInlineView({ el: el, readOnly: el.data('read-only'), limitCharacter: el.data('limit-character')});
 

@@ -23,7 +23,7 @@
 
                         <ul class="discussion-errors"></ul>
                         <div class="reply-body" data-id="<%- id %>"></div>
-                        <span class="eol-characters-span"><%- gettext("Carácteres Restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+                        <span class="eol-characters-span"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
                         <div class="reply-post-control">
                             <button class="btn-link-eol discussion-submit-post control-button"><%- gettext("Submit") %></button>
                         </div>
@@ -145,7 +145,7 @@
 <div class="post-field">
     <p class="sr-only field-help" id="edit-post-editor-description"><%- gettext('Edit your post below.') %></p>
     <div class="edit-post-body" aria-describedby="edit-post-editor-description" name="body"><%- body %></div>
-    <span class="eol-characters-span"><%- gettext("Carácteres Restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+    <span class="eol-characters-span"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
 </div>
 <button type="submit" id="edit-post-submit" class="btn btn-primary submit post-update"><%- gettext("Update post") %></button>
 <button class="btn btn-outline-primary post-cancel"><%- gettext("Cancel") %></button>
@@ -167,7 +167,7 @@
                 <label class="sr" for="add-new-comment-<%- wmdId %>"><%- gettext("Add a comment") %></label>
                 <div class="comment-body" id="add-new-comment-<%- wmdId %>" data-id="<%- wmdId %>"
                 data-placeholder="<%- gettext('Add a comment') %>"></div>
-                <span class="eol-characters-span" style="display: block;"><%- gettext("Carácteres Restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+                <span class="eol-characters-span" style="display: block;"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
                 <div class="comment-post-control">
                     <button class="btn btn-primary discussion-submit-comment control-button"><%- gettext("Submit") %></button>
                 </div>
@@ -246,7 +246,7 @@
     <h<%- startHeader %>><%- gettext("Editing response") %></h<%- startHeader %>>
     <ul class="edit-post-form-errors"></ul>
       <div class="edit-post-body" name="body" data-id="<%- id %>"><%- body %></div>
-      <span class="eol-characters-span" style="display: block;"><%- gettext("Carácteres Restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+      <span class="eol-characters-span" style="display: block;"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
     <button type="submit" id="edit-response-submit"class="btn btn-primary post-update"><%- gettext("Update response") %></button>
     <button class="btn btn-outline-primary post-cancel"><%- gettext("Cancel") %></button>
 </div>
@@ -294,7 +294,7 @@
     <h<%- startHeader %> ><%- gettext("Editing comment") %></h<%- startHeader%>>
     <ul class="edit-comment-form-errors"></ul>
     <div class="edit-comment-body" name="body" data-id="<%- id %>"><%- body %></div>
-    <span class="eol-characters-span" style="display: block;"><%- gettext("Carácteres Restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+    <span class="eol-characters-span" style="display: block;"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
     <button type="submit" id="edit-comment-submit" class="btn btn-primary post-update"><%- gettext("Update comment") %></button>
     <button class="btn btn-outline-primary post-cancel"><%- gettext("Cancel") %></button>
 </div>
@@ -368,8 +368,8 @@
                 <li class="eol-date-item" title='<%- gettext("Creación") %>'>
                     <span class="eol-thread-created-at" ><%- gettext("Creación") %>: <%- creadtedDate.getDate()  %>-<%- creadtedDate.getMonth() + 1 %>-<%- creadtedDate.getFullYear()  %></span>
                 </li>
-                <li class="eol-date-item updated-at" title='<%- gettext("Ultima actividad") %>'>
-                    <span class="eol-thread-updated-at" ><%- gettext("Ultima actividad") %>: <%- updatedDate.getDate()  %>-<%- updatedDate.getMonth() + 1 %>-<%- updatedDate.getFullYear()  %></span>
+                <li class="eol-date-item updated-at" title='<%- gettext("Última actividad") %>'>
+                    <span class="eol-thread-updated-at" ><%- gettext("Última actividad") %>: <%- updatedDate.getDate()  %>-<%- updatedDate.getMonth() + 1 %>-<%- updatedDate.getFullYear()  %></span>
                 </li>
             </ul>
         </div>
@@ -414,7 +414,7 @@
 </script>
 <script aria-hidden="true" type="text/template" id="new-post-template">
 <form class="forum-new-post-form">
-    <h<%- startHeader %> class="thread-title"><%- gettext("Crear Publicación") %></h<%- startHeader %>>
+    <h<%- startHeader %> class="thread-title"><%- gettext("Crear publicación") %></h<%- startHeader %>>
 
     <% if (mode === 'inline') { %>
         <button class="btn btn-outline-primary btn-default add-post-cancel">
@@ -459,9 +459,9 @@
     </div>
 
     <div>
-        <span class="field-label-text field-label-text-full" id="new-post-editor-description"><%- gettext('Your question or idea (required)') %></span>
+        <span class="field-label-text field-label-text-full" id="new-post-editor-description"><%- gettext('Tu pregunta o idea (requerido)') %></span>
         <div class="js-post-body editor" aria-describedby="new-post-editor-description" name="body"></div>
-        <span class="eol-characters-span"><%- gettext("Carácteres Restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+        <span class="eol-characters-span"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
     </div>
     <div class="post-options">
         <label for="follow" class="field-label label-inline">
@@ -556,7 +556,7 @@
 <section class="discussion inline-discussion" data-discussion-id="<%- discussionId %>">
     <div class="add_post_btn_container <% if (read_only) { %> is-hidden <% } %>">
         <button class="btn-link-eol new-post-btn">
-            <span class="button-text" style="float:left;"><%- gettext("Crear Publicación") %></span>
+            <span class="button-text" style="float:left;"><%- gettext("Crear publicación") %></span>
             <i class="fa fa-plus" aria-hidden="true"  style="float:right;"></i>
             
         </button>
