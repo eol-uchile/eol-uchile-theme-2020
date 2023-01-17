@@ -94,8 +94,13 @@
             </div>
         </div>
     </header>
-
-    <div class="post-body"><%- body %></div>
+    
+    <div class="eol-post-body" style="width: 100%;display: flex;">
+        <div style="width: 4%;margin-top: 5px;min-width: 30px;">
+            <img src="/static/eol-uchile-2020/images/eoldiscussion/pencil_icon_black.png" height="30" width="30" />
+        </div>
+        <div class="post-body"><%- body %></div>
+    </div>
     <div class="post-context">
         <% if (mode === "tab" && obj.courseware_url) { %>
             <%
