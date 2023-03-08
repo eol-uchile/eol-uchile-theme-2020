@@ -23,7 +23,15 @@
 
                         <ul class="discussion-errors"></ul>
                         <div class="reply-body" data-id="<%- id %>"></div>
-                        <span class="eol-characters-span"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+                        <span class="eol-characters-span"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'>
+                            <% 
+                                var n = limitCharacter;
+                                var pattern = /(\d)(?=(\d{3})+(?!\d))/g;
+                                var repl = "\$1.";
+                                var string = String(n)
+                                print(string.replace(pattern, repl))
+                            %>
+                        </span></span>
                         <div class="reply-post-control">
                             <button class="btn-link-eol discussion-submit-post control-button"><%- gettext("Submit") %></button>
                         </div>
@@ -150,7 +158,15 @@
 <div class="post-field">
     <p class="sr-only field-help" id="edit-post-editor-description"><%- gettext('Edit your post below.') %></p>
     <div class="edit-post-body" aria-describedby="edit-post-editor-description" name="body"><%- body %></div>
-    <span class="eol-characters-span"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+    <span class="eol-characters-span"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'>
+        <% 
+            var n = limitCharacter;
+            var pattern = /(\d)(?=(\d{3})+(?!\d))/g;
+            var repl = "\$1.";
+            var string = String(n)
+            print(string.replace(pattern, repl))
+        %>
+    </span></span>
 </div>
 <button type="submit" id="edit-post-submit" class="btn btn-primary submit post-update"><%- gettext("Update post") %></button>
 <button class="btn btn-outline-primary post-cancel"><%- gettext("Cancel") %></button>
@@ -172,7 +188,15 @@
                 <label class="sr" for="add-new-comment-<%- wmdId %>"><%- gettext("Add a comment") %></label>
                 <div class="comment-body" id="add-new-comment-<%- wmdId %>" data-id="<%- wmdId %>"
                 data-placeholder="<%- gettext('Add a comment') %>"></div>
-                <span class="eol-characters-span" style="display: block;"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+                <span class="eol-characters-span" style="display: block;"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'>
+            <% 
+                var n = limitCharacter;
+                var pattern = /(\d)(?=(\d{3})+(?!\d))/g;
+                var repl = "\$1.";
+                var string = String(n)
+                print(string.replace(pattern, repl))
+            %>
+        </span></span>
                 <div class="comment-post-control">
                     <button class="btn btn-primary discussion-submit-comment control-button"><%- gettext("Submit") %></button>
                 </div>
@@ -251,7 +275,15 @@
     <h<%- startHeader %>><%- gettext("Editing response") %></h<%- startHeader %>>
     <ul class="edit-post-form-errors"></ul>
       <div class="edit-post-body" name="body" data-id="<%- id %>"><%- body %></div>
-      <span class="eol-characters-span" style="display: block;"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+      <span class="eol-characters-span" style="display: block;"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'>
+            <% 
+                var n = limitCharacter;
+                var pattern = /(\d)(?=(\d{3})+(?!\d))/g;
+                var repl = "\$1.";
+                var string = String(n)
+                print(string.replace(pattern, repl))
+            %>
+        </span></span>
     <button type="submit" id="edit-response-submit"class="btn btn-primary post-update"><%- gettext("Update response") %></button>
     <button class="btn btn-outline-primary post-cancel"><%- gettext("Cancel") %></button>
 </div>
@@ -299,7 +331,15 @@
     <h<%- startHeader %> ><%- gettext("Editing comment") %></h<%- startHeader%>>
     <ul class="edit-comment-form-errors"></ul>
     <div class="edit-comment-body" name="body" data-id="<%- id %>"><%- body %></div>
-    <span class="eol-characters-span" style="display: block;"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+    <span class="eol-characters-span" style="display: block;"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'>
+            <% 
+                var n = limitCharacter;
+                var pattern = /(\d)(?=(\d{3})+(?!\d))/g;
+                var repl = "\$1.";
+                var string = String(n)
+                print(string.replace(pattern, repl))
+            %>
+        </span></span>
     <button type="submit" id="edit-comment-submit" class="btn btn-primary post-update"><%- gettext("Update comment") %></button>
     <button class="btn btn-outline-primary post-cancel"><%- gettext("Cancel") %></button>
 </div>
@@ -466,7 +506,15 @@
     <div>
         <span class="field-label-text field-label-text-full" id="new-post-editor-description"><%- gettext('Tu pregunta o idea (requerido)') %></span>
         <div class="js-post-body editor" aria-describedby="new-post-editor-description" name="body"></div>
-        <span class="eol-characters-span"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'><%- limitCharacter %></span></span>
+        <span class="eol-characters-span"><%- gettext("Caracteres restantes") %>: <span id='eol-limit-character'>
+            <% 
+                var n = limitCharacter;
+                var pattern = /(\d)(?=(\d{3})+(?!\d))/g;
+                var repl = "\$1.";
+                var string = String(n)
+                print(string.replace(pattern, repl))
+            %>
+        </span></span>
     </div>
     <div class="post-options">
         <label for="follow" class="field-label label-inline">

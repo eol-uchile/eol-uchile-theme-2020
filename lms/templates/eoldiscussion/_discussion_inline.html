@@ -217,6 +217,7 @@ function EolDiscussionInlineBlock(runtime, element) {
         var $wmd = $(this).closest('.wmd-panel');
         var span_limit = $wmd.parent().next().find('#eol-limit-character')[0];
         span_limit.textContent = parseInt(el.data('limit-character')) - val.length;
+        span_limit.textContent = span_limit.textContent.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     });
 }
 
