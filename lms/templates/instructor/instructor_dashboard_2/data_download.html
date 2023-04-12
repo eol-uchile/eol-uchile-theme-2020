@@ -9,6 +9,8 @@ from openedx.core.djangolib.markup import HTML, Text
 <link rel="stylesheet" type="text/css" href="${static.url('gradeucursos/css/gradeucursos.css')}"/>
 <script type="text/javascript" src="${static.url('xblockcompletion/js/xblockcompletion.js')}"></script>
 <link rel="stylesheet" type="text/css" href="${static.url('xblockcompletion/css/xblockcompletion.css')}"/>
+<script type="text/javascript" src="${static.url('eol_report_analytics/js/eol_report_analytics.js')}"></script>
+<link rel="stylesheet" type="text/css" href="${static.url('eol_report_analytics/css/eol_report_analytics.css')}"/>
 <script type="text/javascript" src="${static.url('eolreportcertificate/js/eolreportcertificate.js')}"></script>
 <link rel="stylesheet" type="text/css" href="${static.url('eolreportcertificate/css/eolreportcertificate.css')}"/>
 <div class="data-download-container action-type-container">
@@ -126,6 +128,19 @@ from openedx.core.djangolib.markup import HTML, Text
       <div class="xblockcompletion-warning-msg" id="xblockcompletion-warning-msg"></div>
       <div class="xblockcompletion-error-msg" id="xblockcompletion-error-msg"></div>
       <p>${_("Para una mejor visualización y manejo de los datos en el Excel, puede ver un mini tutorial haciendo")} <a target="_blank" href="https://youtu.be/v4ecUuetKDo">${_("click aqui")}</a>.</p>
+  </div>
+  %endif
+  %if 'has_eol_report_analytics' in section_data and section_data['has_eol_report_analytics']:
+  <div class='eol_report_analytics-report'>
+      <hr>
+      <h4 class="hd hd-4">${_("Analítica de preguntas")}</h4>
+      <p>
+        <input id="eol_report_analytics_input" type="text" placeholder="block-v1:eol+test100+2021_1+type@problem+block@936f2950368f4eff8dfc4451c865d28c">
+        <input onclick="generate_analytics_report(this)" type="button" name="eol_report_analytics-report" value="${_("Generar")}" data-endpoint="${ section_data['eol_report_analytics_url'] }"/>
+      </p>
+      <div class="eol_report_analytics-success-msg" id="eol_report_analytics-success-msg"></div>
+      <div class="eol_report_analytics-warning-msg" id="eol_report_analytics-warning-msg"></div>
+      <div class="eol_report_analytics-error-msg" id="eol_report_analytics-error-msg"></div>
   </div>
   %endif
   %if 'has_gradeucursos' in section_data and section_data['has_gradeucursos']:
