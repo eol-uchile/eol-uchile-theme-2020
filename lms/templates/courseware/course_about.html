@@ -20,6 +20,31 @@ from six import string_types
   ## (https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content#tags)
   <meta property="og:title" content="${course.display_name_with_default}" />
   <meta property="og:description" content="${get_course_about_section(request, course, 'short_description')}" />
+  %if str(course.id) == 'course-v1:eol+FEN-MO+2023_1':
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '570424161865353');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=570424161865353&ev=PageView&noscript=1"
+    /></noscript>
+    <script type="text/javascript">
+      function pixel_track_mo(event){
+        event.preventDefault();
+        fbq('track', 'CompleteRegistration');
+        let href = event.currentTarget.getAttribute('href');
+        window.open(href, '_blank');
+      }
+    </script>
+  %endif
 </%block>
 <%block name="js_extra">
   <script type="text/javascript">
