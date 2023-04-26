@@ -43,6 +43,12 @@ from six import string_types
         let href = event.currentTarget.getAttribute('href');
         window.open(href, '_blank');
       }
+      function pixel_track_mo_enroll(event){
+        event.preventDefault();
+        fbq('track', 'Lead');
+        let register_btn = document.getElementById('register-btn');
+        register_btn.click();
+      }
     </script>
   %endif
 </%block>
@@ -161,9 +167,16 @@ from six import string_types
                             else:
                               href_class = "register"
                           %>
-                          <a href="${reg_href}" type="button" class="${href_class} btn btn-info text-white btn-lg btn-block mb-2">
-                            ${_("Inscribirse")}
-                          </a>
+                          %if str(course.id) == 'course-v1:eol+FEN-MO+2023_1':
+                            <a id="register-btn" href="${reg_href}" type="button" class="${href_class} btn btn-info text-white btn-lg btn-block mb-2" style="display: none;"></a>
+                            <a href="" type="button" class="btn btn-info text-white btn-lg btn-block mb-2" onclick="pixel_track_mo_enroll(event);">
+                              ${_("Inscribirse")}
+                            </a>
+                          %else:
+                            <a href="${reg_href}" type="button" class="${href_class} btn btn-info text-white btn-lg btn-block mb-2">
+                              ${_("Inscribirse")}
+                            </a>
+                          %endif
                           <div id="register_error"></div>
                         %endif
                         <%
