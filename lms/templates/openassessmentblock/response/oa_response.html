@@ -276,6 +276,18 @@
                         </li>
                         <hr/>
                         <li class="field">
+                          <div class="audio-response-container">
+                            <div class="audio-response-display">
+                              <!-- Add Messages and audio tag here -->
+                            </div>
+                            <div class="audio-response-controllers">
+                              <!-- Start, stop, download -->
+                            </div>
+                          </div>
+                          <button id="eol_upload_audio" type="button" class="">Subir audio</button>
+                          <span id="eol_upload_audio_response"></span>
+                        </li>
+                        <li class="field">
                         {% include "openassessmentblock/oa_team_uploaded_files.html" with file_upload_type=file_upload_type team_file_urls=team_file_urls class_prefix="submission__team__answer" including_template="response" xblock_id=xblock_id %}
                         </li>
                     </ol>
