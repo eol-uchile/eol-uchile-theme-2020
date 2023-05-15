@@ -222,66 +222,69 @@
                         </li>
                         {% endif %}
                         {% if file_upload_type %}
-                          <li class="field">
-                            <div class="audio-response-container">
-                              <div class="audio-response-display">
-                                <!-- Add Messages and audio tag here -->
+                          {% if file_upload_type == 'audio' %}
+                            <li class="field">
+                              <div class="audio-response-container">
+                                <div class="audio-response-display">
+                                  <!-- Add Messages and audio tag here -->
+                                </div>
+                                <div class="audio-response-controllers">
+                                  <!-- Start, stop, download -->
+                                </div>
                               </div>
-                              <div class="audio-response-controllers">
-                                <!-- Start, stop, download -->
-                              </div>
-                            </div>
-                            <button id="eol_upload_audio" type="button" class="">Subir audio</button>
-                            <span id="eol_upload_audio_response"></span>
-                          </li>
-                          <h5 class="submission__upload__files__title">
-                            {% trans "File Uploads " %} 
-                            {% if file_upload_response == "required" %}
-                              {% trans "(Required)" %}
-                            {% elif file_upload_response == "optional" %}
-                              {% trans "(Optional)" %}
+                              <button id="eol_upload_audio" type="button" class="">Subir audio</button>
+                              <span id="eol_upload_audio_response"></span>
+                            </li>
+                          {% else %}
+                            <h5 class="submission__upload__files__title">
+                              {% trans "File Uploads " %} 
+                              {% if file_upload_response == "required" %}
+                                {% trans "(Required)" %}
+                              {% elif file_upload_response == "optional" %}
+                                {% trans "(Optional)" %}
+                              {% endif %}
+                            </h5>
+                            {% if team_name %}
+                              {% blocktrans %}
+                                  Upload files and review files uploaded by you and your teammates below. Be sure to add
+                                  descriptions to your files to help your teammates identify them.
+                              {% endblocktrans %}
                             {% endif %}
-                          </h5>
-                          {% if team_name %}
-                            {% blocktrans %}
-                                Upload files and review files uploaded by you and your teammates below. Be sure to add
-                                descriptions to your files to help your teammates identify them.
-                            {% endblocktrans %}
-                          {% endif %}
-                          <li class="field">
-                              <div class="upload__error">
-                                  <div class="message message--inline message--error message--error-server" tabindex="-1">
-                                      <h5 class="message__title">{% trans "We could not upload files" %}</h5>
-                                      <div class="message__content"></div>
-                                  </div>
-                              </div>
-                              <div class="delete__error">
-                                  <div class="message message--inline message--error message--error-server" tabindex="-1">
-                                      <h5 class="message__title">{% trans "We could not delete files" %}</h5>
-                                      <div class="message__content"></div>
-                                  </div>
-                              </div>
+                            <li class="field">
+                                <div class="upload__error">
+                                    <div class="message message--inline message--error message--error-server" tabindex="-1">
+                                        <h5 class="message__title">{% trans "We could not upload files" %}</h5>
+                                        <div class="message__content"></div>
+                                    </div>
+                                </div>
+                                <div class="delete__error">
+                                    <div class="message message--inline message--error message--error-server" tabindex="-1">
+                                        <h5 class="message__title">{% trans "We could not delete files" %}</h5>
+                                        <div class="message__content"></div>
+                                    </div>
+                                </div>
 
-                              <label class="sr" for="submission_answer_upload_{{ xblock_id }}">
-                                {% if allow_multiple_files %}
-                                    {% trans "Select one or more files to upload for this submission." %}
-                                {% else %}
-                                    {% trans "Select a file to upload for this submission." %}
-                                {% endif %}
-                              </label>
-                              <input type="file" class="submission__answer__upload file--upload" id="submission_answer_upload_{{ xblock_id }}" {% if allow_multiple_files %}multiple=""{% endif %} accept="{{white_listed_file_types|join:", "}}">
-                              <span>
-                                {% trans "Supported file types: " %}{{ white_listed_file_types|join:", "}}
-                              </span>
-                              <button type="submit" class="file__upload action action--upload" disabled>
-                                {% if allow_multiple_files %}
-                                    {% trans "Upload files" %}
-                                {% else %}
-                                    {% trans "Upload file" %}
-                                {% endif %}
-                              </button>
-                              <div class="files__descriptions"></div>
-                          </li>
+                                <label class="sr" for="submission_answer_upload_{{ xblock_id }}">
+                                  {% if allow_multiple_files %}
+                                      {% trans "Select one or more files to upload for this submission." %}
+                                  {% else %}
+                                      {% trans "Select a file to upload for this submission." %}
+                                  {% endif %}
+                                </label>
+                                <input type="file" class="submission__answer__upload file--upload" id="submission_answer_upload_{{ xblock_id }}" {% if allow_multiple_files %}multiple=""{% endif %} accept="{{white_listed_file_types|join:", "}}">
+                                <span>
+                                  {% trans "Supported file types: " %}{{ white_listed_file_types|join:", "}}
+                                </span>
+                                <button type="submit" class="file__upload action action--upload" disabled>
+                                  {% if allow_multiple_files %}
+                                      {% trans "Upload files" %}
+                                  {% else %}
+                                      {% trans "Upload file" %}
+                                  {% endif %}
+                                </button>
+                                <div class="files__descriptions"></div>
+                            </li>
+                          {% endif %}
                         {% endif %}
                         <li class="field">
                         {% include "openassessmentblock/oa_uploaded_file.html" with file_upload_type=file_upload_type file_urls=file_urls class_prefix="submission__answer" including_template="response" xblock_id=xblock_id %}
