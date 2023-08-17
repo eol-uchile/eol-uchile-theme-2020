@@ -16,6 +16,9 @@ from openedx.core.djangolib.markup import HTML, Text
 from lms.djangoapps.branding import api as branding_api
 from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled, released_languages
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+from openedx.core.djangoapps.util.user_messages import PageLevelMessages, UserMessage, UserMessageType
+from openedx.core.djangolib.markup import HTML
+from common.djangoapps.status.status import get_site_status_msg
 
 %>
 
@@ -41,26 +44,38 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     catch(e){window.attachEvent("onload", $buo_f)}
   </script>
 % endif
-<style>
-    .alert-eol {
-        min-height: 25px;
-        line-height: 35px;
-        text-align: center;
-        background-color: hsl(19deg 92% 59%);
-        color: white;
-        border-bottom: 1px solid black;
-    }
-    .alert-eol-text{
-        display: inline-block;
-        vertical-align: middle;
-        line-height: normal;
-    }
-</style>
-<div class="alert-eol">
-    <span class="alert-eol-text">
-        <b>ATENCIÓN</b> El día miércoles 12 de abril del 2023 desde las 20:00 hasta las 01:00 hrs del jueves 13 se realizará una mantención de los servicios. <b>Durante ese periodo se pueden presentar intermitencias.</b>
-    </span>
-</div>
+<%
+banner_messages = list(PageLevelMessages.user_messages(request))
+
+course_id= None
+site_status_message = get_site_status_msg(course_id)
+if site_status_message:
+    banner_messages.insert(0, UserMessage(UserMessageType.WARNING, site_status_message))
+%>
+% if banner_messages:
+    <style>
+        .alert-eol {
+            min-height: 25px;
+            line-height: 35px;
+            text-align: center;
+            background-color: hsl(19deg 92% 59%);
+            color: white;
+            border-bottom: 1px solid black;
+        }
+        .alert-eol-text{
+            display: inline-block;
+            vertical-align: middle;
+            line-height: normal;
+        }
+    </style>
+    % for message in banner_messages:
+        <div class="alert-eol">
+            <span class="alert-eol-text">
+                ${HTML(message.message_html)}
+            </span>
+        </div>
+    %endfor    
+%endif
 <nav class="eol-header-container eol-header navbar navbar-expand-xl navbar-light bg-white pt-0">
     % if use_cookie_banner:
         ${static.renderReact(
