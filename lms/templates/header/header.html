@@ -69,11 +69,13 @@ if site_status_message:
         }
     </style>
     % for message in banner_messages:
-        <div class="alert-eol">
-            <span class="alert-eol-text">
+        % if "globalMessage" in message.message_html :
+            <div class="alert-eol">
+                <span class="alert-eol-text">
                 ${HTML(message.message_html)}
-            </span>
-        </div>
+                </span>
+            </div>
+        % endif
     %endfor    
 %endif
 <nav class="eol-header-container eol-header navbar navbar-expand-xl navbar-light bg-white pt-0">
