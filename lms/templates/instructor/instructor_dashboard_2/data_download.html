@@ -154,7 +154,7 @@ import urllib
     import eol_survey
     enable_survey = True
     survey_url = '{}?{}'.format(reverse('eolSurveyReport'), urllib.parse.urlencode({'course': str(course.id)}))
-  except mportError:
+  except ImportError:
     enable_survey = False 
   %>
   %if enable_survey :
