@@ -3,6 +3,8 @@
 <%!
 from django.utils.translation import ugettext as _
 from openedx.core.djangolib.markup import HTML, Text
+from django.urls import reverse
+import urllib
 %>
 
 <script type="text/javascript" src="${static.url('gradeucursos/js/gradeucursos.js')}"></script>
@@ -13,6 +15,10 @@ from openedx.core.djangolib.markup import HTML, Text
 <link rel="stylesheet" type="text/css" href="${static.url('eol_report_analytics/css/eol_report_analytics.css')}"/>
 <script type="text/javascript" src="${static.url('eolreportcertificate/js/eolreportcertificate.js')}"></script>
 <link rel="stylesheet" type="text/css" href="${static.url('eolreportcertificate/css/eolreportcertificate.css')}"/>
+<script type="text/javascript" src="${static.url('eol_survey/js/eol_survey_report_analytics.js')}"></script>
+<link rel="stylesheet" type="text/css" href="${static.url('eol_survey/css/eol_survey_report_analytics.css')}"/>
+<script type="text/javascript" src="${static.url('eol_survey/js/loadcbanalytics.js')}"></script>
+
 <div class="data-download-container action-type-container">
   <div class="request-response-error msg msg-error copy" id="data-request-response-error"></div>
 
@@ -132,15 +138,38 @@ from openedx.core.djangolib.markup import HTML, Text
   %endif
   %if 'has_eol_report_analytics' in section_data and section_data['has_eol_report_analytics']:
   <div class='eol_report_analytics-report'>
+    <hr>
+    <h4 class="hd hd-4">${_("Analítica de preguntas")}</h4>
+    <p>
+      <input id="eol_report_analytics_input" type="text" placeholder="block-v1:eol+test100+2021_1+type@problem+block@936f2950368f4eff8dfc4451c865d28c">
+      <input onclick="generate_analytics_report(this)" type="button" name="eol_report_analytics-report" value="${_("Generar")}" data-endpoint="${ section_data['eol_report_analytics_url'] }"/>
+    </p>
+    <div class="eol_report_analytics-success-msg" id="eol_report_analytics-success-msg"></div>
+    <div class="eol_report_analytics-warning-msg" id="eol_report_analytics-warning-msg"></div>
+    <div class="eol_report_analytics-error-msg" id="eol_report_analytics-error-msg"></div>
+  </div>
+  %endif
+  <% 
+  try: 
+    import eol_survey
+    enable_survey = True
+    survey_url = '{}?{}'.format(reverse('eolSurveyReport'), urllib.parse.urlencode({'course': str(course.id)}))
+  except mportError:
+    enable_survey = False 
+  %>
+  %if enable_survey :
+  <div class='eol_survey_report_analytics-report'>
       <hr>
-      <h4 class="hd hd-4">${_("Analítica de preguntas")}</h4>
+      <h4 class="hd hd-4">${_("Analítica de encuestas")}</h4>
       <p>
-        <input id="eol_report_analytics_input" type="text" placeholder="block-v1:eol+test100+2021_1+type@problem+block@936f2950368f4eff8dfc4451c865d28c">
-        <input onclick="generate_analytics_report(this)" type="button" name="eol_report_analytics-report" value="${_("Generar")}" data-endpoint="${ section_data['eol_report_analytics_url'] }"/>
+          <select name="cb_eol_survey" id="cb_eol_survey" >
+          </select>     
+          <input onclick="generate_analytics_report_survey(this)" type="button" name="eol_survey_report_analytics-report" value="${_("Generar")}" data-endpoint="${ survey_url }"/>
       </p>
-      <div class="eol_report_analytics-success-msg" id="eol_report_analytics-success-msg"></div>
-      <div class="eol_report_analytics-warning-msg" id="eol_report_analytics-warning-msg"></div>
-      <div class="eol_report_analytics-error-msg" id="eol_report_analytics-error-msg"></div>
+      <div class="eol_survey_report_analytics-success-msg" id="eol_survey_report_analytics-success-msg"></div>
+      <div class="eol_survey_report_analytics-warning-msg" id="eol_survey_report_analytics-warning-msg"></div>
+      <div class="eol_survey_report_analytics-error-msg" id="eol_survey_report_analytics-error-msg"></div>
+      <input type="hidden" name="courseId" id="courseId" value="${course.id}"> 
   </div>
   %endif
   %if 'has_gradeucursos' in section_data and section_data['has_gradeucursos']:
