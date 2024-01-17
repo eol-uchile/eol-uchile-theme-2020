@@ -63,13 +63,14 @@ from six import string_types
     $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
       if (xhr.status == 200) {
         if (xhr.responseText == "") {
-          location.href = "${reverse('dashboard') | n, js_escaped_string}";
+          ## location.href = "${reverse('dashboard') | n, js_escaped_string}";
+          location.href = "/courses/${course.id | u}";
         }
         else {
           location.href = xhr.responseText;
         }
       } else if (xhr.status == 403) {
-        location.href = "/login?next=/courses/${course.id | u}/about";
+          location.href = "/login?next=/courses/${course.id | u}/about";
       } else {
         $('#register_error').text(
             (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.") | n, js_escaped_string}")
@@ -173,9 +174,37 @@ from six import string_types
                               ${_("Inscribirse")}
                             </a>
                           %else:
-                            <a href="${reg_href}" type="button" class="${href_class} btn btn-info text-white btn-lg btn-block mb-2">
-                              ${_("Inscribirse")}
-                            </a>
+                            %if user.is_authenticated:
+                              <%
+                                from uchileedxlogin.models import EdxLoginUser
+                                is_sso = EdxLoginUser.objects.filter(user=user, have_sso=True).exists()
+                              %>
+                              %if str(course.id) in ['course-v1:eol+PRE-C1_v1+2024_1','course-v1:eol+PRE-C2+2023_2','course-v1:eol+cc2sf+2023_3']:
+                                ## Cursos con filtro activado
+                                %if is_sso:
+                                  ## Usuario sso
+                                  <a href="${reg_href}" type="button" class="${href_class} btn btn-info text-white btn-lg btn-block mb-2">
+                                    ${_("Inscribirse")}
+                                  </a>
+                                %else:
+                                  ## Usuario edx
+                                    <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2 disabled" disabled>${_("Este curso es solo para la comunidad UChile.")}</a>
+                                %endif
+                              %else:
+                                ## Cursos sin filtro activado
+                                <a href="${reg_href}" type="button" class="${href_class} btn btn-info text-white btn-lg btn-block mb-2">
+                                  ${_("Inscribirse")}
+                                </a>
+                              %endif
+                            %else:
+                              ## Usuario anonimo
+                              <a href="${reg_href}" type="button" class="${href_class} btn btn-primary text-white btn-lg btn-block mb-2">
+                                ${_("Debes iniciar sesión para inscribirte en el curso")}
+                              </a>
+                            %endif
+
+
+                            
                           %endif
                           <div id="register_error"></div>
                         %endif
@@ -321,6 +350,7 @@ from six import string_types
 ## Need to put this hidden form on the page so that the registration button works.
 ## Since it's no harm to display a hidden form, we display it with the most permissive conditional
 ## which is when the student is not registered.
+
 %if active_reg_button or is_shib_course:
   <div style="display: none;">
     <form id="class_enroll_form" method="post" data-remote="true" action="${reverse('change_enrollment')}">
