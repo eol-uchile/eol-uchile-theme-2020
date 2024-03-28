@@ -5,10 +5,16 @@ from django.utils.translation import ugettext as _
 from django.utils.translation import pgettext
 from openedx.core.djangolib.markup import HTML, Text
 from django.urls import reverse
+
+try:
+  import uchileedxlogin
+  uchileedxlogin_is_installed = True
+except ImportError:
+  uchileedxlogin_is_installed = False
 %>
 <link rel="stylesheet" type="text/css" href="${static.url('edxlogin/css/edxlogin.css')}"/>
 <script type="text/javascript" src="${static.url('edxlogin/js/edxlogin.js')}"></script>
-% if request.user.has_perm('uchileedxlogin.uchile_instructor_staff') and (section_data['access']['instructor'] or section_data['access']['staff'] or section_data['access']['admin']):
+% if uchileedxlogin_is_installed and request.user.has_perm('uchileedxlogin.uchile_instructor_staff') and (section_data['access']['instructor'] or section_data['access']['staff'] or section_data['access']['admin']):
 <fieldset class="batch-enrollment-run membership-run-section">
   <legend id="heading-batch-enrollment" class="hd hd-3">${_("Inscripciones por Cuenta UChile")}</legend>
   <input type="hidden" id="csrf" name="csrfmiddlewaretoken" value="${csrf_token}"/>

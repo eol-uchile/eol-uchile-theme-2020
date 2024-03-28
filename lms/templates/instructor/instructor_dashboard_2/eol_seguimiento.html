@@ -1,0 +1,163 @@
+<%page args="section_data" expression_filter="h"/>
+<%!
+from django.utils.translation import ugettext as _
+from openedx.core.djangolib.markup import HTML, Text
+from eol_instructor.utils import get_header_completion
+%>
+<%
+data = get_header_completion(course.id)
+content = data['content']
+max_unit = data['max_unit']
+%>
+<style>
+  table#eol_seguimiento_table td{
+    border: 1px solid #009bdd;
+  }
+  table#eol_seguimiento_table thead tr{
+    height: 20px;
+  }
+  table#eol_seguimiento_table thead td, table#eol_seguimiento_table tbody td.blue-cell{
+    background-color: #009bdd;
+    color: white;
+  }
+  #eol_completion_content{
+    display: none;
+  }
+</style>
+<button id="eol_completion_btn">${_("Cargar datos")}</button>
+<section class="teams-content" id="eol_completion_content" >
+  <h2>Detallado</h2>
+  <div class="dataTables_wrapper">
+      <table id="eol_seguimiento_table" class="display nowrap"  style="width: 100% !important;">
+        <thead>
+          <!--Main Header-->
+          <tr>
+              <% row_len = 2 %>
+              %if max_unit == 0:
+                  <% row_len = 1 %>
+              %endif
+              <th rowspan="${row_len}" data-col_from="0" data-col_to="0">Correo</th>
+              <th rowspan="${row_len}" data-col_from="1" data-col_to="1">Estudiante</th>
+              <th rowspan="${row_len}" data-col_from="2" data-col_to="2">Rut</th>
+              <% col_len = 3 %>
+              %for section in content.values():
+                  %if section['type'] == 'section' and section['num_children'] > 0:
+                      <th class="mainhead" colspan="${section['num_children']+1}" data-col_from="${col_len}" data-col_to="${col_len+section['num_children']}">${section['name']}</th>
+                      <% col_len = col_len + section['num_children'] +1 %>
+                  %endif
+              %endfor
+              %if max_unit == 0:
+                  <th rowspan="${row_len}" data-col_from="${col_len}" data-col_to="${col_len}">Sin Contenido</th>
+                  <th rowspan="${row_len}" data-col_from="${col_len+1}" data-col_to="${col_len+1}">Total</th>
+                  <th rowspan="${row_len}" data-col_from="${col_len+2}" data-col_to="${col_len+2}">Certificado Generado</th>
+              %else:
+                  <th rowspan="${row_len}" data-col_from="${col_len}" data-col_to="${col_len}">Total</th>
+                  <th rowspan="${row_len}" data-col_from="${col_len+1}" data-col_to="${col_len+1}">Certificado Generado</th>
+              %endif
+          </tr>
+              <!--Secondary Header-->
+          %if max_unit > 0:
+              <tr>
+                  <% i = 1 %>
+                  <% j = 1 %> 
+                  <% point_position = 2 %>
+                  <% first = True %>
+                  <% last = {'num_children':0} %>
+                  %for section in content.values():
+                      %if section['type'] == 'subsection' and section['num_children'] > 0:
+                          <td title="${section['name']}"> ${i}.${j} </td>
+                          <% j += 1 %>
+                      %endif
+                      %if first and section['type'] == 'section' and section['num_children'] > 0:
+                          <% last = section %>
+                      %endif
+                      %if not first and section['type'] == 'section' and section['num_children'] > 0:
+                          <% point_position = point_position + last['num_children'] + 1 %>
+                          <% last = section %>
+                          <td class="pto">Unidades</br>Completadas</td>
+                          <% i += 1 %>
+                          <% j= 1 %>    
+                      %endif
+                      %if first and section['type'] == 'section' and section['num_children'] > 0:
+                          <% first = False %>    
+                      %endif
+                  %endfor
+                  <% point_position = point_position + last['num_children'] + 1 %>
+                  %if max_unit > 0:
+                      <td class="pto">Unidades</br>Completadas</td>
+                  %endif
+              </tr>
+          %endif
+        </thead>
+        <tbody></tbody>
+        <tfoot id="eol-completion-tfoot"></tfoot>
+      </table>
+  </div>
+</section>
+<script type="text/javascript">
+  function InstructorCompletionData(data){
+    console.log(data);
+    var table = $('#eol_seguimiento_table').DataTable({
+        rowReorder: true,
+        data: data.data,
+        "processing": true,
+        "pageLength": 100,
+        "lengthMenu": [[50, 100, 200, -1], [50, 100, 200, "Todos"]],
+        language: {
+            "decimal": "",
+            "emptyTable": "No hay información",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Estudiantes",
+            "infoEmpty": "Mostrando 0 de 0 a 0 Estudiantes",
+            "infoFiltered": "(Filtrado de _MAX_ total Estudiantes)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Estudiantes",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        }
+    });
+    if (data["completion"].length > 0){
+        var footer = $('#eol-completion-tfoot')[0];
+        footer_aux = "<tr><th></th><th>Total</th><th></th>";
+        for (j = 0; j <data["completion"].length; j++) {  
+            footer_aux = footer_aux + "<th>" + data["completion"][j] + "</th>";
+        }
+        footer.innerHTML = footer_aux +"</tr>";
+    }
+    $('#eol_completion_content').show();
+    $('#eol_completion_btn').hide();
+  }
+
+
+$('#eol_completion_btn').on('click', function(e){
+    get_course_completion()
+});
+
+function get_course_completion(){
+    $.ajax({
+        dataType: 'json',
+        type: 'GET',
+        url: '/eol_instructor/completion_data/${str(course.id)}',
+        success: function(data) {
+            if (data["data"] == false){
+                setTimeout(get_course_completion, 5000);
+            }
+            else{
+                InstructorCompletionData(data);
+            }
+        },
+        error: function() {
+            console.log('error get completion data');
+        }
+    })
+}
+  
+</script>

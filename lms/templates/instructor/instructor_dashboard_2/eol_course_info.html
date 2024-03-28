@@ -1,0 +1,239 @@
+<%page args="section_data" expression_filter="h"/>
+<%!
+from django.utils.translation import ugettext as _
+from openedx.core.djangolib.markup import HTML, Text
+from eol_instructor.views import get_user_data, get_course_data, get_evaluations, get_course_extra_info
+%>
+<%
+eol_user_data = get_user_data(section_data['course_id'])
+eol_course_data = get_course_data(section_data['course_id'])
+eol_grades = get_evaluations(section_data['course_id'], user)
+eol_extra_info = get_course_extra_info(section_data['course_id'])
+%>
+<style>
+  table.eol-student-info td{
+    border: 1px solid #009bdd;
+  }
+  table.eol-student-info thead tr{
+    height: 20px;
+  }
+  table.eol-student-info thead td, table.eol-student-info tbody td.blue-cell{
+    background-color: #009bdd;
+    color: white;
+  }
+</style>
+<section>
+    <div class="row">
+        <div class="col-md-4">
+          <h4 class="hd hd-4">${_("Datos de alumnos")}</h4>
+          <table class="eol-student-info">
+            <thead>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>${_("Equipo (roles: staff/admin/etc)")}</td>
+                <td>${eol_user_data['n_team']}</td>
+              </tr>
+              <tr>
+                <td>${_("Estudiantes (modo inscripción: honor/audit)")}</td>
+                <td>${eol_user_data['n_student']}</td>
+              </tr>
+              %for m in eol_user_data['n_student_modes']:
+                <tr>
+                  <td></td>
+                  <td>${m}: ${eol_user_data['n_student_modes'][m]}</td>
+                </tr>
+              %endfor
+              <tr>
+                <td>${_("Estudiantes que aprobaron el curso")}</td>
+                <td>${eol_user_data['n_passed']}</td>
+              </tr>
+              <tr>
+                <td>${_("Comenzaron las actividades")}</td>
+                <td>${eol_user_data['activity_started']}</td>
+              </th>
+              <tr>
+                <td>${_("Entraron esta semana")}</td>
+                <td>${eol_user_data['activity_last_week']}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-8">
+          <h4 class="hd hd-4">${_("Datos de curso")}</h4>
+          <table class="eol-student-info">
+            <thead>
+              <tr>
+                <td>${_("Nombre")}</td>
+                <td>${ section_data['course_display_name']}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>${_("Código")}</td>
+                <td>${str(section_data['course_id'])}</td>
+              </tr>
+              <tr>
+                <td>${_("Fecha inicio")}</td>
+                <td><b class="localized-datetime" data-datetime="${section_data['start_date']}" data-timezone="${user_timezone}" data-language="${user_language}"></b></td>
+              </tr>
+              <tr>
+                <td>${_("Fecha término")}</td>
+                <td>
+                  % if course.end is None:
+                    <b>${_("No end date set")}</b>
+                  % else:
+                    <b class="localized-datetime" data-datetime="${section_data['end_date']}" data-timezone="${user_timezone}" data-language="${user_language}"></b>
+                  % endif
+                </td>
+              </tr>
+              <tr>
+                <td>${_("Organización")}</td>
+                <td>${ section_data['course_org']}</td>
+              </th>
+              <tr>
+                <td>${_("Ritmo")}</td>
+                <td>
+                  % if course.self_paced:
+                    ${_("Self paced")}
+                  % else:
+                    ${_("Instructor")}
+                  % endif
+                </td>
+              </tr>
+              <tr>
+                <td>${_("Idioma")}</td>
+                <td>${course.language}</td>
+              </tr>
+              <tr>
+                <td>${_("Dedicación (horas)")}</td>
+                <td>
+                  %if eol_course_data['effort']:
+                    ${eol_course_data['effort']}
+                  %endif
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="hd hd-4">${_("Evaluaciones")}</h4>
+        <table class="eol-student-info">
+          <thead>
+            <tr>
+              <td>${_("Calificaciones")}</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>${_("Ponderación")}</td>
+              <td>${_("N de ejercicios")}</td>
+              <td>${_("Ej. excluibles")}</td>
+              <td>${_("N de subsecciones asignadas")}</td>
+            </tr>
+          </thead>
+          <tbody>
+            %for exam in eol_grades['course_details'].graders:
+              <tr>
+                <td>${exam['type']}</td>
+                <td>${exam['weight']}</td>
+                <td>${exam['min_count']}</td>
+                <td>${exam['drop_count']}</td>
+                <td>${eol_grades['n_grades_subsection'][exam['type']] if exam['type'] in eol_grades['n_grades_subsection'] else 0}</td>
+              </tr>
+            %endfor
+            <tr>
+              <td class="blue-cell">${_("Porcetanje de aprobación")}</td>
+              <td class="blue-cell"></td>
+              <td class="blue-cell">${ section_data['grade_cutoffs'] }</td>
+              <td class="blue-cell"></td>
+              <td class="blue-cell"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-8">
+        <h4 class="hd hd-4">${_("Otros")}</h4>
+        <table class="eol-student-info">
+          <tbody>
+            <tr>
+              <td>${_("Cohorts")}</td>
+              <td>${eol_extra_info['cohorted']}</td>
+            </tr>
+            <tr>
+              <td>${_("Certificates")}</td>
+              <td>${eol_extra_info['cert_enabled']}</td>
+            </tr>
+            <tr>
+              <td>${_("N certificados generados")}</td>
+              <td>${eol_extra_info['n_cert_generated']}</td>
+            </tr>
+            <tr>
+              <td>${_("Lista módulos avanzados")}</td>
+              <td>${eol_extra_info['list_xblocks']}</td>
+            </tr>
+            <tr>
+              <td>${_("N de secciones")}</td>
+              <td>${ section_data['num_sections'] }</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</section>
+
+  %if settings.FEATURES.get('ENABLE_SYSADMIN_DASHBOARD', '') and user.is_staff:
+      <p>
+        ## Translators: git is a version-control system; see http://git-scm.com/about
+        ${Text(_("View detailed Git import logs for this course {link_start}by clicking here{link_end}.")).format(
+            link_start=HTML('<a href="{}">').format(section_data['detailed_gitlogs_url']),
+            link_end=HTML('</a>')
+        )}
+      </p>
+  %endif
+
+
+%if settings.FEATURES.get('ENABLE_INSTRUCTOR_BACKGROUND_TASKS'):
+  <div class="running-tasks-container action-type-container">
+    <hr>
+    <h4 class="hd hd-4"> ${_("Pending Tasks")} </h4>
+    <div class="running-tasks-section">
+      <p>${_("The status for any active tasks appears in a table below.")} </p>
+      <br />
+
+      <div class="running-tasks-table" data-endpoint="${ section_data['list_instructor_tasks_url'] }"></div>
+    </div>
+    <div class="no-pending-tasks-message"></div>
+  </div>
+
+%endif
+
+%if len(section_data['course_errors']):
+  <div class="course-errors-wrapper">
+    <hr>
+    <p>
+    <div class="toggle-wrapper">
+      <h4 class="hd hd-4 title">${_("Course Warnings")}:</h4>
+      <div class="triangle"></div>
+    </div>
+    <div class="course-errors-visibility-wrapper">
+      %for error in section_data['course_errors']:
+        <div class="course-error">
+          <code class=course-error-first>  ${ error[0] } </code><br>
+          <code class=course-error-second> ${ error[1] } </code>
+        </div>
+      %endfor
+    </div>
+    <p>
+  </div>
+<br>
+%endif

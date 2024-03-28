@@ -1,0 +1,382 @@
+<%page args="section_data" expression_filter="h"/>
+<%!
+from django.utils.translation import ugettext as _
+from openedx.core.djangolib.markup import HTML, Text
+from eol_instructor.utils import get_header_grades_sort, get_all_persistant_grades_headers
+%>
+<%
+eol_grades = get_header_grades_sort(user, course.id)
+eol_headers = get_all_persistant_grades_headers(user, course.id)
+%>
+<%block name="js_extra">
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.8/fc-4.3.0/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/@sgratzl/chartjs-chart-boxplot@3"></script>
+</%block>
+
+<%block name="headextra">
+<link href="https://cdn.datatables.net/v/dt/dt-1.13.8/fc-4.3.0/datatables.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css" />
+</%block>
+<style>
+      /* The Modal (background) */
+       .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 9999; /* Sit on top */
+        left: 0;
+        top: 0;
+        padding: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    
+    /* Modal Content */
+     .modal-content-persistent {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 40px 40px 20px 40px;
+        box-shadow: -8px 4px 8px 0px rgb(0 0 0 / 20%);
+        width: 30%;
+        height: 100%;
+        float: right;
+    }
+    
+    /* The Close Button */
+    
+     .close-alert{
+        margin: -16px -16px !important;
+    }
+     .close {
+        color: #0075b4;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        margin: -40px -30px;
+    }
+    
+     .close:hover,
+     .close:focus {
+        color:#0075b45e;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .animate-top{position:relative;animation:animatetop 0.4s}@keyframes animatetop{from{right-32:0px;opacity:0} to{right:0;opacity:1}}
+    .modal h1{  
+      margin-bottom: 0 !important;
+    }
+    #eol_grade_content{
+      display: none;
+    }
+</style>
+<button id="eol_grade_btn">${_("Cargar datos")}</button>
+<div id="eol_grade_content">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link " id="resumen-tab" data-toggle="tab" href="#resumen" role="tab" aria-controls="resumen" aria-selected="false">Resumen</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" id="detallado-tab" data-toggle="tab" href="#detallado" role="tab" aria-controls="detallado" aria-selected="true">Detallado</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade" id="resumen" role="tabpanel" aria-labelledby="resumen-tab">
+      <section>
+        <h2>Resumen</h2>
+        <div class="row">
+          <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link eol-v-pills active" id="v-pills-total-tab" data-toggle="pill" href="#v-pills-total" role="tab" aria-controls="v-pills-total" aria-selected="true" data-chart="myChart-total">Total</a>
+              %for block_id in eol_grades.keys():
+                <a class="nav-link eol-v-pills" id="v-pills-${block_id[-32:]}-tab" data-toggle="pill" href="#v-pills-${block_id[-32:]}" role="tab" aria-controls="v-pills-${block_id[-32:]}" aria-selected="false" data-location="${block_id}" data-chart="myChart-${block_id}">${eol_grades[block_id]}</a>
+              %endfor
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-total" role="tabpanel" aria-labelledby="v-pills-total-tab">
+                <div class="row">
+                  <div class="col-md-3">
+                    <h4 class="hd hd-4">${_("Stats")}</h4>
+                    <table class="eol-subsection-grade">
+                      <tbody>
+                        <tr>
+                          <td>${_("Average")}</td>
+                          <td id="data_1"></td>
+                        </tr>
+                        <tr>
+                          <td>${_("Desviación")}</td>
+                          <td id="data_2"></td>
+                        </tr>
+                        <tr>
+                          <td>${_("N° evaluaciones redidas")}</td>
+                          <td id="data_3"></td>
+                        </tr>
+                        <tr>
+                          <td>${_("Tasa de rendición")}</td>
+                          <td id="data_4"></td>
+                        </th>
+                        <tr>
+                          <td>${_("Tasa de constestacion")}</td>
+                          <td id="data_5"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-md-9">
+                    <h4 class="hd hd-4">${_("Distribución según calificación")}</h4>
+                    <canvas id="myChart-total"></canvas>
+                  </div>
+                </div>
+              </div>
+              %for block_id in eol_grades.keys():
+                <div class="tab-pane fade" id="v-pills-${block_id[-32:]}" role="tabpanel" aria-labelledby="v-pills-${block_id[-32:]}-tab">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <h4 class="hd hd-4">${_("Stats")}</h4>
+                      <table class="eol-subsection-grade">
+                        <tbody>
+                          <tr>
+                            <td>${_("Average")}</td>
+                            <td id="data_1"></td>
+                          </tr>
+                          <tr>
+                            <td>${_("Desviación")}</td>
+                            <td id="data_2"></td>
+                          </tr>
+                          <tr>
+                            <td>${_("N° evaluaciones redidas")}</td>
+                            <td id="data_3"></td>
+                          </tr>
+                          <tr>
+                            <td>${_("Tasa de rendición")}</td>
+                            <td id="data_4"></td>
+                          </th>
+                          <tr>
+                            <td>${_("Tasa de constestacion")}</td>
+                            <td id="data_5"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="col-md-9">
+                      <h4 class="hd hd-4">${_("Distribución según calificación")}</h4>
+                      <canvas id="myChart-${block_id}"></canvas>
+                    </div>
+                  </div>
+                </div>
+              %endfor
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="tab-pane fade show active" id="detallado" role="tabpanel" aria-labelledby="detallado-tab">
+      <section class="teams-content" >
+        <h2>Detallado</h2>
+        <div class="dataTables_wrapper">
+            <table id="eol_details_grade_table" class="display nowrap" style="width: 100% !important;">
+              <thead>
+                <tr>
+                  <td>Usuarios</td>
+                  %for h in eol_headers:
+                  <td>${h}</td>
+                  %endfor
+                </tr>
+              </thead>
+            </table>
+        </div>
+      </section>
+    </div>
+    
+  </div>
+
+  <div id="modal_user_info" class="modal eol-user-info-modal">
+    <div class="modal-content-persistent animate-top">
+      <span id="close_modal_user_info" class="close">&times;</span>
+      <h1>${_("Student information")}</h1>
+      <hr>
+      <ul>
+        <li>${_("Fullname")}: <span id="user_info_fullname"></span></li>
+        <li>${_("Email")}: <span id="user_info_email"></span></li>
+        <li>${_("Enroll date")}: <span id="user_info_enroll_date"></span></li>
+        <li>${_("Enroll mode")}: <span id="user_info_enroll_mode"></span></li>
+        <li>${_("Certificate")}: <span id="user_info_cert"></span></li>
+        <li>${_("Passed")}: <span id="user_info_passed"></span></li>
+      </ul>
+      <h1>${_("Details")}</h1>
+      <hr>
+      <ul id="user_grade_details" >
+      </ul>
+    </div>
+  </div>
+
+</div>
+<script type="text/javascript">
+  $('#eol_grade_btn').on('click', function(e){
+    get_course_grades()
+  });
+
+  function get_course_grades(){
+    $.ajax({
+        dataType: 'json',
+        type: 'GET',
+        url: '/eol_instructor/grades_data/${str(course.id)}',
+        success: function(data) {
+            if (data["data"] == false){
+                setTimeout(get_course_grades, 5000);
+            }
+            else{
+              fill_datails_table(data.details);
+              fill_resume_tables(data.summary);
+              $('#eol_grade_content').show();
+              $('#eol_grade_btn').hide();
+            }
+        },
+        error: function() {
+            console.log('error get grades data');
+        }
+    })
+}
+
+  function fill_datails_table(data){
+    var table = $('#eol_details_grade_table').DataTable({
+        rowReorder: true,
+        data: data.data,
+        columns: data.headers,
+        "processing": true,
+        "pageLength": 100,
+        "lengthMenu": [[50, 100, 200, -1], [50, 100, 200, "Todos"]],
+        language: {
+            "decimal": "",
+            "emptyTable": "No hay información",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Estudiantes",
+            "infoEmpty": "Mostrando 0 de 0 a 0 Estudiantes",
+            "infoFiltered": "(Filtrado de _MAX_ total Estudiantes)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Estudiantes",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        }
+    });
+  }
+  function fill_resume_tables(data){
+    let dataset_total = [];
+    let labels = []
+    Object.keys(data).forEach(function(block_id) {
+      //dataset_total.push({x: data[block_id].format, y: data[block_id].avg})
+      labels.push(data[block_id].format);
+      dataset_total.push(data[block_id].grades);
+      const chart_id = document.getElementById('myChart-'+block_id);
+      new Chart(chart_id, {
+        type: 'bar',
+        data: {
+          labels: ['[0-5[%', '[5-10[%', '[10-15[%', '[15-20[%', '[20-25[%', '[25-30[%', '[30-35[%', '[35-40[%', '[40-45[%', '[45-50[%', '[50-55[%', 
+                  '[55-60[%', '[60-65[%', '[65-70[%', '[70-75[%', '[75-80[%', '[80-85[%', '[85-90[%', '[90-95[%', '[95-100[%', '100%'],
+          datasets: [{
+            label: 'distribucion',
+            data: data[block_id].grades_range,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+      $(document.getElementById('v-pills-'+block_id.substring(block_id.length - 32))).find('#data_1').text(data[block_id].avg);
+      $(document.getElementById('v-pills-'+block_id.substring(block_id.length - 32))).find('#data_2').text(data[block_id].dev);
+      $(document.getElementById('v-pills-'+block_id.substring(block_id.length - 32))).find('#data_3').text(data[block_id].len);
+      $(document.getElementById('v-pills-'+block_id.substring(block_id.length - 32))).find('#data_4').text(data[block_id].rate);
+    });
+    const ctx = document.getElementById('myChart-total');
+    new Chart(ctx, {
+      type: 'boxplot',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'distribucion',
+          data: dataset_total,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+  $('#eol_details_grade_table tbody').on('click', 'tr', function () {
+      console.log(table.row(this).data());
+      userInfoOffCanvas(table.row(this).data().username);
+  });
+
+  $('#close_modal_user_info').on('click', function(){
+    $('#modal_user_info').css('display', 'none');
+  })
+  
+  function userInfoOffCanvas(username){
+    $.ajax({
+          dataType: 'json',
+          type: 'GET',
+          url: '/eol_instructor/user_info/'+username+'/${str(course.id)}',
+          success: function(data) {
+            console.log(data);
+            $('#user_info_fullname').text(data.fullname);
+            $('#user_info_email').text(data.email);
+            $('#user_info_enroll_date').text(data.enroll_date);
+            $('#user_info_enroll_mode').text(data.enroll_mode);
+            $('#user_info_cert').text(data.cert);
+            $('#user_info_passed').text(data.passed);
+            let $details = $('#modal_user_info ul#user_grade_details');
+            for (var i = 0; i < data['grades'].length; i++) {
+              let html_chapter = '<li>'+data['grades'][i]['display_name']+'<br>';
+              for (var j = 0; j < data['grades'][i]['children'].length; j++) {
+                let seq = data['grades'][i]['children'][j];
+                let html_seq = seq['display_name']+' <br>';
+                if (seq['str_score'] !== undefined) html_seq = html_seq + seq['str_score']+' <br>';
+                if (seq['format'] !== undefined) html_seq = html_seq +'Tipo calificación: ' + seq['format']+' <br>';
+                if (seq['due'] !== undefined) html_seq = html_seq +'Fecha expiración: ' + seq['due']+' <br>';
+                if (seq['override'] !== undefined) html_seq = html_seq +'Override: ' + seq['override']+' <br>';
+                if(seq['scores'] !== undefined){
+                  for(k=0; k < seq['scores'].length; k++){
+                    html_seq = html_seq + '<span>' +seq['scores'][k] + '</span>';
+                  }
+                }
+                html_chapter = html_chapter + html_seq +' <br>';
+              }
+              html_chapter = html_chapter + '</li>';
+              $details.html('');
+              $details.html($details.html() + html_chapter);
+            }
+            $('#modal_user_info').css('display', 'block');
+          },
+          error: function() {
+              console.log('Error user info');
+          }
+      });
+  }
+
+  
+</script>

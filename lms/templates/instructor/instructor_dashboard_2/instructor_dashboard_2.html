@@ -123,11 +123,15 @@ from openedx.core.djangolib.markup import HTML
                   % if 'welcome-mail-save' in section_data:
                     <li class="nav-item"><button id="welcome_mail_button" onclick="set_welcome_mail_view();" type="button" class="btn-link send_email${' hidden' if is_hidden else ''}" data-section="send_email">${_("Correo de bienvenida")}</button></li>
                   % endif
-                % else:
+                % elif section_data['section_key'] == 'course_info':
+                  <li class="nav-item"><button type="button" class="btn-link eol_course_info${' hidden' if is_hidden else ''}" data-section="eol_course_info">${_(dname)}</button></li>
+                %else:
                   <li class="nav-item"><button type="button" class="btn-link ${ section_data['section_key'] }${' hidden' if is_hidden else ''}" data-section="${ section_data['section_key'] }">${_(dname)}</button></li>
                 % endif
               % endif
             % endfor
+            <li class="nav-item"><button type="button" class="btn-link eol_calificaciones" data-section="eol_calificaciones">${_("Calificaciones")}</button></li>
+            <li class="nav-item"><button type="button" class="btn-link eol_seguimiento" data-section="eol_seguimiento">${_("Seguimiento")}</button></li>
           </ul>
 
           ## each section corresponds to a section_data sub-dictionary provided by the view
@@ -135,11 +139,26 @@ from openedx.core.djangolib.markup import HTML
 
           % for section_data in sections:
               <% is_hidden = section_data.get('is_hidden', False) %>
-              <section id="${ section_data['section_key'] }" class="idash-section${' hidden' if hidden else ''}" aria-labelledby="header-${section_data['section_key']}">
+              % if section_data['section_key'] == 'course_info':
+                <section id="eol_course_info" class="idash-section${' hidden' if hidden else ''}" aria-labelledby="header-eol_course_info">
+                    <h3 class="hd hd-3" id="header-eol_course_info">${ section_data['section_display_name'] }</h3>
+                    <%include file="eol_course_info.html" args="section_data=section_data" />
+                </section>
+              %else:
+                <section id="${ section_data['section_key'] }" class="idash-section${' hidden' if hidden else ''}" aria-labelledby="header-${section_data['section_key']}">
                   <h3 class="hd hd-3" id="header-${ section_data['section_key'] }">${ section_data['section_display_name'] }</h3>
                   <%include file="${ section_data['section_key'] }.html" args="section_data=section_data" />
-              </section>
+                </section>
+              %endif
           % endfor
+          <section id="eol_calificaciones" class="idash-section" aria-labelledby="header-eol_calificaciones">
+            <h3 class="hd hd-3" id="header-eol_calificaciones">${_("Calificaciones")}</h3>
+            <%include file="eol_calificaciones.html" args="section_data={}" />
+          </section>
+          <section id="eol_seguimiento" class="idash-section" aria-labelledby="header-eol_seguimiento">
+            <h3 class="hd hd-3" id="header-eol_seguimiento">${_("Seguimiento")}</h3>
+            <%include file="eol_seguimiento.html" args="section_data={}" />
+          </section>
         </section>
         </main>
   </div>
