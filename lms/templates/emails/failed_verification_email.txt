@@ -1,4 +1,4 @@
-<%! from django.utils.translation import ugettext as _ %>
+<%! from django.utils.translation import gettext as _ %>
 
 
 ${_("¡Lo lamentamos! Las fotos que enviaste para verificar tu identidad no fueron aceptadas, detalle(s) a continuación:")}

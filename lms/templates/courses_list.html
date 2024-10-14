@@ -1,6 +1,6 @@
 <%page expression_filter="h"/>
 <%namespace name='static' file='static_content.html'/>
-<%! from django.utils.translation import ugettext as _ %>
+<%! from django.utils.translation import gettext as _ %>
 
 <%! from lms.djangoapps.course_info.helpers import get_course_class %>
 % if settings.FEATURES.get('SHOW_COURSES_BY_CLASS'):
