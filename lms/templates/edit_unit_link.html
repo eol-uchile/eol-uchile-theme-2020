@@ -1,0 +1,18 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+
+  <div class="wrap-instructor-info studio-view">
+    <a class="instructor-info-action" href="${edit_link}">${_("View Unit in Studio")}</a>
+  </div>
+
+${frag_content | n, decode.utf8}
+
+<script>
+  /* 
+  * Check if a page is in a iFrame (ucursos)
+  */
+  if ( window.location !== window.parent.location ) {
+      // hide/show elements
+      $('.wrap-instructor-info.studio-view').hide();
+  }
+</script>
