@@ -261,3 +261,13 @@ username = get_enterprise_learner_generic_name(request) or student.username
   });
 
 </%static:require_module_async> 
+
+<script>
+    /* 
+    * Check if a page is in a iFrame (ucursos)
+    */
+    if ( window.location !== window.parent.location ) {
+        // hide/show elements
+        $('.wrap-instructor-info').hide();
+    }
+</script>
