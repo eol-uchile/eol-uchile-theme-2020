@@ -7,6 +7,18 @@ from django.urls import reverse
 
 from openedx.core.djangolib.markup import HTML, Text
 %>
+
+<%block name="headextra">
+## OG (Open Graph) title and description added below to give social media info to display
+<meta property="og:title" content="EOL">
+<meta property="og:description" content="La Oficina de Educación Online (EOL) de la U. de Chile fomenta la educación no presencial de excelencia, brindando soporte técnico, pedagógico y diseño instruccional para enriquecer la enseñanza mediada por tecnología.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="${static.url('eol-uchile-2020/images/banner-linkedIn-2025.png')}">
+<meta property="og:url" content="https://eol.uchile.cl/">
+<meta property="og:site_name" content="EOL">
+<meta property="og:locale" content="es_CL">
+</%block>
+
 <style>
   #content.main-container {
     padding: 0px !important;
