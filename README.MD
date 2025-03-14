@@ -2,6 +2,18 @@
 
 Eol Uchile Theme for [eol.uchile.cl](eol.uchile.cl). This theme must be used as *eol-uchile-2020* in OpenedX.
 
+# Set OG Variables
+- Enter location `/admin/site_configuration/siteconfiguration/`
+    * In subdomain lms you must add the next two variables:
+        * EOL_OG_SITE_NAME is use to determine the site name on Open Graph on index
+        ```
+        "EOL_OG_SITE_NAME":"EOL"
+        ```
+        * EOL_OG_SITE_DESCRIPTION is use to describe the site name on Open Graph on index
+        ```
+        "EOL_OG_SITE_DESCRIPTION":"La Oficina de Educación Online (EOL) de la U. de Chile fomenta la educación no presencial de excelencia, brindando soporte técnico, pedagógico y diseño instruccional para enriquecer la enseñanza mediada por tecnología."
+        ```
+
 ### Creating translation catalogues:
 
 Create this folder structure in your theme folder: your-theme-folder/conf/locale.
