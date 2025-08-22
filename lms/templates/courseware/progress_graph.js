@@ -52,6 +52,16 @@ $(function () {
 
       $('#tooltip').fadeIn(200);
   }
+  function roundHalfUp(value, decimals = 1) {
+	const factor = Math.pow(10, decimals);
+    return Math.round(value * factor + Number.EPSILON) / factor;
+  }
+
+  function grade_scale(gradePercent, gradeCutoff = ${grade_cutoff}, ndecimals = 1) {
+    if (gradePercent < gradeCutoff)
+      return roundHalfUp(rawGrade = (3.0 / gradeCutoff) * gradePercent + 1.0, ndecimals);
+    return roundHalfUp((3.0 / (1.0 - gradeCutoff)) * gradePercent + (7.0 - (3.0 / (1.0 - gradeCutoff))),ndecimals);
+  }
   /* -------------------------------- Grade detail bars -------------------------------- */
 
   <%
