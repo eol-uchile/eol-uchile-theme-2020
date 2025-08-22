@@ -13,10 +13,16 @@
 <%
   # EOL: Calculate grade cutoff
   grade_cutoff = min(grade_cutoffs.values())
-  def grade_scale(percent):
-    if percent < grade_cutoff:
-      return min(round(10. * (3. / grade_cutoff * percent + 1.)) / 10., 3.9)
-    return round((3. / (1. - grade_cutoff) * percent + (7. - (3. / (1. - grade_cutoff)))) * 10.) / 10.
+  import decimal
+  ctxt = decimal.getcontext()
+  ctxt.rounding = decimal.ROUND_HALF_UP
+
+  def grade_scale(grade_percent, grade_cutoff, decimal_digits=1):
+    if grade_percent < grade_cutoff:
+      raw_grade = 3. / grade_cutoff * grade_percent + 1.
+    else:    
+      raw_grade = 3. / (1. - grade_cutoff) * grade_percent + (7. - (3. / (1. - grade_cutoff)))
+    return round(decimal.Decimal(str(raw_grade)), decimal_digits)
 %>
 
 
@@ -47,10 +53,15 @@ $(function () {
       
       $('#tooltip').fadeIn(200);
   }
-  function grade_scale(percent) {
-    if (percent < ${grade_cutoff})
-      return Math.min(Math.round((3 / ${grade_cutoff} * percent + 1)*10)/10, 3.9);
-    return Math.round(10 * (3 / (1 - ${grade_cutoff}) * percent + (7 - (3 / (1 - ${grade_cutoff})))) / 10);
+  function roundHalfUp(value, decimals = 1) {
+	const factor = Math.pow(10, decimals);
+    return Math.round(value * factor + Number.EPSILON) / factor;
+  }
+
+  function grade_scale(gradePercent, gradeCutoff = ${grade_cutoff}, ndecimals = 1) {
+    if (gradePercent < gradeCutoff)
+      return roundHalfUp(rawGrade = (3.0 / gradeCutoff) * gradePercent + 1.0, ndecimals);
+    return roundHalfUp((3.0 / (1.0 - gradeCutoff)) * gradePercent + (7.0 - (3.0 / (1.0 - gradeCutoff))),ndecimals);
   }
   /* -------------------------------- Grade detail bars -------------------------------- */
     
@@ -149,7 +160,7 @@ $(function () {
     for grade in descending_grades:
         percent = grade_cutoffs[grade]
         ## xss-lint: disable=javascript-jquery-append
-        grade_cutoff_ticks.append( [ percent, u"{0} {1:.1f}".format(grade, grade_scale(percent)) ] )
+        grade_cutoff_ticks.append( [ percent, u"{0} {1:.1f}".format(grade, grade_scale(percent, grade_cutoff)) ] )
   else:
     grade_cutoff_ticks = [ ]
   %>
@@ -307,7 +318,7 @@ $(function () {
               edx.HtmlUtils.HTML('<span class=sr>'),
               gettext('Overall Score'),
               edx.HtmlUtils.HTML('<br></span>'),
-              '${'{totalscore:.1f}'.format(totalscore=grade_scale(totalScore)) | n, js_escaped_string}',
+              '${'{totalscore:.1f}'.format(totalscore=grade_scale(totalScore, grade_cutoff)) | n, js_escaped_string}',
               edx.HtmlUtils.HTML('</div>')
           )
       );
