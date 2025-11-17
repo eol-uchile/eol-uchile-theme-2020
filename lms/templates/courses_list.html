@@ -2,8 +2,8 @@
 <%namespace name='static' file='static_content.html'/>
 <%! from django.utils.translation import ugettext as _ %>
 
-<%! from lms.djangoapps.course_info.helpers import get_course_class %>
 % if settings.FEATURES.get('SHOW_COURSES_BY_CLASS'):
+<% from lms.djangoapps.course_info.helpers import get_course_class %>
 <%  cats,course_class = get_course_class(courses) %>
 %for categ in cats:
   %if 'cmm' not in categ['name'] and (categ['show_opt'] == 2 or (categ['show_opt'] == 1 and len(course_class[categ['id']]['courses']) > 0)):
