@@ -120,7 +120,14 @@ from openedx.core.djangolib.markup import HTML
               % if not is_hidden:
                 % if section_data['section_key'] == 'send_email':
                   <li class="nav-item"><button id="send_email_button" onclick="set_send_email_view();" type="button" class="btn-link send_email${' hidden' if is_hidden else ''}" data-section="send_email">${_(dname)}</button></li>
-                  % if 'welcome-mail-save' in section_data:
+                  <%
+                  welcome_mail_url = None
+                  try:
+                    welcome_mail_url = reverse('welcome-mail:save', kwargs={'course_id': course.id})
+                  except Exception as e:
+                    pass
+                  %>
+                  % if welcome_mail_url is not None:
                     <li class="nav-item"><button id="welcome_mail_button" onclick="set_welcome_mail_view();" type="button" class="btn-link send_email${' hidden' if is_hidden else ''}" data-section="send_email">${_("Correo de bienvenida")}</button></li>
                   % endif
                 % else:
