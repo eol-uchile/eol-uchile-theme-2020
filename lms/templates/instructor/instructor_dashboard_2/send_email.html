@@ -2,16 +2,38 @@
 <%!
 from django.utils.translation import ugettext as _
 from openedx.core.djangolib.markup import HTML
+from django.urls import reverse
+import traceback
+import json
 %>
 <style>
     .eol_welcome_mail_hide{
         display: none;
     }
 </style>
+<%
+welcome_mail_traceback = None
+welcome_mail_data = '{}'
+welcome_mail_url = None
+try:
+    from welcome_mail.models import WelcomeMail
+    welcome_mail_url = reverse('welcome-mail:save', kwargs={'course_id': course.id})
+    mail = WelcomeMail.objects.get(course_key=course.id)
+    welcome_mail_data = json.dumps({'subject':mail.subject, 'message':mail.html_message, 'is_active':mail.is_active})
+except WelcomeMail.DoesNotExist:
+    pass
+except Exception as e:
+    welcome_mail_traceback = traceback.format_exc()
+%>
+% if welcome_mail_traceback is not None and settings.DEBUG:
+      <div class="welcome_mail_traceback" hidden>
+        <pre>${welcome_mail_traceback}</pre>
+      </div>
+% endif
 <div class="vert-left send-email" id="section-send-email">
-    <input id="welcome_mail_data" type="text" value="${section_data['welcome_data']}" hidden>
+    <input id="welcome_mail_data" type="text" value="${welcome_mail_data}" hidden>
     <ul class="list-fields">
-        % if 'welcome-mail-save' in section_data:
+        % if welcome_mail_url is not None:
             <li class="field eol_welcome_mail_hide">
                 <div class="send_to_list">${_("Habilitar:")}</div>
             </li>
@@ -124,8 +146,8 @@ from openedx.core.djangolib.markup import HTML
     </div>
     <br />
     <input class="eol_send_email_hide" type="button" name="send" value="${_("Send Email")}" data-endpoint="${ section_data['send_email'] }" >
-    % if 'welcome-mail-save' in section_data:
-        <input class="eol_welcome_mail_hide" onclick="save_welcome_mail(this);" type="button" name="save" value="${_("Guardar Cambios")}" data-endpoint="${ section_data['welcome-mail-save'] }" >
+    % if welcome_mail_url is not None:
+        <input class="eol_welcome_mail_hide" onclick="save_welcome_mail(this);" type="button" name="save" value="${_("Guardar Cambios")}" data-endpoint="${ welcome_mail_url }" >
     % endif
     <div class="request-response msg msg-confirm copy" id="request-response"></div>
 
