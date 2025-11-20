@@ -4,6 +4,7 @@
 from django.utils.translation import ugettext as _
 from openedx.core.djangolib.markup import HTML, Text
 from django.urls import reverse
+import traceback
 import urllib
 %>
 
@@ -89,16 +90,29 @@ import urllib
       </div>
     </p>
 
+    <%
+    eolreportcertificate_url = None
+    eolreportcertificate_traceback = None
+    try:
+      eolreportcertificate_url = '{}?{}'.format(reverse('eolreportcertificate-export:data'), urllib.parse.urlencode({'course': str(course.id)}))
+    except Exception as e:
+      eolreportcertificate_traceback = traceback.format_exc()
+    %>
+    % if eolreportcertificate_traceback and settings.DEBUG:
+      <div class="eolreportcertificate_traceback" hidden>
+        <pre>${eolreportcertificate_traceback}</pre>
+      </div>
+    % endif
     <div class="issued_certificates">
       <p>${_("Click to list certificates that are issued for this course:")}</p>
       <p>
         <input type="button" name="issued-certificates-list" value="${_("View Certificates Issued")}" data-csv="false" data-endpoint="${ section_data['get_issued_certificates_url'] }">
         <input type="button" name="issued-certificates-csv" value="${_("Download CSV of Certificates Issued")}" data-csv="true" data-endpoint="${ section_data['get_issued_certificates_url'] }">
-        %if 'has_eolreportcertificate' in section_data and section_data['has_eolreportcertificate']:
-        <input type="button" name="issued-certificates-eol" onclick="generate_eolreportcertificate(this)" value="${_("(Nuevo) Descargar Reporte de Certificados")}" data-endpoint="${ section_data['eolreportcertificate_url'] }">
+        %if eolreportcertificate_url:
+        <input type="button" name="issued-certificates-eol" onclick="generate_eolreportcertificate(this)" value="${_("(Nuevo) Descargar Reporte de Certificados")}" data-endpoint="${ eolreportcertificate_url }">
         %endif
       </p>
-      %if 'has_eolreportcertificate' in section_data and section_data['has_eolreportcertificate']:
+      %if eolreportcertificate_url:
       <div class="eolreportcertificate-success-msg" id="eolreportcertificate-success-msg"></div>
       <div class="eolreportcertificate-warning-msg" id="eolreportcertificate-warning-msg"></div>
       <div class="eolreportcertificate-error-msg" id="eolreportcertificate-error-msg"></div>
@@ -121,43 +135,75 @@ import urllib
       <input type="button" name="export-ora2-data" class="async-report-btn" value="${_("Generate ORA Data Report")}" data-endpoint="${ section_data['export_ora2_data_url'] }"/>
     </p>
   %endif
-  %if 'has_xblockcompletion' in section_data and section_data['has_xblockcompletion']:
+  <% 
+  xblockcompletion_url = None
+  xblockcompletion_traceback = None
+  try:
+    xblockcompletion_url_resumen = '{}?{}'.format(reverse('xblockcompletion-data:data'), urllib.parse.urlencode({'format': 'resumen', 'course': str(course.id)}))
+    xblockcompletion_url_all = '{}?{}'.format(reverse('xblockcompletion-data:data'), urllib.parse.urlencode({'format': 'all', 'course': str(course.id)}))
+  except Exception as e:
+    xblockcompletion_traceback = traceback.format_exc()
+  %>
+  % if xblockcompletion_traceback and settings.DEBUG:
+      <div class="xblockcompletion_traceback" hidden>
+        <pre>${xblockcompletion_traceback}</pre>
+      </div>
+  % endif
+  %if 'xblockcompletion_url_resumen':
   <div class='xblockcompletion-report'>
       <hr>
       <h4 class="hd hd-4">${_("Reporte de preguntas")}</h4>
       <p>${_("Existen dos maneras para generar reportes de preguntas en formato CSV:")} </p>
       <p><b>- ${_("Modo resumen/compacto")}</b>: ${_("Genera un reporte de todos los bloques tipo pregunta mostrando los intentos, puntaje ganado y puntaje posible del bloque de cada estudiante.")}</p>
       <p><b>- ${_("Modo Completo")}</b>: ${_("Genera un reporte de todas las preguntas de los bloques tipo pregunta mostrando la pregunta, respuesta del estudiante, respuesta correcta, intentos, puntaje ganado y puntaje posible del bloque.")}</p>
-      <p><input onclick="generate_report_xblockcompletion(this)" type="button" name="xblockcompletion-report-resumen" value="${_("Reporte Modo Resumen")}" data-endpoint="${ section_data['xblockcompletion_url_resumen'] }"/>
-      <input onclick="generate_report_xblockcompletion(this)" type="button" name="xblockcompletion-report-all" value="${_("Reporte Modo Completo")}" data-endpoint="${ section_data['xblockcompletion_url_all'] }"/></p>
+      <p><input onclick="generate_report_xblockcompletion(this)" type="button" name="xblockcompletion-report-resumen" value="${_("Reporte Modo Resumen")}" data-endpoint="${ xblockcompletion_url_resumen }"/>
+      <input onclick="generate_report_xblockcompletion(this)" type="button" name="xblockcompletion-report-all" value="${_("Reporte Modo Completo")}" data-endpoint="${ xblockcompletion_url_all }"/></p>
       <div class="xblockcompletion-success-msg" id="xblockcompletion-success-msg"></div>
       <div class="xblockcompletion-warning-msg" id="xblockcompletion-warning-msg"></div>
       <div class="xblockcompletion-error-msg" id="xblockcompletion-error-msg"></div>
       <p>${_("Para una mejor visualización y manejo de los datos en el Excel, puede ver un mini tutorial haciendo")} <a target="_blank" href="https://youtu.be/v4ecUuetKDo">${_("click aqui")}</a>.</p>
   </div>
   %endif
-  %if 'has_eol_report_analytics' in section_data and section_data['has_eol_report_analytics']:
-  <div class='eol_report_analytics-report'>
-    <hr>
-    <h4 class="hd hd-4">${_("Analítica de preguntas")}</h4>
-    <p>
-      <input id="eol_report_analytics_input" type="text" placeholder="block-v1:eol+test100+2021_1+type@problem+block@936f2950368f4eff8dfc4451c865d28c">
-      <input onclick="generate_analytics_report(this)" type="button" name="eol_report_analytics-report" value="${_("Generar")}" data-endpoint="${ section_data['eol_report_analytics_url'] }"/>
-    </p>
-    <div class="eol_report_analytics-success-msg" id="eol_report_analytics-success-msg"></div>
-    <div class="eol_report_analytics-warning-msg" id="eol_report_analytics-warning-msg"></div>
-    <div class="eol_report_analytics-error-msg" id="eol_report_analytics-error-msg"></div>
-  </div>
+  <% 
+  eol_report_analytics_url = None
+  eol_report_analytics_traceback = None
+  try:
+    eol_report_analytics_url = '{}?{}'.format(reverse('eol_report_analytics:data'), urllib.parse.urlencode({'course': str(course.id)}))
+  except Exception as e:
+    eol_report_analytics_traceback = traceback.format_exc() 
+  %>
+  % if eol_report_analytics_traceback and settings.DEBUG:
+      <div class="eol_report_analytics_traceback" hidden>
+        <pre>${eol_report_analytics_traceback}</pre>
+      </div>
+  % endif
+  %if eol_report_analytics_url:
+    <div class='eol_report_analytics-report'>
+      <hr>
+      <h4 class="hd hd-4">${_("Analítica de preguntas")}</h4>
+      <p>
+        <input id="eol_report_analytics_input" type="text" placeholder="block-v1:eol+test100+2021_1+type@problem+block@936f2950368f4eff8dfc4451c865d28c">
+        <input onclick="generate_analytics_report(this)" type="button" name="eol_report_analytics-report" value="${_("Generar")}" data-endpoint="${ eol_report_analytics_url }"/>
+      </p>
+      <div class="eol_report_analytics-success-msg" id="eol_report_analytics-success-msg"></div>
+      <div class="eol_report_analytics-warning-msg" id="eol_report_analytics-warning-msg"></div>
+      <div class="eol_report_analytics-error-msg" id="eol_report_analytics-error-msg"></div>
+    </div>
   %endif
   <% 
-  try: 
-    import eol_survey
-    enable_survey = True
+  survey_url = None
+  survey_traceback = None
+  try:
     survey_url = '{}?{}'.format(reverse('eolSurveyReport'), urllib.parse.urlencode({'course': str(course.id)}))
-  except ImportError:
-    enable_survey = False 
+  except Exception as e:
+    survey_traceback = traceback.format_exc() 
   %>
-  %if enable_survey :
+  % if survey_traceback and settings.DEBUG:
+      <div class="survey_traceback" hidden>
+        <pre>${survey_traceback}</pre>
+      </div>
+  % endif
+  %if survey_url:
   <div class='eol_survey_report_analytics-report'>
       <hr>
       <h4 class="hd hd-4">${_("Analítica de encuestas")}</h4>
@@ -172,64 +218,52 @@ import urllib
       <input type="hidden" name="courseId" id="courseId" value="${course.id}"> 
   </div>
   %endif
-  %if 'has_gradeucursos' in section_data and section_data['has_gradeucursos']:
+  <%
+  gradeucursos_url = None
+  gradeucursos_traceback = None
+  try:
+    gradeucursos_url = reverse('gradeucursos-export:data')
+  except Exception as e:
+    gradeucursos_traceback = traceback.format_exc()
+  %>
+  % if gradeucursos_traceback and settings.DEBUG:
+      <div class="gradeucursos_traceback" hidden>
+        <pre>${gradeucursos_traceback}</pre>
+      </div>
+  % endif
+  % if gradeucursos_url:
   <div class='gradeucursos-export'>
       <hr>
       <h4 class="hd hd-4">${_("Exportar Notas")}</h4>
-      %if section_data['gradeucursos_grade_cutoff'] is None:
-      <div class="gradeucursos-error-msg" style="display: block;">
-        <p>${_("El porcentaje de aprobación no se configurado correctamente, contáctese con la mesa de ayuda(eol-ayuda@uchile.cl) para mas información.")}</p>
-      </div>
-      %else:
-        <p>${_("El porcentaje de aprobación del curso es del:")} ${section_data['gradeucursos_grade_cutoff']*100} %.</p>
-        <p>${_("Seleccione la escala de notas, presione el boton Exportar Notas y se generará un archivo Excel.")}</p>
-        <p>${_("NOTA: Al seleccionar la escala '0 - 100' o '0.00 - 1.00' el puntaje obtenido de cada estudiante será transformado a un puntaje con porcentaje de aprobación del 50%")}</p>
-        <p hidden>${_("NOTA: Al seleccionar el formato 'Completo' con escala de 1.0 - 7.0, cada evaluación estará en una escala de 0 - 100 y solamente el promedio final estará con la escala seleccionada.")}</p>
-        <div class="row" hidden> 
-          <div class="col-md-1" style="padding-left: 0px;margin-top: 15px;">
-            <label for="gradeucursos_assig_type" style="clear: both; font-style: normal; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif">${_("Tipo de tarea:")}</label>
-          </div>
-          <div class="col-md-3" style="padding-left: 0px;margin-top: 15px;">
-            <select class="gradeucursos_select" name='gradeucursos_assig_type' id='gradeucursos_assig_type'>
-              <option value="gradeucursos_total">${_("Nota final del curso")}</option>
-              %for assig in section_data['gradeucursos_assig_types']:
-                <option value="${assig}">${assig}</option>
-              %endfor
+      % if studio_url:
+        <%
+          cleaned_studio_url = studio_url.lstrip('/').split('/', 1)[0]
+          grading_url = f'https://{cleaned_studio_url}/settings/grading/{course.id}'
+        %>
+      <p> ${_("Configuración de calificaciones:")} <a href="${ grading_url }" target="_blank">${_("presione aqui.")}</a></p>
+      % endif
+      <p>${_("Seleccione la escala de notas, presione el boton Exportar Notas y se generará un archivo Excel.")}</p>
+      <p>${_("NOTA: Al seleccionar la escala '0 - 100' o '0.00 - 1.00' el puntaje obtenido de cada estudiante será transformado a un puntaje con porcentaje de aprobación del 50%")}</p>
+      <div class="row"> 
+        <div class="col-md-1" style="padding-left: 0px;margin-top: 15px;">
+          <label for="gradeucursos_grade_type" style="clear: both; font-style: normal; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif">${_("Escala de Nota:")}</label>
+        </div>
+        <div class="col-md-3" style="padding-left: 0px;margin-top: 15px;">
+          <select class="gradeucursos_select" name='gradeucursos_grade_type' id='gradeucursos_grade_type'>
+            <option value="seven_scale">1.0 - 7.0</option>
+            <option value="hundred_scale">0 - 100</option>
+            <option value="percent_scale">0.00 - 1.00</option>
           </select>
-          </div>
         </div>
-        <div class="row"> 
-          <div class="col-md-1" style="padding-left: 0px;margin-top: 15px;">
-            <label for="gradeucursos_grade_type" style="clear: both; font-style: normal; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif">${_("Escala de Nota:")}</label>
-          </div>
-          <div class="col-md-3" style="padding-left: 0px;margin-top: 15px;">
-            <select class="gradeucursos_select" name='gradeucursos_grade_type' id='gradeucursos_grade_type'>
-              <option value="seven_scale">1.0 - 7.0</option>
-              <option value="hundred_scale">0 - 100</option>
-              <option value="percent_scale">0.00 - 1.00</option>
-            </select>
-          </div>
+      </div>
+      <input hidden disabled type="text" name='curso' id="gradeucursos_curso" value="${ str(course.id) }"></input>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-3" style="padding-left: 0px;margin-top: 15px;">
+          <input id='gradeucursos_data_button' onclick="generate_data_gradeucursos(this)" type="button" name="gradeucursos-data" value="${_("Exportar Notas")}" data-endpoint="${ gradeucursos_url }"/>
         </div>
-        <div class="row" hidden>
-          <div class="col-md-1" style="padding-left: 0px;margin-top: 15px;">
-            <label for="gradeucursos_is_resumen" style="clear: both; font-style: normal; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif">${_("Formato:")}</label>
-          </div>
-          <div class="col-md-3" style="padding-left: 0px;margin-top: 15px;">
-            <select class="gradeucursos_select" name='gradeucursos_is_resumen' id='gradeucursos_is_resumen'>
-              <option value="is_resumen">${_("Completo")}</option>
-              <option value="gradeucursos_total">${_("Solo Promedio Final")}</option>
-            </select>
-          </div>
-        </div>
-        <input hidden disabled type="text" name='curso' id="gradeucursos_curso" value="${section_data['gradeucursos_course']}"></input>
-        <div class="row">
-          <div class="col-md-1"></div>
-          <div class="col-md-3" style="padding-left: 0px;margin-top: 15px;">
-            <input id='gradeucursos_data_button' onclick="generate_data_gradeucursos(this)" type="button" name="gradeucursos-data" value="${_("Exportar Notas")}" data-endpoint="${ section_data['gradeucursos_url_data'] }"/>
-          </div>
-        </div>
-        <p>${_("Para saber como subir estas notas a la plataforma U-Cursos")} <a href='https://drive.google.com/file/d/1oRLWoBpOJuMNMfRtQu7F7pvLaLqfOunk/view?usp=sharing' target="_blank">${_("presione aqui.")}</a></p>
-      %endif
+      </div>
+      <p>${_("Para saber como subir estas notas a la plataforma U-Cursos")} <a href='https://drive.google.com/file/d/1oRLWoBpOJuMNMfRtQu7F7pvLaLqfOunk/view?usp=sharing' target="_blank">${_("presione aqui.")}</a></p>
       <div class="gradeucursos-success-msg" id="gradeucursos-success-msg"></div>
       <div class="gradeucursos-warning-msg" id="gradeucursos-warning-msg"></div>
       <div class="gradeucursos-error-msg" id="gradeucursos-error-msg"></div>
