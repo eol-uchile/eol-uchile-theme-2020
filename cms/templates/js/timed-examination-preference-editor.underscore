@@ -30,7 +30,7 @@
                 <%- gettext('Timed') %>
             </label>
             <p class='field-message' id='timed-exam-description'> <%- gettext('Use a timed exam to limit the time learners can spend on problems in this subsection. Learners must submit answers before the time expires. You can allow additional time for individual learners through the Instructor Dashboard.') %> </p>
-            <% if (enableProctoredExams) { %>
+            <% if (enableProctoredExams and False) { %>
                 <label class="label">
                     <input type="radio" name="exam_type" class="input input-radio proctored_exam"
                         aria-describedby="proctored-exam-description"
