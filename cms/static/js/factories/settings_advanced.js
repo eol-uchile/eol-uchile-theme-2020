@@ -31,6 +31,8 @@ define([
         });
         editor.render();
 
+        init_simplified_settings(); // Settings-Simplified
+
         $('#deprecated-settings').click(function() {
             var $wrapperDeprecatedSetting = $('.wrapper-deprecated-setting'),
                 $deprecatedSettingsLabel = $('.deprecated-settings-label');
