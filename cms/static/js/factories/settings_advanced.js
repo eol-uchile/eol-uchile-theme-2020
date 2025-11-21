@@ -1,5 +1,5 @@
 define([
-    'jquery', 'gettext', 'js/models/settings/advanced', 'js/views/settings/advanced'
+    'jquery', 'gettext', 'js/models/settings/advanced', 'eol-uchile-2020/js/views/settings/advanced'
 ], function($, gettext, AdvancedSettingsModel, AdvancedSettingsView) {
     'use strict';
     return function(advancedDict, advancedSettingsUrl, publisherEnabled) {
@@ -30,6 +30,8 @@ define([
             model: advancedModel
         });
         editor.render();
+
+        init_simplified_settings(); // Settings-Simplified
 
         $('#deprecated-settings').click(function() {
             var $wrapperDeprecatedSetting = $('.wrapper-deprecated-setting'),

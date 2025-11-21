@@ -24,7 +24,7 @@
 </%block>
 
 <%block name="requirejs">
-    require(["js/factories/settings_advanced"], function(SettingsAdvancedFactory) {
+    require(["eol-uchile-2020/js/factories/settings_advanced"], function(SettingsAdvancedFactory) {
         SettingsAdvancedFactory(
             ${advanced_dict | n, dump_js_escaped_json},
             "${advanced_settings_url | n, js_escaped_string}",
@@ -107,7 +107,9 @@
             strong_end=HTML('</strong>')
           )}</p>
 
-          <div class="wrapper-options">
+          <%include file="advanced_settings/settings-simplified.html" />
+
+          <div class="wrapper-options deprecated-options">
             <div class="wrapper-deprecated-setting">
               <input id="deprecated-settings" class="deprecated-settings-toggle" type="checkbox" name="Show Deprecated">
               <label for="deprecated-settings" class="deprecated-settings-label">${_("Show Deprecated Settings")}</label>

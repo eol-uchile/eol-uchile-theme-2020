@@ -144,6 +144,7 @@ define(['js/views/validation',
                         analytics.track('Saved Advanced Settings', {
                             course: course_location_analytics
                         });
+                        init_simplified_settings(update=true); // Settings-Simplified
                     },
                     silent: true,
                     error: function(model, response, options) {
