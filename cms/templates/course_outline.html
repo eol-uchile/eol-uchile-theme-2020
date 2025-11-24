@@ -34,6 +34,12 @@ from django.urls import reverse
     <%static:include path="js/${template_name}.underscore" />
 </script>
 % endfor
+<script type="text/javascript" src="${static.url('eol_duplicate_xblock/js/eol_copy_xblock.js')}"></script>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function(){
+    $("#eol_duplicate_xblock_div").load("${static.url('eol_duplicate_xblock/html/copy-to-other-course.html')}");
+  }, false);
+</script>
 <%static:optional_include_mako file="course_outline_header_extras_post.html" />
 
 % if not settings.STUDIO_FRONTEND_CONTAINER_URL:
@@ -160,6 +166,7 @@ from django.urls import reverse
 </%block>
 
 <%block name="content">
+<div id="eol_duplicate_xblock_div"></div>
 <div class="wrapper-mast wrapper">
     <header class="mast has-actions has-subtitle">
         <h1 class="page-header">
