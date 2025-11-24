@@ -26,3 +26,31 @@
 .wrapper-header  .wrapper-r {
 	background: none !important;
 }
+
+/* Location Styles */
+.location-footer {
+    .location-container {
+        position: relative;
+        background: #f9f9f9;
+        border-top: 1px solid #ddd;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        .location-label {
+            position: absolute;
+            left: 0;
+            padding: 8px 10px;
+            border-right: 1px solid #ddd;
+            z-index: 11;
+            font-size: 1.2rem;
+            line-height: 1.776rem;
+        }
+        .location-value {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 5px 10px 5px 90px;
+            z-index: 10;
+            font-size: .75em;
+        }
+    }
+}
+/* End Location Styles */
