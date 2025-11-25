@@ -7,6 +7,11 @@
 
   <link rel="icon" type="image/x-icon" href="{% favicon_path %}" />
 
+  <!-- EOL -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'eol-uchile-2020/css/eol-uchile-2020/main.css' %}">
+  <!-- end EOL -->
+
   {% with "js/i18n/"|add:LANGUAGE_CODE|add:"/djangojs.js" as i18njs_path %}
     <script type="text/javascript" src="{% static i18njs_path %}"></script>
   {% endwith %}
@@ -46,6 +51,9 @@
     {% javascript 'base_application' %}
 
     {% render_block "js" %}
+    <!-- EOL -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <!-- end EOL -->
 </body>
 </html>
 
