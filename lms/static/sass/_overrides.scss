@@ -1,0 +1,18 @@
+/* Dashboard Styles */
+.dashboard .main-container {
+    padding-top: 10px;
+}
+.wrapper-header-courses .course-filter,
+.wrapper-header-courses .course-filter:focus {
+    color: var(--primary-color);
+    border-color: var(--primary-color) !important;
+    background-color: #FFFFFF;
+    box-shadow: none;
+}
+.wrapper-header-courses .course-filter:hover,
+.wrapper-header-courses .course-filter:active {
+    color: #FFFFFF;
+    background-color: var(--primary-color) !important;
+    box-shadow: none;
+}
+/* End Dashboard Styles */

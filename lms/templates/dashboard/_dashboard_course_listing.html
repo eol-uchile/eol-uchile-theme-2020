@@ -39,11 +39,13 @@ from lms.djangoapps.experiments.utils import UPSELL_TRACKING_FLAG
     cert_name_long = settings.CERT_NAME_LONG
 
   is_course_expired = hasattr(show_courseware_link, 'error_code') and show_courseware_link.error_code == 'audit_expired'
+
+  course_eol_class = "course-archived" if course_overview.has_ended() else "course-active"
 %>
 
 <%namespace name='static' file='../static_content.html'/>
 
-<li class="course-item">
+<li class="course-item ${course_eol_class}">
   % if display_course_modes_on_dashboard:
     <%
         course_verified_certs = enrollment_mode_display(
