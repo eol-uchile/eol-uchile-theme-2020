@@ -54,3 +54,36 @@
     }
 }
 /* End Location Styles */
+
+/* Eol-Vimeo Styles */
+.update-vimeo {
+    box-sizing: border-box;
+    transition: color 0.25s ease-in-out 0s,border-color 0.25s ease-in-out 0s,background 0.25s ease-in-out 0s,box-shadow 0.25s ease-in-out 0s;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 10px 20px;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: none;
+    line-height: 1.5em;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 20.72px;
+    line-height: 2.072rem;
+    background: #0075b4;
+    border-color: #0075b4;
+    color: #fff;
+}
+.update-vimeo:hover, .update-vimeo:active {
+    box-shadow: 0 2px 1px rgb(0 0 0 / 20%);
+    background: #065683;
+    border-color: #065683;
+}
+#ui-loading-update {
+    padding: 0;
+    text-align: left;
+}
+/* End Eol-Vimeo Styles */
