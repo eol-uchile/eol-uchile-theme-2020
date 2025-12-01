@@ -10,6 +10,21 @@
     )
 %>
 
+<%
+  # EOL: Calculate grade cutoff
+  grade_cutoff = min(grade_cutoffs.values())
+  import decimal
+  ctxt = decimal.getcontext()
+  ctxt.rounding = decimal.ROUND_HALF_UP
+
+  def grade_scale(grade_percent, grade_cutoff, decimal_digits=1):
+    if grade_percent < grade_cutoff:
+      raw_grade = 3. / grade_cutoff * grade_percent + 1.
+    else:
+      raw_grade = 3. / (1. - grade_cutoff) * grade_percent + (7. - (3. / (1. - grade_cutoff)))
+    return round(decimal.Decimal(str(raw_grade)), decimal_digits)
+%>
+
 $(function () {
   function showTooltip(x, y, contents) {
       $("#tooltip").remove();
@@ -126,14 +141,15 @@ $(function () {
 
   ## ----------------------------- Grade cutoffs ------------------------- ##
 
-  grade_cutoff_ticks = [ [1, "100%"], [0, "0%"] ]
+  ## EOL
+  grade_cutoff_ticks = [ [1, "7.0"], [0, "1.0"] ]
   if show_grade_cutoffs:
-    grade_cutoff_ticks = [ [1, "100%"], [0, "0%"] ]
+    grade_cutoff_ticks = [ [1, "7.0"], [0, "1.0"] ]
     descending_grades = sorted(grade_cutoffs, key=lambda x: grade_cutoffs[x], reverse=True)
     for grade in descending_grades:
         percent = grade_cutoffs[grade]
         ## xss-lint: disable=javascript-jquery-append
-        grade_cutoff_ticks.append( [ percent, u"{0} {1:.0%}".format(grade, percent) ] )
+        grade_cutoff_ticks.append( [ percent, u"{0} {1:.1f}".format(grade, grade_scale(percent, grade_cutoff)) ] )
   else:
     grade_cutoff_ticks = [ ]
   %>
@@ -293,7 +309,7 @@ $(function () {
               edx.HtmlUtils.HTML('<span class=sr>'),
               gettext('Overall Score'),
               edx.HtmlUtils.HTML('<br></span>'),
-              '${'{totalscore:.0%}'.format(totalscore=totalScore) | n, js_escaped_string}',
+              '${'{totalscore:.1f}'.format(totalscore=grade_scale(totalScore, grade_cutoff)) | n, js_escaped_string}',
               edx.HtmlUtils.HTML('</div>')
           )
       );
