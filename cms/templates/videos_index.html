@@ -45,6 +45,22 @@
             ${video_image_settings | n, dump_js_escaped_json},
             ${transcript_available_languages | n, dump_js_escaped_json}
         );
+        // EOL BEGIN
+        // TODO: move to underscore+index factory
+        var messages = document.getElementsByClassName('file-upload-form');
+        var new_div = document.createElement("div");
+        new_div.style.cssText = "padding-top:20px;";
+        new_div.innerHTML = '<span class="icon fa fa-info-circle" aria-hidden="true"></span><span style="padding-left: 10px;">${_("Los tiempos de procesamiento una vez subido el video puede demorar varios minutos/horas en completarse, dependiendo del tamaño del archivo. Una vez subido el video, espere unos minutos y recargue la página.")}</span>';
+        var referenceNode = messages[0]
+        referenceNode.parentNode.insertBefore(new_div, referenceNode.nextSibling);
+        var status_videos = document.getElementsByClassName('status-col');
+        var html_tooltop = '<div data-tooltip="${_("Los tiempos de procesamiento una vez subido el video puede demorar varios minutos/horas en completarse, dependiendo del tamaño del archivo. Una vez subido el video, espere unos minutos y recargue la página.")}" class="action-button" style="display: inline-block;"><span class="icon fa fa-info-circle" aria-hidden="true"></span></div>';
+        for (var i=0;i < status_videos.length; i++){
+            if (status_videos[i].innerText == "${_('EN PROGRESO')}"){
+                status_videos[i].insertAdjacentHTML('beforeend', html_tooltop);
+            }
+        }
+        // EOL END
     });
 </%block>
 
