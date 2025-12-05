@@ -380,29 +380,6 @@ body {
 }
 
 /*
-* Contact Form
-*/
-
-#eol-contact h3.contact-header {
-    border-bottom: .15rem solid var(--primary-color);
-    color: var(--primary-color);
-    font-size: 1.5em !important;
-}
-
-#eol-contact .contact-card {
-    background-color: #ffffffbf !important;
-}
-
-#eol-contact p.contact-availability {
-    color: var(--primary-color);
-}
-
-#eol-contact p.contact-info {
-    color: var(--text-grey);
-    letter-spacing: 0.04em;
-}
-
-/*
 * Course About
 */
 
