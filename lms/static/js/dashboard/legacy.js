@@ -89,11 +89,8 @@
              var diagAttr = {};
 
              if (isPaidCourse) {
-                 if (showRefundOption) {
-                     diagAttr['data-refund-info'] = gettext('You will be refunded the amount you paid.');
-                 } else {
-                     diagAttr['data-refund-info'] = gettext('You will not be refunded the amount you paid.');
-                 }
+                 // EOL: no refunds, all cases
+                 diagAttr['data-refund-info'] = gettext('You will not be refunded the amount you paid.');
                  diagAttr['data-track-info'] = gettext('Are you sure you want to unenroll from the purchased course ' +
                                                    '{courseName} ({courseNumber})?');
              } else if (enrollmentMode !== 'verified') {
@@ -102,12 +99,11 @@
              } else if (showRefundOption) {
                  diagAttr['data-track-info'] = gettext('Are you sure you want to unenroll from the verified ' +
                                                    '{certNameLong}  track of {courseName}  ({courseNumber})?');
-                 diagAttr['data-refund-info'] = gettext('You will be refunded the amount you paid.');
+                 diagAttr['data-refund-info'] = gettext('You will not be refunded the amount you paid.');
              } else {
                  diagAttr['data-track-info'] = gettext('Are you sure you want to unenroll from the verified ' +
                                                    '{certNameLong} track of {courseName} ({courseNumber})?');
-                 diagAttr['data-refund-info'] = gettext('The refund deadline for this course has passed, ' +
-                     'so you will not receive a refund.');
+                 diagAttr['data-refund-info'] = gettext('You will not be refunded the amount you paid.');
              }
 
              return diagAttr;
@@ -149,8 +145,9 @@
              });
              request.success(function(data, textStatus, xhr) {
                  if (xhr.status === 200) {
+                     // EOL: Force no refunds message on unenroll modal
                      dialogMessageAttr = setDialogAttributes(isPaidCourse, certNameLong,
-                                    courseNumber, courseName, enrollmentMode, data.course_refundable_status, courseKey);
+                                    courseNumber, courseName, enrollmentMode, false && data.course_refundable_status, courseKey);
 
                      $('#track-info').empty();
                      $('#refund-info').empty();
