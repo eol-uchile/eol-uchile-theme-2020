@@ -17,13 +17,13 @@
 %>
 <%namespace name='static' file='../static_content.html'/>
 
-<div class="footer-language-selector">
+<div class="footer-language-selector p-3 text-right">
     <div role="group" aria-label="Change page language">
-        <label for="footer-language-select">
+        <label for="footer-language-select" style="cursor: default;">
             <span class="icon fa fa-globe" aria-hidden="true"></span>
             <span class="sr">${_("Choose Language")}</span>
         </label>
-        <select id="footer-language-select" name="language">
+        <select id="footer-language-select" class="text-capitalize" name="language" onchange="footerLanguageSelector.langSelection()">
             % for language in sorted(released_languages(), key=lambda x: x.code):
                 <% language_name = Locale.parse(language.code.replace('_', '-'), sep='-').language_name %>
                 % if language.code == LANGUAGE_CODE:
@@ -33,10 +33,6 @@
                 % endif
             % endfor
         </select>
-        <button id="footer-language-button" type="button" class="btn-edged-blue select-lang-button"
-                onclick="footerLanguageSelector.langSelection()">
-            ${_('Submit')}
-        </button>
     </div>
 </div>
 
