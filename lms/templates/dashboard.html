@@ -216,7 +216,7 @@ from common.djangoapps.student.models import CourseEnrollment
                 course_requirements = courses_requirements_not_met.get(session_id)
                 related_programs = inverted_programs.get(six.text_type(entitlement.course_uuid if is_unfulfilled_entitlement else session_id))
                 show_consent_link = (session_id in consent_required_courses)
-                resume_button_url = resume_button_urls[dashboard_index]
+                resume_button_url = resume_button_urls[dashboard_index].replace("/jump_to/", "/eol_jump_to/")
                 if course_overview.has_ended():
                     course_archived_count += 1
               %>
