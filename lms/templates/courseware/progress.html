@@ -260,3 +260,12 @@ username = get_enterprise_learner_generic_name(request) or student.username
   });
 
 </%static:require_module_async> 
+<script>
+    /*
+    * Check if the page is in an iFrame (ucursos) to hide instructor info
+    */
+    if ( window.location !== window.parent.location ) {
+        // hide element
+        $('.wrap-instructor-info').hide();
+    }
+</script>
