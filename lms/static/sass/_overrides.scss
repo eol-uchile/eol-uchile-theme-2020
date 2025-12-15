@@ -16,3 +16,8 @@
     box-shadow: none;
 }
 /* End Dashboard Styles */
+
+// EOL: Get Certificate button has the wrong width in theme, making the button to go down a row. Set the width to auto to fix the issue
+.msg-actions {
+  width: auto;
+}
