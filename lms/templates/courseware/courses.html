@@ -31,50 +31,15 @@
 
 <%block name="pagetitle">${_("Courses")}</%block>
 
-<main id="main" aria-label="Content" tabindex="-1">
-    <section class="find-courses">
-      <section class="courses-container">
-        % if course_discovery_enabled:
-        <div id="discovery-form" role="search" aria-label="course" class="wrapper-search-context">
-          <div id="discovery-message" class="search-status-label"></div>
-          <form class="wrapper-search-input">
-            <label for="discovery-input" class="sr">${_('Search for a course')}</label>
-            <input id="discovery-input" class="discovery-input" placeholder="${_('Search for a course')}" type="text"/>
-            <button type="submit" class="button postfix discovery-submit" title="${_('Search')}">
-              <span class="icon fa fa-search" aria-hidden="true"></span>
-              <div aria-live="polite" aria-relevant="all">
-                <div id="loading-indicator" class="loading-spinner hidden">
-                  <span class="icon fa fa-spinner fa-spin" aria-hidden="true"></span>
-                  <span class="sr">${_('Loading')}</span>
-                </div>
-              </div>
-            </button>
-          </form>
-        </div>
-
-        <div id="filter-bar" class="filters hide-phone is-collapsed">
-        </div>
-        % endif
-
-        <div class="courses${'' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('List of Courses')}">
-          <ul class="courses-listing courses-list">
+<main role="main" class="eol-bg w-100 mx-auto" style="background-image: url(${static.url('eol-uchile-2020/images/bg-eol.png')});">
+    <div class="container-fluid eol-content-container py-4 mt-4 mx-auto" style="min-width: auto;">
+        <div class="row eol-courses-list my-4">
             %for course in courses:
-            <li class="courses-listing-item">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
               <%include file="../course.html" args="course=course" />
-            </li>
-            %endfor
-          </ul>
         </div>
+            %endfor
 
-
-        % if course_discovery_enabled:
-        <aside aria-label="${_('Refine Your Search')}" class="search-facets phone-menu">
-          <h2 class="header-search-facets">${_('Refine Your Search')}</h2>
-          <section class="search-facets-lists">
-          </section>
-        </aside>
-        % endif
-
-      </section>
-    </section>
+        </div>
+    </div>
 </main>
