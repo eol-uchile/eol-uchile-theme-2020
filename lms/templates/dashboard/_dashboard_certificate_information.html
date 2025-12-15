@@ -53,7 +53,7 @@ else:
           <%
             cert_available_date = course_overview.certificate_available_date.strftime('%Y-%m-%d')
           %>
-          ${_("Grades will be finalized on {cert_available_date}".format(cert_available_date=cert_available_date))}
+          ${_("Grades will be finalized on {cert_available_date}").format(cert_available_date=cert_available_date)}
         % endif
         % if cert_status['status'] == 'notpassing':
           % if enrollment.mode != 'audit':
