@@ -14,13 +14,13 @@
 <%namespace name='static' file='static_content.html'/>
 
 <footer class="eol-header-container eol-footer border-0 shadow-none mt-auto text-center mx-auto mb-4">
-  <div class="row d-flex border-0 shadow-none w-100 px-5">
-    <div class="col-12 my-auto pb-4">
-      <img src="${static.url('eol-uchile-2020/images/logos/0vti.jpg')}" class="img-fluid mx-auto" alt="VTI" style="max-height: 70px;">
-      <a href="https://open.edx.org" style="padding-left: 60px;">
-        <img src="https://files.edx.org/openedx-logos/open-edx-logo-tag.png" alt="Con la tecnología de Open edX" width="140">
+  <div class="row d-flex border-0 shadow-none w-100 px-5 row m-0 mb-4 d-flex justify-content-center pb-4 pt-4">
+      <a href="https://vti.uchile.cl/" class="text-decoration-none col-12 col-md-4 col-sm-12 col-xl-3 align-self-end d-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-xl-center">
+        <img src="${static.url('eol-uchile-2020/images/logos/0vti.png')}" alt="Vicerectoría de Tecnologías de la Información" class="eol-logo-img-footer-vti mx-auto" alt="VTI">
       </a>
-    </div>
+      <a href="https://open.edx.org" class="text-decoration-none col-12 col-md-4 col-sm-12 col-xl-3 align-self-end d-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-xl-center mt-3 mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0">
+        <img src="${static.url('eol-uchile-2020/images/logos/openedx_logo.png')}" alt="Con la tecnología de Open edX" class="eol-logo-img-footer-edx">
+      </a>
   </div>
   <p class="text-center"><small>${_("¿Necesitas Ayuda? Contáctate con la ")}<a href="/contact_form">${_("Mesa de Ayuda de EOL")}</a></small></p>
   <p class="text-center">
