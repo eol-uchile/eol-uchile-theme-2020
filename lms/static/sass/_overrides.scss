@@ -582,3 +582,33 @@ body {
 .msg-actions {
   width: auto;
 }
+
+/*
+* Footer language selector 
+*/
+.footer-language-selector{
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: end;
+}
+.footer-language-selector label span .icon{
+    margin-right: 0.2rem;
+}
+#footer-language-select{
+    margin-right: 1rem;
+    padding: 4px 10px;
+}
+
+#footer-language-button{
+    margin-right: 1rem;
+    box-shadow: none;
+    border: none;
+    border-bottom: none;
+    background-image: none;
+    text-shadow: none;
+    background-color: var(--primary-color);
+}
+#footer-language-button:hover{
+    background-color: var(--primary-color-hover);
+    background-image: none;
+}
