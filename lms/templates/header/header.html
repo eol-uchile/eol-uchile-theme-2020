@@ -16,6 +16,9 @@ from openedx.core.djangolib.markup import HTML, Text
 from lms.djangoapps.branding import api as branding_api
 from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled, released_languages
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+from openedx.core.djangoapps.util.user_messages import PageLevelMessages, UserMessage, UserMessageType
+from openedx.core.djangolib.markup import HTML
+from common.djangoapps.status.status import get_site_status_msg
 
 %>
 
@@ -41,8 +44,41 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     catch(e){window.attachEvent("onload", $buo_f)}
   </script>
 % endif
+<%
+banner_messages = list(PageLevelMessages.user_messages(request))
 
-<header class="global-header ${'slim' if course else ''}">
+course_id= None
+site_status_message = get_site_status_msg(course_id)
+if site_status_message:
+    banner_messages.insert(0, UserMessage(UserMessageType.WARNING, site_status_message))
+%>
+% if banner_messages:
+    <style>
+        .alert-eol {
+            min-height: 25px;
+            line-height: 35px;
+            text-align: center;
+            background-color: hsl(19deg 92% 59%);
+            color: white;
+            border-bottom: 1px solid black;
+        }
+        .alert-eol-text{
+            display: inline-block;
+            vertical-align: middle;
+            line-height: normal;
+        }
+    </style>
+    % for message in banner_messages:
+        % if "globalMessage" in message.message_html :
+            <div class="alert-eol">
+                <span class="alert-eol-text">
+                ${HTML(message.message_html)}
+                </span>
+            </div>
+        % endif
+    %endfor
+%endif
+<nav class="eol-header-container eol-header navbar navbar-expand-xl navbar-light bg-white pt-0">
     % if use_cookie_banner:
         ${static.renderReact(
             component="CookiePolicyBanner",
@@ -50,24 +86,48 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             props={}
         )}
     % endif
-    <div class="main-header">
         <%include file="navbar-logo-header.html" args="online_help_token=online_help_token"/>
-        <div class="hamburger-menu" role="button" aria-label=${_("Options Menu")} aria-expanded="false" aria-controls="mobile-menu" tabindex="0">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </div>
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#nav-eol-header" aria-controls="nav-eol-header" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon text-white"></span>
+    </button>
         % if user.is_authenticated:
             <%include file="navbar-authenticated.html" args="online_help_token=online_help_token"/>
         % else:
             <%include file="navbar-not-authenticated.html" args="online_help_token=online_help_token"/>
         % endif
-    </div>
-    <div class="mobile-menu hidden" aria-label=${_("More Options")} role="menu" id="mobile-menu"></div>
-</header>
+</nav>
 
 % if course:
+    <%
+    display_name = course.display_name_with_default
+    if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
+        ccx = get_current_ccx(course.id)
+        if ccx:
+            display_name = ccx.display_name
+    %>
+    <div class="eol-course-header container-fluid py-2">
+        <div class="row">
+            <div class="d-none eol-course-header-img col-sm-12 col-md-3 col-lg-3 my-auto mx-auto pb-2 pb-sm-0">
+                <%block name="navigation_logo">
+                <img class="img-fluid d-block my-auto mx-auto mx-md-0" src="${static.url('eol-uchile-2020/images/logo-white.png')}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
+                </%block>
+            </div>
+            <div class="course-title col-mr-auto px-2 px-md-3">
+                <p class="my-0 text-white">
+                    <span class="provider">${course.display_org_with_default}:</span>
+                    <span class="course-number text-uppercase">${course.display_number_with_default}</span>
+                </p>
+                <h3 class="my-0 text-white">
+                    <strong class="course-name">${display_name}</strong>
+                </h3>
+            </div>
+            <div class="d-none eol-course-header-btn col text-right my-auto py-2">
+                <a class="btn btn-outline-light" href="./" target="_blank">
+                    <span data-action-type="start">${_("Pantalla Completa")}</span>
+                </a>
+            </div>
+        </div>
+    </div>
 <!--[if lte IE 9]>
 <div class="ie-banner" aria-hidden="true">${Text(_('{begin_strong}Warning:{end_strong} Your browser is not fully supported. We strongly recommend using {chrome_link} or {ff_link}.')).format(
     begin_strong=HTML('<strong>'),
@@ -106,3 +166,32 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
         </form>
     % endif
 % endif
+
+<script>
+    /*
+    * Check if a page is in a iFrame (ucursos)
+    */
+    if ( window.location !== window.parent.location ) {
+        // load ucursos iframe and hide/show elements
+        $.getScript( "https://www.u-cursos.cl/b/externos/resizer.js" )
+        .done(function( script, textStatus ) {
+            console.log( textStatus );
+        })
+        .fail(function( jqxhr, settings, exception ) {
+            $( "div.log" ).text( "Triggered ajaxError handler." );
+        });
+        $('.eol-header-container.eol-header').hide();
+        $('html').css({
+            'border' : 'solid var(--primary-color)',
+            'height' : 'auto'
+        });
+        $('.eol-course-header .img-fluid').css({
+            'width'     : '100%',
+            'max-width' : '250px'
+        });
+        //$('.eol-course-header .course-title').addClass('course-title-border');
+        $('.eol-course-header .course-title').hide();
+        $('.eol-course-header .eol-course-header-img').removeClass('d-none');
+        $('.eol-course-header .eol-course-header-btn').removeClass('d-none');
+    }
+</script>

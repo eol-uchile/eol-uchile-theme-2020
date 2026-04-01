@@ -27,12 +27,14 @@ if site_status_message:
         <div class="user-messages" role="complementary" aria-label="messages">
             <ul class="user-messages-ul">
                 % for message in banner_messages:
+                    % if "globalMessage" not in message.message_html:
                     <li>
                         <div class="alert ${message.css_class}" role="alert">
                             <span class="icon icon-alert fa ${message.icon_class}" aria-hidden="true"></span>
                             ${HTML(message.message_html)}
                         </div>
                     </li>
+                    %endif
                 % endfor
             </ul>
         </div>
