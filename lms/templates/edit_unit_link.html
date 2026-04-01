@@ -5,3 +5,12 @@
   <a class="instructor-info-action" href="${edit_link}">${_("View Unit in Studio")}</a>
 </div>
 ${frag_content | n, decode.utf8}
+<script>
+  /*
+   * Check if the page is in an iFrame (ucursos) to hide instructor info
+   */
+  if ( window.location !== window.parent.location ) {
+    // hide element
+    $('.wrap-instructor-info.studio-view').hide();
+  }
+</script>
