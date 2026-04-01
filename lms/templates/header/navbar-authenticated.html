@@ -26,39 +26,33 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     help_link = doc_link
 %>
 
-<div class="nav-links">
-  <div class="main">
-    % if show_dashboard_tabs:
-      <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
-        <a class="${'active ' if reverse('dashboard') == request.path else ''}tab-nav-link" href="${reverse('dashboard')}"
-             aria-current="${'page' if reverse('dashboard') == request.path else 'false'}">
-             ${_("Courses")}
-        </a>
+
+<div class="collapse navbar-collapse pt-3" id="nav-eol-header">
+  <ul class="nav-eol-header navbar-nav mr-auto mt-2 mt-lg-0">
+    <li class="nav-item my-auto">
+      <a class="nav-link my-auto" href="${reverse('dashboard')}">${_("Mis Cursos")}</a>
+    </li>
+    <li class="nav-item my-auto">
+      <a class="nav-link my-auto" href="/">${_("Explorar Cursos")}</a>
+    </li>
+  </ul>
+  <ul class="nav-eol-header navbar-nav">
+    <li class="nav-item dropdown my-auto">
+      <a class="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        ${_("Ayuda")}
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/about">${_("¿Qué es EOL?")}</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/faq">${_("Preguntas Frecuentes")}</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/certificates/validate">${_("Validación de Certificados")}</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/contact_form">${_("Formulario de Contacto")}</a>
       </div>
-      % if show_program_listing:
-        <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
-          <a class="${'active ' if reverse('program_listing_view') in request.path else ''}tab-nav-link" href="${reverse('program_listing_view')}"
-             aria-current="${'page' if reverse('program_listing_view') == request.path else 'false'}">
-             ${_("Programs")}
-          </a>
-        </div>
-      % endif
-    % endif
-    % if show_explore_courses:
-      <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
-          <a class="tab-nav-link discover-new-link" href="${marketing_link('COURSES')}"
-             aria-current="${'page' if '/courses' in request.path else 'false'}">
-             ${_('Discover New')}
-          </a>
-      </div>
-    % endif
-  </div>
-  <div class="secondary">
-    % if enable_help_link:
-      <div class="mobile-nav-item hidden-mobile nav-item">
-        <a class="help-link" href="${help_link}" rel="noopener" target="_blank">${_("Help")}</a>
-      </div>
-    % endif
+      </li>
+    <li class="nav-item dropdown my-auto mx-0 ml-xl-3 py-1">
     <%include file="user_dropdown.html"/>
-  </div>
+    </li>
+  </ul>
 </div>
