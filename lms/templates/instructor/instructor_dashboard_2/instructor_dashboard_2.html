@@ -118,7 +118,21 @@ from openedx.core.djangolib.markup import HTML
             ## This is necessary so we don't scrape 'section_display_name' as a string.
             <% dname = section_data['section_display_name'] %>
             % if not is_hidden:
+              % if section_data['section_key'] == 'send_email':
+                <li class="nav-item"><button id="send_email_button" onclick="set_send_email_view();" type="button" class="btn-link send_email" data-section="send_email">${_(dname)}</button></li>
+                <%
+                welcome_mail_url = None
+                try:
+                  welcome_mail_url = reverse('welcome-mail:save', kwargs={'course_id': course.id})
+                except Exception as e:
+                  pass
+                %>
+                % if welcome_mail_url is not None:
+                  <li class="nav-item"><button id="welcome_mail_button" onclick="set_welcome_mail_view();" type="button" class="btn-link send_email" data-section="send_email">${_("Correo de bienvenida")}</button></li>
+                % endif
+              % else:
               <li class="nav-item"><button type="button" class="btn-link ${ section_data['section_key'] }${' hidden' if is_hidden else ''}" data-section="${ section_data['section_key'] }">${_(dname)}</button></li>
+              % endif
             % endif
           % endfor
         </ul>
@@ -141,3 +155,14 @@ from openedx.core.djangolib.markup import HTML
 <%static:require_module_async module_name="js/dateutil_factory" class_name="DateUtilFactory">
     DateUtilFactory.transform(iterationKey=".localized-datetime");
 </%static:require_module_async>
+
+<script type="text/javascript" src="${static.url('welcome_mail/js/welcome_mail.js')}"></script>
+<script>
+  /*
+  * Check if a page is in a iFrame (ucursos)
+  */
+  if ( window.location !== window.parent.location ) {
+      //hide/show elements
+      $('.wrap-instructor-info.studio-view').hide();
+  }
+</script>
