@@ -90,6 +90,9 @@ from common.djangoapps.pipeline_mako import render_require_js_path_overrides
 
 
 
+  <!-- begin EOL css -->
+  <link rel="stylesheet" href="${static.url('edx-bootstrap/node_modules/bootstrap/dist/css/bootstrap.css')}">
+  <!-- end EOL css -->
   <%static:css group='style-vendor'/>
   % if '/' in self.attr.main_css:
     % if get_language_bidi():
@@ -200,7 +203,7 @@ from common.djangoapps.pipeline_mako import render_require_js_path_overrides
 
     <div class="marketing-hero"><%block name="marketing_hero"></%block></div>
 
-    <div class="content-wrapper main-container" id="content" dir="${static.dir_rtl()}">
+    <div class="content-wrapper main-container mx-auto" id="content" dir="${static.dir_rtl()}">
       ${self.body()}
       <%block name="bodyextra"/>
     </div>
@@ -222,6 +225,9 @@ from common.djangoapps.pipeline_mako import render_require_js_path_overrides
   <script type="text/javascript" src="${static.url('js/header/header.js')}"></script>
   <%static:optional_include_mako file="body-extra.html" is_theming_enabled="True" />
   <script type="text/javascript" src="${static.url('js/src/jquery_extend_patch.js')}"></script>
+  <!-- begin EOL bootstrap js -->
+  <script src="${static.url('edx-bootstrap/node_modules/bootstrap/dist/js/bootstrap.min.js')}"></script>
+  <!-- end EOL bootstrap js -->
 </body>
 </html>
 
