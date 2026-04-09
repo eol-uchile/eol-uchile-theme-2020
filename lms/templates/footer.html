@@ -5,6 +5,7 @@
   from django.utils.translation import ugettext as _
   from lms.djangoapps.branding.api import get_footer
   from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
+  from openedx.core.djangoapps.theming import helpers as theming_helpers
 %>
 <% footer = get_footer(is_secure=is_secure) %>
 <% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
@@ -13,7 +14,7 @@
     <footer class="eol-header-container eol-footer border-0 shadow-none mt-auto text-center mx-auto mb-4">
       <div class="row d-flex border-0 shadow-none w-100 px-5">
         <div class="col-12 my-auto pb-4">
-          <img src="${static.url('eol-uchile-2020/images/logos/0vti.jpg')}" class="img-fluid mx-auto" alt="VTI" style="max-height: 70px;">
+          <img src="${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/logos/0vti.jpg')}" class="img-fluid mx-auto" alt="VTI" style="max-height: 70px;">
           <a href="https://open.edx.org" style="padding-left: 60px;">
             <img src="https://files.edx.org/openedx-logos/open-edx-logo-tag.png" alt="Con la tecnología de Open edX" width="140">
               </a>

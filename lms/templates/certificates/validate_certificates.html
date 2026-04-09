@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 <%page expression_filter="h"/>
-<%! from django.utils.translation import ugettext as _ %>
+<%!
+  from django.utils.translation import ugettext as _
+  from openedx.core.djangoapps.theming import helpers as theming_helpers
+%>
 <%namespace name='static' file='/static_content.html'/>
 <%inherit file="../main.html" />
 
@@ -15,7 +18,7 @@
     }
 </style>
 
-<main id="eol-certificates" aria-label="Content" tabindex="-1" class="eol-bg w-100 mx-auto mt-0 pt-0" style="min-height: 85vh; background-image: url(${static.url('eol-uchile-2020/images/bg-eol.png')});">
+<main id="eol-certificates" aria-label="Content" tabindex="-1" class="eol-bg w-100 mx-auto mt-0 pt-0" style="min-height: 85vh; background-image: url(${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/bg-eol.png')});">
     <div class="container eol-content-container px-2 mx-auto">
         <div class="row">
             <div class="certificates-card col-11 col-md-8 col-lg-6 mx-auto shadow-lg px-5 py-4 mb-5 bg-white rounded-lg">

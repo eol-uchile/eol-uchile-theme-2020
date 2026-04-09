@@ -19,6 +19,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 from openedx.core.djangoapps.util.user_messages import PageLevelMessages, UserMessage, UserMessageType
 from openedx.core.djangolib.markup import HTML
 from common.djangoapps.status.status import get_site_status_msg
+from openedx.core.djangoapps.theming import helpers as theming_helpers
 
 %>
 
@@ -109,7 +110,7 @@ if site_status_message:
         <div class="row">
             <div class="d-none eol-course-header-img col-sm-12 col-md-3 col-lg-3 my-auto mx-auto pb-2 pb-sm-0">
                 <%block name="navigation_logo">
-                <img class="img-fluid d-block my-auto mx-auto mx-md-0" src="${static.url('eol-uchile-2020/images/logo-white.png')}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
+                <img class="img-fluid d-block my-auto mx-auto mx-md-0" src="${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/logo-white.png')}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
                 </%block>
             </div>
             <div class="course-title col-mr-auto px-2 px-md-3">

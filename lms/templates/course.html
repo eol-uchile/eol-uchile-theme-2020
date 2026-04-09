@@ -6,6 +6,7 @@ from django.urls import reverse
 from six import text_type
 import locale
 from django.utils import timezone
+from openedx.core.djangoapps.theming import helpers as theming_helpers
 
 now = timezone.now()
 %>
@@ -16,7 +17,7 @@ if course.end is not None and course.end < now:
   card_class = 'inactive'
 %>
 
-<div class="eol-course-item card h-100 mx-auto ${card_class}" style="background-image: url(${course.course_image_url}), url(${static.url('eol-uchile-2020/images/default-course.jpg')}); max-width: 400px;">
+<div class="eol-course-item card h-100 mx-auto ${card_class}" style="background-image: url(${course.course_image_url}), url(${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/default-course.jpg')}); max-width: 400px;">
     <div class="card-body"></div>
     <div class="card-footer text-white">
         <span class="course-name"><strong>${course.display_name_with_default}</strong></span>

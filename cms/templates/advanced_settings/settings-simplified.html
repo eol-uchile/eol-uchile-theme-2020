@@ -4,6 +4,7 @@
   from django.utils.translation import ugettext as _
 
   from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+  from openedx.core.djangoapps.theming import helpers as theming_helpers
 %>
 
 <%
@@ -12,8 +13,8 @@
     list = sorted(advanced_modules.items(), key=lambda x: x[1])
 %>
 
-<link rel="stylesheet" href="${static.url('eol-uchile-2020/css/advanced_settings/settings-simplified.css')}">
-<script src="${static.url('eol-uchile-2020/js/advanced_settings/settings-simplified.js')}"></script>
+<link rel="stylesheet" href="${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/css/advanced_settings/settings-simplified.css')}">
+<script src="${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/js/advanced_settings/settings-simplified.js')}"></script>
 
 <ul class="list-input course-simple-settings enum" style="display: none;">
     <li class="field-group course-advanced-policy-list-item" id="advanced-xblocks">

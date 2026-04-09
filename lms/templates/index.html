@@ -7,6 +7,7 @@ from django.urls import reverse
 
 from openedx.core.djangolib.markup import HTML, Text
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+from openedx.core.djangoapps.theming import helpers as theming_helpers
 %>
 <style>
   #content.main-container {
@@ -19,13 +20,13 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     <div id="eol-carousel" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner w-100">
           <div class="carousel-item active" data-interval="3000">
-            <img src="${static.url('eol-uchile-2020/images/banner/banner00.jpg')}" class="d-block w-100" alt="...">
+            <img src="${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/banner/banner00.jpg')}" class="d-block w-100" alt="...">
               </div>
           </div>
         </div>
   </div>
   <!-- MAIN CONTENT -->
-  <main role="main" class="eol-bg w-100 mx-auto" style="background-image: url(${static.url('eol-uchile-2020/images/bg-eol.png')});">
+  <main role="main" class="eol-bg w-100 mx-auto" style="background-image: url(${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/bg-eol.png')});">
     <div class="container eol-content-container py-4 mt-4 px-2 mx-auto">
       <%include file="${courses_list}" />
     </div>
@@ -38,7 +39,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 <meta property="og:title" content="${self.pagetitle()}">
 <meta property="og:description" content="${configuration_helpers.get_value('EOL_OG_SITE_DESCRIPTION', '')}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="${static.url('eol-uchile-2020/images/banner-linkedIn-2025.jpg')}">
+<meta property="og:image" content="${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/banner-linkedIn-2025.jpg')}">
 <meta property="og:url" content="${configuration_helpers.get_value('LMS_ROOT_URL', settings.LMS_ROOT_URL)}">
 <meta property="og:site_name" content="${configuration_helpers.get_value('EOL_OG_SITE_NAME', '')}">
 <meta property="og:locale" content="es_CL">

@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 <%page expression_filter="h"/>
-<%! from django.utils.translation import ugettext as _ %>
+<%!
+  from django.utils.translation import ugettext as _
+  from openedx.core.djangoapps.theming import helpers as theming_helpers
+%>
 <%namespace name='static' file='/static_content.html'/>
 <%inherit file="../main.html" />
 
@@ -10,11 +13,11 @@
     padding: 0px !important;
   }
 </style>
-<main id="eol-faqs" aria-label="Content" tabindex="-1" class="static_pages eol-bg w-100 mx-auto mt-0 pt-0" style="background-image: url(${static.url('eol-uchile-2020/images/bg-eol.png')});">
+<main id="eol-faqs" aria-label="Content" tabindex="-1" class="static_pages eol-bg w-100 mx-auto mt-0 pt-0" style="background-image: url(${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/bg-eol.png')});">
     <div class="container eol-content-container px-2 pt-2 mx-auto">
         <div class="row">
             <div class="col-lg-4 d-none d-lg-block pr-5 my-auto">
-                <img src="${static.url('eol-uchile-2020/images/pages/faqs_image.jpg')}" class="img-fluid" alt="image"/>
+                <img src="${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/pages/faqs_image.jpg')}" class="img-fluid" alt="image"/>
             </div>
             <div class="col-lg-8 px-4">
                 <h1 class="text-left">${_("Preguntas Frecuentes")}</h1>

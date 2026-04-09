@@ -12,6 +12,7 @@ from openedx.core.djangolib.js_utils import js_escaped_string
 from openedx.core.djangolib.markup import clean_dangerous_html, HTML, Text
 from openedx.core.lib.courses import course_image_url
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+from openedx.core.djangoapps.theming import helpers as theming_helpers
 
 from six import string_types
 %>
@@ -73,7 +74,7 @@ from six import string_types
 
 <div class="eol-course-about-background">
 </div>
-<main id="eol-course-about" role="main" class="eol-bg-white w-100 mx-auto" style="background-image: url(${static.url('eol-uchile-2020/images/bg-eol-white.png')});">
+<main id="eol-course-about" role="main" class="eol-bg-white w-100 mx-auto" style="background-image: url(${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/bg-eol-white.png')});">
   <div class="container eol-content-container px-2 mx-auto mt-0 pt-3">
       <div class="row">
           <div class="col-lg-5 col-xl-4 order-lg-12 py-3 px-1">
@@ -88,7 +89,7 @@ from six import string_types
                             </div>
                           </a>
                         %else:
-                          <img src="${course_image_urls['large']}" onerror="this.onerror=null; this.src='${static.url('eol-uchile-2020/images/default-course.jpg')}'" class="img-fluid course-about-image" alt="image" style="width: 100%;"/>
+                          <img src="${course_image_urls['large']}" onerror="this.onerror=null; this.src='${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/default-course.jpg')}'" class="img-fluid course-about-image" alt="image" style="width: 100%;"/>
                         % endif
                       </div>
                   </div>
