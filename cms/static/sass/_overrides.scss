@@ -1,0 +1,28 @@
+.nav-not-signedin-signup {
+	display:none !important;
+}
+.view-signup .content header .action, .view-signin .content header .action, .view-util .content header .action{
+	display:none !important;
+}
+.view-howitworks.not-signedin .content-cta .list-actions .action.action-primary{
+	display:none !important;
+}
+.wrapper-header .branding a img{
+	height: 29px ;
+	max-height: 29px ;
+}
+
+.wrapper-header .branding a img {
+    @media (min-width: 1065px) {
+        height: 33px ;
+        max-height: 33px ;
+    }
+    @media (min-width: 1320px) {
+            height: 40px ;
+            max-height: 40px ;
+    }
+}
+
+.wrapper-header  .wrapper-r {
+	background: none !important;
+}
