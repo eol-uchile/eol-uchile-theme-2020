@@ -1,0 +1,63 @@
+<%page expression_filter="h"/>
+<%inherit file="main.html" />
+<%namespace name='static' file='static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from django.urls import reverse
+
+from openedx.core.djangolib.markup import HTML, Text
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+from openedx.core.djangoapps.theming import helpers as theming_helpers
+%>
+<style>
+  #content.main-container {
+    padding: 0px !important;
+  }
+</style>
+<div class="eol-main-container d-flex w-100 h-100 flex-column">
+  <!-- BANNER -->
+  <div class="eol-banner">
+    <div id="eol-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner w-100">
+          <div class="carousel-item active" data-interval="3000">
+            <img src="${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/banner/banner00.jpg')}" class="d-block w-100" alt="...">
+              </div>
+          </div>
+        </div>
+  </div>
+  <!-- MAIN CONTENT -->
+  <main role="main" class="eol-bg w-100 mx-auto" style="background-image: url(${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/bg-eol.png')});">
+    <div class="container eol-content-container py-4 mt-4 px-2 mx-auto">
+      <%include file="${courses_list}" />
+    </div>
+</main>
+
+    </div>
+<%block name="pagetitle">${_("Home")}</%block>
+<%block name="headextra">
+## OG (Open Graph) title and description added below to give social media info to display
+<meta property="og:title" content="${self.pagetitle()}">
+<meta property="og:description" content="${configuration_helpers.get_value('EOL_OG_SITE_DESCRIPTION', '')}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/banner-linkedIn-2025.jpg')}">
+<meta property="og:url" content="${configuration_helpers.get_value('LMS_ROOT_URL', settings.LMS_ROOT_URL)}">
+<meta property="og:site_name" content="${configuration_helpers.get_value('EOL_OG_SITE_NAME', '')}">
+<meta property="og:locale" content="es_CL">
+</%block>
+<%block name="js_extra">
+   <script type="text/javascript">
+      $(window).load(function() {
+         if(getParameterByName('next')) {
+              $('#login').trigger("click");
+         }
+      })
+   </script>
+</%block>
+
+% if show_signup_immediately is not UNDEFINED:
+  ## NOTE: This won't work in production, because anonymous views are cached, so it will
+  ## show either with or without this extra js for 3 minutes at a time.
+<script type="text/javascript">
+  $(window).load(function() {$('#signup_action').trigger("click");});
+</script>
+% endif

@@ -1,0 +1,72 @@
+<%page expression_filter="h"/>
+<%!
+    import json
+    from django.utils.translation import ugettext as _
+    from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+    from openedx.core.djangolib.js_utils import dump_js_escaped_json
+    from urllib.parse import urlencode
+    from django.urls import reverse
+    from openedx.core.djangoapps.theming import helpers as theming_helpers
+%>
+<%namespace name='static' file='/static_content.html'/>
+
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Sign in or Register")}</%block>
+
+<%block name="js_extra">
+    <%static:require_module module_name="js/student_account/logistration_factory" class_name="LogistrationFactory">
+        var options = ${data | n, dump_js_escaped_json};
+        LogistrationFactory(options);
+        if ('newrelic' in window) {
+            newrelic.finished();
+            // Because of a New Relic bug, the finished() event doesn't show up
+            // in Insights, so we have to make a new PageAction that is basically
+            // the same thing. We still want newrelic.finished() for session
+            // traces though.
+            newrelic.addPageAction('xfinished');
+        }
+    </%static:require_module>
+    % if configuration_helpers.get_value('DISPLAY_TOS_IN_MODAL_ON_REGISTRATION_PAGE', False):
+    <script type="text/javascript" src="${static.url('js/student_account/tos_modal.js')}"></script>
+    % endif
+</%block>
+
+<%block name="header_extras">
+    % for template_name in ["account", "access", "form_field", "login", "register", "institution_login", "institution_register", "password_reset", "hinted_login"]:
+        <script type="text/template" id="${template_name}-tpl">
+            <%static:include path="student_account/${template_name}.underscore" />
+        </script>
+    % endfor
+</%block>
+<div class="section-bkg-wrapper">
+<style>
+    .login-register .form-type {
+        min-width: 0;
+    }
+</style>
+    <main id="eol-login" aria-label="Content" tabindex="-1" class="eol-bg w-100 mx-auto mt-0 pt-0" style="min-height: 85vh; background-image: url(${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/bg-eol.png')});">
+        <div style="visibility: hidden;" id="url_next">${ reverse('uchileedxlogin-login:login') | h }?${urlencode({'next':login_redirect_url})}</div>
+        <div class="container eol-content-container px-2 mx-auto">
+            <div class="row">
+                <div id="content-container" class="login-card col-11 col-md-8 col-lg-6 mx-auto shadow-lg px-1 px-sm-5 py-4 mb-5 bg-white rounded-lg">
+            % if enable_enterprise_sidebar:
+                <%include file="enterprise_sidebar.html" />
+                <%
+                    border_class = 'border-left'
+                %>
+            % else:
+                <%
+                    border_class = ''
+                %>
+            % endif
+            <div id="login-and-registration-container" class="login-register ${border_class}" style="background: none;"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script>
+  var IMG_LOGIN_1 = "${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/buttons/login_button_bblue.jpg')}";
+  var IMG_LOGIN_2 = "${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/buttons/login_button_eol_light_bblue.jpg')}";
+</script>
