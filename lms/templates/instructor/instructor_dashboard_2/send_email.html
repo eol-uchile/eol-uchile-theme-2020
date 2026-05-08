@@ -13,14 +13,14 @@ from openedx.core.djangolib.markup import HTML
     <ul class="list-fields">
         % if 'welcome-mail-save' in section_data:
             <li class="field eol_welcome_mail_hide">
-                <div class="send_to_list">${_("Habilitar:")}</div>
+                <div class="send_to_list">${_("Enable:")}</div>
             </li>
             <li class="field eol_welcome_mail_hide">
                 <fieldset>
                     <ul role="group" class="email-targets-primary">
                         <li>
                             <input type="checkbox" name="is_active" value="true" id="is_active" onchange="checkbox_welcome_mail(this);">
-                            <label for="is_active">${_("Habilitar correo de bienvenida")}</label>
+                            <label for="is_active">${_("Enable welcome mail")}</label>
                         </li>
                     </ul>
                 </fieldset>
@@ -125,7 +125,7 @@ from openedx.core.djangolib.markup import HTML
     <br />
     <input class="eol_send_email_hide" type="button" name="send" value="${_("Send Email")}" data-endpoint="${ section_data['send_email'] }" >
     % if 'welcome-mail-save' in section_data:
-        <input class="eol_welcome_mail_hide" onclick="save_welcome_mail(this);" type="button" name="save" value="${_("Guardar Cambios")}" data-endpoint="${ section_data['welcome-mail-save'] }" >
+        <input class="eol_welcome_mail_hide" onclick="save_welcome_mail(this);" type="button" name="save" value="${_("Save changes")}" data-endpoint="${ section_data['welcome-mail-save'] }" >
     % endif
     <div class="request-response msg msg-confirm copy" id="request-response"></div>
 

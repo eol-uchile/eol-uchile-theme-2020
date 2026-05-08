@@ -101,7 +101,7 @@ from django.urls import reverse
             % if deprecated_blocks_info.get('deprecated_enabled_block_types'):
               <div class="advance-modules-list">
                 <p class="advance-modules-remove-text">
-                  ${Text(_("To avoid errors, {platform_name} strongly recommends that you remove unsupported features from the course advanced settings. To do this, go to the {link_start}Advanced Settings page{link_end}, locate the \"Advanced Module List\" setting, and then delete the following modules from the list.")).format(
+                  ${Text(_("To avoid errors, {platform_name} strongly recommends that you remove unsupported features from the course advanced settings. To do this, go to the {link_start}Advanced Settings page{link_end}, locate the \"Advanced module list\" setting, and then delete the following modules from the list.")).format(
                     platform_name=static.get_platform_name(),
                     link_start=HTML('<a href="{advance_settings_url}">').format(advance_settings_url=deprecated_blocks_info['advance_settings_url']),
                     link_end=HTML("</a>")

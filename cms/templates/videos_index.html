@@ -54,7 +54,7 @@
         var status_videos = document.getElementsByClassName('status-col');
         var html_tooltop = '<div data-tooltip="${_("Los tiempos de procesamiento una vez subido el video puede demorar varios minutos/horas en completarse, dependiendo del tamaño del archivo. Una vez subido el video, espere unos minutos y recargue la página.")}" class="action-button" style="display: inline-block;"><span class="icon fa fa-info-circle" aria-hidden="true"></span></div>';
         for (var i=0;i < status_videos.length; i++){
-            if (status_videos[i].innerText == "${_('EN PROGRESO')}"){
+            if (status_videos[i].innerText == "${_('IN PROGRESS')}"){
                 status_videos[i].insertAdjacentHTML('beforeend', html_tooltop);
             }
         }
