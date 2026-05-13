@@ -92,7 +92,7 @@ import traceback
   eolreportcertificate_url = None
   eolreportcertificate_traceback = None
   try:
-    eolreportcertificate_url = reverse('eolreportcertificate-export:data')
+    eolreportcertificate_url = reverse('eol_certificates:issued_certificates')
   except Exception:
     if settings.DEBUG:
       eolreportcertificate_traceback = traceback.format_exc()
