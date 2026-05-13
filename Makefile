@@ -9,7 +9,7 @@ help: ## Display this help message
 	@perl -nle'print $& if m{^[\.a-zA-Z_-]+:.*?## .*$$}' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m  %-25s\033[0m %s\n", $$1, $$2}'
 
 
-lang_targets = en es_419 es es_CL
+lang_targets = en es_419
 create_translations_catalogs: ## Create the initial configuration of .mo files for translation
 	pybabel extract -F conf/locale/babel.cfg -o  conf/locale/django.pot --msgid-bugs-address=eol-ayuda@uchile.cl --copyright-holder=EOL *
 	for lang in $(lang_targets) ; do \
