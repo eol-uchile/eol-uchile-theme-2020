@@ -193,7 +193,7 @@ from six import string_types
                                   </a>
                                 %else:
                                   ## Usuario edx
-                                    <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2 disabled" disabled>${_("Este curso es solo para la comunidad UChile.")}</a>
+                                    <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2 disabled" disabled>${_("This course is open only to the UChile community.")}</a>
                                 %endif
                               %else:
                                 ## Cursos sin filtro activado
@@ -204,7 +204,7 @@ from six import string_types
                             %else:
                               ## Usuario anonimo
                               <a href="${reg_href}" type="button" class="${href_class} btn btn-primary text-white btn-lg btn-block mb-2">
-                                ${_("Debes iniciar sesión para inscribirte en el curso")}
+                                ${_("You must log in to enroll in the course")}
                               </a>
                             %endif
 
