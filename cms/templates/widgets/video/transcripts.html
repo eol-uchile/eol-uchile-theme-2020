@@ -109,21 +109,21 @@ import json
             div_select_video.className = 'wrapper-comp-setting';
             var label_select_video = document.createElement("label");
             label_select_video.className = 'label setting-label';
-            label_select_video.innerText = '${_("Seleccione un video")}';
+            label_select_video.innerText = '${_("Select a video")}';
             var span_select_video = document.createElement("span");
             span_select_video.className = 'tip setting-help';
-            span_select_video.innerText = '${_("Seleccione un video previamente cargado al curso o inserte un enlace externo de YouTube en el campo correspondiente.")}';
+            span_select_video.innerText = '${_("Select a video previously uploaded to the course or insert an external YouTube link in the corresponding field.")}';
             var datos = (typeof metadata.data('eol') === 'string') ? JSON.parse(metadata.data('eol')) : metadata.data('eol');
             var eol_select = document.createElement("SELECT");
             eol_select.setAttribute("id", "eol-video-${html_id}");
             var eol_option_default = document.createElement("option");
             eol_option_default.setAttribute("value", '');
             eol_option_default.selected = true;
-            var eol_text_default = document.createTextNode('${_("Enlace externo de YouTube")}');
+            var eol_text_default = document.createTextNode('${_("External YouTube link")}');
             eol_option_default.appendChild(eol_text_default);
             eol_select.appendChild(eol_option_default);
             var edx_video_id = datos.edx_video_id;
-            metadata.find('.metadata-videolist-enum')[0].children[0].innerText = '${_("Enlace externo de YouTube (URL de video por defecto)")}';
+            metadata.find('.metadata-videolist-enum')[0].children[0].innerText = '${_("External YouTube link (default video URL)")}';
             var pre_exists_id = true;
             datos.data.forEach(video => {
                 var eol_option = document.createElement("option");
@@ -140,11 +140,11 @@ import json
             var update_picture = document.createElement("li");
             update_picture.className = 'field comp-setting-entry metadata_entry';
             update_picture.innerHTML = '<div class="wrapper-comp-setting">'+
-                '<label class="label setting-label">${_("Actualizar miniatura desde Vimeo")}</label>'+
-                '<button id="eol-update-${html_id}" class="action setting-upload update-vimeo" type="button" data-tooltip="${_("Actualizar")}" data-videoid="'+edx_video_id+'" value="${_("Actualizar")}">${_("Actualizar")}</button></div>'+
+                '<label class="label setting-label">${_("Update thumbnail from Vimeo")}</label>'+
+                '<button id="eol-update-${html_id}" class="action setting-upload update-vimeo" type="button" data-tooltip="${_("Update")}" data-videoid="'+edx_video_id+'" value="${_("Update")}">${_("Update")}</button></div>'+
                 '<span class="tip setting-help"><div id="ui-loading-update" class="ui-loading is-hidden" style="box-shadow: none;background: none;">'+
                        '<p><span class="spin"><span class="icon fa fa-refresh" aria-hidden="true"></span></span>'+
-                       '<span class="copy">${_("Actualizando")}</span></p></div></span><span id="eol-update-response" class="tip setting-help"></span>';
+                       '<span class="copy">${_("Updating")}</span></p></div></span><span id="eol-update-response" class="tip setting-help"></span>';
             metadata.find('ul')[0].appendChild(update_picture);
             div_select_video.appendChild(label_select_video)
             div_select_video.appendChild(eol_select)
@@ -200,17 +200,17 @@ import json
                 $.post('/eolvimeo/update_picture', {'videoid': this.dataset.videoid, 'course_id':'${course_id}'}).done(function(response) {
                     if (response.result == 'success' ){
                         text_response = metadata.find('#eol-update-response');
-                        text_response.html('${_("Miniatura actualizada.")}');
+                        text_response.html('${_("Thumbnail updated.")}');
                     }
                     else {
                         text_response = metadata.find('#eol-update-response');
-                        text_response.html('${_("Se ha producido un error en actualizar la miniatura.")}');
+                        text_response.html('${_("An error occurred while updating the thumbnail.")}');
                     }
                     metadata.find('#ui-loading-update').hide();
                     e.currentTarget.disabled = false;
                 }).fail(function() {
                     text_response = metadata.find('#eol-update-response');
-                    text_response.html('${_("Se ha producido un error en actualizar la miniatura.")}');
+                    text_response.html('${_("An error occurred while updating the thumbnail.")}');
                     metadata.find('#ui-loading-update').hide();
                     e.currentTarget.disabled = false;
                 });

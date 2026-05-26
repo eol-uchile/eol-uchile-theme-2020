@@ -150,7 +150,7 @@ from six import string_types
                         ## because AnonymousUsers cause can_enroll for shib courses to be False, but we need them to be able to click
                         ## so that they can register and become a real user that can enroll.
                           <center>
-                            <span class="badge badge-primary mb-2 p-1">${_("La inscripción a este curso es sólo por invitación")}</span>
+                            <span class="badge badge-primary mb-2 p-1">${_("Enrollment in this course is by invitation only")}</span>
                           </center>
                         % elif not is_shib_course and not can_enroll:
                           <a type="button" class="register btn btn-dark text-white btn-lg btn-block mb-2 disabled" disabled>${_("Enrollment is Closed")}</a>
@@ -176,7 +176,7 @@ from six import string_types
                           %if str(course.id) == 'course-v1:eol+FEN-MO+2023_1':
                             <a id="register-btn" href="${reg_href}" type="button" class="${href_class} btn btn-info text-white btn-lg btn-block mb-2" style="display: none;"></a>
                             <a href="" type="button" class="btn btn-info text-white btn-lg btn-block mb-2" onclick="pixel_track_mo_enroll(event);">
-                              ${_("Inscribirse")}
+                              ${_("Enroll")}
                             </a>
                           %else:
                             %if user.is_authenticated:
@@ -189,7 +189,7 @@ from six import string_types
                                 %if is_sso:
                                   ## Usuario sso
                                   <a href="${reg_href}" type="button" class="${href_class} btn btn-info text-white btn-lg btn-block mb-2">
-                                    ${_("Inscribirse")}
+                                    ${_("Enroll")}
                                   </a>
                                 %else:
                                   ## Usuario edx
@@ -198,7 +198,7 @@ from six import string_types
                               %else:
                                 ## Cursos sin filtro activado
                                 <a href="${reg_href}" type="button" class="${href_class} btn btn-info text-white btn-lg btn-block mb-2">
-                                  ${_("Inscribirse")}
+                                  ${_("Enroll")}
                                 </a>
                               %endif
                             %else:
@@ -343,7 +343,7 @@ from six import string_types
       <div class="row my-2 faqs-row">
           <div class="col-lg-8 p-3">
               <div class="course-about-card m-2">
-                <h3 class="px-4">${_("Preguntas frecuentes")}</h3>
+                <h3 class="px-4">${_("Frequently Asked Questions")}</h3>
                 <div class="accordion text-justify mt-3" id="accordionFAQS">
                 </div>
               </div>
@@ -360,7 +360,7 @@ from six import string_types
   <div style="display: none;">
     <form id="class_enroll_form" method="post" data-remote="true" action="${reverse('change_enrollment')}">
       <fieldset class="enroll_fieldset">
-        <legend class="sr">${pgettext("self","Enroll")}</legend>
+        <legend class="sr">${pgettext("self","enroll")}</legend>
         <input name="course_id" type="hidden" value="${course.id}">
         <input name="enrollment_action" type="hidden" value="enroll">
       </fieldset>

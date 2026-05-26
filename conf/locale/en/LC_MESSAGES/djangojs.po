@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: eol-ayuda@uchile.cl\n"
-"POT-Creation-Date: 2026-05-20 22:02+0000\n"
+"POT-Creation-Date: 2026-06-24 16:16+0000\n"
 "PO-Revision-Date: 2021-10-20 19:03+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -425,3 +425,4 @@ msgstr ""
 #, python-format
 msgid "Sign in with %(providerName)s"
 msgstr ""
+

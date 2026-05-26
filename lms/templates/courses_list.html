@@ -26,7 +26,7 @@ course_classfication_is_installed = apps.is_installed('course_classification')
     </div>
   %endif
   %if (categ['show_opt'] == 2 and len(course_class[categ['id']]['courses']) == 0):
-    <p class="without-courses"> ${_("No existen cursos")}</p>
+    <p class="without-courses"> ${_("There are no courses")}</p>
   %endif
 %endfor
 %else:
