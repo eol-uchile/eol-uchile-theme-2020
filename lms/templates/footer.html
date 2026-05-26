@@ -20,12 +20,12 @@
         <img src="${static.url('eol-uchile-2020/images/logos/openedx_logo.png')}" alt="Con la tecnología de Open edX" class="eol-logo-img-footer-edx">
       </a>
   </div>
-  <p class="text-center"><small>${_("¿Necesitas Ayuda? Contáctate con la ")}<a href="/contact_form">${_("Mesa de Ayuda de EOL")}</a></small></p>
+  <p class="text-center"><small>${_("Can we help you? Contact with ")}<a href="/contact_form">${_("EOL Helpdesk")}</a></small></p>
   <p class="text-center">
     <small class="text-muted">
       ${footer['copyright']}
       </br>
-      <a href="https://www.uchile.cl/portal/informacion-general/174996/politica-de-privacidad-de-la-informacion-y-datos-personales" target="_blank">${_("Política de privacidad")}</a>
+      <a href="https://www.uchile.cl/portal/informacion-general/174996/politica-de-privacidad-de-la-informacion-y-datos-personales" target="_blank">${_("Privacy Policy")}</a>
       % if icp_license_info.get('icp_license'):
         ${u" | {text}".format(text=icp_license_info.get('text'))}
         <a href="${icp_license_info.get('icp_license_link', '#')}">

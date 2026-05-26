@@ -118,14 +118,14 @@ except Exception as e:
         </li>
         <li class="field eol_send_email_hide">
             <label>
-                ${_("Responder a (opcional): ")}
+                ${_("Reply to (optional):")}
                 <br/>
                 %if reply_to:
                 <input type="text" id="id_reply_to" name="reply_to" maxlength="520" size="75" value="${reply_to}" placeholder="correo@correo.cl">
                 %else:
                 <input type="text" id="id_reply_to" name="reply_to" maxlength="520" size="75" placeholder="correo@correo.cl">
                 %endif
-                <span class="tip">${_("(Ingrese el/los correos al que los estudiantes podrán responder. Si ingresa más de un correo separelos con una coma, ejemplo: correo1@correo.cl, correo2@correo.cl)")}</span>
+                <span class="tip">${_("(Enter the email address(es) that students will be able to reply to. If you enter more than one email address, separate them with a comma. Example: email1@email.com, email2@email.com)")}</span>
             </label>
         </li>
         <li class="eol_welcome_mail_checkbox_hide">

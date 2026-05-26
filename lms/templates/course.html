@@ -30,7 +30,7 @@ if course.end is not None and course.end < now:
             <%
                 course_about = reverse('about_course', args=[text_type(course.id)])
             %>
-            <a href="${course_about}"><button type="button" class="btn btn-outline-light">${_("Aprender más")}</button></a>
+            <a href="${course_about}"><button type="button" class="btn btn-outline-light">${_("Learn more")}</button></a>
         </div>
 
       </div>
@@ -42,7 +42,7 @@ if course.end is not None and course.end < now:
           course_date_string = ''
       %>
         % if course.end is not None and now is not None and course.end < now:
-            <div class="course-date" aria-hidden="true">${_("Curso finalizado")}</div>
+            <div class="course-date" aria-hidden="true">${_("Finished course")}</div>
         % elif course.advertised_start is not None:
           <div class="course-date" aria-hidden="true">${_("Starts")}: ${course.advertised_start}</div>
       % else:
