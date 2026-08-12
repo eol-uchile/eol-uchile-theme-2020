@@ -12,6 +12,7 @@ from openedx.core.djangolib.js_utils import js_escaped_string
 from openedx.core.djangolib.markup import clean_dangerous_html, HTML, Text
 from openedx.core.lib.courses import course_image_url
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+from openedx.core.djangoapps.theming import helpers as theming_helpers
 from six import string_types
 %>
 
@@ -112,7 +113,7 @@ from six import string_types
                       <div class="course-about-card shadow-lg m-2 bg-white">
                         <script>
                           function show_default_image() {
-                            return "${static.url('eol-uchile-2020/images/default-course.jpg')}";
+                            return "${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/default-course.jpg')}";
                           }
                         </script>
                         % if get_course_about_section(request, course, "video"):
