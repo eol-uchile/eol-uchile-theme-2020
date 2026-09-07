@@ -22,7 +22,7 @@ from openedx.core.djangolib.markup import HTML
 ## 5. Implement your standard django/python in lms/djangoapps/instructor/views/api.py
 ## 6. And tests go in lms/djangoapps/instructor/tests/
 
-<%block name="pagetitle">${_("Instructor Dashboard")}</%block>
+<%block name="pagetitle">${_("Instructor dashboard")}</%block>
 
 <%block name="headextra">
   <%static:css group='style-course-vendor'/>
@@ -102,10 +102,10 @@ from openedx.core.djangolib.markup import HTML
   <div class="instructor-dashboard-wrapper-2">
         <main id="main" aria-label="Content" tabindex="-1">
         <section class="instructor-dashboard-content-2" id="instructor-dashboard-content">
-          <h2 class="hd hd-2 instructor-dashboard-title">${_("Instructor Dashboard")}</h2>
+          <h2 class="hd hd-2 instructor-dashboard-title">${_("Instructor dashboard")}</h2>
           <div class="wrap-instructor-info studio-view">
             %if studio_url:
-            <a class="instructor-info-action" href="${studio_url}">${_("View Course in Studio")}</a>
+            <a class="instructor-info-action" href="${studio_url}">${_("View course in Studio")}</a>
             %endif
           </div>
 
@@ -128,7 +128,7 @@ from openedx.core.djangolib.markup import HTML
                   pass
                 %>
                 % if welcome_mail_url is not None:
-                  <li class="nav-item"><button id="welcome_mail_button" onclick="set_welcome_mail_view();" type="button" class="btn-link send_email" data-section="send_email">${_("Correo de bienvenida")}</button></li>
+                  <li class="nav-item"><button id="welcome_mail_button" onclick="set_welcome_mail_view();" type="button" class="btn-link send_email" data-section="send_email">${_("Welcome mail")}</button></li>
                 % endif
               % else:
               <li class="nav-item"><button type="button" class="btn-link ${ section_data['section_key'] }${' hidden' if is_hidden else ''}" data-section="${ section_data['section_key'] }">${_(dname)}</button></li>

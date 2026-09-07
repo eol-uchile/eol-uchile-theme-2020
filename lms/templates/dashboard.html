@@ -216,7 +216,7 @@ from common.djangoapps.student.models import CourseEnrollment
                 course_requirements = courses_requirements_not_met.get(session_id)
                 related_programs = inverted_programs.get(six.text_type(entitlement.course_uuid if is_unfulfilled_entitlement else session_id))
                 show_consent_link = (session_id in consent_required_courses)
-                resume_button_url = resume_button_urls[dashboard_index].replace("/jump_to/", "/eol_jump_to/")
+                resume_button_url = resume_button_urls[dashboard_index]
                 if course_overview.has_ended():
                     course_archived_count += 1
               %>
@@ -234,7 +234,7 @@ from common.djangoapps.student.models import CourseEnrollment
           % if len(course_entitlements + course_enrollments) - course_archived_count <= 0:
             <div class="empty-dashboard-message">
               % if display_dashboard_courses:
-                <p>${_("You are not enrolled in any courses yet.")}</p>
+                <p>${_("You are not enrolled in any active course yet.")}</p>
                 % if empty_dashboard_message:
                   <p class="custom-message">${empty_dashboard_message | n, decode.utf8}</p>
                 %endif
@@ -338,7 +338,7 @@ from common.djangoapps.student.models import CourseEnrollment
           ${_("window open")}
         </span>
       </h2>
-      <p style="text-align: center; font-weight: 700;">${_("No se reembolsará su inscripción")}.</p>
+      <p style="text-align: center; font-weight: 700;">${_("You will not receive a refund for your enrollment")}.</p>
       <hr/>
     </header>
 

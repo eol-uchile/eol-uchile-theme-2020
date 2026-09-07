@@ -1,0 +1,7 @@
+Babel
+Django
+django-babel
+Mako
+MarkupSafe
+pytz
+django-babel-underscore

@@ -3,7 +3,7 @@
 from django.utils.translation import ugettext as _
 %>
 <header class="wrapper-header-courses">
-  <h2 class="header-courses eol-header-courses"><span class="text">${_("Cursos activos")}</span> <a class="btn btn-outline-primary btn-sm float-right course-filter filter-archive" href="javascript:void(0)" role="button">${_("Mostrar cursos archivados")}</a></h2>
+  <h2 class="header-courses eol-header-courses"><span class="text">${_("Active courses")}</span> <a class="btn btn-outline-primary btn-sm float-right course-filter filter-archive" href="javascript:void(0)" role="button">${_("Show archived courses")}</a></h2>
 </header>
 <script>
   $(function() {
@@ -29,8 +29,8 @@ from django.utils.translation import ugettext as _
         $(currentTarget).removeClass('filter-archive');
         $(currentTarget).addClass('filter-active');
         // Update texts
-        $(currentTarget).text("${_('Mostrar cursos activos')}");
-        $('.wrapper-header-courses .header-courses span.text').text("${_('Cursos archivados')}");
+        $(currentTarget).text("${_('Show active courses')}");
+        $('.wrapper-header-courses .header-courses span.text').text("${_('Archived courses')}");
       } else if ( $(currentTarget).hasClass('filter-active') ) {
         // Show active courses (or empty message if exists), Hide archived courses
         $("ul.listing-courses li.course-item.course-active, .empty-dashboard-message").show();
@@ -39,8 +39,8 @@ from django.utils.translation import ugettext as _
         $(currentTarget).removeClass('filter-active');
         $(currentTarget).addClass('filter-archive');
         // Update texts
-        $(currentTarget).text("${_('Mostrar cursos archivados')}");
-        $('.wrapper-header-courses .header-courses span.text').text("${_('Cursos activos')}");
+        $(currentTarget).text("${_('Show archived courses')}");
+        $('.wrapper-header-courses .header-courses span.text').text("${_('Active courses')}");
       }
     });
   });

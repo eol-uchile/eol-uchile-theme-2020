@@ -1,0 +1,428 @@
+# Spanish (Latin America) translations for PROJECT.
+# Copyright (C) 2021 eduNEXT
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: support@edunext.co\n"
+"POT-Creation-Date: 2026-06-24 16:16+0000\n"
+"PO-Revision-Date: 2021-10-20 19:03+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es_419\n"
+"Language-Team: es_419 <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: cms/static/js/factories/settings_advanced.js:42
+msgid "Hide Deprecated Settings"
+msgstr ""
+
+#: cms/static/js/factories/settings_advanced.js:46
+msgid "Show Deprecated Settings"
+msgstr ""
+
+#: cms/static/js/views/settings/advanced.js:69
+msgid ""
+"Your changes will not take effect until you save your progress. Take care"
+" with key and value formatting, as validation is not implemented."
+msgstr ""
+
+#: cms/static/js/views/settings/advanced.js:142
+msgid "Your policy changes have been saved."
+msgstr ""
+
+#: cms/static/js/views/settings/advanced.js:143
+msgid ""
+"No validation is performed on policy keys or value pairs. If you are "
+"having difficulties, check your formatting."
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:40
+#, python-format
+msgid "Prerequisite: %(prereq_display_name)s"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:48
+msgid "Contains staff only content"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:54
+msgid "Unpublished changes to live content"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:56
+msgid "Unpublished units will not be released"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:58
+msgid "Unpublished changes to content that will release in the future"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:66
+#, python-brace-format
+msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:75
+msgid ""
+"Access to some content in this unit is restricted to specific groups of "
+"learners"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:80
+msgid "Ungraded"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:91
+msgid "Onboarding Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:93
+msgid "Practice proctored Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:95
+msgid "Proctored Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:99
+msgid "Timed Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:116
+#, python-format
+msgid "Collapse/Expand this %(xblock_type)s"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:125
+#: cms/templates/js/course-outline.underscore:130
+msgid "Display Name"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:139
+#: cms/templates/js/course-outline.underscore:140
+msgid "Proctoring Settings"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:146
+#: cms/templates/js/course-outline.underscore:148
+msgid "Publish"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:154
+#: cms/templates/js/course-outline.underscore:156
+msgid "Configure"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:162
+#: cms/templates/js/course-outline.underscore:164
+msgid "Duplicate to another course"
+msgstr "Duplicar a otro curso"
+
+#: cms/templates/js/course-outline.underscore:168
+#: cms/templates/js/course-outline.underscore:170
+msgid "Duplicate"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:176
+#: cms/templates/js/course-outline.underscore:178
+msgid "Delete"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:184
+#: cms/templates/js/course-outline.underscore:186
+msgid "Drag to reorder"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:204
+msgid "Release Status:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:209
+msgid "Released:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:212
+msgid "Scheduled:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:215
+msgid "Unscheduled"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:230
+msgid "Section Highlights"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:237
+#: cms/templates/js/course-outline.underscore:251
+msgid "Graded as:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:244
+#: cms/templates/js/course-outline.underscore:255
+msgid "Due:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:266
+msgid "Subsection is hidden after course end date"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:268
+msgid "Subsection is hidden after due date"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:290
+msgid "You haven't added any content to this course yet."
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:294
+#: cms/templates/js/course-outline.underscore:315
+#, python-format
+msgid "Click to add a new %(xblock_type)s"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:2
+msgid "Set as a Special Exam"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:4
+msgid "Exam Types"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:9
+msgid ""
+"This subsection was released to learners as a special exam, but was "
+"reverted back to a basic exam. You may not configure it as a special exam"
+" now. Contact edX Support for assistance."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:17
+msgid ""
+"This special exam has been released to learners. You may not convert it "
+"to another type of special exam. You may revert this subsection back to "
+"being a basic exam by selecting 'None', but you will NOT be able to "
+"configure it as a special exam in the future."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:23
+msgid "None"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:30
+msgid "Timed"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:32
+msgid ""
+"Use a timed exam to limit the time learners can spend on problems in this"
+" subsection. Learners must submit answers before the time expires. You "
+"can allow additional time for individual learners through the Instructor "
+"Dashboard."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:40
+msgid "Proctored"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:42
+msgid ""
+"Proctored exams are timed and they record video of each learner taking "
+"the exam. The videos are then reviewed to ensure that learners follow all"
+" examination rules."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:51
+msgid "Onboarding"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:53
+msgid ""
+"Use Onboarding to introduce learners to proctoring, verify their "
+"identity, and create an onboarding profile. Learners must complete the "
+"onboarding profile step prior to taking a proctored exam. Profile reviews"
+" take 2+ business days."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:60
+msgid "Practice Proctored"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:62
+msgid ""
+"Use a practice proctored exam to introduce learners to the proctoring "
+"tools and processes. Results of a practice exam do not affect a learner's"
+" grade."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:70
+msgid "Time Allotted (HH:MM):"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:74
+msgid ""
+"Select a time allotment for the exam. If it is over 24 hours, type in the"
+" amount of time. You can grant individual learners extra time to complete"
+" the exam through the Instructor Dashboard."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:80
+msgid "Review Rules"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:89
+#, python-brace-format
+msgid ""
+"Specify any rules or rule exceptions that the proctoring review team "
+"should enforce when reviewing the videos. For example, you could specify "
+"that calculators are allowed. These specified rules are visible to "
+"learners before the learners start the exam, along with the "
+"{linkStart}general proctored exam rules{linkEnd}."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:93
+msgid "General Proctored Exam Rules"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:98
+msgid ""
+"Specify any rules or rule exceptions that the proctoring review team "
+"should enforce when reviewing the videos. For example, you could specify "
+"that calculators are allowed. These specified rules are visible to "
+"learners before the learners start the exam."
+msgstr ""
+
+#: lms/static/js/eol-legacy.js:106 lms/static/js/eol-legacy.js:123
+#: lms/static/js/eol-legacy.js:131
+msgid "You will not be refunded the amount you paid."
+msgstr ""
+
+#: lms/static/js/eol-legacy.js:109
+#, python-brace-format
+msgid ""
+"Are you sure you want to unenroll from the purchased course {courseName} "
+"({courseNumber})?"
+msgstr ""
+
+#: lms/static/js/eol-legacy.js:114
+#, python-brace-format
+msgid "Are you sure you want to unenroll from {courseName} ({courseNumber})?"
+msgstr ""
+
+#: lms/static/js/eol-legacy.js:119
+#, python-brace-format
+msgid ""
+"Are you sure you want to unenroll from the verified {certNameLong}  track"
+" of {courseName}  ({courseNumber})?"
+msgstr ""
+
+#: lms/static/js/eol-legacy.js:127
+#, python-brace-format
+msgid ""
+"Are you sure you want to unenroll from the verified {certNameLong} track "
+"of {courseName} ({courseNumber})?"
+msgstr ""
+
+#: lms/static/js/eol-legacy.js:227 lms/static/js/eol-legacy.js:241
+msgid ""
+"Unable to determine whether we should give you a refund because of System"
+" Error. Please try again later."
+msgstr ""
+
+#: lms/templates/courseware/progress_graph.js:319
+msgid "Overall Score"
+msgstr ""
+
+#: lms/templates/student_account/form_field.underscore:136
+msgid "Need help signing in?"
+msgstr ""
+
+#: lms/templates/student_account/form_field.underscore:138
+msgid "Forgot my password"
+msgstr ""
+
+#: lms/templates/student_account/form_field.underscore:140
+msgid "Other sign-in issues"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:3
+msgid "First time here?"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:4
+msgid "Create an Account."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:10
+#, python-brace-format
+msgid "Sign in to continue learning as {email}"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:12
+msgid "Sign in to continue learning"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:15
+#, python-brace-format
+msgid "You already have an edX account with your {enterprise_name} email address."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:17
+#, python-brace-format
+msgid ""
+"Going forward, your account information will be updated and maintained by"
+" {enterprise_name}."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:19
+#, python-brace-format
+msgid ""
+"You can view your information or unlink from {enterprise_name} anytime in"
+" your Account Settings."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:21
+msgid "To continue learning with this account, sign in below."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:23
+msgid "Sign In"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:39
+msgid ""
+"Sign in here using your email address and password, or use one of the "
+"providers listed below."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:41
+msgid "Sign in here using your email address and password."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:43
+msgid "If you do not yet have an account, use the button below to register."
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:48
+msgid "Use my university info"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:53
+#: lms/templates/student_account/login2.underscore:65
+msgid "or sign in with"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:60
+msgid "Sign in"
+msgstr ""
+
+#: lms/templates/student_account/login2.underscore:78
+#, python-format
+msgid "Sign in with %(providerName)s"
+msgstr ""
+

@@ -37,14 +37,14 @@ except Exception as e:
     <ul class="list-fields">
         % if welcome_mail_url is not None:
             <li class="field eol_welcome_mail_hide">
-                <div class="send_to_list">${_("Habilitar:")}</div>
+                <div class="send_to_list">${_("Enable:")}</div>
             </li>
             <li class="field eol_welcome_mail_hide">
                 <fieldset>
                     <ul role="group" class="email-targets-primary">
                         <li>
                             <input type="checkbox" name="is_active" value="true" id="is_active" onchange="checkbox_welcome_mail(this);">
-                            <label for="is_active">${_("Habilitar correo de bienvenida")}</label>
+                            <label for="is_active">${_("Enable welcome mail")}</label>
                         </li>
                     </ul>
                 </fieldset>
@@ -118,14 +118,14 @@ except Exception as e:
         </li>
         <li class="field eol_send_email_hide">
             <label>
-                ${_("Responder a (opcional): ")}
+                ${_("Reply to (optional):")}
                 <br/>
                 %if reply_to:
                 <input type="text" id="id_reply_to" name="reply_to" maxlength="520" size="75" value="${reply_to}" placeholder="correo@correo.cl">
                 %else:
                 <input type="text" id="id_reply_to" name="reply_to" maxlength="520" size="75" placeholder="correo@correo.cl">
                 %endif
-                <span class="tip">${_("(Ingrese el/los correos al que los estudiantes podrán responder. Si ingresa más de un correo separelos con una coma, ejemplo: correo1@correo.cl, correo2@correo.cl)")}</span>
+                <span class="tip">${_("(Enter the email address(es) that students will be able to reply to. If you enter more than one email address, separate them with a comma. Example: email1@email.com, email2@email.com)")}</span>
             </label>
         </li>
         <li class="eol_welcome_mail_checkbox_hide">
@@ -147,9 +147,9 @@ except Exception as e:
         </p>
     </div>
     <br />
-    <input class="eol_send_email_hide" type="button" name="send" value="${_("Send Email")}" data-endpoint="${ section_data['send_email'] }" >
-    % if welcome_mail_url is not None:
-        <input class="eol_welcome_mail_hide" onclick="save_welcome_mail(this);" type="button" name="save" value="${_("Guardar Cambios")}" data-endpoint="${ welcome_mail_url }" >
+    <input class="eol_send_email_hide" type="button" name="send" value="${_('Send Email')}" data-endpoint="${ section_data['send_email'] }" >
+    % if 'welcome-mail-save' in section_data:
+        <input class="eol_welcome_mail_hide" onclick="save_welcome_mail(this);" type="button" name="save" value="${_('Save changes')}" data-endpoint="${ section_data['welcome-mail-save'] }" >
     % endif
     <div class="request-response msg msg-confirm copy" id="request-response"></div>
 

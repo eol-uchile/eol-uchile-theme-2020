@@ -96,7 +96,7 @@ import json
             eol_option_default.appendChild(eol_text_default);
             eol_select.appendChild(eol_option_default);
             var edx_video_id = datos.edx_video_id;
-            metadata.find('.metadata-videolist-enum')[0].children[0].innerText = '${_("External link from YouTube (default video URL)")}';
+            metadata.find('.metadata-videolist-enum')[0].children[0].innerText = '${_("External YouTube link (default video URL)")}';
             var pre_exists_id = true;
             datos.data.forEach(video => {
                 var eol_option = document.createElement("option");
@@ -173,17 +173,17 @@ import json
                 $.post('/eolvimeo/update_picture', {'videoid': this.dataset.videoid, 'course_id':'${course_id}'}).done(function(response) {
                     if (response.result == 'success' ){
                         text_response = metadata.find('#eol-update-response');
-                        text_response.html('${_("Updated miniature.")}');
+                        text_response.html('${_("Thumbnail updated.")}');
                     }
                     else {
                         text_response = metadata.find('#eol-update-response');
-                        text_response.html('${_("There was an error updating the thumbnail.")}');
+                        text_response.html('${_("An error occurred while updating the thumbnail.")}');
                     }
                     metadata.find('#ui-loading-update').hide();
                     e.currentTarget.disabled = false;
                 }).fail(function() {
                     text_response = metadata.find('#eol-update-response');
-                    text_response.html('${_("There was an error updating the thumbnail.")}');
+                    text_response.html('${_("An error occurred while updating the thumbnail.")}');
                     metadata.find('#ui-loading-update').hide();
                     e.currentTarget.disabled = false;
                 });

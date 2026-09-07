@@ -11,30 +11,34 @@
 <% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
 <%namespace name='static' file='static_content.html'/>
 
-    <footer class="eol-header-container eol-footer border-0 shadow-none mt-auto text-center mx-auto mb-4">
-      <div class="row d-flex border-0 shadow-none w-100 px-5">
-        <div class="col-12 my-auto pb-4">
-          <img src="${static.url(theming_helpers.get_current_site_theme().theme_dir_name+'/images/logos/0vti.jpg')}" class="img-fluid mx-auto" alt="VTI" style="max-height: 70px;">
-          <a href="https://open.edx.org" style="padding-left: 60px;">
-            <img src="https://files.edx.org/openedx-logos/open-edx-logo-tag.png" alt="Con la tecnología de Open edX" width="140">
-              </a>
-        </div>
-      </div>
-      <p class="text-center"><small>${_("¿Necesitas Ayuda? Contáctate con la ")}<a href="/contact_form">${_("Mesa de Ayuda de EOL")}</a></small></p>
-      <p class="text-center">
-        <small class="text-muted">
-          ${footer['copyright']}
-          </br>
-          <a href="https://www.uchile.cl/portal/informacion-general/174996/politica-de-privacidad-de-la-informacion-y-datos-personales" target="_blank">${_("Política de privacidad")}</a>
-              % if icp_license_info.get('icp_license'):
-                ${u" | {text}".format(text=icp_license_info.get('text'))}
-                <a href="${icp_license_info.get('icp_license_link', '#')}">
-                    ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
-                </a>
-              % endif
-        </small>
-      </p>
-    </footer>
+<footer class="eol-header-container eol-footer border-0 shadow-none mt-auto text-center mx-auto mb-4">
+  <div class="row d-flex border-0 shadow-none w-100 px-5 row m-0 mb-4 d-flex justify-content-center pb-4 pt-4">
+      <a href="https://vti.uchile.cl/" class="text-decoration-none col-12 col-md-4 col-sm-12 col-xl-3 align-self-end d-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-xl-center">
+        <img src="${static.url('eol-uchile-2020/images/logos/0vti.png')}" alt="Vicerectoría de Tecnologías de la Información" class="eol-logo-img-footer-vti mx-auto" alt="VTI">
+      </a>
+      <a href="https://open.edx.org" class="text-decoration-none col-12 col-md-4 col-sm-12 col-xl-3 align-self-end d-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-xl-center mt-3 mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0">
+        <img src="${static.url('eol-uchile-2020/images/logos/openedx_logo.png')}" alt="Con la tecnología de Open edX" class="eol-logo-img-footer-edx">
+      </a>
+  </div>
+  <p class="text-center"><small>${_("Can we help you? Contact with ")}<a href="/contact_form">${_("EOL Helpdesk")}</a></small></p>
+  <p class="text-center">
+    <small class="text-muted">
+      ${footer['copyright']}
+      </br>
+      <a href="https://www.uchile.cl/portal/informacion-general/174996/politica-de-privacidad-de-la-informacion-y-datos-personales" target="_blank">${_("Privacy Policy")}</a>
+      % if icp_license_info.get('icp_license'):
+        ${u" | {text}".format(text=icp_license_info.get('text'))}
+        <a href="${icp_license_info.get('icp_license_link', '#')}">
+            ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
+        </a>
+      % endif
+    </small>
+  </p>
+</footer>
+
+% if context.get('include_language_selector', footer_language_selector_is_enabled()):
+    <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
+% endif
 
 % if include_dependencies:
   <%static:js group='base_vendor'/>
