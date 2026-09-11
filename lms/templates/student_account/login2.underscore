@@ -24,7 +24,7 @@
 <% } %>
 
 <form id="login" class="login-form" tabindex="-1" method="POST">
-    <a id="redirect_to" href="/uchileedxlogin/login">
+    <a id="redirect_to" href="/auth/login/uchile-oauth2/?auth_entry=login">
         <img class="img-login-1 img-fluid"/>
     </a>
     <div id="login_separator" class="separator mx-5 my-3">O</div>
@@ -101,9 +101,11 @@
             $('#redirect_to').hide();
             $('#href_login_normal').hide();
         }
-        var url = document.getElementById("url_next").textContent;
+        var nextValue = document.getElementById("url_next").dataset.next;
         var atag = document.getElementById("redirect_to");
-        atag.setAttribute('href', url)
+        var currentUrl = new URL(atag.getAttribute('href'), window.location.origin);
+        currentUrl.searchParams.set('next', nextValue);
+        atag.setAttribute('href', currentUrl.pathname + currentUrl.search);
         document.getElementById("url_next").style.display = "none";
     });
 </script>
