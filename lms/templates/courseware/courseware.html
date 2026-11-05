@@ -114,6 +114,32 @@ from openedx.features.course_experience import course_home_page_title, DISABLE_C
 
 ${HTML(fragment.foot_html())}
 
+## EOL: poster de videos Vimeo (paquete eol_vimeo)
+<%!
+import traceback
+from django.urls import reverse
+from django.contrib.staticfiles.storage import staticfiles_storage
+%>
+<%
+eol_vimeo_poster_url = None
+eol_vimeo_traceback = None
+try:
+    reverse('vimeo_thumbnail', kwargs={'vimeo_id': '1'})
+    eol_vimeo_poster_url = staticfiles_storage.url('eol_vimeo/js/eol_vimeo_poster.js')
+except Exception:
+    eol_vimeo_poster_url = None
+    if settings.DEBUG:
+        eol_vimeo_traceback = traceback.format_exc()
+%>
+% if eol_vimeo_traceback:
+<div class="eol-vimeo-traceback" hidden>
+    <pre>${eol_vimeo_traceback}</pre>
+</div>
+% elif eol_vimeo_poster_url:
+<script type="text/javascript" src="${eol_vimeo_poster_url}"></script>
+% endif
+## EOL END poster de videos Vimeo (paquete eol_vimeo)
+
 </%block>
 
 <div class="message-banner" aria-live="polite"></div>
