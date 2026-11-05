@@ -37,6 +37,31 @@ from openedx.core.djangolib.markup import HTML, Text
     <link rel="stylesheet" type="text/css" href="${static.url('common/css/vendor/common.min.css')}" />
     <link rel="stylesheet" type="text/css" href="${static.url('common/css/vendor/editImageModal.min.css')}" />
 % endif
+## EOL: poster de videos Vimeo (paquete eol_vimeo)
+<%!
+import traceback
+from django.urls import reverse
+from django.contrib.staticfiles.storage import staticfiles_storage
+%>
+<%
+eol_vimeo_poster_url = None
+eol_vimeo_traceback = None
+try:
+    reverse('vimeo_thumbnail', kwargs={'vimeo_id': '1'})
+    eol_vimeo_poster_url = staticfiles_storage.url('eol_vimeo/js/eol_vimeo_poster.js')
+except Exception:
+    eol_vimeo_poster_url = None
+    if settings.DEBUG:
+        eol_vimeo_traceback = traceback.format_exc()
+%>
+% if eol_vimeo_traceback:
+<div class="eol-vimeo-traceback" hidden>
+    <pre>${eol_vimeo_traceback}</pre>
+</div>
+% elif eol_vimeo_poster_url:
+<script type="text/javascript" src="${eol_vimeo_poster_url}"></script>
+% endif
+## EOL END poster de videos Vimeo (paquete eol_vimeo)
 <style>
     .xmodule_display.xmodule_VideoBlock .video .video-wrapper .btn-play{
         opacity: 0.7;
