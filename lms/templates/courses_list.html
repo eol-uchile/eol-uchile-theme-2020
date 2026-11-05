@@ -4,6 +4,7 @@
 
 <%
 from django.apps import apps
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 course_classfication_is_installed = apps.is_installed('course_classification')
 %>
 
@@ -11,13 +12,19 @@ course_classfication_is_installed = apps.is_installed('course_classification')
 <% from course_classification.utils import get_all_categories_and_its_courses %>
 <%  cats,course_class = get_all_categories_and_its_courses(courses) %>
 %for categ in cats:
-  %if 'cmm' not in categ['name'] and (categ['show_opt'] == 2 or (categ['show_opt'] == 1 and len(course_class[categ['id']]['courses']) > 0)):
+  <%
+    org_filter = configuration_helpers.get_value('course_org_filter', 'eol')
+    if isinstance(org_filter, str):
+      org_filter = [org_filter]
+    active_courses = [c for c in course_class[categ['id']]['courses'] if (c.catalog_visibility == 'both' and c.org in org_filter)]
+  %>
+  %if categ['show_opt'] == 2 or (categ['show_opt'] == 1 and len(active_courses) > 0):
     <h4 class="eol-categ-title text-left pb-2">
       ${categ['name'].capitalize()}
     </h4>
     <div class="row eol-courses-list my-4">
       % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
-            %for course in course_class[categ['id']]['courses']:
+            %for course in active_courses:
               <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
                 <%include file="course.html" args="course=course" />
               </div>
@@ -25,7 +32,7 @@ course_classfication_is_installed = apps.is_installed('course_classification')
       % endif
     </div>
   %endif
-  %if (categ['show_opt'] == 2 and len(course_class[categ['id']]['courses']) == 0):
+  %if (categ['show_opt'] == 2 and len(active_courses) == 0):
     <p class="without-courses"> ${_("There are no courses")}</p>
   %endif
 %endfor
