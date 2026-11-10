@@ -27,6 +27,28 @@ import json
 
 <div class="wrapper-comp-settings basic_metadata_edit" data-metadata='${json.dumps(transcripts_basic_tab_metadata)}'></div>
 
+<%!
+from django.urls import reverse
+import traceback
+%>
+
+<%
+vimeo_url = None
+vimeo_traceback = None
+try:
+    vimeo_url = reverse('vimeo_callback')
+except Exception:
+    if settings.DEBUG:
+        vimeo_traceback = traceback.format_exc()
+%>
+
+%if vimeo_traceback:
+    <div class="vimeo_traceback" hidden>
+        <pre>${vimeo_traceback}</pre>
+    </div>
+%elif vimeo_url:
+    <%include file="eol_vimeo_video_list.html" args="tabName=tabName"/>
+%else:
 <script type="text/javascript">
     require(
         [
@@ -69,3 +91,4 @@ import json
         }
     );
 </script>
+%endif
