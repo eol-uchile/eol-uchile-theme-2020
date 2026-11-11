@@ -1,6 +1,6 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%namespace name='static' file='../../static_content.html'/>
-<%page args="tabName"/>
+<%page args="tabName" expression_filter="h"/>
 
 <%
 import json
@@ -25,6 +25,8 @@ import json
     </script>
 % endfor
 
+<div class="wrapper-comp-settings basic_metadata_edit" data-metadata='${json.dumps(transcripts_basic_tab_metadata)}'></div>
+
 <%!
 from django.urls import reverse
 import traceback
@@ -46,4 +48,47 @@ except Exception:
     </div>
 %elif vimeo_url:
     <%include file="eol_vimeo_video_list.html" args="tabName=tabName"/>
+%else:
+<script type="text/javascript">
+    require(
+        [
+            "domReady!",
+            "jquery",
+            "js/views/video/transcripts/editor"
+        ],
+
+        function(doc, $, Editor) {
+            var transcripts = new Editor({
+                    el: $('#editor-tab-${html_id|n, decode.utf8}').find('.basic_metadata_edit')
+                }),
+                storage = TabsEditingDescriptor.getStorage();
+
+            TabsEditingDescriptor.Model.addModelUpdate(
+                '${html_id|n, decode.utf8}',
+                '${tabName|n, decode.utf8}',
+                function () {
+                    // Advanced, Save
+                    metadataEditor = storage.MetadataEditor;
+
+                    if (metadataEditor) {
+                        transcripts.syncAdvancedTab(metadataEditor.collection, metadataEditor);
+                    }
+                }
+            );
+
+            TabsEditingDescriptor.Model.addOnSwitch(
+                '${html_id|n, decode.utf8}',
+                '${tabName|n, decode.utf8}',
+                function () {
+                    // Basic
+                    metadataEditor = storage.MetadataEditor;
+
+                    if (metadataEditor) {
+                        transcripts.syncBasicTab(metadataEditor.collection, metadataEditor);
+                    }
+                }
+            );
+        }
+    );
+</script>
 %endif
